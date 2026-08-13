@@ -1,64 +1,126 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-	<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-	<title>The Safety Organization</title>
-
-	<style>
-
-	pre {
-	white-space: pre-wrap;
-	font-family: Serif;
-	font-size: 120%;
-	}
-
-	</style>
-
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Safety Organization</title>
 	<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%232a4365'/%3E%3Ctext x='50%25' y='55%25' font-family='Arial, sans-serif' font-weight='bold' font-size='65' fill='%23ffffff' dominant-baseline='middle' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
 	</head>
+<style>
+:root{
+  --bg:#071018; --panel:#0d1721; --panel2:#111f2b; --text:#edf5f8;
+  --muted:#8fa5b2; --line:rgba(255,255,255,.09); --accent:#7ce7cf;
+  --accent2:#8bb7ff; --glow:rgba(124,231,207,.18);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth}
+pre{white-space: pre-wrap; margin: 20px; border: 0px solid red;
+
+font:15px/1.75 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;}
+
+body{margin:0;background:
+ radial-gradient(circle at 75% 5%,rgba(124,231,207,.10),transparent 30rem),
+ radial-gradient(circle at 10% 70%,rgba(139,183,255,.08),transparent 28rem),
+ var(--bg);color:var(--text);font:15px/1.75 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(to bottom,black,transparent 80%)}
+.sidebar{position:fixed;z-index:10;left:22px;top:50%;transform:translateY(-50%);width:210px;padding:14px;border:1px solid var(--line);background:rgba(8,16,24,.78);backdrop-filter:blur(18px);border-radius:22px;box-shadow:0 25px 80px rgba(0,0,0,.35)}
+.group{padding:12px 12px 18px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:12px;color:var(--accent)}
+nav a{display:flex;align-items:center;gap:10px;color:var(--muted);text-decoration:none;padding:0px 12px;border-radius:12px;transition:.25s}
+nav a span{width:6px;height:6px;border-radius:50%;background:#49606d;transition:.25s}
+nav a:hover,nav a.active{color:var(--text);background:rgba(124,231,207,.08)}
+nav a.active span{background:var(--accent);box-shadow:0 0 12px var(--accent)}
+main{width:min(1050px,calc(100% - 300px));margin-left:285px;padding:70px 35px 120px}
+section{min-height:86vh;padding:70px 0;scroll-margin-top:30px}
+.hero{min-height:92vh;display:flex;align-items:center}
+.eyebrow{color:var(--accent);text-transform:uppercase;letter-spacing:.18em;font-size:12px;font-weight:800}
+h1{font-size:clamp(48px,8vw,92px);line-height:.95;letter-spacing:-.055em;margin:18px 0 25px;max-width:850px}
+h2{font-size:clamp(30px,4vw,50px);letter-spacing:-.035em;margin:10px 0 18px}
+h3{margin:0 0 8px;font-size:18px}
+.lead{font-size:20px;color:#b7c8d0;max-width:760px}
+.rule{height:1px;background:linear-gradient(90deg,var(--accent),transparent);margin:30px 0}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.card{background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));border:1px solid var(--line);border-radius:20px;padding:24px;min-height:160px;box-shadow:inset 0 1px rgba(255,255,255,.04);transition:.3s}
+.card:hover{transform:translateY(-4px);border-color:rgba(124,231,207,.3);box-shadow:0 18px 45px rgba(0,0,0,.18)}
+.card p{color:var(--muted);margin:0}
+.num{font-size:12px;color:var(--accent);font-weight:800;letter-spacing:.12em}
+.placeholder{border-style:dashed;background:rgba(255,255,255,.018)}
+.quote{font-size:26px;line-height:1.35;padding:30px;border-left:2px solid var(--accent);background:rgba(124,231,207,.035);border-radius:0 18px 18px 0}
+.media{height:300px;border:1px dashed rgba(255,255,255,.18);border-radius:24px;display:grid;place-items:center;color:var(--muted);background:linear-gradient(135deg,rgba(124,231,207,.06),rgba(139,183,255,.04));margin:22px 0}
+.list{display:grid;gap:10px;margin-top:22px}
+.item{display:flex;gap:16px;padding:16px 18px;border:1px solid var(--line);border-radius:15px;background:rgba(255,255,255,.025)}
+.item b{color:var(--accent);min-width:42px}
+footer{padding-top:40px;color:#637986;font-size:12px}
+@media(max-width:900px){
+ .sidebar{position:fixed;left:12px;right:12px;top:auto;bottom:12px;transform:none;width:auto;padding:8px;border-radius:18px}
+ .group{display:none}.sidebar nav{display:flex;justify-content:space-between;gap:3px}
+ nav{overflow-x:auto;scrollbar-width:none}nav::-webkit-scrollbar{display:none}nav a{font-size:11px;padding:9px 10px;flex:0 0 auto;justify-content:center;white-space:nowrap}nav a span{display:none}
+ main{width:auto;margin:0;padding:20px 22px 110px}.hero{min-height:85vh}
+ section{padding:55px 0;min-height:auto}.grid{grid-template-columns:1fr}h1{font-size:clamp(48px,16vw,78px)}
+}
+</style>
+</head>
+<body>
+<aside class="sidebar">
+  <div class="group">Safety Organization</div>
+  <nav>
+    <a href="#intro" class="active"><span></span>Intro to Reality</a>
+    <a href="#goals"><span></span>Our Main Goals</a>
+    <a href="#mores"><span></span>Mores, About</a>
+    <a href="#destruction"><span></span>What is Destruction</a>
+    <a href="#ontology"><span></span>Ontology of Life</a>
+    <a href="#what-we-do"><span></span>What we do</a>
+    <a href="#intro-processes"><span></span>Intro Processes</a>
+    <a href="#high-level"><span></span>High-Level Considerations</a>
+    <a href="#expectations"><span></span>Expectations</a>
+    <a href="#symbols"><span></span>Symbols Theory</a>
+    <a href="#traps"><span></span>Trap Theory</a>
+    <a href="#sop"><span></span>SOP</a>
+    <a href="#other-processes"><span></span>Other Processes</a>
+    <a href="#words"><span></span>Theory of Language</a>
+  </nav>
+</aside>
+
+<main>
 
 	<img style="height: 200px;" src="safety.jpg" />
+	<section id="intro" class="hero">
+  <div>
+    <h1>Intro to Reality</h1>
+    <div class="rule"></div>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/vVYDm1zqgiQ?si=4ce6CGjxLFvSkNKs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+     <br> 
+      	<audio width="180" controls>
+      	<source src="Exterior.mp3" type="audio/mp3">
+      	</audio><br>
+      	<audio width="180" controls>
+      	<source src="Three Feet Back.mp3" type="audio/mp3">
+      	</audio> <br>
+      
+      	<video width="180" height="320" controls>
+      	<source src="Fully%20Exterior_lyricsvideo_v_2.mp4" type="video/mp4">
+      	</video>
 
-<body>
 
-	<br>
+    </div>
+  </div>
+</section>
 
-	<h1>Intro to reality</h1>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/vVYDm1zqgiQ?si=4ce6CGjxLFvSkNKs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-
-	<video width="180" height="320" controls>
-	<source src="Fully%20Exterior_lyricsvideo_v_2.mp4" type="video/mp4">
-	</video><br><br>
-
-	<audio width="180" controls>
-	<source src="Exterior.mp3" type="audio/mp3">
-	</audio> <br>
-
-	<audio width="180" controls>
-	<source src="Three Feet Back.mp3" type="audio/mp3">
-	</audio> <br>
-
-	<h1>Our Main Goals for Individual, ranked</h1>
-
-	<pre>
-
-————————————————————————————————————————————————————————————————————————————————
-
+<section id="goals">
+  <h2>Our Main Goals</h2>
+  <p class="lead">Our Main Goals for Individual, ranked</p>
+<pre>
 1. Forming a group to fall back on to if things go bad spiritually; a group to protect one (and one’s friends) from outcomes — that exists regardless of nation, socioeconomic status
 2. No issue with body death, no compulsion to report
-3. Retention of current memory across lifetimes
-4. Exterior, or able to exteriorize without issue
-5. Able to Assume bodies without issue
-6. A friendly space in which to meet others that want to go free, support others and be supported by others.
-7. A willingness to want to free others, regardless of the group, or teachings.
-8. Full perception while exterior
+3. Exterior, or able to exteriorize without issue
+4. Able to Assume bodies without issue
+5. A friendly space in which to meet others that want to go free, support others and be supported by others.
+6. A willingness to want to free others, regardless of the group, or teachings.
+7. "Full" perception while exterior
+8. Retention of current memory across lifetimes (might be more difficult than the other points)
 9. A feeling of safety and calmness
 10. In control of automatic responses, or not having automatic responses
-11. Somewhat better memory of current life
-12. Does not have destructive intentions or evil purposes
+11. Does not have destructive intentions or evil purposes
+12. Somewhat better memory of current life
 13. Has a relatively healthy body or sense of form
 
 For the main goals, there are direct processes for these also.
@@ -75,7 +137,6 @@ For the main goals, there are direct processes for these also.
 12. Does not have destructive intentions or evil purposes - TODO
 13. Has a relatively healthy body or sense of form - TODO
 
-————————————————————————————————————————————————————————————————————————————————
 
 We want 100% of our members to achieve these states. We also want all of our members to achieve their own dreams, e.g., being a good singer; being a good business manager; being able to have a healthy marriage, etc.
 
@@ -86,16 +147,17 @@ We can help you with just about anything - any problem, any goal, any wish, any 
 We can make you immortal (you already are, but we can show it to you, and make you certain of it). But we can’t “force” you to be a good singer, or to be rich, or be wealthy. We are blatantly honest.
 
 However, using your new ability that we bring about, it is very possible that those conditions or achievements could be attained.
+</pre>
+</section>
 
-————————————————————————————————————————————————————————————————————————————————
-
-Mores, About
-
+<section id="mores">
+  <h2>Mores, About</h2>
+<pre>
 The odd thing is that current society’s mores are such as they are.
 
 Anyone, when they would be considering a group that would truly help them and lead to permanent states of improved being, would be given two choices by society itself
 
-These are -
+These are &mdash;
 
 1) The choice of freedom (by the associating with the group, driven by oneself)
 2) Chaotic Confusion. This would include essentially every reaction and emotion, all not thought out very well. This would include Destruction, evil purposes, destructive intentions
@@ -105,13 +167,17 @@ In another system, insanity is defined as (referenced here in Fair Use) - “INS
 This is a very good, and very accurate, definition of Insanity. Also of evil. This definition defines insanity with the words “complex” and “continuous.”
 
 For some reason people can pre-suppose that the person is supposed to follow the chaos, which would include complex and continuous impulses of all kinds.
+
 This, necessarily, would then mean the person “should” be connected to destructiveness and be destructive themselves.
 
-But it is very possible to not be pro destructive groups at all, or destructive actions at all.
+But it is very possible to not be pro destructive groups at all, or destructive actions at all.</pre>
 
-————————————————————————————————————————————————————————————————————————————————
-What is a destructive group, action or lifestyle?
-————————————————————————————————————————————————————————————————————————————————
+</section>
+
+<section id="destruction">
+  <h2>What is Destruction</h2>
+  <p class="lead">What is a destructive group, action or lifestyle?</p>
+<pre>
 
 A group, action or lifestyle in which the being is not aware of where, what or how they are.
 Or a group, action or lifestyle which promotes, condones or mandates this condition.
@@ -128,8 +194,6 @@ Instead of knowing where and how one is, people are often given false “solutio
 
 By feeling Safer, it is quite possible to snap out of “automatic destructiveness” or previous destructive agreements.
 
-————————————————————————————————————————————————————————————————————————————————
-
 But realize what one is dealing with. The society at large is filled with a bunch of destructive organizations and cults. People don’t even know what, where, or often, that, they are.
 
 Understanding Exterior ontology is quite important. It’s not enough to read about psychics or whatever. One needs to actually know where what, one, and how, one is.
@@ -138,11 +202,14 @@ This is the baseline of normalcy. This is why we thoroughly target this. We use 
 
 This is one of the foundational points of our ethics. You have got to have someone know who, what and how they are.
 
-————————————————————————————————————————————————————————————————————————————————
+</pre>
+</section>
 
-What is actually true. For now, this is a working hypothesis. All truths in our movement, we wish to extensively prove and document them, within reason (and without making anyone unsafe).
-
-————————————————————————————————————————————————————————————————————————————————
+<section id="ontology">
+  <h2>Ontology of Life</h2>
+  <p class="lead"><i>What is actually true</i></p>
+  <pre>
+For now, this is a working hypothesis. All truths in our movement, we wish to extensively prove and document them, within reason (and without making anyone unsafe).
 
 You are an immortal soul. You are not your body. Your capabilities are unlimited. You are the source and cause of reality - your universe (thoughts and creations), and also the universe around you (the physical universe). These are separate.
 
@@ -163,14 +230,13 @@ Without the “help” of these heavy facsimiles, it is likely that you can step
 There can be great, great relief in handling these incidents. For freedom is within grasp.
 
 So long as you are not shackled down and are willing to reach for it.
+</pre>
 
-————————————————————————————————————————————————————————————————————————————————
+</section>
 
-What we do
-
-————————————————————————————————————————————————————————————————————————————————
-
-We do what we call “Processes.”
+<section id="what-we-do">
+  <h2>What we do</h2>
+  <pre>We do what we call “Processes.”
 
 Processes are techniques, often applied in a group setting, to “turn on” some kind of spiritual or mental phenomena, or to drill or train ability to a higher level.
 
@@ -180,37 +246,41 @@ If you have high-level spiritual experiences or experiences of your true or broa
 
 We support the individual finding out the truth for themselves. We support academic work, university studies, skepticism, inquiry, rebellious dispositions, and unique perspectives. We strongly encourage a person to maintain the version of knowledge that they experience firsthand, and not try to “fit in” to what others think.
 
-————————————————————————————————————————————————————————————————————————————————
-
-Our background.
+<p><b>Our background</b></p>
 
 We are a new religion. We have no direct predecessor, we are not a sect. We are striving to find and tell Full Truth in the present time, right now.
 
 Much like Islam can mention Christians or Christianity, or Sikhism is influenced from Islam and Hinduism, we also have inspirations.
 
 While we are wholly and utterly ourself, and are not a branch of anything, there is a lot of wisdom and truth in Scientology.
+</pre>
+</section>
 
-————————————————————————————————————————————————————————————————————————————————
+<section id="intro-processes">
+  <h2>Intro Processes</h2>
+  <pre></pre>
+  <!--Intro Processes -
+  
+  1.
+  
+  Freak out about X
+  
+  (Said after a random amount of time.)
+  Don’t freak out
+  
+  2.
+  
+  How does money seem to you now?
+  How does help seem to you now?
+  How does time seem to you now?
+  
+  
+  -->
+</section>
 
-Intro Processes -
-
-1.
-
-Freak out about X
-
-(Said after a random amount of time.)
-Don’t freak out
-
-2.
-
-How does money seem to you now?
-How does help seem to you now?
-How does time seem to you now?
-
-
-
-
-
+<section id="high-level">
+  <h2>High Level Considerations</h2>
+<pre>
 High level considerations
 
 Probably fast to change ones mind and make oneself like this
@@ -273,15 +343,131 @@ The sensation of the body can fluctuate in volatility.
 
 TODO Interest, location
 
+</pre>
 
+</section>
 
+<section id="expectations">
+  <h2>Expectations</h2>
+  <pre>
+  1. On knowing oneself
+  
+  
+  	Before anything, one must understand that one can know about the mind, spirit and life. One must know that one can be in control of the creation of things.
+  
+  	These can help, and allow one to have these things - to be able to interact with these things without issue. This is a consideration, and can be built up markedly.
+  
+  
+  	Waste 'knowing about the mind, spirit and life'.
+  
+  
+  	This means to make this, "mentally", destroyed, etc. "Waste" here means "ruin, destroy, lay waste of, wreck, make vanish altogether, etc."
+  
+  
+  	So, again
+  
+  	Waste 'knowing about the mind, spirit and life'. This allows you to have this. Instead of being oblivious of this or being predisposed to want to fight or rejct it.
+  
+  	Also
+  
+  	Waste 'not knowing about the mind, spirit and life'.
+  
+  	Before anything, allow yourself to know yourself - whatever the way. This will protect you. you don't need to protect yourself, from yourself.
+  
+  
+  2. On expectation, and "spiritual people" or "fun times"
+  
+  	When one finds ex-religious people, one often notices that there are certain expectations they "had".
+  
+  	These expectations are usually completely arbitrary, a product of their thinking and nothing else.
+  
+  	People say the key to happiness is low expectations
+  
+  	There has even been scientific testing of such
+  
+  
+  	https://www.sbs.com.au/news/article/the-key-to-happiness-really-low-expectations-according-to-scientists/gs2fg3gau
+  
+  	
+  
+  	One can look at certain ex-Scientologists, "assuming" some goal instead of going with the journey, or ex-Christians, assuming hell or assuming social pressure.
+  
+  	There can be social expectations, which really don't exist, parental expectations, which don't need to exist (It is usually ones choice to have a kid, and always ones choice to have a body)
+  
+  
+  	It is interesting that one finds so-called ex-Scientologists or anti-Scientologists saying things like "I was exterior with full perception.",
+  	and many other claims affirming consistent ontology, and affirming current belief in such ontology, and be "mad" due to expectations.
+  
+  	They have found what they are, how they are, but are "mad" because of some petty nonsense, like some grievance that some person did,
+  	or things, that, frankly, a being in a good state should be able to snap out of or not snap out of in a second.
+  
+  	Hubbard did have a process for Expectation in his early materials. He notes "This process is not for low-level cases" about R2-70.
+  
+  	One should be happy to just exist. There is nothing in any former spiritual practice, Transcendental Meditation, Scientology, Christianity, anything, that
+  	pre-supposes high expectations. It's what people add to the picture.
+  
+  
+  
+  
+  	These questions can ameliorate strange "expectations", which they should really be exterior from. Also, one can treat them as a symbol, move the expectations, waste them, etc.
+  
+  	Actually, wasting expectations could be very valuable.
+  
+  	These processes should be done to get rid of "nutcases". Even the tiniest application could do great things. Even doing this 1-3 times could do great things.
+  
+  	
+  
+  	What expectations do you not have for the human spirit?
+  	What expectations does the human spirit not have for you?
+  
+  	What expectations do you have for the human spirit?
+  	What expectations does the human spirit have for you?
+  
+  
+  	Waste expectations of the human spirit.
+  	Waste no expectations of the human spirit.
+  
+  
+  	What expectations do you not have for religion?
+  	What expectations does religion not have for you?
+  
+  	What expectations do you have for religion?
+  	What expectations does religion have for you?
+  
+  	Waste expectations of religion.
+  	Waste no expectations of religion.
+  
+  
+  	What expectations do you not have for God?
+  	What expectations does God not have for you?
+  
+  	What expectations do you have for God?
+  	What expectations does the God have for you?
+  
+  
+  	Waste expectations of God.
+  	Waste no expectations of God.
+  
+  
+  	What expectations do you not have for supernatural powers?
+  	What expectations do supernatural powers not have for you?
+  
+  	What expectations do you have for supernatural powers?
+  	What expectations do supernatural powers have for you?
+  
+  
+  	Waste expectations of supernatural powers.
+  	Waste no expectations of supernatural powers.
+  
+  
+  </pre>
+</section>
 
-————————————————————————————————————————————————————————————————————————————————
+<section id="symbols">
+  <h2>Symbols Theory</h2>
 
-Safety Organization - SOP
-
-
-The goal of this is to change a ton of considerations of the being to get them stably exterior, quickly and directly.
+  
+<pre>The goal of this is to change a ton of considerations of the being to get them stably exterior, quickly and directly.
 
 We want to exteriorize them, which has much to do with symbols (approval from bodies on the high end, needing bodies and going into worshipping bodies on the low end).
 
@@ -332,10 +518,10 @@ The body is a symbol and if someone symbolizes to know, at the high end they emo
 
 So, what interiorizes a person?
 
-The idea "  I am trying to annul the symbolness (mass, meaning or mobility) of these X symbols (in practice it would only be annulment of mobility),
-and I can't do that, so I'm compulsively now BECOMING a symbol, losing my ability to be an orientation point in relation to these symbols, and therefore, getting
-located, given meaning, and given mass, because I delusorily think that I am a symbol in "all cases".  "
+The idea "  I am trying to annul the symbolness (mass, meaning or mobility) of these X symbols (in practice it would only be annulment of mobility), and I can't do that, so I'm compulsively now BECOMING a symbol, losing my ability to be an orientation point in relation to these symbols, and therefore, getting located, given meaning, and given mass, because I delusorily think that I am a symbol in "all cases".  "
+
 "I am trying to make this body not go away, I can't do it, since it's a body and moves (probably a baby, or whatever) so I will sacrifice for the body (sex), worship the body (eat), need the body (symbols), and get approval from the body (high order symbols)"
+
 I am sure there is a multiplicity of different emotional and knowingness levels when someone picks up a body or at any given moment for almost anyone.
 
 "I am trying to make a body not move - not be mobile" is kind of a failing proposition. Even killing it doesn't work well.
@@ -372,15 +558,21 @@ Perhaps the body suppresses unconsciousness on a mass scale, and the body helps 
 
 Unconsciousness is a method of knowing, not quite unknowable, but just above such. It is being nothing, an actual beingness, of nothingness.
 
-
-
+  
 All of this doesn't explain why people with success in remote viewing, etc., or people who totally COULD do remote viewing, are so shy about such. This is a different question.
 
 Does this imply some kind of EXTREME conspiracy theory style narrative, like what the gnostics believe? Not necessarily.
 
+</pre>
+</section>
 
 
+<section id="traps">
+  <div class="eyebrow">11 — Theory</div>
+  <h2>Trap Theory</h2>
 
+
+<pre>
 The biggest traps
 
 Why does someone get trapped onto something on which they can get "hurt". The person becomes obsessed with an arbitrary "orderliness" of the thing.
@@ -395,8 +587,7 @@ ORDERLINESS of matter, energy, space, time.
 
 Time is probably the biggest lie. Especially when one has a "solution". Why don't you exteriorize out of everything bad in existence right now?
 
-Because you have workable "solutions" for everything to liberate yourself.
-
+Because you have workable "solutions" for everything to liberate yourself. The more these "solutions" seem like the "only" solutions, the more one is trapped.
 The order goes as follows -
 
 1) There is energy masses into which one feels one is trapped. Of course one is not trapped
@@ -460,8 +651,12 @@ Orderliness might be requisite for any game to be played. And it can be snapped 
 
 
 
-Some traps that might exist - human body, possible "higher level" bodies (that maybe or maybe not can be attacked), amnesia of death, amensia of birth,
-drugs, pain, sex, hypnosis, brains, eating, symbols, unconsciousness, unknowableness, waitingness, mystery, thinking, effort, negative emotion, etc.
+Some traps that might exist -
+
+
+human body, possible "higher level" bodies (that maybe or maybe not can be attacked), amnesia of death, amensia of birth, relocation, relocation at death,
+drugs, pain, sex, hypnosis, brains, eating, symbols, unconsciousness, unknowableness, waitingness, mystery, thinking, effort, negative emotion
+
 
 And there are lots of other mundane ones
 
@@ -482,8 +677,7 @@ Why worship death? No one need be dead.
 
 
 
-
-For all of these, if they get "attacked", you might feel very bad. For no reason at all.
+For all of these, if they get "attacked" (e.g., a body), you might feel very bad. For no reason at all.
 
 
 And you can use this extreme forceful technique on all of these.
@@ -498,21 +692,97 @@ For drugs
 And theoretically then the being shouldn't be really affected if their "body" is drugged, and even if the body feels really weird and the eyes give false information, the being shouldn't care that much.
 
 
-SOP (numbers will be fixed later)
+In practice, one is never as exteriorized as one should be.
+
+Think of a child having their toy taken away and being upset. Or someone losing a loved one.
+Or someone losing their own body, and "something happening to themselves".
+
+All of these could affect someone to a near zero degree.
+
+Someone could also have a napkin taken away, and have a psychotic break.
+
+The amount of complexity possible for simple things, is very high.
+
+
+-------------
+
+
+The physical universe is surely inside of something else, likely another universe. One is likely interiorized into multiple universes.
+
+
+The universe one is in is not special. There are others. The others can act as solutions. The one one is in right now can act as solutions. The others can act as problems. The one one is in right now can act as problems.
+
+You are not stuck in this universe. You don't need to care about its problems. You don't need to care about its solutions. If someone is harmed elsewhere, you don't need to care. If someone is harmed in this universe, you don't need to care.
+
+The planet one is in is not special. There are others. The others can act as solutions. The one one is in right now can act as solutions. The others can act as problems. The one one is in right now can act as problems.
+
+You are not stuck in this planet. You don't need to care about its problems. You don't need to care about its solutions. If someone is harmed elsewhere, you don't need to care. If someone is harmed on this planet, you don't need to care.
+
+The body one is in is not special. There are others. The others can act as solutions. The one one is in right now can act as solutions. The others can act as problems. The one one is in right now can act as problems.
+
+You are not stuck in this body. You don't need to care about its problems. You don't need to care about its solutions.
 
 
 
--1. Spotting spots in space. This can help with exteriorization.
+You can try practicing going out of things you normally wouldn't want to.
 
-   1. Spot a spot in space.
+One can always exteriorize out of anything, any time, ever.
+
+Just as one can leave a building, or ones home, one can go out of anything, for example "Exteriorize from heartbreak".
+
+But one might not want to exteriorize from heartbreak, one might want to be heartbroken, or find it "fun" to be depressed and moody.
+
+One should become "loosened up" enough, that one is comfortable doing lots of things, including going out of things.
+
+People are BAD at going out of things. If people went out of the trappings of war, violence, rage, etc., there would be no war, violence, rage, etc.
+
+They are completely unnecessary constructions someone can go into or out of 5,000 times immediately at will, only many would not want to do so.
+
+Someone can go into and out of a desire for alcohol 10,000 times in one second, if they are good enough, in theory.
+
+If you go out of things, you can then enter much better things.
+
+
+One could think
+
+"If I leave this body, I will be able to associate myself with far more immersive complications / fun / life events."
+"If I leave this planet, I will be able to associate myself with far more immersive complications / fun / life events."
+"If I leave this universe, I will be able to associate myself with far more immersive complications / fun / life events."
+
+
+
+Also, exteriorizing from exteriorizing and exteriorizing from non-exteriorizing is probably quite valuable.
+
+Really, any bad idea you have, you can step out of such, and many variations or associated things.
+
+There are going to be MANY aspects of its "construction" that are lies and are not static.
+
+</pre>
+
+</section>
+
+<section id="sop">
+  <h2>SOP</h2>
+  <pre>SOP (numbers will be fixed later)
+
+
 
 0. Minding business, etc.
 
-   2. Mind your own business.
-   3. Play an empty game.
+
+   1. Mind your own business.
+   2. Play an empty game.
+   3. Do nothing.
    4. Use an empty life limitation.
-   5. Spot a non-communication.
-   6. Spot a non-problem.
+   5. Spot a spot in space.
+   6. Spot a non-communication.
+   7. Spot a non-problem.
+   8. Step out of the universe not being entirely yours.
+   9. Step out of not being in touch with reality.
+  10. Step out of being out of communication with reality.
+  11. Touch the table.
+  12. How does it feel?
+
 
 1. Make the body more potentially mobile.
 The being is literally trying to decrease the mobility of the body (symbol).
@@ -532,639 +802,564 @@ Simply getting them to not understand the body over and over would exteriorize t
 Exteriorization by body confusion?
 
 
-   7. Don't understand the body's meaning.
-   8. Don't understand the body's meaning as it relates to musts.
-   9. Don't understand the body's meaning as it relates to needs.
-  10. Don't understand the body's meaning as it relates to wants.
-  11. Don't understand why you are interested in the body.
-  12. Become confused why you are interested in the body.
-  13. Don't understand why you should care about the body's health.
-  14. Don't understand the body's regular mobility.
-  15. Don't understand why you are interested in controlling the body.
-  16. Become confused why you are interested in controlling the body.
-  17. Don't understand why you are interested in owning the body.
-  18. Become confused why you are interested in owning the body.
-  19. Think at the body.
-  20. Have the body think at you.
-  21. Don't understand why you are interested in approval from bodies.
-  22. Become confused why you are interested in approval from bodies.
-  23. Have the body approve of you.
-  24. Approve of your body.
-  25. Have the body mystery at you.
-  26. Have the body wait at you.
-  27. Wait at the body.
-  28. Have the body thoroughly Wait at you.
-  29. Don't unconscious to know.
-  30. Have the body unconscious at you.
-  31. Unconscious at the body.
-  32. Have your foot unconscious at your other foot.
-  33. Have your knee unconscious at your other knee.
-  34. Have your hand unconscious at your other hand.
-  35. Have your ear unconscious at your other ear.
-  36. Say 'My head isn't mobile.'
-  37. Say 'My body isn't mobile.'
-  38. Annul the mobility of your body.
-  39. Grab your knees and annul the mobility of your body.
-  40. Annul the mobility of your head.
-  41. Grab your head and annul the mobility of your head.
-  42. Annul the mobility of your body without getting approval from it.
-  43. Grab your knees and annul the mobility of your body without getting approval from it.
-  44. Annul the mobility of your body without needing it.
-  45. Grab your knees and annul the mobility of your body without needing it.
-  46. Annul the mobility of your body without worshipping it.
-  47. Grab your knees and annul the mobility of your body without worshipping it.
-  48. Annul the mobility of your body without sacrificing to it.
-  49. Grab your knees and annul the mobility of your body without sacrificing to it.
-  50. Annul the mobility of your body without hiding.
-  51. Grab your knees and annul the mobility of your body without hiding.
-  52. What about your body do you want to not be mobile?
-  53. Make it mobile.
-  54. Make it as mobile as possible.
-  55. Spot 3 spots in your body that are mobile.
-  56. Spot 3 spots in the universe that are mobile.
-  57. Waste the immobility of the body.
-  58. Get the idea 'all my deepest urges and ambitions for this body', are fully mobile urges and ambitions.
-  59. Grab your head and say out loud 'My head is mobile'
-  60. How mobile could your body be while still surviving?
-  61. Don't hold your body still.
-  62. Spot a spot in space and don't hold your body still.
-  63. Spot two spot in space and don't hold your body still.
-  64. Spot three spot in space and don't hold your body still.
+
+
+  13. Don't understand the body's meaning.
+  14. Don't understand the body's meaning as it relates to musts.
+  15. Don't understand the body's meaning as it relates to needs.
+  16. Don't understand the body's meaning as it relates to wants.
+  17. Don't understand why you are interested in the body.
+  18. Become confused why you are interested in the body.
+  19. Don't understand why you should care about the body's health.
+  20. Don't understand the body's regular mobility.
+  21. Don't understand why you are interested in controlling the body.
+  22. Become confused why you are interested in controlling the body.
+  23. Don't understand why you are interested in owning the body.
+  24. Become confused why you are interested in owning the body.
+  25. Think at the body.
+  26. Have the body think at you.
+  27. Don't understand why you are interested in approval from bodies.
+  28. Become confused why you are interested in approval from bodies.
+  29. Have the body approve of you.
+  30. Approve of your body.
+  31. Have the body mystery at you.
+  32. Have the body wait at you.
+  33. Wait at the body.
+  34. Have the body thoroughly Wait at you.
+  35. Don't unconscious to know.
+  36. Have the body unconscious at you.
+  37. Unconscious at the body.
+  38. Have your foot unconscious at your other foot.
+  39. Have your knee unconscious at your other knee.
+  40. Have your hand unconscious at your other hand.
+  41. Have your ear unconscious at your other ear.
+  42. Say 'My head isn't mobile.'
+  43. Say 'My body isn't mobile.'
+  44. Annul the mobility of your body.
+  45. Grab your knees and annul the mobility of your body.
+  46. Annul the mobility of your head.
+  47. Grab your head and annul the mobility of your head.
+  48. Annul the mobility of your body without getting approval from it.
+  49. Grab your knees and annul the mobility of your body without getting approval from it.
+  50. Annul the mobility of your body without needing it.
+  51. Grab your knees and annul the mobility of your body without needing it.
+  52. Annul the mobility of your body without worshipping it.
+  53. Grab your knees and annul the mobility of your body without worshipping it.
+  54. Annul the mobility of your body without sacrificing to it.
+  55. Grab your knees and annul the mobility of your body without sacrificing to it.
+  56. Annul the mobility of your body without hiding.
+  57. Grab your knees and annul the mobility of your body without hiding.
+  58. What about your body do you want to not be mobile?
+  59. Make it mobile.
+  60. Make it as mobile as possible.
+  61. Spot 3 spots in your body that are mobile.
+  62. Spot 3 spots in the universe that are mobile.
+  63. Waste the immobility of the body.
+  64. Get the idea 'all my deepest urges and ambitions for this body', are fully mobile urges and ambitions.
+  65. Grab your head and say out loud 'My head is mobile'
+  66. How mobile could your body be while still surviving?
+  67. Don't hold your body still.
+  68. Spot a spot in space and don't hold your body still.
+  69. Spot two spot in space and don't hold your body still.
+  70. Spot three spot in space and don't hold your body still.
+
 
 2. Making being in control of emotioning to know to waiting to know and controlling bodies to being objects.
 Makes the being aware who they are even doing it for, giving them control of what they are doing with their emotions and knowingness
 Possibly simplifies their life, makes apparent old games or purposes, makes them more sane, less compulsive
 Might exteriorize them by itself
 
-  65. Who are you emoting for?
-  66. Who are you controlling bodies for?
-  67. Who are you efforting for?
-  68. Who are you protecting bodies for?
-  69. Who are you owning bodies for?
-  70. Who are you thinking for?
-  71. Who are you getting approval from bodies for?
-  72. Who are you needing bodies for?
-  73. Who are you symbolizing for?
-  74. Who are you trying to show things to?
-  75. Who are you worshipping bodies for?
-  76. Who are you eating for?
-  77. Who are you sacrificing for?
-  78. Who are you sexing for?
-  79. Who are you hiding for?
-  80. Who are you being in mystery for?
-  81. Who are you being objects for?
-  82. Who are you waiting for?
+
+  71. Who are you emoting for?
+  72. Who are you controlling bodies for?
+  73. Who are you efforting for?
+  74. Who are you protecting bodies for?
+  75. Who are you owning bodies for?
+  76. Who are you thinking for?
+  77. Who are you getting approval from bodies for?
+  78. Who are you needing bodies for?
+  79. Who are you symbolizing for?
+  80. Who are you trying to show things to?
+  81. Who are you worshipping bodies for?
+  82. Who are you eating for?
+  83. Who are you sacrificing for?
+  84. Who are you sexing for?
+  85. Who are you hiding for?
+  86. Who are you being in mystery for?
+  87. Who are you being objects for?
+  88. Who are you waiting for?
+
 
 3. Handles approval from bodies, needing bodies, symbols and worse things
 Handles obsessive interiorization, could exteriorize someone by itself
 
-  83. Don't show to anyone that your body has use.
-  84. Don't show to anyone that your body is healthy.
-  85. Don't show to anyone that your body is surviving.
-  86. Don't show to anyone that your body is stable.
-  87. Don't show to anyone that your body has overcome damage.
-  88. Don't show to anyone that your body has overcome confusion.
-  89. Don't show to anyone that your body has overcome pain.
+
+  89. Don't show to anyone that your body has use.
+  90. Don't show to anyone that your body is healthy.
+  91. Don't show to anyone that your body is surviving.
+  92. Don't show to anyone that your body is stable.
+  93. Don't show to anyone that your body has overcome damage.
+  94. Don't show to anyone that your body has overcome confusion.
+  95. Don't show to anyone that your body has overcome pain.
+
 
 4. By mock ups (well, mock ups of getting rid of things), gets the person able to get rid of what he feels he "needs".
 Could be very useful. Could exteriorize someone by itself.
 
-  90. Get rid of a useful body.
-  91. Get rid of a non-useful body.
-  92. Get rid of a surviving body.
-  93. Get rid of a non-surviving body.
-  94. Get rid of a stable body.
-  95. Get rid of a non-stable body.
-  96. Get rid of a body that has overcome damage.
-  97. Get rid of a body that has not overcome damage.
-  98. Get rid of a body that has overcome confusion.
-  99. Get rid of a body that has not overcome confusion.
- 100. Get rid of a body that has overcome pain.
- 101. Get rid of a body that has not overcome pain.
+
+  96. Get rid of a useful body.
+  97. Get rid of a non-useful body.
+  98. Get rid of a surviving body.
+  99. Get rid of a non-surviving body.
+ 100. Get rid of a stable body.
+ 101. Get rid of a non-stable body.
+ 102. Get rid of a body that has overcome damage.
+ 103. Get rid of a body that has not overcome damage.
+ 104. Get rid of a body that has overcome confusion.
+ 105. Get rid of a body that has not overcome confusion.
+ 106. Get rid of a body that has overcome pain.
+ 107. Get rid of a body that has not overcome pain.
+
 
 5. Materialism is the huge lie. This allows someone to get rid of things.
 
- 102. Get rid of the mass of materialism.
- 103. Get rid of the meaning of materialism.
- 104. Get rid of the mobility of materialism.
- 105. Get rid of materialism.
- 106. Get rid of materialism in many ways.
- 107. Waste materialism.
- 108. Keep the table from going away.
- 109. Try not to be 10 feet back of your head.
+
+ 108. Get rid of the mass of materialism.
+ 109. Get rid of the meaning of materialism.
+ 110. Get rid of the mobility of materialism.
+ 111. Get rid of materialism.
+ 112. Get rid of materialism in many ways.
+ 113. Waste materialism.
+ 114. Keep the table from going away.
+ 115. Try not to be 10 feet back of your head.
+
 
 6. Gets rid of symbols. This is the problem in exteriorization. It is intimate.
 Also get the person to determine orientation points. So we don't just get rid of symbols.
 
- 110. Get rid of the mass of your name.
- 111. Get rid of the meaning of your name.
- 112. Get rid of the mobility of your name.
- 113. Notice an object and tell it out loud where it is.
- 114. Keep the table from going away.
- 115. Try not to be 10 feet back of your head.
- 116. Get rid of the mass of your body.
- 117. Get rid of the meaning of your body.
- 118. Get rid of the mobility of your body.
+
+ 116. Get rid of the mass of your name.
+ 117. Get rid of the meaning of your name.
+ 118. Get rid of the mobility of your name.
  119. Notice an object and tell it out loud where it is.
  120. Keep the table from going away.
  121. Try not to be 10 feet back of your head.
- 122. Get rid of the mass of your family.
- 123. Get rid of the meaning of your family.
- 124. Get rid of the mobility of your family.
+ 122. Get rid of the mass of your body.
+ 123. Get rid of the meaning of your body.
+ 124. Get rid of the mobility of your body.
  125. Notice an object and tell it out loud where it is.
  126. Keep the table from going away.
  127. Try not to be 10 feet back of your head.
- 128. Get rid of the mass of a city you used to live in.
- 129. Get rid of the meaning of a city you used to live in.
- 130. Get rid of the mobility of a city you used to live in.
+ 128. Get rid of the mass of your family.
+ 129. Get rid of the meaning of your family.
+ 130. Get rid of the mobility of your family.
  131. Notice an object and tell it out loud where it is.
  132. Keep the table from going away.
  133. Try not to be 10 feet back of your head.
- 134. Get rid of the mass of your country.
- 135. Get rid of the meaning of your country.
- 136. Get rid of the mobility of your country.
+ 134. Get rid of the mass of a city you used to live in.
+ 135. Get rid of the meaning of a city you used to live in.
+ 136. Get rid of the mobility of a city you used to live in.
  137. Notice an object and tell it out loud where it is.
  138. Keep the table from going away.
  139. Try not to be 10 feet back of your head.
- 140. Get rid of the mass of pain.
- 141. Get rid of the meaning of pain.
- 142. Get rid of the mobility of pain.
+ 140. Get rid of the mass of your country.
+ 141. Get rid of the meaning of your country.
+ 142. Get rid of the mobility of your country.
  143. Notice an object and tell it out loud where it is.
  144. Keep the table from going away.
  145. Try not to be 10 feet back of your head.
- 146. Get rid of the mass of drugs.
- 147. Get rid of the meaning of drugs.
- 148. Get rid of the mobility of drugs.
+ 146. Get rid of the mass of pain.
+ 147. Get rid of the meaning of pain.
+ 148. Get rid of the mobility of pain.
  149. Notice an object and tell it out loud where it is.
  150. Keep the table from going away.
  151. Try not to be 10 feet back of your head.
- 152. Get rid of the mass of hypnosis.
- 153. Get rid of the meaning of hypnosis.
- 154. Get rid of the mobility of hypnosis.
+ 152. Get rid of the mass of drugs.
+ 153. Get rid of the meaning of drugs.
+ 154. Get rid of the mobility of drugs.
  155. Notice an object and tell it out loud where it is.
  156. Keep the table from going away.
  157. Try not to be 10 feet back of your head.
- 158. How are you separate from your name?
- 159. How is your name separate from you?
- 160. Tell me some names you can get rid of.
- 161. Tell me some bodies you can get rid of.
+ 158. Get rid of the mass of hypnosis.
+ 159. Get rid of the meaning of hypnosis.
+ 160. Get rid of the mobility of hypnosis.
+ 161. Notice an object and tell it out loud where it is.
+ 162. Keep the table from going away.
+ 163. Try not to be 10 feet back of your head.
+ 164. How are you separate from your name?
+ 165. How is your name separate from you?
+ 166. Tell me some names you can get rid of.
+ 167. Tell me some bodies you can get rid of.
+
 
 7. Get rid of different methods of knowingness. This probably helps with exteriorization.
 
- 162. Tell me some mystery you could get rid of.
- 163. Tell me some eating you could get rid of.
- 164. Tell me some symbols you could get rid of.
- 165. Tell me some thinking you could get rid of.
- 166. Tell me some emotion you could get rid of.
+
+ 168. Tell me some mystery you could get rid of.
+ 169. Tell me some eating you could get rid of.
+ 170. Tell me some symbols you could get rid of.
+ 171. Tell me some thinking you could get rid of.
+ 172. Tell me some emotion you could get rid of.
+
 
 8. The idea is that unknowableness or similar very low emotions, could act as stable data in a confusion, the stable datum being that many things about
 the object or thing are NOT KNOWN. This could give one a sense of calm, and could help to exteriorize someone.
 
- 167. Spot some unknowableness.
- 168. Spot some more unknowableness.
- 169. Spot some more unknowableness.
- 170. Instantly Spot some unknowableness.
- 171. What confusion could unknowableness solve?
- 172. What other confusion could unknowableness solve?
+
+ 173. Spot some unknowableness.
+ 174. Spot some more unknowableness.
+ 175. Spot some more unknowableness.
+ 176. Instantly Spot some unknowableness.
+ 177. What confusion could unknowableness solve?
+ 178. What other confusion could unknowableness solve?
+
 
 9. Here we are putting someone in control of low order methods of knowingness. We are making them not do a method of knowingness. This can help with exteriorization.
 
- 173. Spot a spot in space and don't effort.
- 174. Spot a spot in space and don't mystery.
- 175. Spot a spot in space and don't symbolize.
- 176. Spot a spot in space where there is no effort.
- 177. Get rid of Effort in your mind.
- 178. Get rid of Effort in your body.
- 179. Spot 3 spots in space where there is no effort.
- 180. Spot 3 spots in your body there is no effort.
- 181. How much Effort could there be in locating yourself?
- 182. How much Effort could there not be in locating yourself?
- 183. Spot a spot in space where there is no thinking.
- 184. Get rid of Thinking in your mind.
- 185. Get rid of Thinking in your body.
- 186. Spot 3 spots in space where there is no thinking.
- 187. Spot 3 spots in your body there is no thinking.
- 188. How much Effort could there be in locating yourself?
- 189. How much Effort could there not be in locating yourself?
- 190. How much Thinking could there be in locating yourself?
- 191. How much Thinking could there not be in locating yourself?
- 192. What would happen if you were ten feet back of your head without effort?
- 193. What would happen if you were ten feet back of your head without symbols?
- 194. What would happen if you were ten feet back of your head without thinking?
- 195. What would happen if you were ten feet back of your head without eating?
+
+ 179. Spot a spot in space and don't effort.
+ 180. Spot a spot in space and don't mystery.
+ 181. Spot a spot in space and don't symbolize.
+ 182. Spot a spot in space where there is no effort.
+ 183. Get rid of Effort in your mind.
+ 184. Get rid of Effort in your body.
+ 185. Spot 3 spots in space where there is no effort.
+ 186. Spot 3 spots in your body there is no effort.
+ 187. How much Effort could there be in locating yourself?
+ 188. How much Effort could there not be in locating yourself?
+ 189. Spot a spot in space where there is no thinking.
+ 190. Get rid of Thinking in your mind.
+ 191. Get rid of Thinking in your body.
+ 192. Spot 3 spots in space where there is no thinking.
+ 193. Spot 3 spots in your body there is no thinking.
+ 194. How much Effort could there be in locating yourself?
+ 195. How much Effort could there not be in locating yourself?
+ 196. How much Thinking could there be in locating yourself?
+ 197. How much Thinking could there not be in locating yourself?
+ 198. What would happen if you were ten feet back of your head without effort?
+ 199. What would happen if you were ten feet back of your head without symbols?
+ 200. What would happen if you were ten feet back of your head without thinking?
+ 201. What would happen if you were ten feet back of your head without eating?
+
 
 10. Here we are changing considerations of control. Lack of Control can impede (or suppress) exteriorization.
 
- 196. Who could control your body?
- 197. Who could your body control?
- 198. Who could control your head?
- 199. Who could your head control?
+
+ 202. Who could control your body?
+ 203. Who could your body control?
+ 204. Who could control your head?
+ 205. Who could your head control?
+
 
 11. One is trapped by those things to which he will not "grant havingness" (freely allowing to affect or potentially affect things or oneself, essentially).
 The basic havingness that the being is denying the trap is denying the trap a being.
 Since the body is kind of a trap (or at least one kind of thinks it is or is acting kind of life one), allowing ones body to get taken over etc. can help with exteriorization.
 
- 200. Name me ten beings that you could allow your body to take over.
- 201. Name me ten beings that you could allow to take over your body.
- 202. Name me ten beings that you could allow your body to control.
- 203. Name me ten beings that you could allow to control your body.
- 204. Be ten feet back of your head.
+
+ 206. Name me ten beings that you could allow your body to take over.
+ 207. Name me ten beings that you could allow to take over your body.
+ 208. Name me ten beings that you could allow your body to control.
+ 209. Name me ten beings that you could allow to control your body.
+ 210. Be ten feet back of your head.
+
 
 12. This leads to substitutes, which is easy, low order, and can handle issues with stable data or with confusions. This can help with exteriorization.
 
- 205. Look around here and find a subtitute for your body.
- 206. Look around here and find a substitute for your head.
- 207. Look around here and find a substitute for the confusion of your entire life.
- 208. Look around here and find a substitute for the confusion of the last few days.
- 209. Look around here and find a substitute for your current location.
- 210. Look around here and find a substitute for your living a life.
- 211. Look around here and find a substitute for dealing with a body.
- 212. Look around here and find a substitute for all the pain your body has ever felt.
- 213. Look around here and find a substitute for all the pain your body could feel.
- 214. Look around here and find a substitute for all the hunger your body could feel.
+
+ 211. Look around here and find a subtitute for your body.
+ 212. Look around here and find a substitute for your head.
+ 213. Look around here and find a substitute for the confusion of your entire life.
+ 214. Look around here and find a substitute for the confusion of the last few days.
+ 215. Look around here and find a substitute for your current location.
+ 216. Look around here and find a substitute for your living a life.
+ 217. Look around here and find a substitute for dealing with a body.
+ 218. Look around here and find a substitute for all the pain your body has ever felt.
+ 219. Look around here and find a substitute for all the pain your body could feel.
+ 220. Look around here and find a substitute for all the hunger your body could feel.
+
 
 13. We improve control of stable data or with confusions. This can help with exteriorization.
 
- 215. How confusing could your body be?
- 216. How stable could your body be?
- 217. How confusing could the physical universe be?
- 218. How stable could the physical universe be?
+
+ 221. How confusing could your body be?
+ 222. How stable could your body be?
+ 223. How confusing could the physical universe be?
+ 224. How stable could the physical universe be?
+
 
 14. We address effort, which can be a huge button for people (compulsive sensation or touching to know or believe the existence of something, everything being "work", everything being "difficult", constant conflict)
 This  can help with exteriorization
 
- 219. How much effort could there be in being in a body?
- 220. How much effort could there be in not being in a body?
- 221. How little effort could there be in being in a body?
- 222. How little effort could there be in not being in a body?
+
+ 225. How much effort could there be in being in a body?
+ 226. How much effort could there be in not being in a body?
+ 227. How little effort could there be in being in a body?
+ 228. How little effort could there be in not being in a body?
+
 
 15. Using body to give confidence in location. This can help with exteriorization
 
- 223. How could your head give you confidence in awareness of location?
- 224. How could your head give you confidence in unawareness of location?
- 225. How could your head make it easy to have awareness of location?
- 226. How could your head make it easy to have unawareness of location?
+
+ 229. How could your head give you confidence in awareness of location?
+ 230. How could your head give you confidence in unawareness of location?
+ 231. How could your head make it easy to have awareness of location?
+ 232. How could your head make it easy to have unawareness of location?
+
 
 16. Using body to give solution of location. This can help with exteriorization
 
- 227. How could your head be a solution for awareness of location?
- 228. How could your head be a solution for unawareness of location?
+
+ 233. How could your head be a solution for awareness of location?
+ 234. How could your head be a solution for unawareness of location?
+
 
 17. Separation. Exteriorization = Separation
 
- 229. What separation would be miserable?
- 230. What separation wouldn't be miserable?
+
+ 235. What separation would be miserable?
+ 236. What separation wouldn't be miserable?
+
 
 18. Connectedness. This can help with exteriorization
 
- 231. Look around here and tell me something that could connect with you.
- 232. Look around here and tell me something that could connect with your body.
+
+ 237. Look around here and tell me something that could connect with you.
+ 238. Look around here and tell me something that could connect with your body.
+
 
 19. Interest relates to interiorization. This can help with exteriorization
 
- 233. Who would be interested in a separate being?
+
+ 239. Who would be interested in a separate being?
+
 
 20. More separation. This can help with exteriorization
 
- 234. Name three different people.
- 235. How separate could you be to them?
- 236. How separate could they be to you?
+
+ 240. Name three different people.
+ 241. How separate could you be to them?
+ 242. How separate could they be to you?
+
 
 21. Separation from materialism. This can obviously help with exteriorization
 
- 237. What would happen if you separated from materialism?
- 238. What would happen if another separated from materialism?
- 239. What would happen if others separated from materialism?
- 240. What would happen if materialism separated from you?
+
+ 243. What would happen if you separated from materialism?
+ 244. What would happen if another separated from materialism?
+ 245. What would happen if others separated from materialism?
+ 246. What would happen if materialism separated from you?
+
 
 22. Dealing with loss. This can help with exteriorization
 
- 241. How is the idea that someone would ever lose something if they conceived a static a very low order idea?
- 242. What would another not lose if they conceived a static?
- 243. When would they not lose it?
- 244. What would others not lose if they conceived a static?
- 245. When would they not lose it?
- 246. What would you not lose if you conceived a static?
- 247. When would you not lose it?
- 248. What other person's thing would you lose if you conceived a static?
- 249. When would you lose it?
- 250. What other person's thing would you not lose if you conceived a static?
- 251. When would you not lose it?
- 252. Why do others not want you to conceive a static?
- 253. Why do you not want others to conceive a static?
- 254. Why do others not want others to conceive a static?
- 255. Why do you not want yourself to conceive a static?
+
+ 247. How is the idea that someone would ever lose something if they conceived a static a very low order idea?
+ 248. What would another not lose if they conceived a static?
+ 249. When would they not lose it?
+ 250. What would others not lose if they conceived a static?
+ 251. When would they not lose it?
+ 252. What would you not lose if you conceived a static?
+ 253. When would you not lose it?
+ 254. What other person's thing would you lose if you conceived a static?
+ 255. When would you lose it?
+ 256. What other person's thing would you not lose if you conceived a static?
+ 257. When would you not lose it?
+ 258. Why do others not want you to conceive a static?
+ 259. Why do you not want others to conceive a static?
+ 260. Why do others not want others to conceive a static?
+ 261. Why do you not want yourself to conceive a static?
+
 
 23. More separation and spotting spots and interest. This can help with exteriorization
 
- 256. Spot 3 parts of the body that are separate.
- 257. Spot 3 spots in the universe that are separate.
- 258. Spot 2 parts of the body that are separate.
- 259. Spot 2 spots in the universe that are separate.
- 260. Spot 2 spots in the universe that are both separate and interesting.
- 261. Spot 3 parts of the body that you are separate from.
- 262. Spot 3 spots in the universe that you are separate from.
- 263. Spot 2 parts of the body that you are separate from.
- 264. Spot 2 spots in the universe that you are separate from.
- 265. Spot 3 spots in the universe that you are separate from.
- 266. Spot 3 spots in the universe that are interesting.
- 267. How interesting could separating from the body be?
- 268. How uninteresting could a separated-from-body be?
- 269. How is your body separate from the rest of the physical universe?
- 270. How is the rest of the physical universe separate from your body?
- 271. How are you separate from your head?
- 272. How is your head separate from you?
- 273. Notice two separate objects.
- 274. How separate could they possibly be?
- 275. How miserable could being separate from your head seem?
- 276. How pleasant could being separate from your head seem?
+
+ 262. Spot 3 parts of the body that are separate.
+ 263. Spot 3 spots in the universe that are separate.
+ 264. Spot 2 parts of the body that are separate.
+ 265. Spot 2 spots in the universe that are separate.
+ 266. Spot 2 spots in the universe that are both separate and interesting.
+ 267. Spot 3 parts of the body that you are separate from.
+ 268. Spot 3 spots in the universe that you are separate from.
+ 269. Spot 2 parts of the body that you are separate from.
+ 270. Spot 2 spots in the universe that you are separate from.
+ 271. Spot 3 spots in the universe that you are separate from.
+ 272. Spot 3 spots in the universe that are interesting.
+ 273. How interesting could separating from the body be?
+ 274. How uninteresting could a separated-from-body be?
+ 275. How is your body separate from the rest of the physical universe?
+ 276. How is the rest of the physical universe separate from your body?
+ 277. How are you separate from your head?
+ 278. How is your head separate from you?
+ 279. Notice two separate objects.
+ 280. How separate could they possibly be?
+ 281. How miserable could being separate from your head seem?
+ 282. How pleasant could being separate from your head seem?
+
 
 24. Dealing with control and existence. This can help with exteriorization
 
- 277. How are you inevitably not going to lose all control of the body?
- 278. How are you inevitably going to lose all control of the body?
- 279. How will control always exist?
- 280. How are you inevitably not going to lose all perception from the body?
- 281. How are you inevitably going to lose all perception from the body?
- 282. How will perception always exist?
- 283. How can your perceptionness not be lost?
- 284. How are you inevitably not going to lose all utility from the body?
- 285. How are you inevitably going to lose all utility from the body?
- 286. How will utility always exist?
+
+ 283. How are you inevitably not going to lose all control of the body?
+ 284. How are you inevitably going to lose all control of the body?
+ 285. How will control always exist?
+ 286. How are you inevitably not going to lose all perception from the body?
+ 287. How are you inevitably going to lose all perception from the body?
+ 288. How will perception always exist?
+ 289. How can your perceptionness not be lost?
+ 290. How are you inevitably not going to lose all utility from the body?
+ 291. How are you inevitably going to lose all utility from the body?
+ 292. How will utility always exist?
+
 
 25. Dealing with safety. This can help with exteriorization
 
- 287. Where would be unsafe now?
- 288. Where would be safe now?
+
+ 293. Where would be unsafe now?
+ 294. Where would be safe now?
+
 
 26. Dealing with location. This can help with exteriorization
 
- 289. Where aren't you now?
- 290. Where needn't you be now?
- 291. Where is an easy location to be now?
- 292. Where is a pleasant location to be now?
- 293. Where are you not from?
- 294. Tell me about it.
- 295. Are you certain you're not from there?
+
+ 295. Where aren't you now?
+ 296. Where needn't you be now?
+ 297. Where is an easy location to be now?
+ 298. Where is a pleasant location to be now?
+ 299. Where are you not from?
+ 300. Tell me about it.
+ 301. Are you certain you're not from there?
+
 
 27. Dealing with interest. This can help with exteriorization
 
- 296. How do you not have interest on the exterior world?
- 297. How do you not have attention on the exterior world?
- 298. What do you love about the nature of the exterior world?
- 299. What about the exterior world would you love to look at?
- 300. What about the exterior world is more interesting than the body?
+
+ 302. How do you not have interest on the exterior world?
+ 303. How do you not have attention on the exterior world?
+ 304. What do you love about the nature of the exterior world?
+ 305. What about the exterior world would you love to look at?
+ 306. What about the exterior world is more interesting than the body?
+
 
 28. Dealing with body form. This can help with exteriorization
 
- 301. How much could you allow the body to grow or shrink in the next 5 minutes?
- 302. How incompetent can you allow your body control to be?
- 303. How sloppy can you allow your body control to be?
+
+ 307. How much could you allow the body to grow or shrink in the next 5 minutes?
+ 308. How incompetent can you allow your body control to be?
+ 309. How sloppy can you allow your body control to be?
+
 
 29. More dealing with control. This can help with exteriorization
 
- 304. How can you protest and utterly stop controlling the body at all?
+
+ 310. How can you protest and utterly stop controlling the body at all?
+
 
 30. Dealing with sensation. This can help with exteriorization
 
- 305. How does the body give you pain?
- 306. How does the body not give you pain?
- 307. Where could you be where the body is giving you pain?
- 308. Where could you be where the body is not giving you pain?
- 309. How does the body's pain affect your location?
- 310. How does the body's pain not affect your location?
- 311. How could you locate yourself?
- 312. What could you use to locate yourself?
- 313. Why is it okay for your location to not be affected by the body's pain?
- 314. How are you fundamentally different from pain?
- 315. How is pain fundamentally different from you?
+
+ 311. How does the body give you pain?
+ 312. How does the body not give you pain?
+ 313. Where could you be where the body is giving you pain?
+ 314. Where could you be where the body is not giving you pain?
+ 315. How does the body's pain affect your location?
+ 316. How does the body's pain not affect your location?
+ 317. How could you locate yourself?
+ 318. What could you use to locate yourself?
+ 319. Why is it okay for your location to not be affected by the body's pain?
+ 320. How are you fundamentally different from pain?
+ 321. How is pain fundamentally different from you?
+
 
 31. Spanning attention. This can help with exteriorization
 
- 316. Put your attention on the body's pain.
- 317. Widen your attention beyond the body's pain.
- 318. Widen your attention even further.
+
+ 322. Put your attention on the body's pain.
+ 323. Widen your attention beyond the body's pain.
+ 324. Widen your attention even further.
+
 
 32. Body form as a solution. This can help with exteriorization
 
- 319. What would a really good physical form be a solution to?
- 320. What would a really good physical form not be a solution to?
- 321. What would a body be a solution to?
- 322. Is this the best solution?
+
+ 325. What would a really good physical form be a solution to?
+ 326. What would a really good physical form not be a solution to?
+ 327. What would a body be a solution to?
+ 328. Is this the best solution?
+
 
 33. Allowing oneself to exist. This can help with exteriorization
 
- 323. How wouldn't another allow you to exist?
- 324. How wouldn't you allow another to exist?
- 325. How wouldn't others allow others to exist?
- 326. How wouldn't you allow yourself to exist?
+
+ 329. How wouldn't another allow you to exist?
+ 330. How wouldn't you allow another to exist?
+ 331. How wouldn't others allow others to exist?
+ 332. How wouldn't you allow yourself to exist?
+
 
 34. More separation. This can help with exteriorization
 
- 327. Who wouldn't allow you to separate from them?
- 328. Who wouldn't you allow to separate from you?
- 329. How could your head be separate from itself?
- 330. How are you separate from yourself?
- 331. How are you separate from another?
- 332. How is another separate from you?
- 333. How is another separate from others?
+
+ 333. Who wouldn't allow you to separate from them?
+ 334. Who wouldn't you allow to separate from you?
+ 335. How could your head be separate from itself?
+ 336. How are you separate from yourself?
+ 337. How are you separate from another?
+ 338. How is another separate from you?
+ 339. How is another separate from others?
+
 
 35. Clockwise wheel. This can help with exteriorization
 
- 334. Get the idea of 3 people.
- 335. In a clockwise fashion, substitute exteriorization or interiorization problems of one person with the next person. Do this for all 3 people.
- 336. Do it again.
- 337. Do it again.
- 338. Now have these so-called problems get condensed and vanish.
- 339. Exteriorize out of Crippledness.
- 340. Exteriorizing out of image / manner of presentation.
- 341. Exteriorize out of cuteness.
- 342. Exteriorize out of heartbreak.
- 343. Exteriorize out of social pressure.
- 344. Exteriorizing out of loneliness.
- 345. Exteriorize out of compliance.
- 346. Exteriorize out of materialism.
- 347. Exteriorize out of the impossibility of siddhis (supernatural abilities).
- 348. Move your education around.
- 349. Move your mother dragging you around, around.
- 350. Move your father dragging you around, around.
- 351. Get the comfort of being in your body. Move it around.
+
+ 340. Get the idea of 3 people.
+ 341. In a clockwise fashion, substitute exteriorization or interiorization problems of one person with the next person. Do this for all 3 people.
+ 342. Do it again.
+ 343. Do it again.
+ 344. Now have these so-called problems get condensed and vanish.
+ 345. Exteriorize out of Crippledness.
+ 346. Exteriorizing out of image / manner of presentation.
+ 347. Exteriorize out of cuteness.
+ 348. Exteriorize out of heartbreak.
+ 349. Exteriorize out of social pressure.
+ 350. Exteriorizing out of loneliness.
+ 351. Exteriorize out of compliance.
+ 352. Exteriorize out of materialism.
+ 353. Exteriorize out of the impossibility of siddhis (supernatural abilities).
+ 354. Move your education around.
+ 355. Move your mother dragging you around, around.
+ 356. Move your father dragging you around, around.
+ 357. Get the comfort of being in your body. Move the comfort around.
+ 358. Exteriorize out of the universe not being entirely yours.
+ 359. Exteriorize out of your entrance into this universe.
+ 360. Exteriorize out of any subtle 'bodies' that you might have.
+Now exteriorize out of anything that might be ruining you (see traps section)
+
+
+For each of [whatever bothers the person, ask them thoroughly], as well as
+
+	human body, possible "higher level" bodies (that maybe or maybe not can be attacked), amnesia of death, amensia of birth, relocation, relocation at death
+	drugs, pain, sex, hypnosis, brains, eating, symbols, unconsciousness, unknowableness, waitingness, mystery, thinking, effort, negative emotion
+
+
+	Whatever "ordered" time idea, mess up the time intentionally, reverse it, waste it, make time not exist, make time move fast and slow, move time (as a symbol) around, etc.
+	Whatever "ordered" (workable) energy idea, mess up the energy, matter (and possibly space) intentionally, alter it, waste it, make it not exist, move it (as a symbol) around, etc.
+
+
+
+Now, do the other processes listed on this page.
+
+
+Now, consider doing this list multiple times over, travelling the universe and getting acclimated with it, fixing up ones education (clearing up words, etc.), fixing up ones life.
+
+
+One can also do Scientology if one wants, or not, at will. This will also handle subtle traps. No obligation. One can hate or not hate or love or not love Scientology at will.
 
 
 
 
+Eventually, one becomes free of everything relevant - Total Freedom
 
-Reference, possible (not 100% full exteriorization technique list)
-
-List of all exteriorization techniques
-
-Possible ones ranked
-
-	1. Symbols related things
-	2. Where are you from? (or aren't)
-	3. Safety
-	4. Interest/attention on the exterior environment
-	5. Spanning attention
-	6. Easy/pleasant location
-	7. Handling body consideration
-
-List of all exteriorization techniques
-	Techniques that have existed before
-
-	Exterior from mockups
-	Assertive location commands. (Be 3 feet back of your head. Try not to be 3 feet back of your head.)
-	Spot spots in space
-	Exteriorize from spots
-	Where are you from?
-	Spanning attention
-	Exteriorization by Distance
-	Exteriorization by Distance ("How close" variant)
-	Exteriorization by Distance (Nothing / Something)
-	Safety
-	Beingness processing (self identifying with an object)
-	Holding spots/anchor points
-	Interest/attention on the exterior environment
-	Conceving a static
-	Accept/Reject
-	Keep head from going away
-	Loss
-	Control (Can and can't)
-	Where you're not located
-	Int/Ext handling of some form
-	Handling body consideration
-	Handling negative case
-	Things you're separate from
-	Having other things connect with you
-	Granting havingness
-	Substitutes
-
-
-	Possibly new techniques
-
-	Easy/pleasant location
-	What is worse than exteriorizing?
-	How could you trap yourself?
-	Exteriorization by intelligence (new idea)
-	Duplicating exteriorization inhibition
-	Duplicating exteriorization inhibition by section (What can't you duplicate)
-	As-ising exteriorization inhibition
-	Exteriorization by non-interference with current game
-	All/no attention on X
-	Where could you be located
-	Not relative to you
-	Where aren't you now?
-	Easy to be located / difficult to be located
-	What could you use to locate yourself?
-	Making being in control of emotioning to know to waiting to know and controlling bodies to being objects.
-	Handles approval from bodies, needing bodies, symbols and worse things
-	By mock ups (well, mock ups of getting rid of things), gets the person able to get rid of what he feels he "needs".
-	Materialism is the huge lie. This allows someone to get rid of things.
-	Gets rid of symbols. This is the problem in exteriorization. It is intimate.
-	Get rid of different methods of knowingness. This probably helps with exteriorization.
-	The idea is that unknowableness or similar very low emotions, could act as stable data in a confusion, the stable datum being that many things about
-	Here we are putting someone in control of low order methods of knowingness. We are making them not do a method of knowingness. This can help with exteriorization.
-	Here we are changing considerations of control. Lack of Control can impede (or suppress) exteriorization.
-	improving control of stable data or with confusions.
-	Addressing effort, which can be a huge button for people
-	Using body to give confidence in location.
-	Using body to give solution of location.
-	Separation from materialism.
-	Dealing with control and existence.
-	Dealing with location.
-	Dealing with body form.
-	Dealing with sensation.
-	Body form as a solution.
-	Allowing oneself to exist.
-
-	Increasing Symbolic Mobility (new in some ways)
-	Clockwise wheel
-
-
-
-Reference, possible (not 100% full exteriorization technique list)
-
-List of all exteriorization techniques
-
-Possible ones ranked
-
-	1. Symbols related things
-	2. Where are you from? (or aren't)
-	3. Safety
-	4. Interest/attention on the exterior environment
-	5. Spanning attention
-	6. Easy/pleasant location
-	7. Handling body consideration
-
-List of all exteriorization techniques
-	Techniques that have existed before
-
-	Exterior from mockups
-	Assertive location commands. (Be 3 feet back of your head. Try not to be 3 feet back of your head.)
-	Spot spots in space
-	Exteriorize from spots
-	Where are you from?
-	Spanning attention
-	Exteriorization by Distance
-	Exteriorization by Distance ("How close" variant)
-	Exteriorization by Distance (Nothing / Something)
-	Safety
-	Beingness processing (self identifying with an object)
-	Holding spots/anchor points
-	Interest/attention on the exterior environment
-	Conceving a static
-	Accept/Reject
-	Keep head from going away
-	Loss
-	Control (Can and can't)
-	Where you're not located
-	Int/Ext handling of some form
-	Handling body consideration
-	Handling negative case
-	Things you're separate from
-	Having other things connect with you
-	Granting havingness
-	Substitutes
-
-
-	Possibly new techniques
-
-	Easy/pleasant location
-	What is worse than exteriorizing?
-	How could you trap yourself?
-	Exteriorization by intelligence (new idea)
-	Duplicating exteriorization inhibition
-	Duplicating exteriorization inhibition by section (What can't you duplicate)
-	As-ising exteriorization inhibition
-	Exteriorization by non-interference with current game
-	All/no attention on X
-	Where could you be located
-	Not relative to you
-	Where aren't you now?
-	Easy to be located / difficult to be located
-	What could you use to locate yourself?
-	Making being in control of emotioning to know to waiting to know and controlling bodies to being objects.
-	Handles approval from bodies, needing bodies, symbols and worse things
-	By mock ups (well, mock ups of getting rid of things), gets the person able to get rid of what he feels he "needs".
-	Materialism is the huge lie. This allows someone to get rid of things.
-	Gets rid of symbols. This is the problem in exteriorization. It is intimate.
-	Get rid of different methods of knowingness. This probably helps with exteriorization.
-	The idea is that unknowableness or similar very low emotions, could act as stable data in a confusion, the stable datum being that many things about
-	Here we are putting someone in control of low order methods of knowingness. We are making them not do a method of knowingness. This can help with exteriorization.
-	Here we are changing considerations of control. Lack of Control can impede (or suppress) exteriorization.
-	improving control of stable data or with confusions.
-	Addressing effort, which can be a huge button for people
-	Using body to give confidence in location.
-	Using body to give solution of location.
-	Separation from materialism.
-	Dealing with control and existence.
-	Dealing with location.
-	Dealing with body form.
-	Dealing with sensation.
-	Body form as a solution.
-	Allowing oneself to exist.
-
-	Increasing Symbolic Mobility (new in some ways)
-	Clockwise wheel
+Just remember that anything that is subtle, you can also go free from that.
 
 
 
@@ -1254,17 +1449,16 @@ List of all exteriorization techniques
 	Increasing Symbolic Mobility (new in some ways)
 	Clockwise wheel
 
+</pre>
+</section>
 
-
-
-
-
-————————————————————————————————————————————————————————————————————————————————
-
-
+<section id="other-processes">
+  <div class="eyebrow">13 — Practice</div>
+  <h2>Other Processes</h2>
+  <pre>
 1. Safety across life
 
-————————————————————————————————————————————————————————————————————————————————
+
 
 1-1
 1. Is your body safe?
@@ -1684,7 +1878,7 @@ Think the thought “Everything is mine.”
 6. Where could there be an equally acceptable replacement head?
 
 1.5. Location
-————————————————————————————————————————————————————————————————————————————————
+
 
 1.5-1
 
@@ -1738,7 +1932,7 @@ How does entrance seem to you now?
 How does exit seem to you now?
 
 2. Sources
-————————————————————————————————————————————————————————————————————————————————
+
 
 1. Tell me a source.
 
@@ -1769,7 +1963,7 @@ How does exit seem to you now?
 4. What would happen if it went away from you?
 
 3. Existence
-————————————————————————————————————————————————————————————————————————————————
+
 
 3-1
 
@@ -1828,7 +2022,7 @@ How does exit seem to you now?
 2. What safety isn’t for yourself?
 
 4. Safety
-————————————————————————————————————————————————————————————————————————————————
+
 
 (Do thoroughly)
 4-0
@@ -1899,7 +2093,7 @@ How is the physical universe safe from your position?
 4. How do the lies of your body being unsafe from yourself seem to you now?
 
 5. Exteriorizing by body parts and attention and relation and distance
-————————————————————————————————————————————————————————————————————————————————
+
 5-1 - Important Process
 1. Where would your head be safe?
 2. Where would your head find you safe?
@@ -1942,7 +2136,7 @@ How is the physical universe safe from your position?
 6. How far from your body could you be while you still being unharmed?
 
 6. Present Space - This and previous and maybe other universes’ space
-————————————————————————————————————————————————————————————————————————————————
+
 
 6-1
 1. Where could you find present space safe?
@@ -1977,7 +2171,7 @@ How does present space seem to another now?
 How does your present space seem to you now?
 
 7. Loss
-————————————————————————————————————————————————————————————————————————————————
+
 
 7-1
 
@@ -1990,7 +2184,7 @@ How does your present space seem to you now?
 2. Look around here and tell me something you wouldn’t lose if you're located far from your body.
 
 8. Independence
-————————————————————————————————————————————————————————————————————————————————
+
 
 (Done exterior.)
 
@@ -1998,11 +2192,11 @@ How does your present space seem to you now?
 2. Look around here and tell me something that’s not relative to you
 
 9.
-————————————————————————————————————————————————————————————————————————————————
+
 In what way would exteriorizing not interfere with the game you’re playing?
 
 10. Harmful acts
-————————————————————————————————————————————————————————————————————————————————
+
 
 10-1
 1. What’s the worst position you can think of yourself being in regards to your own harmful acts?
@@ -2013,7 +2207,7 @@ In what way would exteriorizing not interfere with the game you’re playing?
 2. What’s the greatest exposition you could do to others in relation to their harmful acts?
 
 11. Barriers
-————————————————————————————————————————————————————————————————————————————————
+
 
 1. Tell me a barrier.
 2. Tell me about it.
@@ -2036,23 +2230,23 @@ F0. 1. Tell me about yourself as a barrier.
 4. Tell me about it.
 
 12.
-————————————————————————————————————————————————————————————————————————————————
+
 
 How does the one life lie seem to you now?
 
 13.
-————————————————————————————————————————————————————————————————————————————————
+
 
 Where would you be truly safe?
 Where would you be truly in danger?
 
 14.
-————————————————————————————————————————————————————————————————————————————————
+
 
 Where would game complexities be safe from you?
 
 15.
-————————————————————————————————————————————————————————————————————————————————
+
 1. What about the physical universe is low-quality?
 2. What about the physical universe is high-quality?
 3. What about the physical universe is low-quantity?
@@ -2060,7 +2254,7 @@ Where would game complexities be safe from you?
 
 16.
 (When exterior)
-————————————————————————————————————————————————————————————————————————————————
+
 16-1
 Look around here and tell me something you can remember.
 Look around here and tell me something you can forget.
@@ -2069,7 +2263,7 @@ Look around here and tell me something you can forget.
 What is worse than remembering?
 
 17.
-————————————————————————————————————————————————————————————————————————————————
+
 17-1
 Tell me a spot that's safe to look at?
 
@@ -2094,13 +2288,13 @@ What is creating God a solution to?
 Does creating ... seem to be persisting
 
 19. “Expectations”
-————————————————————————————————————————————————————————————————————————————————
+
 
 How do you have high expectations for your life?
 How do you not have high expectations for your life?
 
 20. “Everything”
-————————————————————————————————————————————————————————————————————————————————
+
 
 (Do 6+ passes per item, per person. Can be done in stars, perhaps in other universes)
 
@@ -2190,7 +2384,34 @@ List of all exteriorization techniques
 
 
 
-A word is just a symbol of a philosophy. A language is a philosophy of combining symbols of other philosophies (using grammar).
+</pre>
+
+</body>
+
+</html>
+<!--
+
+not obsessive control
+
+
+todo
+
+organize body lifestyle
+
+locatiion not know
+
+keep spiritual consensus from going away
+have spiritual consensus keep you from going away
+
+-->
+</pre>
+</section>
+
+<section id="words">
+<div class="eyebrow">14 — Language</div>
+<h2>Theory of Words</h2>
+<pre>
+  A word is just a symbol of a philosophy. A language is a philosophy of combining symbols of other philosophies (using grammar).
 
 I mean this very strictly. Every word is a philosophy. For example, man, cat, Platonism, go, grocery, sarcasm, ecstacy, etc.
 
@@ -4081,24 +4302,22 @@ Continuing. I will keep them as **minimal conceptual skeletons** rather than ord
 
 **Mandatory directionality**
 
-* Meaning transmitted through symbol.
-</pre>
+* Meaning transmitted through symbol.</pre>
+</section>
 
+</main>
+
+<script>
+const links=[...document.querySelectorAll('nav a')];
+const sections=[...document.querySelectorAll('main section')];
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(e=>{
+  if(e.isIntersecting){
+    links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id));
+  }
+});
+},{rootMargin:'-35% 0px -55% 0px',threshold:0});
+sections.forEach(s=>observer.observe(s));
+</script>
 </body>
-
 </html>
-<!--
-
-not obsessive control
-
-
-todo
-
-organize body lifestyle
-
-locatiion not know
-
-keep spiritual consensus from going away
-have spiritual consensus keep you from going away
-
--->
