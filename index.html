@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -7,6 +8,8 @@
 	<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%232a4365'/%3E%3Ctext x='50%25' y='55%25' font-family='Arial, sans-serif' font-weight='bold' font-size='65' fill='%23ffffff' dominant-baseline='middle' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
 	</head>
 <style>
+#exteriorization-embed {display:none;}
+
 :root{
   --bg:#071018; --panel:#0d1721; --panel2:#111f2b; --text:#edf5f8;
   --muted:#8fa5b2; --line:rgba(255,255,255,.09); --accent:#7ce7cf;
@@ -63,7 +66,7 @@ footer{padding-top:40px;color:#637986;font-size:12px}
 <aside class="sidebar">
   <div class="group">Safety Organization</div>
   <nav>
-    <a href="#intro" class="active"><span></span>Intro to Reality</a>
+    <a href="#intro" class="active"><span></span>Media</a>
     <a href="#goals"><span></span>Our Main Goals</a>
     <a href="#mores"><span></span>Mores, About</a>
     <a href="#destruction"><span></span>What is Destruction</a>
@@ -74,6 +77,7 @@ footer{padding-top:40px;color:#637986;font-size:12px}
     <a href="#expectations"><span></span>Expectations</a>
     <a href="#symbols"><span></span>Symbols Theory</a>
     <a href="#traps"><span></span>Trap Theory</a>
+    <a href="#hist"><span></span>History</a>
     <a href="#sop"><span></span>SOP</a>
     <a href="#other-processes"><span></span>Other Processes</a>
     <a href="#words"><span></span>Theory of Language</a>
@@ -85,10 +89,14 @@ footer{padding-top:40px;color:#637986;font-size:12px}
 	<img style="height: 200px;" src="safety.jpg" />
 	<section id="intro" class="hero">
   <div>
-    <h1>Intro to Reality</h1>
+    <h1>Media &ndash; Films, music and games illustrating our religious principles</h1>
     <div class="rule"></div>
+    <p>Films</p>
+        <div class="rule"></div>
       <iframe width="560" height="315" src="https://www.youtube.com/embed/vVYDm1zqgiQ?si=4ce6CGjxLFvSkNKs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
      <br> 
+    <p>Music</p>
+        <div class="rule"></div>
       	<audio width="180" controls>
       	<source src="Exterior.mp3" type="audio/mp3">
       	</audio><br>
@@ -99,9 +107,2916 @@ footer{padding-top:40px;color:#637986;font-size:12px}
       	<video width="180" height="320" controls>
       	<source src="Fully%20Exterior_lyricsvideo_v_2.mp4" type="video/mp4">
       	</video>
+    <p>Games</p>
+    <p>
+            
+        <div class="rule"></div>
+            <button onclick="toggleExt()"  id="toggleExt">Exteriorization Game</button></p>
+<div id="exteriorization-embed"></div>
 
+<script type="module">
+import * as THREE from "https://unpkg.com/three@0.160.0/build/three.module.js";
+
+(() => {
+  const mount = document.getElementById("exteriorization-embed");
+
+  if (!mount) {
+    console.error("Exteriorization: mount element not found.");
+    return;
+  }
+
+  /* =========================================================
+     COMPONENT
+  ========================================================= */
+
+  const root = document.createElement("div");
+
+  root.className = "exteriorization-game";
+
+  root.innerHTML = `
+    <style>
+      .exteriorization-game {
+        --bg: #02060c;
+        --panel: rgba(3, 14, 25, .84);
+        --border: rgba(90, 190, 255, .45);
+        --text: #eaf7ff;
+        --cyan: #66ccff;
+
+        position: relative;
+        width: 100%;
+        height: min(760px, 90vh);
+        min-height: 520px;
+        overflow: hidden;
+        isolation: isolate;
+        background: var(--bg);
+        color: var(--text);
+        font-family:
+          Inter,
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        border-radius: 18px;
+        box-shadow:
+          0 24px 80px rgba(0, 0, 0, .35),
+          inset 0 0 0 1px rgba(255,255,255,.04);
+      }
+
+      .exteriorization-game *,
+      .exteriorization-game *::before,
+      .exteriorization-game *::after {
+        box-sizing: border-box;
+      }
+
+      .exteriorization-canvas {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+        outline: none;
+        touch-action: none;
+      }
+
+      .exteriorization-ui {
+        position: absolute;
+        inset: 0;
+        z-index: 10;
+        pointer-events: none;
+      }
+
+      .exteriorization-panel {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        box-shadow: 0 8px 30px rgba(0,0,0,.35);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 12px;
+      }
+
+      .exteriorization-status {
+        position: absolute;
+        top: 14px;
+        left: 50%;
+        transform: translateX(-50%);
+        min-width: min(360px, calc(100% - 180px));
+        max-width: calc(100% - 220px);
+        text-align: center;
+        padding: 10px 18px;
+      }
+
+      .exteriorization-mode {
+        font-size: 1.15rem;
+        font-weight: 900;
+        letter-spacing: .12em;
+      }
+
+      .exteriorization-hint {
+        margin-top: 3px;
+        font-size: .76rem;
+        opacity: .82;
+      }
+
+      .exteriorization-stage {
+        margin-top: 6px;
+        font-size: .86rem;
+        font-weight: 800;
+      }
+
+      .exteriorization-stats {
+        position: absolute;
+        top: 14px;
+        left: 14px;
+        min-width: 170px;
+        padding: 11px 13px;
+      }
+
+      .exteriorization-stat {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        margin: 3px 0;
+        font-size: .82rem;
+      }
+
+      .exteriorization-stat b {
+        font-variant-numeric: tabular-nums;
+      }
+
+      .exteriorization-toggle {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        pointer-events: auto;
+
+        border: 0;
+        border-radius: 10px;
+        padding: 10px 14px;
+
+        color: #fff;
+        font-weight: 850;
+        letter-spacing: .01em;
+
+        background:
+          linear-gradient(
+            135deg,
+            #087d67,
+            #145fc5
+          );
+
+        cursor: pointer;
+
+        box-shadow:
+          0 5px 22px rgba(0,120,255,.3);
+
+        transition:
+          transform .15s ease,
+          filter .15s ease;
+      }
+
+      .exteriorization-toggle:hover {
+        filter: brightness(1.1);
+        transform: translateY(-1px);
+      }
+
+      .exteriorization-toggle:active {
+        transform: translateY(0);
+      }
+
+      .exteriorization-objective {
+        position: absolute;
+        top: 142px;
+        left: 14px;
+        width: 300px;
+        max-width: calc(100% - 28px);
+        padding: 12px 14px;
+      }
+
+      .exteriorization-objective-title {
+        font-size: .68rem;
+        text-transform: uppercase;
+        letter-spacing: .12em;
+        opacity: .65;
+      }
+
+      .exteriorization-objective-text {
+        margin-top: 4px;
+        font-weight: 750;
+        line-height: 1.4;
+      }
+
+      .exteriorization-progress {
+        height: 6px;
+        margin-top: 9px;
+        overflow: hidden;
+        background: rgba(255,255,255,.12);
+        border-radius: 10px;
+      }
+
+      .exteriorization-progress-fill {
+        width: 0;
+        height: 100%;
+        background:
+          linear-gradient(
+            90deg,
+            #32d8ff,
+            #8aff7c
+          );
+        transition: width .25s ease;
+      }
+
+      .exteriorization-controls {
+        position: absolute;
+        left: 14px;
+        bottom: 14px;
+        width: 320px;
+        max-width: calc(100% - 28px);
+        padding: 12px 14px;
+        font-size: .76rem;
+        line-height: 1.6;
+      }
+
+      .exteriorization-controls b {
+        font-size: .8rem;
+      }
+
+      .exteriorization-kbd {
+        display: inline-block;
+        min-width: 21px;
+        padding: 0 5px;
+        text-align: center;
+
+        background: #0c2034;
+        border: 1px solid #35516b;
+        border-radius: 4px;
+
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: .72rem;
+        line-height: 1.45;
+      }
+
+      .exteriorization-toast {
+        position: absolute;
+        left: 50%;
+        bottom: 15%;
+        transform: translate(-50%, 20px);
+
+        padding: 10px 18px;
+
+        opacity: 0;
+        pointer-events: none;
+
+        background: rgba(0,20,30,.92);
+        border: 1px solid #5cf;
+        border-radius: 10px;
+
+        font-weight: 800;
+        white-space: nowrap;
+
+        transition:
+          opacity .2s ease,
+          transform .2s ease;
+      }
+
+      .exteriorization-toast.show {
+        opacity: 1;
+        transform: translate(-50%, 0);
+      }
+
+      .exteriorization-loading {
+        position: absolute;
+        inset: 0;
+        z-index: 100;
+
+        display: grid;
+        place-items: center;
+
+        background:
+          radial-gradient(
+            circle at center,
+            #0b1c2d,
+            #02060c 65%
+          );
+
+        font-size: 1rem;
+        font-weight: 700;
+
+        transition:
+          opacity .5s ease,
+          visibility .5s ease;
+      }
+
+      .exteriorization-loading.hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      .exteriorization-help {
+        position: absolute;
+        right: 14px;
+        bottom: 14px;
+        padding: 8px 11px;
+
+        border: 1px solid rgba(255,255,255,.1);
+        border-radius: 9px;
+
+        background: rgba(0,0,0,.32);
+        backdrop-filter: blur(8px);
+
+        font-size: .68rem;
+        opacity: .55;
+      }
+
+      @media (max-width: 760px) {
+        .exteriorization-game {
+          height: 720px;
+          min-height: 560px;
+          border-radius: 12px;
+        }
+
+        .exteriorization-status {
+          top: 78px;
+          min-width: 0;
+          width: calc(100% - 28px);
+          max-width: none;
+        }
+
+        .exteriorization-stats {
+          top: 14px;
+          left: 14px;
+          min-width: 145px;
+        }
+
+        .exteriorization-toggle {
+          top: 14px;
+          right: 14px;
+          padding: 9px 11px;
+          font-size: .72rem;
+        }
+
+        .exteriorization-objective {
+          top: 190px;
+          width: 270px;
+        }
+
+        .exteriorization-controls {
+          display: none;
+        }
+
+        .exteriorization-help {
+          display: none;
+        }
+      }
+    </style>
+
+    <canvas class="exteriorization-canvas" tabindex="0"></canvas>
+
+    <div class="exteriorization-loading">
+      Loading…
+    </div>
+
+    <div class="exteriorization-ui">
+
+      <div class="exteriorization-panel exteriorization-stats">
+        <div class="exteriorization-stat">
+          <span>Score</span>
+          <b data-score>0</b>
+        </div>
+
+        <div class="exteriorization-stat">
+          <span>Streak</span>
+          <b data-streak>0</b>
+        </div>
+
+        <div class="exteriorization-stat">
+          <span>Range</span>
+          <b data-range>0.0 m</b>
+        </div>
+      </div>
+
+      <div class="exteriorization-panel exteriorization-status">
+        <div class="exteriorization-mode" data-mode>
+          INTERIORIZED
+        </div>
+
+        <div class="exteriorization-hint" data-hint>
+          Inside the body — being not knowing themselves.
+        </div>
+
+        <div class="exteriorization-stage" data-stage>
+          STAGE: Stage 1
+        </div>
+      </div>
+
+      <button
+        type="button"
+        class="exteriorization-toggle"
+        data-toggle
+      >
+        EXTERIORIZE · E
+      </button>
+
+      <div class="exteriorization-panel exteriorization-objective">
+
+        <div class="exteriorization-objective-title">
+          Current goal
+        </div>
+
+        <div
+          class="exteriorization-objective-text"
+          data-objective
+        >
+          Exteriorize and locate the golden beacon near the fountain.
+        </div>
+
+        <div class="exteriorization-progress">
+          <div
+            class="exteriorization-progress-fill"
+            data-progress
+          ></div>
+        </div>
+
+      </div>
+
+      <div class="exteriorization-panel exteriorization-controls">
+        <b>Controls</b><br>
+
+        <span class="exteriorization-kbd">W</span>
+        /
+        <span class="exteriorization-kbd">S</span>
+        move &nbsp;
+
+        <span class="exteriorization-kbd">A</span>
+        /
+        <span class="exteriorization-kbd">D</span>
+        turn
+        <br>
+
+        <span class="exteriorization-kbd">E</span>
+        exteriorize / interiorize
+        <br>
+
+        <span class="exteriorization-kbd">Mouse</span>
+        orbit
+
+        <span class="exteriorization-kbd">Scroll</span>
+        zoom
+
+        <span class="exteriorization-kbd">Space</span>
+        activate
+        <br>
+
+        <span class="exteriorization-kbd">R</span>
+        reset
+      </div>
+
+      <div
+        class="exteriorization-toast"
+        data-toast
+      ></div>
+
+      <div class="exteriorization-help">
+        Click the scene to orbit
+      </div>
 
     </div>
+  `;
+
+  mount.appendChild(root);
+
+  /* =========================================================
+     DOM REFERENCES
+  ========================================================= */
+
+  const canvas = root.querySelector(".exteriorization-canvas");
+  const loading = root.querySelector(".exteriorization-loading");
+
+  const scoreEl = root.querySelector("[data-score]");
+  const streakEl = root.querySelector("[data-streak]");
+  const rangeEl = root.querySelector("[data-range]");
+
+  const modeEl = root.querySelector("[data-mode]");
+  const hintEl = root.querySelector("[data-hint]");
+  const stageEl = root.querySelector("[data-stage]");
+  const objectiveEl = root.querySelector("[data-objective]");
+  const progressEl = root.querySelector("[data-progress]");
+
+  const toggleButton = root.querySelector("[data-toggle]");
+  const toastEl = root.querySelector("[data-toast]");
+
+  /* =========================================================
+     THREE.JS
+  ========================================================= */
+
+  const renderer = new THREE.WebGLRenderer({
+    canvas,
+    antialias: true,
+    powerPreference: "high-performance"
+  });
+
+  renderer.setPixelRatio(
+    Math.min(window.devicePixelRatio || 1, 2)
+  );
+
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+  const scene = new THREE.Scene();
+
+  scene.background = new THREE.Color(0x87ceeb);
+
+  scene.fog = new THREE.Fog(
+    0x87ceeb,
+    90,
+    220
+  );
+
+  const exteriorCamera =
+    new THREE.PerspectiveCamera(
+      60,
+      1,
+      0.1,
+      500
+    );
+
+  const interiorCamera =
+    new THREE.PerspectiveCamera(
+      75,
+      1,
+      0.05,
+      200
+    );
+
+  /* =========================================================
+     LIGHTING
+  ========================================================= */
+
+  scene.add(
+    new THREE.HemisphereLight(
+      0xbfe9ff,
+      0x4a3728,
+      0.85
+    )
+  );
+
+  const sun1 =
+    new THREE.DirectionalLight(
+      0xfff4e0,
+      1.4
+    );
+
+  sun1.position.set(50, 70, 30);
+  sun1.castShadow = true;
+
+  sun1.shadow.mapSize.set(2048, 2048);
+
+  sun1.shadow.camera.near = 10;
+  sun1.shadow.camera.far = 200;
+
+  sun1.shadow.camera.left = -80;
+  sun1.shadow.camera.right = 80;
+  sun1.shadow.camera.top = 80;
+  sun1.shadow.camera.bottom = -80;
+
+  scene.add(sun1);
+
+  const sun2 =
+    new THREE.DirectionalLight(
+      0xffd0a0,
+      0.7
+    );
+
+  sun2.position.set(-55, 45, -25);
+  scene.add(sun2);
+
+  const sun3 =
+    new THREE.DirectionalLight(
+      0xa0c8ff,
+      0.55
+    );
+
+  sun3.position.set(15, 55, -60);
+  scene.add(sun3);
+
+  function makeSunDisc(
+    x,
+    y,
+    z,
+    color,
+    size = 4.5
+  ) {
+    const group = new THREE.Group();
+
+    const core =
+      new THREE.Mesh(
+        new THREE.SphereGeometry(
+          size,
+          24,
+          16
+        ),
+        new THREE.MeshBasicMaterial({
+          color
+        })
+      );
+
+    const glow =
+      new THREE.Mesh(
+        new THREE.SphereGeometry(
+          size * 1.5,
+          16,
+          12
+        ),
+        new THREE.MeshBasicMaterial({
+          color,
+          transparent: true,
+          opacity: 0.25
+        })
+      );
+
+    group.add(core, glow);
+
+    group.position.set(x, y, z);
+
+    scene.add(group);
+
+    return group;
+  }
+
+  makeSunDisc(
+    60,
+    80,
+    45,
+    0xfff4c8,
+    5.5
+  );
+
+  makeSunDisc(
+    -65,
+    65,
+    -35,
+    0xffc090,
+    4.2
+  );
+
+  makeSunDisc(
+    20,
+    75,
+    -75,
+    0xb8d8ff,
+    3.8
+  );
+
+  /* =========================================================
+     GROUND
+  ========================================================= */
+
+  const ground =
+    new THREE.Mesh(
+      new THREE.PlaneGeometry(
+        400,
+        400
+      ),
+      new THREE.MeshStandardMaterial({
+        color: 0x4e813f,
+        roughness: 0.92
+      })
+    );
+
+  ground.rotation.x = -Math.PI / 2;
+  ground.receiveShadow = true;
+
+  scene.add(ground);
+
+  /* =========================================================
+     WORLD HELPERS
+  ========================================================= */
+
+  function addShadowed(mesh) {
+    mesh.castShadow = true;
+    mesh.receiveShadow = true;
+    return mesh;
+  }
+
+  /* =========================================================
+     HOUSES
+  ========================================================= */
+
+  function house(
+    x,
+    z,
+    rot = 0,
+    scale = 1
+  ) {
+    const group =
+      new THREE.Group();
+
+    group.position.set(x, 0, z);
+    group.rotation.y = rot;
+    group.scale.setScalar(scale);
+
+    const wall =
+      addShadowed(
+        new THREE.Mesh(
+          new THREE.BoxGeometry(
+            5,
+            3.2,
+            4
+          ),
+          new THREE.MeshStandardMaterial({
+            color: 0xd9c3a1,
+            roughness: 0.9
+          })
+        )
+      );
+
+    wall.position.y = 1.6;
+
+    const roof =
+      addShadowed(
+        new THREE.Mesh(
+          new THREE.ConeGeometry(
+            3.5,
+            2.1,
+            4
+          ),
+          new THREE.MeshStandardMaterial({
+            color: 0x9a4c38,
+            roughness: 0.85
+          })
+        )
+      );
+
+    roof.position.y = 4.25;
+    roof.rotation.y = Math.PI / 4;
+
+    const windowMaterial =
+      new THREE.MeshStandardMaterial({
+        color: 0x76b8c9,
+        metalness: 0.1,
+        roughness: 0.3
+      });
+
+    for (const side of [-1, 1]) {
+      const window =
+        new THREE.Mesh(
+          new THREE.BoxGeometry(
+            0.75,
+            1,
+            0.06
+          ),
+          windowMaterial
+        );
+
+      window.position.set(
+        side * 1.45,
+        1.8,
+        -2.03
+      );
+
+      group.add(window);
+    }
+
+    const door =
+      new THREE.Mesh(
+        new THREE.BoxGeometry(
+          0.9,
+          1.7,
+          0.08
+        ),
+        new THREE.MeshStandardMaterial({
+          color: 0x62452f
+        })
+      );
+
+    door.position.set(
+      0,
+      0.85,
+      -2.05
+    );
+
+    group.add(
+      wall,
+      roof,
+      door
+    );
+
+    scene.add(group);
+  }
+
+  [
+    [-16, -9, 0.2, 1],
+    [-7, -12, -0.2, 0.9],
+    [4, -13, 0.1, 1.1],
+    [15, -10, -0.25, 1],
+
+    [-20, 4, 0.5, 1.05],
+    [-10, 2, -0.4, 0.9],
+    [8, 4, 0.2, 1],
+    [19, 6, -0.3, 1.1],
+
+    [-2, 16, 0.15, 1.15],
+    [14, 17, -0.4, 0.95],
+    [-28, -18, 0.3, 0.95],
+    [28, -15, -0.2, 1.05],
+
+    [-25, 22, 0.1, 1],
+    [22, -22, 0.25, 0.9],
+    [5, 28, -0.15, 1.1]
+  ].forEach(args => house(...args));
+
+  /* =========================================================
+     CHRISTIAN CHURCH
+  ========================================================= */
+
+  function makeChristianChurch(
+    x,
+    z,
+    rot = 0
+  ) {
+    const group =
+      new THREE.Group();
+
+    group.position.set(x, 0, z);
+    group.rotation.y = rot;
+
+    const nave =
+      addShadowed(
+        new THREE.Mesh(
+          new THREE.BoxGeometry(
+            9,
+            5.5,
+            14
+          ),
+          new THREE.MeshStandardMaterial({
+            color: 0xe8e2d4,
+            roughness: 0.9
+          })
+        )
+      );
+
+    nave.position.y = 2.75;
+
+    const roof =
+      addShadowed(
+        new THREE.Mesh(
+          new THREE.ConeGeometry(
+            6.2,
+            4.2,
+            4
+          ),
+          new THREE.MeshStandardMaterial({
+            color: 0x4a5560,
+            roughness: 0.8
+          })
+        )
+      );
+
+    roof.scale.z = 1.2;
+    roof.position.y = 7.6;
+    roof.rotation.y = Math.PI / 4;
+
+    const tower =
+      addShadowed(
+        new THREE.Mesh(
+          new THREE.BoxGeometry(
+            3.6,
+            11,
+            3.6
+          ),
+          new THREE.MeshStandardMaterial({
+            color: 0xdcd4c4,
+            roughness: 0.9
+          })
+        )
+      );
+
+    tower.position.set(
+      0,
+      5.5,
+      5.6
+    );
+
+    const towerRoof =
+      addShadowed(
+        new THREE.Mesh(
+          new THREE.ConeGeometry(
+            3,
+            4,
+            4
+          ),
+          new THREE.MeshStandardMaterial({
+            color: 0x3d4652
+          })
+        )
+      );
+
+    towerRoof.position.set(
+      0,
+      13,
+      5.6
+    );
+
+    towerRoof.rotation.y =
+      Math.PI / 4;
+
+    const door =
+      new THREE.Mesh(
+        new THREE.BoxGeometry(
+          1.6,
+          3,
+          0.1
+        ),
+        new THREE.MeshStandardMaterial({
+          color: 0x4a3528
+        })
+      );
+
+    door.position.set(
+      0,
+      1.5,
+      7.05
+    );
+
+    const crossMaterial =
+      new THREE.MeshStandardMaterial({
+        color: 0xc9a84c,
+        metalness: 0.3
+      });
+
+    const crossV =
+      new THREE.Mesh(
+        new THREE.BoxGeometry(
+          0.32,
+          2.4,
+          0.32
+        ),
+        crossMaterial
+      );
+
+    crossV.position.set(
+      0,
+      15.4,
+      5.6
+    );
+
+    const crossH =
+      new THREE.Mesh(
+        new THREE.BoxGeometry(
+          1.4,
+          0.32,
+          0.32
+        ),
+        crossMaterial
+      );
+
+    crossH.position.set(
+      0,
+      15.8,
+      5.6
+    );
+
+    group.add(
+      nave,
+      roof,
+      tower,
+      towerRoof,
+      door,
+      crossV,
+      crossH
+    );
+
+    scene.add(group);
+  }
+
+  makeChristianChurch(
+    -1,
+    -1,
+    0.1
+  );
+
+  /* =========================================================
+     OTHER CHURCH
+  ========================================================= */
+
+  function makeOtherChurch(
+    x,
+    z,
+    rot = 0
+  ) {
+    const group =
+      new THREE.Group();
+
+    group.position.set(x, 0, z);
+    group.rotation.y = rot;
+
+    const hall =
+      addShadowed(
+        new THREE.Mesh(
+          new THREE.BoxGeometry(
+            12,
+            6,
+            16
+          ),
+          new THREE.MeshStandardMaterial({
+            color: 0xf5f5f0,
+            roughness: 0.7
+          })
+        )
+      );
+
+    hall.position.y = 3;
+
+    const peak =
+      addShadowed(
+        new THREE.Mesh(
+          new THREE.ConeGeometry(
+            8.5,
+            5.5,
+            4
+          ),
+          new THREE.MeshStandardMaterial({
+            color: 0xe8e8e0,
+            roughness: 0.65
+          })
+        )
+      );
+
+    peak.position.y = 9.2;
+    peak.rotation.y = Math.PI / 4;
+
+    const band =
+      new THREE.Mesh(
+        new THREE.BoxGeometry(
+          12.2,
+          0.35,
+          16.2
+        ),
+        new THREE.MeshStandardMaterial({
+          color: 0xd4af37,
+          metalness: 0.6,
+          roughness: 0.3
+        })
+      );
+
+    band.position.y = 5.6;
+
+    const spire =
+      new THREE.Mesh(
+        new THREE.CylinderGeometry(
+          0.4,
+          0.7,
+          8,
+          8
+        ),
+        new THREE.MeshStandardMaterial({
+          color: 0xf0f0ea
+        })
+      );
+
+    spire.position.y = 13.5;
+
+    const tip =
+      new THREE.Mesh(
+        new THREE.ConeGeometry(
+          1.1,
+          2.8,
+          4
+        ),
+        new THREE.MeshStandardMaterial({
+          color: 0xd4af37,
+          metalness: 0.5
+        })
+      );
+
+    tip.position.y = 18.2;
+    tip.rotation.y = Math.PI / 4;
+
+    group.add(
+      hall,
+      peak,
+      band,
+      spire,
+      tip
+    );
+
+    scene.add(group);
+  }
+
+  makeOtherChurch(
+    32,
+    18,
+    -0.4
+  );
+
+  /* =========================================================
+     SCHOOL
+  ========================================================= */
+
+  function makeSchool(
+    x,
+    z,
+    rot = 0
+  ) {
+    const group =
+      new THREE.Group();
+
+    group.position.set(x, 0, z);
+    group.rotation.y = rot;
+
+    const main =
+      addShadowed(
+        new THREE.Mesh(
+          new THREE.BoxGeometry(
+            18,
+            5,
+            10
+          ),
+          new THREE.MeshStandardMaterial({
+            color: 0xc9d4e0,
+            roughness: 0.85
+          })
+        )
+      );
+
+    main.position.y = 2.5;
+
+    const wing =
+      addShadowed(
+        new THREE.Mesh(
+          new THREE.BoxGeometry(
+            8,
+            4.2,
+            12
+          ),
+          new THREE.MeshStandardMaterial({
+            color: 0xb8c8d8,
+            roughness: 0.85
+          })
+        )
+      );
+
+    wing.position.set(
+      -10,
+      2.1,
+      0
+    );
+
+    group.add(main, wing);
+
+    scene.add(group);
+  }
+
+  makeSchool(
+    -38,
+    8,
+    0.25
+  );
+
+  /* =========================================================
+     SPACE STATION
+  ========================================================= */
+
+  function makeSpaceStation(
+    x,
+    y,
+    z
+  ) {
+    const group =
+      new THREE.Group();
+
+    group.position.set(x, y, z);
+
+    const hub =
+      addShadowed(
+        new THREE.Mesh(
+          new THREE.SphereGeometry(
+            3.2,
+            24,
+            18
+          ),
+          new THREE.MeshStandardMaterial({
+            color: 0xc0c8d0,
+            metalness: 0.45,
+            roughness: 0.35
+          })
+        )
+      );
+
+    const ring =
+      addShadowed(
+        new THREE.Mesh(
+          new THREE.TorusGeometry(
+            7.5,
+            0.7,
+            14,
+            56
+          ),
+          new THREE.MeshStandardMaterial({
+            color: 0xa8b4c0,
+            metalness: 0.55,
+            roughness: 0.3
+          })
+        )
+      );
+
+    ring.rotation.x =
+      Math.PI / 2;
+
+    group.add(
+      hub,
+      ring
+    );
+
+    for (let i = 0; i < 6; i++) {
+      const angle =
+        (i / 6) *
+        Math.PI *
+        2;
+
+      const module =
+        addShadowed(
+          new THREE.Mesh(
+            new THREE.CylinderGeometry(
+              1.1,
+              1.1,
+              2.8,
+              12
+            ),
+            new THREE.MeshStandardMaterial({
+              color: 0xd0d8e0,
+              metalness: 0.4
+            })
+          )
+        );
+
+      module.position.set(
+        Math.cos(angle) * 7.5,
+        0,
+        Math.sin(angle) * 7.5
+      );
+
+      module.lookAt(0, 0, 0);
+
+      group.add(module);
+    }
+
+    for (const side of [-1, 1]) {
+      const panel =
+        new THREE.Mesh(
+          new THREE.BoxGeometry(
+            12,
+            0.15,
+            3.5
+          ),
+          new THREE.MeshStandardMaterial({
+            color: 0x2244aa,
+            metalness: 0.7,
+            roughness: 0.15
+          })
+        );
+
+      panel.position.set(
+        side * 14,
+        0,
+        0
+      );
+
+      group.add(panel);
+    }
+
+    const light =
+      new THREE.PointLight(
+        0x66ccff,
+        1.4,
+        45
+      );
+
+    group.add(light);
+
+    scene.add(group);
+
+    return group;
+  }
+
+  const spaceStation =
+    makeSpaceStation(
+      -55,
+      28,
+      -40
+    );
+
+  /* =========================================================
+     ROADS
+  ========================================================= */
+
+  const roadMaterial =
+    new THREE.MeshStandardMaterial({
+      color: 0x5a5a56,
+      roughness: 1
+    });
+
+  for (const z of [
+    -15,
+    10,
+    28
+  ]) {
+    const road =
+      new THREE.Mesh(
+        new THREE.PlaneGeometry(
+          180,
+          6.5
+        ),
+        roadMaterial
+      );
+
+    road.rotation.x =
+      -Math.PI / 2;
+
+    road.position.set(
+      0,
+      0.012,
+      z
+    );
+
+    scene.add(road);
+  }
+
+  for (const x of [
+    -23,
+    22,
+    -40,
+    45
+  ]) {
+    const road =
+      new THREE.Mesh(
+        new THREE.PlaneGeometry(
+          6.5,
+          180
+        ),
+        roadMaterial
+      );
+
+    road.rotation.x =
+      -Math.PI / 2;
+
+    road.position.set(
+      x,
+      0.013,
+      0
+    );
+
+    scene.add(road);
+  }
+
+  /* =========================================================
+     MOUNTAINS
+  ========================================================= */
+
+  function mountain(
+    x,
+    z,
+    height,
+    radius,
+    color = 0x64766c
+  ) {
+    const mesh =
+      addShadowed(
+        new THREE.Mesh(
+          new THREE.ConeGeometry(
+            radius,
+            height,
+            9
+          ),
+          new THREE.MeshStandardMaterial({
+            color,
+            roughness: 1
+          })
+        )
+      );
+
+    mesh.position.set(
+      x,
+      height / 2 - 1,
+      z
+    );
+
+    scene.add(mesh);
+  }
+
+  [
+    [-70, -55, 55, 28],
+    [-30, -78, 70, 34],
+    [20, -82, 58, 30],
+    [75, -58, 68, 35],
+    [-90, 20, 48, 27],
+    [88, 25, 54, 30],
+    [-55, 72, 60, 32],
+    [55, 70, 50, 28],
+    [100, -20, 45, 26],
+    [-95, -30, 52, 29]
+  ].forEach(args => mountain(...args));
+
+  /* =========================================================
+     TREES
+  ========================================================= */
+
+  function tree(
+    x,
+    z,
+    scale = 1
+  ) {
+    const group =
+      new THREE.Group();
+
+    group.position.set(
+      x,
+      0,
+      z
+    );
+
+    group.scale.setScalar(scale);
+
+    const trunk =
+      addShadowed(
+        new THREE.Mesh(
+          new THREE.CylinderGeometry(
+            0.25,
+            0.35,
+            2.2,
+            8
+          ),
+          new THREE.MeshStandardMaterial({
+            color: 0x5c3a22
+          })
+        )
+      );
+
+    trunk.position.y = 1.1;
+
+    const leaves =
+      addShadowed(
+        new THREE.Mesh(
+          new THREE.SphereGeometry(
+            1.6,
+            12,
+            10
+          ),
+          new THREE.MeshStandardMaterial({
+            color: 0x2d7a3a,
+            roughness: 0.9
+          })
+        )
+      );
+
+    leaves.position.y = 3;
+
+    group.add(
+      trunk,
+      leaves
+    );
+
+    scene.add(group);
+  }
+
+  [
+    [-12, 8],
+    [6, -6],
+    [25, 2],
+    [-5, 30],
+    [18, -25],
+    [-30, -5],
+    [40, 5],
+    [10, 35],
+    [-45, 25],
+    [35, -30],
+    [-15, -20],
+    [50, 30],
+    [-50, -25],
+    [0, 40],
+    [28, 40]
+  ].forEach(
+    ([x, z], i) =>
+      tree(
+        x,
+        z,
+        0.85 + (i % 3) * 0.2
+      )
+  );
+
+  /* =========================================================
+     FOUNTAIN
+  ========================================================= */
+
+  function makeFountain(
+    x,
+    z
+  ) {
+    const group =
+      new THREE.Group();
+
+    group.position.set(
+      x,
+      0,
+      z
+    );
+
+    const base =
+      addShadowed(
+        new THREE.Mesh(
+          new THREE.CylinderGeometry(
+            3.5,
+            4,
+            0.6,
+            24
+          ),
+          new THREE.MeshStandardMaterial({
+            color: 0x8899aa
+          })
+        )
+      );
+
+    base.position.y = 0.3;
+
+    const pool =
+      new THREE.Mesh(
+        new THREE.CylinderGeometry(
+          3.2,
+          3.2,
+          0.35,
+          24
+        ),
+        new THREE.MeshStandardMaterial({
+          color: 0x4488cc,
+          transparent: true,
+          opacity: 0.75
+        })
+      );
+
+    pool.position.y = 0.55;
+
+    const pillar =
+      new THREE.Mesh(
+        new THREE.CylinderGeometry(
+          0.4,
+          0.5,
+          2.2,
+          12
+        ),
+        new THREE.MeshStandardMaterial({
+          color: 0xaabbc9
+        })
+      );
+
+    pillar.position.y = 1.5;
+
+    group.add(
+      base,
+      pool,
+      pillar
+    );
+
+    scene.add(group);
+  }
+
+  makeFountain(0, 8);
+
+  /* =========================================================
+     LAMPS
+  ========================================================= */
+
+  function lamp(
+    x,
+    z
+  ) {
+    const group =
+      new THREE.Group();
+
+    group.position.set(
+      x,
+      0,
+      z
+    );
+
+    const pole =
+      new THREE.Mesh(
+        new THREE.CylinderGeometry(
+          0.08,
+          0.1,
+          4.5,
+          8
+        ),
+        new THREE.MeshStandardMaterial({
+          color: 0x333333
+        })
+      );
+
+    pole.position.y = 2.25;
+
+    const head =
+      new THREE.Mesh(
+        new THREE.SphereGeometry(
+          0.35,
+          12,
+          10
+        ),
+        new THREE.MeshStandardMaterial({
+          color: 0xffe8a0,
+          emissive: 0xffcc66,
+          emissiveIntensity: 0.7
+        })
+      );
+
+    head.position.y = 4.6;
+
+    const pointLight =
+      new THREE.PointLight(
+        0xffe8a0,
+        0.55,
+        18
+      );
+
+    pointLight.position.y = 4.5;
+
+    group.add(
+      pole,
+      head,
+      pointLight
+    );
+
+    scene.add(group);
+  }
+
+  [
+    [-20, -12],
+    [20, -12],
+    [-20, 12],
+    [20, 12],
+    [-35, 5],
+    [40, 12],
+    [-10, 30],
+    [30, 25]
+  ].forEach(([x, z]) =>
+    lamp(x, z)
+  );
+
+  /* =========================================================
+     BENCHES
+  ========================================================= */
+
+  function bench(
+    x,
+    z,
+    rot = 0
+  ) {
+    const group =
+      new THREE.Group();
+
+    group.position.set(
+      x,
+      0,
+      z
+    );
+
+    group.rotation.y = rot;
+
+    const material =
+      new THREE.MeshStandardMaterial({
+        color: 0x6b4423
+      });
+
+    const seat =
+      new THREE.Mesh(
+        new THREE.BoxGeometry(
+          1.8,
+          0.12,
+          0.45
+        ),
+        material
+      );
+
+    seat.position.y = 0.45;
+
+    const back =
+      new THREE.Mesh(
+        new THREE.BoxGeometry(
+          1.8,
+          0.5,
+          0.1
+        ),
+        material
+      );
+
+    back.position.set(
+      0,
+      0.75,
+      -0.2
+    );
+
+    group.add(
+      seat,
+      back
+    );
+
+    scene.add(group);
+  }
+
+  bench(2, 6, 0.3);
+  bench(-3, 9, -0.5);
+  bench(4, 11, 1.2);
+
+  /* =========================================================
+     HUMAN
+  ========================================================= */
+
+  let body = null;
+
+  function createHuman() {
+    body = new THREE.Group();
+
+    const skin =
+      new THREE.MeshStandardMaterial({
+        color: 0xc68642,
+        roughness: 0.55,
+        metalness: 0.05
+      });
+
+    const hair =
+      new THREE.MeshStandardMaterial({
+        color: 0x2c1a12,
+        roughness: 0.9
+      });
+
+    const shirt =
+      new THREE.MeshStandardMaterial({
+        color: 0x2e5a8c,
+        roughness: 0.7
+      });
+
+    const pants =
+      new THREE.MeshStandardMaterial({
+        color: 0x1e2a38,
+        roughness: 0.75
+      });
+
+    const shoes =
+      new THREE.MeshStandardMaterial({
+        color: 0x222222,
+        roughness: 0.6
+      });
+
+    const torso =
+      addShadowed(
+        new THREE.Mesh(
+          new THREE.CapsuleGeometry(
+            0.32,
+            0.72,
+            6,
+            14
+          ),
+          shirt
+        )
+      );
+
+    torso.position.y = 1.28;
+
+    const head =
+      addShadowed(
+        new THREE.Mesh(
+          new THREE.SphereGeometry(
+            0.27,
+            24,
+            18
+          ),
+          skin
+        )
+      );
+
+    head.position.y = 2.12;
+
+    const hairCap =
+      new THREE.Mesh(
+        new THREE.SphereGeometry(
+          0.285,
+          20,
+          14,
+          0,
+          Math.PI * 2,
+          0,
+          Math.PI * 0.48
+        ),
+        hair
+      );
+
+    hairCap.position.y = 2.22;
+
+    const fringe =
+      new THREE.Mesh(
+        new THREE.BoxGeometry(
+          0.42,
+          0.12,
+          0.18
+        ),
+        hair
+      );
+
+    fringe.position.set(
+      0,
+      2.18,
+      0.22
+    );
+
+    fringe.rotation.x = -0.35;
+
+    const eyeMaterial =
+      new THREE.MeshStandardMaterial({
+        color: 0x1a1a2e,
+        roughness: 0.3
+      });
+
+    const eyes = [];
+
+    for (const x of [-0.09, 0.09]) {
+      const eye =
+        new THREE.Mesh(
+          new THREE.SphereGeometry(
+            0.035,
+            10,
+            8
+          ),
+          eyeMaterial
+        );
+
+      eye.position.set(
+        x,
+        2.14,
+        0.24
+      );
+
+      eyes.push(eye);
+    }
+
+    const armParts = [];
+
+    for (const x of [-0.48, 0.48]) {
+      const upper =
+        addShadowed(
+          new THREE.Mesh(
+            new THREE.CapsuleGeometry(
+              0.095,
+              0.42,
+              5,
+              10
+            ),
+            shirt
+          )
+        );
+
+      upper.position.set(
+        x,
+        1.38,
+        0
+      );
+
+      const lower =
+        addShadowed(
+          new THREE.Mesh(
+            new THREE.CapsuleGeometry(
+              0.08,
+              0.38,
+              5,
+              10
+            ),
+            skin
+          )
+        );
+
+      lower.position.set(
+        x,
+        0.88,
+        0
+      );
+
+      armParts.push(
+        upper,
+        lower
+      );
+    }
+
+    const legParts = [];
+
+    for (const x of [-0.17, 0.17]) {
+      const thigh =
+        addShadowed(
+          new THREE.Mesh(
+            new THREE.CapsuleGeometry(
+              0.12,
+              0.48,
+              5,
+              10
+            ),
+            pants
+          )
+        );
+
+      thigh.position.set(
+        x,
+        0.72,
+        0
+      );
+
+      const calf =
+        addShadowed(
+          new THREE.Mesh(
+            new THREE.CapsuleGeometry(
+              0.1,
+              0.42,
+              5,
+              10
+            ),
+            pants
+          )
+        );
+
+      calf.position.set(
+        x,
+        0.28,
+        0
+      );
+
+      const foot =
+        addShadowed(
+          new THREE.Mesh(
+            new THREE.BoxGeometry(
+              0.16,
+              0.1,
+              0.28
+            ),
+            shoes
+          )
+        );
+
+      foot.position.set(
+        x,
+        0.05,
+        0.05
+      );
+
+      legParts.push(
+        thigh,
+        calf,
+        foot
+      );
+    }
+
+    body.add(
+      torso,
+      head,
+      hairCap,
+      fringe,
+      ...eyes,
+      ...armParts,
+      ...legParts
+    );
+
+    body.userData = {
+      breath: 0
+    };
+
+    scene.add(body);
+  }
+
+  /* =========================================================
+     GAME STATE
+  ========================================================= */
+
+  let exterior = false;
+  let isMoving = false;
+
+  const keys = Object.create(null);
+  const clock = new THREE.Clock();
+
+  let score = 0;
+  let streak = 0;
+  let pulseCooldown = 0;
+  let elapsed = 0;
+
+  let extYaw = 0;
+  let extPitch = 0.18;
+  let extDistance = 7.5;
+
+  let pointerLocked = false;
+
+  const STAGES = [
+    {
+      name: "Stage 1",
+      color: "#ffd86b",
+      objective:
+        "Exteriorize and locate the golden beacon near the fountain.",
+      beaconPos:
+        new THREE.Vector3(
+          0,
+          1.4,
+          8
+        ),
+      beaconColor: 0xffd86b,
+      bg: 0x87ceeb,
+      fog: 0x87ceeb
+    },
+
+    {
+      name: "Stage 2",
+      color: "#72ff9a",
+      objective:
+        "Exteriorize and find the cyan beacon by the space station approach.",
+      beaconPos:
+        new THREE.Vector3(
+          -40,
+          1.5,
+          -25
+        ),
+      beaconColor: 0x39dcff,
+      bg: 0x6eb8e8,
+      fog: 0x6eb8e8
+    },
+
+    {
+      name: "Stage 3",
+      color: "#ff7a9a",
+      objective:
+        "Exteriorize and locate the violet beacon in the mountains.",
+      beaconPos:
+        new THREE.Vector3(
+          55,
+          1.6,
+          -55
+        ),
+      beaconColor: 0xc77dff,
+      bg: 0x4a6a8a,
+      fog: 0x4a6a8a
+    }
+  ];
+
+  let currentStage = 0;
+  let stageProgress = 0;
+
+  let beacon = null;
+  let beaconRing = null;
+  let beaconLight = null;
+
+  /* =========================================================
+     BEACON
+  ========================================================= */
+
+  function makeBeacon() {
+    if (beacon) {
+      scene.remove(beacon);
+      beacon.geometry.dispose();
+      beacon.material.dispose();
+    }
+
+    if (beaconRing) {
+      scene.remove(beaconRing);
+      beaconRing.geometry.dispose();
+      beaconRing.material.dispose();
+    }
+
+    if (beaconLight) {
+      scene.remove(beaconLight);
+    }
+
+    const stage =
+      STAGES[currentStage];
+
+    const pos =
+      stage.beaconPos;
+
+    beacon =
+      new THREE.Mesh(
+        new THREE.IcosahedronGeometry(
+          0.7,
+          2
+        ),
+        new THREE.MeshStandardMaterial({
+          color: stage.beaconColor,
+          emissive: stage.beaconColor,
+          emissiveIntensity: 2.8,
+          metalness: 0.3,
+          roughness: 0.2
+        })
+      );
+
+    beacon.position.copy(pos);
+    beacon.castShadow = true;
+
+    scene.add(beacon);
+
+    beaconRing =
+      new THREE.Mesh(
+        new THREE.RingGeometry(
+          1.6,
+          1.75,
+          48
+        ),
+        new THREE.MeshBasicMaterial({
+          color: stage.beaconColor,
+          transparent: true,
+          opacity: 0.65,
+          side: THREE.DoubleSide
+        })
+      );
+
+    beaconRing.rotation.x =
+      -Math.PI / 2;
+
+    beaconRing.position.set(
+      pos.x,
+      0.03,
+      pos.z
+    );
+
+    scene.add(beaconRing);
+
+    beaconLight =
+      new THREE.PointLight(
+        stage.beaconColor,
+        1.8,
+        25
+      );
+
+    beaconLight.position.copy(pos);
+
+    scene.add(beaconLight);
+
+    scene.background.setHex(
+      stage.bg
+    );
+
+    scene.fog.color.setHex(
+      stage.fog
+    );
+  }
+
+  function updateStageUI() {
+    const stage =
+      STAGES[currentStage];
+
+    stageEl.textContent =
+      `STAGE: ${stage.name}`;
+
+    stageEl.style.color =
+      stage.color;
+
+    objectiveEl.textContent =
+      stage.objective;
+
+    progressEl.style.width =
+      `${stageProgress * 100}%`;
+  }
+
+  function setStage(index) {
+    currentStage =
+      THREE.MathUtils.clamp(
+        index,
+        0,
+        STAGES.length - 1
+      );
+
+    stageProgress = 0;
+
+    makeBeacon();
+    updateStageUI();
+
+    toast(
+      `Entered ${STAGES[currentStage].name} realm`
+    );
+  }
+
+  /* =========================================================
+     CAMERA
+  ========================================================= */
+
+  function facing() {
+    return new THREE.Vector3(
+      0,
+      0,
+      -1
+    )
+      .applyQuaternion(
+        body.quaternion
+      )
+      .normalize();
+  }
+
+  function updateInteriorCamera() {
+    if (!body) return;
+
+    const direction =
+      facing();
+
+    interiorCamera.position.copy(
+      body.position
+    );
+
+    interiorCamera.position.y += 1.72;
+
+    interiorCamera.position
+      .addScaledVector(
+        direction,
+        0.15
+      );
+
+    interiorCamera.lookAt(
+      interiorCamera.position
+        .clone()
+        .addScaledVector(
+          direction,
+          10
+        )
+    );
+  }
+
+  function updateExteriorCamera() {
+    if (!body) return;
+
+    const target =
+      body.position.clone();
+
+    target.y += 1.35;
+
+    const offset =
+      new THREE.Vector3(
+        Math.sin(extYaw) *
+          Math.cos(extPitch) *
+          extDistance,
+
+        1.5 +
+          Math.sin(extPitch) *
+            2.4,
+
+        Math.cos(extYaw) *
+          Math.cos(extPitch) *
+          extDistance
+      );
+
+    exteriorCamera.position
+      .copy(target)
+      .add(offset);
+
+    exteriorCamera.lookAt(target);
+  }
+
+  function updateCameras() {
+    updateInteriorCamera();
+    updateExteriorCamera();
+  }
+
+  /* =========================================================
+     MODE
+  ========================================================= */
+
+  function setMode(value) {
+    exterior = value;
+
+    if (exterior) {
+      modeEl.textContent =
+        "EXTERIOR";
+
+      modeEl.style.color =
+        "#66ccff";
+
+      hintEl.textContent =
+        "Outside perception — orbit rotates body + camera. Scroll to zoom.";
+
+      toggleButton.textContent =
+        "INTERIORIZE · E";
+    } else {
+      modeEl.textContent =
+        "INTERIORIZED";
+
+      modeEl.style.color =
+        "red";
+
+      hintEl.textContent =
+        "Inside the body — being not knowing themselves.";
+
+      toggleButton.textContent =
+        "EXTERIORIZE · E";
+
+      document.exitPointerLock?.();
+    }
+
+    updateCameras();
+  }
+
+  /* =========================================================
+     MOVEMENT
+  ========================================================= */
+
+  function movement(dt) {
+    if (!body) return;
+
+    let forward = 0;
+    let turn = 0;
+
+    if (
+      keys.KeyW ||
+      keys.ArrowUp
+    ) {
+      forward -= 1;
+    }
+
+    if (
+      keys.KeyS ||
+      keys.ArrowDown
+    ) {
+      forward += 1;
+    }
+
+    if (
+      keys.KeyA ||
+      keys.ArrowLeft
+    ) {
+      turn += 1;
+    }
+
+    if (
+      keys.KeyD ||
+      keys.ArrowRight
+    ) {
+      turn -= 1;
+    }
+
+    if (turn) {
+      body.rotation.y +=
+        turn * 2.1 * dt;
+    }
+
+    if (forward) {
+      body.position.addScaledVector(
+        facing(),
+        forward * 3.8 * dt
+      );
+
+      body.position.y = 0;
+
+      body.position.x =
+        THREE.MathUtils.clamp(
+          body.position.x,
+          -140,
+          140
+        );
+
+      body.position.z =
+        THREE.MathUtils.clamp(
+          body.position.z,
+          -140,
+          140
+        );
+
+      isMoving = true;
+    } else {
+      isMoving = false;
+    }
+  }
+
+  /* =========================================================
+     RESET
+  ========================================================= */
+
+  function reset() {
+    if (!body) return;
+
+    body.position.set(
+      0,
+      0,
+      22
+    );
+
+    body.rotation.y =
+      Math.PI;
+
+    score = 0;
+    streak = 0;
+    elapsed = 0;
+
+    extYaw = 0;
+    extPitch = 0.18;
+    extDistance = 7.5;
+
+    currentStage = 0;
+    stageProgress = 0;
+
+    makeBeacon();
+    setMode(false);
+    updateStageUI();
+
+    toast("Drill reset");
+  }
+
+  /* =========================================================
+     TOAST
+  ========================================================= */
+
+  let toastTimer = null;
+
+  function toast(message) {
+    toastEl.textContent =
+      message;
+
+    toastEl.classList.add(
+      "show"
+    );
+
+    clearTimeout(toastTimer);
+
+    toastTimer =
+      setTimeout(() => {
+        toastEl.classList.remove(
+          "show"
+        );
+      }, 1600);
+  }
+
+  /* =========================================================
+     PULSE / OBJECTIVE
+  ========================================================= */
+
+  function pulse() {
+    if (
+      !body ||
+      pulseCooldown > 0 ||
+      !beacon
+    ) {
+      return;
+    }
+
+    pulseCooldown = 0.65;
+
+    const distance =
+      body.position.distanceTo(
+        beacon.position
+      );
+
+    if (
+      exterior &&
+      distance < 8.5
+    ) {
+      score += 250;
+      streak++;
+
+      stageProgress =
+        Math.min(
+          1,
+          stageProgress + 0.34
+        );
+
+      progressEl.style.width =
+        `${stageProgress * 100}%`;
+
+      toast("+250");
+
+      if (
+        stageProgress >= 1
+      ) {
+        if (
+          currentStage <
+          STAGES.length - 1
+        ) {
+          setTimeout(() => {
+            setStage(
+              currentStage + 1
+            );
+          }, 900);
+        } else {
+          toast(
+            "All stages complete!"
+          );
+
+          score += 1000;
+        }
+      }
+    } else {
+      score =
+        Math.max(
+          0,
+          score - 12
+        );
+
+      toast(
+        `Pulse range: ${distance.toFixed(1)} m`
+      );
+    }
+  }
+
+  /* =========================================================
+     POINTER LOCK / ORBIT
+  ========================================================= */
+
+  function onCanvasClick() {
+    if (exterior) {
+      canvas.requestPointerLock?.();
+    }
+  }
+
+  function onPointerLockChange() {
+    pointerLocked =
+      document.pointerLockElement ===
+      canvas;
+  }
+
+  function onMouseMove(event) {
+    if (
+      !pointerLocked ||
+      !exterior ||
+      !body
+    ) {
+      return;
+    }
+
+    const dx =
+      event.movementX * 0.0042;
+
+    const dy =
+      event.movementY * 0.0032;
+
+    extYaw -= dx;
+
+    extPitch =
+      THREE.MathUtils.clamp(
+        extPitch - dy,
+        -1.2,
+        1.25
+      );
+
+    body.rotation.y -= dx;
+  }
+
+  function onWheel(event) {
+    if (!exterior) return;
+
+    event.preventDefault();
+
+    extDistance =
+      THREE.MathUtils.clamp(
+        extDistance +
+          event.deltaY * 0.012,
+        2.8,
+        22
+      );
+  }
+
+  /* =========================================================
+     KEYBOARD
+  ========================================================= */
+
+  function onKeyDown(event) {
+    keys[event.code] = true;
+
+    if (
+      event.code === "KeyE" &&
+      !event.repeat
+    ) {
+      setMode(!exterior);
+    }
+
+    if (
+      event.code === "Space" &&
+      !event.repeat
+    ) {
+      event.preventDefault();
+      pulse();
+    }
+
+    if (
+      event.code === "KeyR" &&
+      !event.repeat
+    ) {
+      reset();
+    }
+  }
+
+  function onKeyUp(event) {
+    keys[event.code] = false;
+  }
+
+  /* =========================================================
+     RESIZE
+  ========================================================= */
+
+  const resizeObserver =
+    new ResizeObserver(() => {
+      const rect =
+        root.getBoundingClientRect();
+
+      const width =
+        Math.max(
+          1,
+          rect.width
+        );
+
+      const height =
+        Math.max(
+          1,
+          rect.height
+        );
+
+      renderer.setSize(
+        width,
+        height,
+        false
+      );
+
+      exteriorCamera.aspect =
+        width / height;
+
+      exteriorCamera.updateProjectionMatrix();
+
+      interiorCamera.aspect =
+        width / height;
+
+      interiorCamera.updateProjectionMatrix();
+    });
+
+  /* =========================================================
+     RENDER
+  ========================================================= */
+
+  function render() {
+    renderer.render(
+      scene,
+      exterior
+        ? exteriorCamera
+        : interiorCamera
+    );
+  }
+
+  /* =========================================================
+     ANIMATION
+  ========================================================= */
+
+  let running = true;
+
+  function animate() {
+    if (!running) return;
+
+    requestAnimationFrame(
+      animate
+    );
+
+    const dt =
+      Math.min(
+        clock.getDelta(),
+        0.05
+      );
+
+    elapsed += dt;
+
+    pulseCooldown =
+      Math.max(
+        0,
+        pulseCooldown - dt
+      );
+
+    /* Beacon animation */
+    if (beacon) {
+      beacon.rotation.y +=
+        dt * 1.1;
+
+      beacon.position.y =
+        STAGES[currentStage]
+          .beaconPos.y +
+        Math.sin(
+          elapsed * 2.2
+        ) * 0.22;
+
+      if (beaconRing) {
+        beaconRing.rotation.z +=
+          dt * 0.4;
+      }
+    }
+
+    /* Space station */
+    if (spaceStation) {
+      spaceStation.rotation.y +=
+        dt * 0.07;
+
+      spaceStation.position.y =
+        28 +
+        Math.sin(
+          elapsed * 0.35
+        ) * 1.6;
+    }
+
+    /* Human idle breathing */
+    if (
+      body &&
+      !isMoving
+    ) {
+      body.userData.breath +=
+        dt * 1.8;
+
+      body.scale.y =
+        1 +
+        Math.sin(
+          body.userData.breath
+        ) * 0.012;
+    } else if (body) {
+      body.scale.y = 1;
+    }
+
+    movement(dt);
+    updateCameras();
+
+    /* UI */
+    scoreEl.textContent =
+      score;
+
+    streakEl.textContent =
+      streak;
+
+    if (
+      body &&
+      beacon
+    ) {
+      rangeEl.textContent =
+        body.position
+          .distanceTo(
+            beacon.position
+          )
+          .toFixed(1) +
+        " m";
+    }
+
+    render();
+  }
+
+  /* =========================================================
+     EVENTS
+  ========================================================= */
+
+  canvas.addEventListener(
+    "click",
+    onCanvasClick
+  );
+
+  document.addEventListener(
+    "pointerlockchange",
+    onPointerLockChange
+  );
+
+  document.addEventListener(
+    "mousemove",
+    onMouseMove
+  );
+
+  canvas.addEventListener(
+    "wheel",
+    onWheel,
+    { passive: false }
+  );
+
+  window.addEventListener(
+    "keydown",
+    onKeyDown
+  );
+
+  window.addEventListener(
+    "keyup",
+    onKeyUp
+  );
+
+  toggleButton.addEventListener(
+    "click",
+    () => {
+      setMode(!exterior);
+      canvas.focus();
+    }
+  );
+
+  resizeObserver.observe(root);
+
+  /* =========================================================
+     CLEANUP
+  ========================================================= */
+
+  function destroy() {
+    running = false;
+
+    canvas.removeEventListener(
+      "click",
+      onCanvasClick
+    );
+
+    document.removeEventListener(
+      "pointerlockchange",
+      onPointerLockChange
+    );
+
+    document.removeEventListener(
+      "mousemove",
+      onMouseMove
+    );
+
+    canvas.removeEventListener(
+      "wheel",
+      onWheel
+    );
+
+    window.removeEventListener(
+      "keydown",
+      onKeyDown
+    );
+
+    window.removeEventListener(
+      "keyup",
+      onKeyUp
+    );
+
+    resizeObserver.disconnect();
+
+    document.exitPointerLock?.();
+
+    renderer.dispose();
+  }
+
+  /*
+     Expose a tiny public API on the mount element.
+     This lets the host page control the widget without
+     depending on any internal variables.
+  */
+
+  mount.exteriorization = {
+    reset,
+    exteriorize() {
+      setMode(true);
+    },
+    interiorize() {
+      setMode(false);
+    },
+    pulse,
+    destroy
+  };
+
+  /* =========================================================
+     INIT
+  ========================================================= */
+
+  createHuman();
+  makeBeacon();
+  updateStageUI();
+
+  loading.classList.add(
+    "hidden"
+  );
+
+  reset();
+
+  animate();
+})();
+</script>
+    </div>
+    
+    <script>
+    function toggleExt() {
+      	const ext=document.getElementById("exteriorization-embed");
+      	const b=document.getElementById("toggleExt");
+//      	alert(ext.style.display);
+      	if (ext.style.display==='none'||ext.style.display==='') {ext.style.display='block';b.textContent="Hide Exteriorization Game";}
+      	else{ext.style.display='none';b.textContent="Show Exteriorization Game";  }
+ 
+    }
+    
+      window.addEventListener("keydown", function(e) {
+      	const ext=document.getElementById("exteriorization-embed");
+
+      	if (ext.style.display==='none') return;
+
+      	
+        // Array of key codes and key values that cause page scrolling
+        const scrollKeys = [
+          "Space", " ",
+          "ArrowUp",
+          "ArrowDown",
+          "ArrowLeft",
+          "ArrowRight",
+          "PageUp",
+          "PageDown",
+          "Home",
+          "End"
+        ];
+    
+        if (scrollKeys.includes(e.key) || scrollKeys.includes(e.code)) {
+          e.preventDefault();
+        }
+      }, { passive: false });
+    </script>
+
+    
   </div>
 </section>
 
@@ -568,7 +3483,6 @@ Does this imply some kind of EXTREME conspiracy theory style narrative, like wha
 
 
 <section id="traps">
-  <div class="eyebrow">11 — Theory</div>
   <h2>Trap Theory</h2>
 
 
@@ -761,27 +3675,266 @@ There are going to be MANY aspects of its "construction" that are lies and are n
 
 </section>
 
+<section id="hist">
+  <h2>Commentary on Historical Background</h2>
+  <pre>Koans originate from Chan Buddhism, which turned into Zen.
+
+Not all koans are on the level of other koans. But here is a list of good ones. There are surely others.
+
+Even if ones ontology isn't trying to "destroy" or deny the self, as in Jainism and Scientology, these are quite valuable.
+
+These are all from China, with some Indian and Japanese origin also.
+
+These are actually good pieces of technology to mull over (if one wants to), and so are included here.
+
+These ones actually increase ability.
+
+
+One doubts any beings have really attained an enlightened state in thousands of years with typical Buddhist and Hindu "technologies", which are not strong.
+
+However, if someone exclusively used these koans, maybe they would have gotten somewhere.
+
+
+Increase cause over symbols  
+<b>1. “What is your name before you were named?”</b> (variant of the classic “original face before your parents were born”)
+   - Date: Tang dynasty core (8th–9th c.), popularized in Song collections  
+   - Country: China  
+   - Link / source: Classic form in Platform Sutra and Gateless Barrier Case 23 (Huineng / Sixth Patriarch): https://terebess.hu/zen/mesterek/Huineng.html and https://terebess.hu/zen/Wumenguan.pdf
+
+Exteriorization  
+<b>2. “The gate has no lock, so why do you ask for a key?”</b>  
+   - Date: Attributed to Sengcan (d. 606), though the exact wording is later traditional  
+   - Country: China  
+   - Link / source: Associated with early Chan / Xinxin Ming tradition: https://en.wikipedia.org/wiki/Sengcan
+
+Knowing where one is as a being  
+<b>3. “If you cannot find reality right here, where else will you look?”</b>  
+   - Date: Traditional / oral (exact master “Shisou” not clearly attested in major records)  
+   - Country: China  
+   - Link / source: No firm classical match located; fits general Tang–Song Chan rhetoric of immediacy.
+
+Automatic processes. This is quite something. Automatic processes, and the other areas. I dont know if anyone has explored this very much.  
+<b>4. “When it rains, look at the dry ground.”</b>
+   - Date: Traditional oral  
+   - Country: China  
+   - Link / source: No exact classical match found in major gong’an collections; related rain/ground imagery appears in various Chan verses.
+
+Control of communication  
+<b>5. “Before you speak, to whom do you speak?”</b>
+   - Date: Traditional / oral (“Ancient Master”)  
+   - Country: China  
+   - Link / source: No specific classical case located.
+
+Understanding context one is in  
+<b>6. “A white cloud does not look at the sky.”</b>
+   - Date: Traditional / Song-period style imagery  
+   - Country: China  
+   - Link / source: Related cloud/sky imagery appears in Shitou and later Chan poetry (e.g., “the expansive sky does not obstruct the floating white clouds”); no exact Case 71 match in Blue Cliff Record.
+
+Understanding “hellishness” one is in  
+<b>7. “Where do you find safety in a burning house?”</b>
+   - Date: Image from Lotus Sutra (earlier), used in Chan from Tang onward  
+   - Country: India (sutra) → China (Chan use)  
+   - Link / source: Lotus Sutra parable of the burning house; Chan applications common.
+
+<b>8. “A single lotus flower blooming in the midst of fire.”</b>
+   - Date: Classical image (already in Vimalakīrti Sūtra and Yongjia’s Song of Enlightenment, 7th–8th c.); frequently used by Dōgen and later teachers  
+   - Country: China / Japan  
+   - Link / source: Common Chan/Zen image; see Dōgen’s Shōbōgenzō and related commentaries.
+
+Not compulsive perception  
+<b>9. “The true eye sees nothing at all.”</b>
+    - Date: Traditional / Song style  
+    - Country: China  
+    - Link / source: No exact Case 88 match in Blue Cliff Record for this wording (Case 88 is Xuansha’s three ailments).
+
+Humility  
+<b>10. “The true person of no rank comes out from your face.”</b>
+    - Date: Mid-9th century (Linji Yixuan, d. 866)  
+    - Country: China  
+    - Link / source: Record of Linji / Book of Equanimity Case 38: https://en.wikipedia.org/wiki/Linji_Yixuan and https://oneriverzen.org/blog/rinzais-true-man-of-no-rank-shyroku-case-38
+
+Being a strong being  
+<b>11. “The iron ox does not fear the bite of a tiger.”  </b>
+    - Date: Song dynasty collections (iron-ox imagery appears in Blue Cliff Record Case 38 and Book of Equanimity Case 29; tiger imagery in other cases)  
+    - Country: China  
+    - Link / source: Related iron-ox cases: https://en.wikipedia.org/wiki/Blue_Cliff_Record (Case 38) and related commentaries.
+</pre>
+</section>
+
 <section id="sop">
   <h2>SOP</h2>
   <pre>SOP (numbers will be fixed later)
 
 
 
-0. Minding business, etc.
+0. Minding business, etc. Give the person back control of basic things. Could be repeated later is a way to assist someone, stress relief, etc. Light (high-accessibility), but still very powerful.
 
 
-   1. Mind your own business.
-   2. Play an empty game.
-   3. Do nothing.
-   4. Use an empty life limitation.
-   5. Spot a spot in space.
-   6. Spot a non-communication.
-   7. Spot a non-problem.
-   8. Step out of the universe not being entirely yours.
-   9. Step out of not being in touch with reality.
-  10. Step out of being out of communication with reality.
-  11. Touch the table.
-  12. How does it feel?
+   1. Say 'I am seeking full personal freedom and calmness. I want to be free and have no bad things.'
+
+
+0-1. Contact reality.
+
+
+   2. Touch the table.
+   3. Touch your head.
+
+
+0-2. Handle interiorization.
+
+
+   4. Spot three things which you could be inside of for 100 years.
+   5. Spot another three things which you could be inside of for 1000 years.
+   6. Put your attention on the table and don't hear anything from it.
+   7. Widen your attention even further and don't hear anything from it.
+   8. Widen your attention even further and don't hear anything from it.
+
+
+0-3.
+
+
+   9. Mind your own business.
+  10. Play an empty game.
+  11. Do nothing.
+  12. Do something.
+  13. Use an empty life limitation.
+  14. Use an empty purpose.
+  15. Fight an empty barrier.
+  16. Spot a spot in space.
+  17. Spot a non-communication.
+  18. Spot a non-problem.
+  19. Spot non-knowledge.
+  20. Rage at a nothing.
+  21. Don't lose yourself
+  22. Don't find yourself.
+  23. Don't know yourself.
+  24. Don't kill yourself.
+  25. Don't trust yourself.
+  26. Recall nothing.
+  27. Don't recall nothing.
+  28. Communicate to no person.
+  29. Solve a nothing.
+  30. Don't operate.
+  31. Don't control yourself.
+  32. Don't start yourself.
+  33. Don't change yourself.
+  34. Don't stop yourself.
+  35. Don't Show.
+  36. Don't Show.
+  37. Don't Show.
+  38. Don't Show.
+  39. Don't Show.
+  40. Don't be fine.
+  41. Don't be okay.
+  42. Don't be happy.
+  43. Don't be responsible for your condition.
+  44. Don't be responsible for your mind.
+  45. Don't be physically stable.
+  46. Don't be mentally stable.
+  47. Don't sink.
+  48. Don't hear the center of the earth.
+  49. Don't hear Niagara Falls.
+  50. Don't smell the center of the earth.
+  51. Don't smell Niagara Falls.
+  52. Think of the body.
+  53. Don't touch the table.
+  54. Touch the table.
+  55. Touch the table and feel something.
+  56. Touch the table and feel nothing.
+  57. Touch the table and feel something.
+  58. Touch the table and feel nothing.
+  59. Look around here and find something that might be okay to continue existing.
+  60. Think thoughts.
+  61. Emote an emotion.
+  62. Emote an emotion.
+  63. Emote an emotion.
+  64. Emote an emotion.
+  65. Emote an emotion.
+  66. Effort an effort.
+  67. Effort an effort.
+  68. Effort an effort.
+  69. Effort an effort.
+  70. Effort an effort.
+  71. Think a thought.
+  72. Think a thought.
+  73. Think a thought.
+  74. Think a thought.
+  75. Think a thought.
+  76. Symbolize a symbol.
+  77. Symbolize a symbol.
+  78. Symbolize a symbol.
+  79. Symbolize a symbol.
+  80. Symbolize a symbol.
+  81. Eat some eatingness.
+  82. Eat some eatingness.
+  83. Eat some eatingness.
+  84. Eat some eatingness.
+  85. Eat some eatingness.
+  86. Sex some sexingness.
+  87. Sex some sexingness.
+  88. Sex some sexingness.
+  89. Sex some sexingness.
+  90. Sex some sexingness.
+  91. Mystery some mystery.
+  92. Mystery some mystery.
+  93. Mystery some mystery.
+  94. Mystery some mystery.
+  95. Mystery some mystery.
+  96. Wait some waitingness.
+  97. Wait some waitingness.
+  98. Wait some waitingness.
+  99. Wait some waitingness.
+ 100. Wait some waitingness.
+ 101. Unconscious some unconsciousness.
+ 102. Unconscious some unconsciousness.
+ 103. Unconscious some unconsciousness.
+ 104. Unconscious some unconsciousness.
+ 105. Unconscious some unconsciousness.
+ 106. Unknowable some unknowableness.
+ 107. Unknowable some unknowableness.
+ 108. Unknowable some unknowableness.
+ 109. Unknowable some unknowableness.
+ 110. Unknowable some unknowableness.
+ 111. Have someone else stop you.
+ 112. Have someone else change you.
+ 113. Have someone else start you.
+ 114. Step out of the universe not being entirely yours.
+ 115. Step out of not being in touch with reality.
+ 116. Step out of being out of communication with reality.
+
+
+0-1.
+
+
+ 117. Have a symbol come at you.
+ 118. Have a symbol come at you.
+ 119. Have a symbol come at you.
+ 120. Have a symbol come at you.
+ 121. Have a symbol come at you.
+ 122. Have a good symbol come at you.
+ 123. Have a good symbol come at you.
+ 124. Have a good symbol come at you.
+ 125. Have a good symbol come at you.
+ 126. Have a good symbol come at you.
+ 127. Have a bad symbol come at you.
+ 128. Have a bad symbol come at you.
+ 129. Have a bad symbol come at you.
+ 130. Have a bad symbol come at you.
+ 131. Have a bad symbol come at you.
+ 132. Have someone else symbolize a symbol.
+ 133. Have others symbolize symbols.
+ 134. Symbolize an orderly body.
+ 135. Symbolize continuity of your mother.
+ 136. Symbolize the death of your body.
+ 137. Symbolize complete victory over life.
+ 138. Symbolize complete control over a body.
+ 139. Symbolize complete ownership over a body.
+ 140. Have others symbolize that you have complete control over a body.
+ 141. Have others symbolize that you have complete ownership over a body.
+ 142. Have others symbolize that you got the body right.
+ 143. Have others symbolize that you got the body well.
+ 144. Clap on behalf of others that you fully corrected your body.
 
 
 1. Make the body more potentially mobile.
@@ -804,64 +3957,64 @@ Exteriorization by body confusion?
 
 
 
-  13. Don't understand the body's meaning.
-  14. Don't understand the body's meaning as it relates to musts.
-  15. Don't understand the body's meaning as it relates to needs.
-  16. Don't understand the body's meaning as it relates to wants.
-  17. Don't understand why you are interested in the body.
-  18. Become confused why you are interested in the body.
-  19. Don't understand why you should care about the body's health.
-  20. Don't understand the body's regular mobility.
-  21. Don't understand why you are interested in controlling the body.
-  22. Become confused why you are interested in controlling the body.
-  23. Don't understand why you are interested in owning the body.
-  24. Become confused why you are interested in owning the body.
-  25. Think at the body.
-  26. Have the body think at you.
-  27. Don't understand why you are interested in approval from bodies.
-  28. Become confused why you are interested in approval from bodies.
-  29. Have the body approve of you.
-  30. Approve of your body.
-  31. Have the body mystery at you.
-  32. Have the body wait at you.
-  33. Wait at the body.
-  34. Have the body thoroughly Wait at you.
-  35. Don't unconscious to know.
-  36. Have the body unconscious at you.
-  37. Unconscious at the body.
-  38. Have your foot unconscious at your other foot.
-  39. Have your knee unconscious at your other knee.
-  40. Have your hand unconscious at your other hand.
-  41. Have your ear unconscious at your other ear.
-  42. Say 'My head isn't mobile.'
-  43. Say 'My body isn't mobile.'
-  44. Annul the mobility of your body.
-  45. Grab your knees and annul the mobility of your body.
-  46. Annul the mobility of your head.
-  47. Grab your head and annul the mobility of your head.
-  48. Annul the mobility of your body without getting approval from it.
-  49. Grab your knees and annul the mobility of your body without getting approval from it.
-  50. Annul the mobility of your body without needing it.
-  51. Grab your knees and annul the mobility of your body without needing it.
-  52. Annul the mobility of your body without worshipping it.
-  53. Grab your knees and annul the mobility of your body without worshipping it.
-  54. Annul the mobility of your body without sacrificing to it.
-  55. Grab your knees and annul the mobility of your body without sacrificing to it.
-  56. Annul the mobility of your body without hiding.
-  57. Grab your knees and annul the mobility of your body without hiding.
-  58. What about your body do you want to not be mobile?
-  59. Make it mobile.
-  60. Make it as mobile as possible.
-  61. Spot 3 spots in your body that are mobile.
-  62. Spot 3 spots in the universe that are mobile.
-  63. Waste the immobility of the body.
-  64. Get the idea 'all my deepest urges and ambitions for this body', are fully mobile urges and ambitions.
-  65. Grab your head and say out loud 'My head is mobile'
-  66. How mobile could your body be while still surviving?
-  67. Don't hold your body still.
-  68. Spot a spot in space and don't hold your body still.
-  69. Spot two spot in space and don't hold your body still.
-  70. Spot three spot in space and don't hold your body still.
+ 145. Don't understand the body's meaning.
+ 146. Don't understand the body's meaning as it relates to musts.
+ 147. Don't understand the body's meaning as it relates to needs.
+ 148. Don't understand the body's meaning as it relates to wants.
+ 149. Don't understand why you are interested in the body.
+ 150. Become confused why you are interested in the body.
+ 151. Don't understand why you should care about the body's health.
+ 152. Don't understand the body's regular mobility.
+ 153. Don't understand why you are interested in controlling the body.
+ 154. Become confused why you are interested in controlling the body.
+ 155. Don't understand why you are interested in owning the body.
+ 156. Become confused why you are interested in owning the body.
+ 157. Think at the body.
+ 158. Have the body think at you.
+ 159. Don't understand why you are interested in approval from bodies.
+ 160. Become confused why you are interested in approval from bodies.
+ 161. Have the body approve of you.
+ 162. Approve of your body.
+ 163. Have the body mystery at you.
+ 164. Have the body wait at you.
+ 165. Wait at the body.
+ 166. Have the body thoroughly Wait at you.
+ 167. Don't unconscious to know.
+ 168. Have the body unconscious at you.
+ 169. Unconscious at the body.
+ 170. Have your foot unconscious at your other foot.
+ 171. Have your knee unconscious at your other knee.
+ 172. Have your hand unconscious at your other hand.
+ 173. Have your ear unconscious at your other ear.
+ 174. Say 'My head isn't mobile.'
+ 175. Say 'My body isn't mobile.'
+ 176. Annul the mobility of your body.
+ 177. Grab your knees and annul the mobility of your body.
+ 178. Annul the mobility of your head.
+ 179. Grab your head and annul the mobility of your head.
+ 180. Annul the mobility of your body without getting approval from it.
+ 181. Grab your knees and annul the mobility of your body without getting approval from it.
+ 182. Annul the mobility of your body without needing it.
+ 183. Grab your knees and annul the mobility of your body without needing it.
+ 184. Annul the mobility of your body without worshipping it.
+ 185. Grab your knees and annul the mobility of your body without worshipping it.
+ 186. Annul the mobility of your body without sacrificing to it.
+ 187. Grab your knees and annul the mobility of your body without sacrificing to it.
+ 188. Annul the mobility of your body without hiding.
+ 189. Grab your knees and annul the mobility of your body without hiding.
+ 190. What about your body do you want to not be mobile?
+ 191. Make it mobile.
+ 192. Make it as mobile as possible.
+ 193. Spot three spots in your body that are mobile.
+ 194. Spot three spots in the universe that are mobile.
+ 195. Waste the immobility of the body.
+ 196. Get the idea 'all my deepest urges and ambitions for this body, are fully mobile urges and ambitions.'
+ 197. Grab your head and say out loud 'My head is mobile'
+ 198. How mobile could your body be while still surviving?
+ 199. Don't hold your body still.
+ 200. Spot a spot in space and don't hold your body still.
+ 201. Spot two spot in space and don't hold your body still.
+ 202. Spot three spot in space and don't hold your body still.
 
 
 2. Making being in control of emotioning to know to waiting to know and controlling bodies to being objects.
@@ -870,185 +4023,174 @@ Possibly simplifies their life, makes apparent old games or purposes, makes them
 Might exteriorize them by itself
 
 
-  71. Who are you emoting for?
-  72. Who are you controlling bodies for?
-  73. Who are you efforting for?
-  74. Who are you protecting bodies for?
-  75. Who are you owning bodies for?
-  76. Who are you thinking for?
-  77. Who are you getting approval from bodies for?
-  78. Who are you needing bodies for?
-  79. Who are you symbolizing for?
-  80. Who are you trying to show things to?
-  81. Who are you worshipping bodies for?
-  82. Who are you eating for?
-  83. Who are you sacrificing for?
-  84. Who are you sexing for?
-  85. Who are you hiding for?
-  86. Who are you being in mystery for?
-  87. Who are you being objects for?
-  88. Who are you waiting for?
+ 203. Who are you emoting for?
+ 204. Who are you controlling bodies for?
+ 205. Who are you efforting for?
+ 206. Who are you protecting bodies for?
+ 207. Who are you owning bodies for?
+ 208. Who are you thinking for?
+ 209. Who are you getting approval from bodies for?
+ 210. Who are you needing bodies for?
+ 211. Who are you symbolizing for?
+ 212. Who are you trying to show things to?
+ 213. Who are you worshipping bodies for?
+ 214. Who are you eating for?
+ 215. Who are you sacrificing for?
+ 216. Who are you sexing for?
+ 217. Who are you hiding for?
+ 218. Who are you being in mystery for?
+ 219. Who are you being objects for?
+ 220. Who are you waiting for?
 
 
 3. Handles approval from bodies, needing bodies, symbols and worse things
 Handles obsessive interiorization, could exteriorize someone by itself
 
 
-  89. Don't show to anyone that your body has use.
-  90. Don't show to anyone that your body is healthy.
-  91. Don't show to anyone that your body is surviving.
-  92. Don't show to anyone that your body is stable.
-  93. Don't show to anyone that your body has overcome damage.
-  94. Don't show to anyone that your body has overcome confusion.
-  95. Don't show to anyone that your body has overcome pain.
+ 221. Don't show to anyone that your body has use.
+ 222. Don't show to anyone that your body is healthy.
+ 223. Don't show to anyone that your body is surviving.
+ 224. Don't show to anyone that your body is stable.
+ 225. Don't show to anyone that your body has overcome damage.
+ 226. Don't show to anyone that your body has overcome confusion.
+ 227. Don't show to anyone that your body has overcome pain.
 
 
 4. By mock ups (well, mock ups of getting rid of things), gets the person able to get rid of what he feels he "needs".
 Could be very useful. Could exteriorize someone by itself.
 
 
-  96. Get rid of a useful body.
-  97. Get rid of a non-useful body.
-  98. Get rid of a surviving body.
-  99. Get rid of a non-surviving body.
- 100. Get rid of a stable body.
- 101. Get rid of a non-stable body.
- 102. Get rid of a body that has overcome damage.
- 103. Get rid of a body that has not overcome damage.
- 104. Get rid of a body that has overcome confusion.
- 105. Get rid of a body that has not overcome confusion.
- 106. Get rid of a body that has overcome pain.
- 107. Get rid of a body that has not overcome pain.
+ 228. Get rid of a useful body.
+ 229. Get rid of a non-useful body.
+ 230. Get rid of a surviving body.
+ 231. Get rid of a non-surviving body.
+ 232. Get rid of a stable body.
+ 233. Get rid of a non-stable body.
+ 234. Get rid of a body that has overcome damage.
+ 235. Get rid of a body that has not overcome damage.
+ 236. Get rid of a body that has overcome confusion.
+ 237. Get rid of a body that has not overcome confusion.
+ 238. Get rid of a body that has overcome pain.
+ 239. Get rid of a body that has not overcome pain.
 
 
 5. Materialism is the huge lie. This allows someone to get rid of things.
 
 
- 108. Get rid of the mass of materialism.
- 109. Get rid of the meaning of materialism.
- 110. Get rid of the mobility of materialism.
- 111. Get rid of materialism.
- 112. Get rid of materialism in many ways.
- 113. Waste materialism.
- 114. Keep the table from going away.
- 115. Try not to be 10 feet back of your head.
+ 240. Get rid of the mass of materialism.
+ 241. Get rid of the meaning of materialism.
+ 242. Get rid of the mobility of materialism.
+ 243. Get rid of materialism.
+ 244. Get rid of materialism in many ways.
+ 245. Waste materialism.
+ 246. What would happen if you separated from materialism?
+ 247. What would happen if another separated from materialism?
+ 248. What would happen if others separated from materialism?
+ 249. What would happen if materialism separated from you?
+ 250. Keep the table from going away.
+ 251. Try not to be 10 feet back of your head.
 
 
 6. Gets rid of symbols. This is the problem in exteriorization. It is intimate.
 Also get the person to determine orientation points. So we don't just get rid of symbols.
 
 
- 116. Get rid of the mass of your name.
- 117. Get rid of the meaning of your name.
- 118. Get rid of the mobility of your name.
- 119. Notice an object and tell it out loud where it is.
- 120. Keep the table from going away.
- 121. Try not to be 10 feet back of your head.
- 122. Get rid of the mass of your body.
- 123. Get rid of the meaning of your body.
- 124. Get rid of the mobility of your body.
- 125. Notice an object and tell it out loud where it is.
- 126. Keep the table from going away.
- 127. Try not to be 10 feet back of your head.
- 128. Get rid of the mass of your family.
- 129. Get rid of the meaning of your family.
- 130. Get rid of the mobility of your family.
- 131. Notice an object and tell it out loud where it is.
- 132. Keep the table from going away.
- 133. Try not to be 10 feet back of your head.
- 134. Get rid of the mass of a city you used to live in.
- 135. Get rid of the meaning of a city you used to live in.
- 136. Get rid of the mobility of a city you used to live in.
- 137. Notice an object and tell it out loud where it is.
- 138. Keep the table from going away.
- 139. Try not to be 10 feet back of your head.
- 140. Get rid of the mass of your country.
- 141. Get rid of the meaning of your country.
- 142. Get rid of the mobility of your country.
- 143. Notice an object and tell it out loud where it is.
- 144. Keep the table from going away.
- 145. Try not to be 10 feet back of your head.
- 146. Get rid of the mass of pain.
- 147. Get rid of the meaning of pain.
- 148. Get rid of the mobility of pain.
- 149. Notice an object and tell it out loud where it is.
- 150. Keep the table from going away.
- 151. Try not to be 10 feet back of your head.
- 152. Get rid of the mass of drugs.
- 153. Get rid of the meaning of drugs.
- 154. Get rid of the mobility of drugs.
- 155. Notice an object and tell it out loud where it is.
- 156. Keep the table from going away.
- 157. Try not to be 10 feet back of your head.
- 158. Get rid of the mass of hypnosis.
- 159. Get rid of the meaning of hypnosis.
- 160. Get rid of the mobility of hypnosis.
- 161. Notice an object and tell it out loud where it is.
- 162. Keep the table from going away.
- 163. Try not to be 10 feet back of your head.
- 164. How are you separate from your name?
- 165. How is your name separate from you?
- 166. Tell me some names you can get rid of.
- 167. Tell me some bodies you can get rid of.
+ 252. Get rid of the mass of your name.
+ 253. Get rid of the meaning of your name.
+ 254. Get rid of the mobility of your name.
+ 255. Notice an object and tell it out loud where it is.
+ 256. Keep the table from going away.
+ 257. Try not to be 10 feet back of your head.
+ 258. Get rid of the mass of your body.
+ 259. Get rid of the meaning of your body.
+ 260. Get rid of the mobility of your body.
+ 261. Notice an object and tell it out loud where it is.
+ 262. Keep the table from going away.
+ 263. Try not to be 10 feet back of your head.
+ 264. Get rid of the mass of your family.
+ 265. Get rid of the meaning of your family.
+ 266. Get rid of the mobility of your family.
+ 267. Notice an object and tell it out loud where it is.
+ 268. Keep the table from going away.
+ 269. Try not to be 10 feet back of your head.
+ 270. Get rid of the mass of a city you used to live in.
+ 271. Get rid of the meaning of a city you used to live in.
+ 272. Get rid of the mobility of a city you used to live in.
+ 273. Notice an object and tell it out loud where it is.
+ 274. Keep the table from going away.
+ 275. Try not to be 10 feet back of your head.
+ 276. Get rid of the mass of your country.
+ 277. Get rid of the meaning of your country.
+ 278. Get rid of the mobility of your country.
+ 279. Notice an object and tell it out loud where it is.
+ 280. Keep the table from going away.
+ 281. Try not to be 10 feet back of your head.
+ 282. Get rid of the mass of pain.
+ 283. Get rid of the meaning of pain.
+ 284. Get rid of the mobility of pain.
+ 285. How are you separate from your name?
+ 286. How is your name separate from you?
+ 287. Tell me some names you can get rid of.
+ 288. Tell me some bodies you can get rid of.
 
 
 7. Get rid of different methods of knowingness. This probably helps with exteriorization.
 
 
- 168. Tell me some mystery you could get rid of.
- 169. Tell me some eating you could get rid of.
- 170. Tell me some symbols you could get rid of.
- 171. Tell me some thinking you could get rid of.
- 172. Tell me some emotion you could get rid of.
+ 289. Tell me some mystery you could get rid of.
+ 290. Tell me some eating you could get rid of.
+ 291. Tell me some symbols you could get rid of.
+ 292. Tell me some thinking you could get rid of.
+ 293. Tell me some emotion you could get rid of.
 
 
 8. The idea is that unknowableness or similar very low emotions, could act as stable data in a confusion, the stable datum being that many things about
 the object or thing are NOT KNOWN. This could give one a sense of calm, and could help to exteriorize someone.
 
 
- 173. Spot some unknowableness.
- 174. Spot some more unknowableness.
- 175. Spot some more unknowableness.
- 176. Instantly Spot some unknowableness.
- 177. What confusion could unknowableness solve?
- 178. What other confusion could unknowableness solve?
+ 294. Spot some unknowableness.
+ 295. Spot some more unknowableness.
+ 296. Spot some more unknowableness.
+ 297. Instantly Spot some unknowableness.
+ 298. What confusion could unknowableness solve?
+ 299. What other confusion could unknowableness solve?
 
 
 9. Here we are putting someone in control of low order methods of knowingness. We are making them not do a method of knowingness. This can help with exteriorization.
 
 
- 179. Spot a spot in space and don't effort.
- 180. Spot a spot in space and don't mystery.
- 181. Spot a spot in space and don't symbolize.
- 182. Spot a spot in space where there is no effort.
- 183. Get rid of Effort in your mind.
- 184. Get rid of Effort in your body.
- 185. Spot 3 spots in space where there is no effort.
- 186. Spot 3 spots in your body there is no effort.
- 187. How much Effort could there be in locating yourself?
- 188. How much Effort could there not be in locating yourself?
- 189. Spot a spot in space where there is no thinking.
- 190. Get rid of Thinking in your mind.
- 191. Get rid of Thinking in your body.
- 192. Spot 3 spots in space where there is no thinking.
- 193. Spot 3 spots in your body there is no thinking.
- 194. How much Effort could there be in locating yourself?
- 195. How much Effort could there not be in locating yourself?
- 196. How much Thinking could there be in locating yourself?
- 197. How much Thinking could there not be in locating yourself?
- 198. What would happen if you were ten feet back of your head without effort?
- 199. What would happen if you were ten feet back of your head without symbols?
- 200. What would happen if you were ten feet back of your head without thinking?
- 201. What would happen if you were ten feet back of your head without eating?
+ 300. Spot a spot in space and don't effort.
+ 301. Spot a spot in space and don't mystery.
+ 302. Spot a spot in space and don't symbolize.
+ 303. Spot a spot in space where there is no effort.
+ 304. Get rid of Effort in your mind.
+ 305. Get rid of Effort in your body.
+ 306. Spot three spots in space where there is no effort.
+ 307. Spot three spots in your body there is no effort.
+ 308. How much Effort could there be in locating yourself?
+ 309. How much Effort could there not be in locating yourself?
+ 310. Spot a spot in space where there is no thinking.
+ 311. Get rid of Thinking in your mind.
+ 312. Get rid of Thinking in your body.
+ 313. Spot three spots in space where there is no thinking.
+ 314. Spot three spots in your body there is no thinking.
+ 315. How much Effort could there be in locating yourself?
+ 316. How much Effort could there not be in locating yourself?
+ 317. How much Thinking could there be in locating yourself?
+ 318. How much Thinking could there not be in locating yourself?
+ 319. What would happen if you were ten feet back of your head without effort?
+ 320. What would happen if you were ten feet back of your head without symbols?
+ 321. What would happen if you were ten feet back of your head without thinking?
+ 322. What would happen if you were ten feet back of your head without eating?
 
 
 10. Here we are changing considerations of control. Lack of Control can impede (or suppress) exteriorization.
 
 
- 202. Who could control your body?
- 203. Who could your body control?
- 204. Who could control your head?
- 205. Who could your head control?
+ 323. Who could control your body?
+ 324. Who could your body control?
+ 325. Who could control your head?
+ 326. Who could your head control?
 
 
 11. One is trapped by those things to which he will not "grant havingness" (freely allowing to affect or potentially affect things or oneself, essentially).
@@ -1056,286 +4198,372 @@ The basic havingness that the being is denying the trap is denying the trap a be
 Since the body is kind of a trap (or at least one kind of thinks it is or is acting kind of life one), allowing ones body to get taken over etc. can help with exteriorization.
 
 
- 206. Name me ten beings that you could allow your body to take over.
- 207. Name me ten beings that you could allow to take over your body.
- 208. Name me ten beings that you could allow your body to control.
- 209. Name me ten beings that you could allow to control your body.
- 210. Be ten feet back of your head.
+ 327. Name me ten beings that you could allow your body to take over.
+ 328. Name me ten beings that you could allow to take over your body.
+ 329. Name me ten beings that you could allow your body to control.
+ 330. Name me ten beings that you could allow to control your body.
+ 331. Be ten feet back of your head.
 
 
 12. This leads to substitutes, which is easy, low order, and can handle issues with stable data or with confusions. This can help with exteriorization.
 
 
- 211. Look around here and find a subtitute for your body.
- 212. Look around here and find a substitute for your head.
- 213. Look around here and find a substitute for the confusion of your entire life.
- 214. Look around here and find a substitute for the confusion of the last few days.
- 215. Look around here and find a substitute for your current location.
- 216. Look around here and find a substitute for your living a life.
- 217. Look around here and find a substitute for dealing with a body.
- 218. Look around here and find a substitute for all the pain your body has ever felt.
- 219. Look around here and find a substitute for all the pain your body could feel.
- 220. Look around here and find a substitute for all the hunger your body could feel.
+ 332. Look around here and find a subtitute for your body.
+ 333. Look around here and find a substitute for your head.
+ 334. Look around here and find a substitute for the confusion of your entire life.
+ 335. Look around here and find a substitute for the confusion of the last few days.
+ 336. Look around here and find a substitute for your current location.
+ 337. Look around here and find a substitute for your living a life.
+ 338. Look around here and find a substitute for dealing with a body.
+ 339. Look around here and find a substitute for all the pain your body has ever felt.
+ 340. Look around here and find a substitute for all the pain your body could feel.
+ 341. Look around here and find a substitute for all the hunger your body could feel.
 
 
 13. We improve control of stable data or with confusions. This can help with exteriorization.
 
 
- 221. How confusing could your body be?
- 222. How stable could your body be?
- 223. How confusing could the physical universe be?
- 224. How stable could the physical universe be?
+ 342. How confusing could your body be?
+ 343. How stable could your body be?
+ 344. How confusing could the physical universe be?
+ 345. How stable could the physical universe be?
 
 
 14. We address effort, which can be a huge button for people (compulsive sensation or touching to know or believe the existence of something, everything being "work", everything being "difficult", constant conflict)
 This  can help with exteriorization
 
 
- 225. How much effort could there be in being in a body?
- 226. How much effort could there be in not being in a body?
- 227. How little effort could there be in being in a body?
- 228. How little effort could there be in not being in a body?
+ 346. How much effort could there be in being in a body?
+ 347. How much effort could there be in not being in a body?
+ 348. How little effort could there be in being in a body?
+ 349. How little effort could there be in not being in a body?
 
 
 15. Using body to give confidence in location. This can help with exteriorization
 
 
- 229. How could your head give you confidence in awareness of location?
- 230. How could your head give you confidence in unawareness of location?
- 231. How could your head make it easy to have awareness of location?
- 232. How could your head make it easy to have unawareness of location?
+ 350. How could your head give you confidence in awareness of location?
+ 351. How could your head give you confidence in unawareness of location?
+ 352. How could your head make it easy to have awareness of location?
+ 353. How could your head make it easy to have unawareness of location?
 
 
 16. Using body to give solution of location. This can help with exteriorization
 
 
- 233. How could your head be a solution for awareness of location?
- 234. How could your head be a solution for unawareness of location?
+ 354. How could your head be a solution for awareness of location?
+ 355. How could your head be a solution for unawareness of location?
 
 
 17. Separation. Exteriorization = Separation
 
 
- 235. What separation would be miserable?
- 236. What separation wouldn't be miserable?
+ 356. What separation would be miserable?
+ 357. What separation wouldn't be miserable?
 
 
 18. Connectedness. This can help with exteriorization
 
 
- 237. Look around here and tell me something that could connect with you.
- 238. Look around here and tell me something that could connect with your body.
+ 358. Look around here and tell me something that could connect with you.
+ 359. Look around here and tell me something that could connect with your body.
 
 
 19. Interest relates to interiorization. This can help with exteriorization
 
 
- 239. Who would be interested in a separate being?
+ 360. Who would be interested in a separate being?
 
 
 20. More separation. This can help with exteriorization
 
 
- 240. Name three different people.
- 241. How separate could you be to them?
- 242. How separate could they be to you?
+ 361. Name three different people.
+ 362. How separate could you be to them?
+ 363. How separate could they be to you?
 
 
-21. Separation from materialism. This can obviously help with exteriorization
+21. More separation and spotting spots and interest. This can help with exteriorization
 
 
- 243. What would happen if you separated from materialism?
- 244. What would happen if another separated from materialism?
- 245. What would happen if others separated from materialism?
- 246. What would happen if materialism separated from you?
+ 364. Spot three parts of the body that are separate.
+ 365. Spot three spots in the universe that are separate.
+ 366. Spot two parts of the body that are separate.
+ 367. Spot two spots in the universe that are separate.
+ 368. Spot two spots in the universe that are both separate and interesting.
+ 369. Spot three parts of the body that you are separate from.
+ 370. Spot three spots in the universe that you are separate from.
+ 371. Spot two parts of the body that you are separate from.
+ 372. Spot two spots in the universe that you are separate from.
+ 373. Spot three spots in the universe that are interesting.
+ 374. How interesting could separating from the body be?
+ 375. How uninteresting could a separated-from-body be?
+ 376. How is your body separate from the rest of the physical universe?
+ 377. How is the rest of the physical universe separate from your body?
+ 378. How are you separate from your head?
+ 379. How is your head separate from you?
+ 380. Notice two separate objects.
+ 381. How separate could they possibly be?
+ 382. How miserable could being separate from your head seem?
+ 383. How pleasant could being separate from your head seem?
 
 
-22. Dealing with loss. This can help with exteriorization
+22. Dealing with control and existence. This can help with exteriorization
 
 
- 247. How is the idea that someone would ever lose something if they conceived a static a very low order idea?
- 248. What would another not lose if they conceived a static?
- 249. When would they not lose it?
- 250. What would others not lose if they conceived a static?
- 251. When would they not lose it?
- 252. What would you not lose if you conceived a static?
- 253. When would you not lose it?
- 254. What other person's thing would you lose if you conceived a static?
- 255. When would you lose it?
- 256. What other person's thing would you not lose if you conceived a static?
- 257. When would you not lose it?
- 258. Why do others not want you to conceive a static?
- 259. Why do you not want others to conceive a static?
- 260. Why do others not want others to conceive a static?
- 261. Why do you not want yourself to conceive a static?
+ 384. How are you inevitably not going to lose all control of the body?
+ 385. How are you inevitably going to lose all control of the body?
+ 386. How will control always exist?
+ 387. How are you inevitably not going to lose all perception from the body?
+ 388. How are you inevitably going to lose all perception from the body?
+ 389. How will perception always exist?
+ 390. How can your perceptionness not be lost?
+ 391. How are you inevitably not going to lose all utility from the body?
+ 392. How are you inevitably going to lose all utility from the body?
+ 393. How will utility always exist?
 
 
-23. More separation and spotting spots and interest. This can help with exteriorization
+23. Dealing with safety. This can help with exteriorization
 
 
- 262. Spot 3 parts of the body that are separate.
- 263. Spot 3 spots in the universe that are separate.
- 264. Spot 2 parts of the body that are separate.
- 265. Spot 2 spots in the universe that are separate.
- 266. Spot 2 spots in the universe that are both separate and interesting.
- 267. Spot 3 parts of the body that you are separate from.
- 268. Spot 3 spots in the universe that you are separate from.
- 269. Spot 2 parts of the body that you are separate from.
- 270. Spot 2 spots in the universe that you are separate from.
- 271. Spot 3 spots in the universe that you are separate from.
- 272. Spot 3 spots in the universe that are interesting.
- 273. How interesting could separating from the body be?
- 274. How uninteresting could a separated-from-body be?
- 275. How is your body separate from the rest of the physical universe?
- 276. How is the rest of the physical universe separate from your body?
- 277. How are you separate from your head?
- 278. How is your head separate from you?
- 279. Notice two separate objects.
- 280. How separate could they possibly be?
- 281. How miserable could being separate from your head seem?
- 282. How pleasant could being separate from your head seem?
+ 394. Where would be unsafe now?
+ 395. Where would be safe now?
 
 
-24. Dealing with control and existence. This can help with exteriorization
+24. Dealing with location. This can help with exteriorization
 
 
- 283. How are you inevitably not going to lose all control of the body?
- 284. How are you inevitably going to lose all control of the body?
- 285. How will control always exist?
- 286. How are you inevitably not going to lose all perception from the body?
- 287. How are you inevitably going to lose all perception from the body?
- 288. How will perception always exist?
- 289. How can your perceptionness not be lost?
- 290. How are you inevitably not going to lose all utility from the body?
- 291. How are you inevitably going to lose all utility from the body?
- 292. How will utility always exist?
+ 396. Where aren't you now?
+ 397. Where needn't you be now?
+ 398. Where is an easy location to be now?
+ 399. Where is a pleasant location to be now?
+ 400. Where are you not from?
+ 401. Tell me about it.
+ 402. Are you certain you're not from there?
 
 
-25. Dealing with safety. This can help with exteriorization
+25. Dealing with interest. This can help with exteriorization
 
 
- 293. Where would be unsafe now?
- 294. Where would be safe now?
+ 403. How do you not have interest on the exterior world?
+ 404. How do you not have attention on the exterior world?
+ 405. What do you love about the nature of the exterior world?
+ 406. What about the exterior world would you love to look at?
+ 407. What about the exterior world is more interesting than the body?
 
 
-26. Dealing with location. This can help with exteriorization
+26. Dealing with body form. This can help with exteriorization
 
 
- 295. Where aren't you now?
- 296. Where needn't you be now?
- 297. Where is an easy location to be now?
- 298. Where is a pleasant location to be now?
- 299. Where are you not from?
- 300. Tell me about it.
- 301. Are you certain you're not from there?
+ 408. How much could you allow the body to grow or shrink in the next 5 minutes?
+ 409. How incompetent can you allow your body control to be?
+ 410. How sloppy can you allow your body control to be?
 
 
-27. Dealing with interest. This can help with exteriorization
+27. More dealing with control. This can help with exteriorization
 
 
- 302. How do you not have interest on the exterior world?
- 303. How do you not have attention on the exterior world?
- 304. What do you love about the nature of the exterior world?
- 305. What about the exterior world would you love to look at?
- 306. What about the exterior world is more interesting than the body?
+ 411. How can you protest and utterly stop controlling the body at all?
 
 
-28. Dealing with body form. This can help with exteriorization
+28. Dealing with sensation. This can help with exteriorization
 
 
- 307. How much could you allow the body to grow or shrink in the next 5 minutes?
- 308. How incompetent can you allow your body control to be?
- 309. How sloppy can you allow your body control to be?
+ 412. How does the body give you pain?
+ 413. How does the body not give you pain?
+ 414. Where could you be where the body is giving you pain?
+ 415. Where could you be where the body is not giving you pain?
+ 416. How does the body's pain affect your location?
+ 417. How does the body's pain not affect your location?
+ 418. How could you locate yourself?
+ 419. What could you use to locate yourself?
+ 420. Why is it okay for your location to not be affected by the body's pain?
+ 421. How are you fundamentally different from pain?
+ 422. How is pain fundamentally different from you?
 
 
-29. More dealing with control. This can help with exteriorization
+29. Spanning attention. This can help with exteriorization
 
 
- 310. How can you protest and utterly stop controlling the body at all?
+ 423. Put your attention on the body's pain.
+ 424. Widen your attention beyond the body's pain.
+ 425. Widen your attention even further.
 
 
-30. Dealing with sensation. This can help with exteriorization
+30. Body form as a solution. This can help with exteriorization
 
 
- 311. How does the body give you pain?
- 312. How does the body not give you pain?
- 313. Where could you be where the body is giving you pain?
- 314. Where could you be where the body is not giving you pain?
- 315. How does the body's pain affect your location?
- 316. How does the body's pain not affect your location?
- 317. How could you locate yourself?
- 318. What could you use to locate yourself?
- 319. Why is it okay for your location to not be affected by the body's pain?
- 320. How are you fundamentally different from pain?
- 321. How is pain fundamentally different from you?
+ 426. What would a really good physical form be a solution to?
+ 427. What would a really good physical form not be a solution to?
+ 428. What would a body be a solution to?
+ 429. Is this the best solution?
 
 
-31. Spanning attention. This can help with exteriorization
+31. Allowing oneself to exist. This can help with exteriorization
 
 
- 322. Put your attention on the body's pain.
- 323. Widen your attention beyond the body's pain.
- 324. Widen your attention even further.
+ 430. How wouldn't another allow you to exist?
+ 431. How wouldn't you allow another to exist?
+ 432. How wouldn't others allow others to exist?
+ 433. How wouldn't you allow yourself to exist?
 
 
-32. Body form as a solution. This can help with exteriorization
+32. More separation. This can help with exteriorization
 
 
- 325. What would a really good physical form be a solution to?
- 326. What would a really good physical form not be a solution to?
- 327. What would a body be a solution to?
- 328. Is this the best solution?
+ 434. Who wouldn't allow you to separate from them?
+ 435. Who wouldn't you allow to separate from you?
+ 436. How could your head be separate from itself?
+ 437. How are you separate from yourself?
+ 438. How are you separate from another?
+ 439. How is another separate from you?
+ 440. How is another separate from others?
 
 
-33. Allowing oneself to exist. This can help with exteriorization
+33. Clockwise wheel. This can help with exteriorization
 
 
- 329. How wouldn't another allow you to exist?
- 330. How wouldn't you allow another to exist?
- 331. How wouldn't others allow others to exist?
- 332. How wouldn't you allow yourself to exist?
+ 441. Get the idea of three people.
+ 442. In a clockwise fashion, substitute exteriorization or interiorization problems of one person with the next person. Do this for all three people.
+ 443. Do it again.
+ 444. Do it again.
+ 445. Now have these so-called problems get condensed and vanish.
+ 446. Exteriorize out of Crippledness.
+ 447. Exteriorizing out of image / manner of presentation.
+ 448. Exteriorize out of cuteness.
+ 449. Exteriorize out of heartbreak.
+ 450. Exteriorize out of social pressure.
+ 451. Exteriorizing out of loneliness.
+ 452. Exteriorize out of compliance.
+ 453. Exteriorize out of materialism.
+ 454. Exteriorize out of the impossibility of siddhis (supernatural abilities).
+ 455. Move your education around.
+ 456. Move your mother dragging you around, around.
+ 457. Move your father dragging you around, around.
+ 458. Get the comfort of being in your body. Move the comfort around.
+ 459. Exteriorize out of the universe not being entirely yours.
+ 460. Exteriorize out of your entrance into this universe.
+ 461. Exteriorize out of any subtle 'bodies' that you might have.
+ 462. 	A process on trauma - only run on people who don't really have trauma (someone who is a good case).
+
+	Tell me a trauma that you're not. (Many times)
+	Tell me a non-trauma that you're not.
 
 
-34. More separation. This can help with exteriorization
+	Tell me an un-fun experience that you're not.
+
+	Waste a fun trauma
+	Waste an un-fun trauma
+
+	Waste parental rigidity
 
 
- 333. Who wouldn't allow you to separate from them?
- 334. Who wouldn't you allow to separate from you?
- 335. How could your head be separate from itself?
- 336. How are you separate from yourself?
- 337. How are you separate from another?
- 338. How is another separate from you?
- 339. How is another separate from others?
+	Have a trauma traumatize a trauma
+	Waste a precious trauma
+	Waste a trauma that doesn't tolerate any others
+	Have a trauma build other traumas on the base trauma
+	Get glee from this
+	Waste this trauma
+
+	
+	Waste the funnest trauma
+	Waste the most all-consuming trauma
+	Move the funnest trauma around
 
 
-35. Clockwise wheel. This can help with exteriorization
+	Get the idea that there is a trauma and you're just thrilled to be involved with it. Get rid of it.
+
+	Have a trauma traumatize a body.
+	Have a body traumatize a trauma.
 
 
- 340. Get the idea of 3 people.
- 341. In a clockwise fashion, substitute exteriorization or interiorization problems of one person with the next person. Do this for all 3 people.
- 342. Do it again.
- 343. Do it again.
- 344. Now have these so-called problems get condensed and vanish.
- 345. Exteriorize out of Crippledness.
- 346. Exteriorizing out of image / manner of presentation.
- 347. Exteriorize out of cuteness.
- 348. Exteriorize out of heartbreak.
- 349. Exteriorize out of social pressure.
- 350. Exteriorizing out of loneliness.
- 351. Exteriorize out of compliance.
- 352. Exteriorize out of materialism.
- 353. Exteriorize out of the impossibility of siddhis (supernatural abilities).
- 354. Move your education around.
- 355. Move your mother dragging you around, around.
- 356. Move your father dragging you around, around.
- 357. Get the comfort of being in your body. Move the comfort around.
- 358. Exteriorize out of the universe not being entirely yours.
- 359. Exteriorize out of your entrance into this universe.
- 360. Exteriorize out of any subtle 'bodies' that you might have.
-Now exteriorize out of anything that might be ruining you (see traps section)
+	Pick an object. Get the funnest, most interesting trauma you can conceive. Now put it into the object and use the object as a symbol. Now grab the symbol.
+	Now get the joy of forevermore having fun due to that symbol. Now forget the symbol is there. Now push the symbol away. Now close your eyes. Now open your eyes.
+	Now bring the symbol back. Now move the symbol around. Now throw the symbol on the ground. Pick it back up. Now get rid of the trauma from that symbol.
+	Now put it back in. Now get rid of the trauma from that symbol.
 
 
-For each of [whatever bothers the person, ask them thoroughly], as well as
+	Tell me some trauma you could experience (Many times.)
+
+
+
+	This is very advanced and can be skipped, but could be incredible powerful. Ask the guy if he wants to do it. It probably works better if he is exterior.
+
+	
+
+		Note this very philosophical / buddhist terminology of "the self". It doesn't assume you even know where or what it is. Which might allow one to access "more", since one has no pre-conceptions of it.
+
+
+		This could be very therapeutic.
+
+		1.
+		(Many times)
+			Don't touch the self
+
+		2.
+		Touch the self
+		Don't Muck the self, don't unmuck the self	
+		Muck the self, unmuck the self
+
+		3.
+		(A few times)
+			Don't Sink into symbols
+			Sink into symbols
+
+		4.
+		(A few times)
+			Dissociate into only symbols
+			Don't dissociate into only symbols
+
+		5.	
+		(A few times)
+			1. Don't Muddy your name
+			2. Don't unmuddy your name	
+
+		6.
+		(A few times)
+			1. Muddy your name
+			2. unmuddy your name	
+
+		7.
+		(Many times)
+			1. Don't Muddy the self
+			2. Don't unmuddy the self	
+
+		8.
+		(Many times)
+			1. Muddy the self
+			2. unmuddy the self	
+
+		9.
+		Don't Unmuddy the entire physical universe
+		Don't Unmuddy three spots in your body
+		Don't Unmuddy three spots in the universe
+		
+		10.
+		Unmuddy the entire physical universe
+		Unmuddy three spots in your body
+		Unmuddy three spots in the universe
+
+		11.
+		Don't Un-material-ize yourself
+		Don't Material-ize yourself
+		Un-material-ize yourself
+		Material-ize yourself
+
+		12.
+		Don't Magic-ize yourself
+		Don't Un-Magic-ize yourself
+		Magic-ize yourself
+		Un-Magic-ize yourself
+
+		13.
+		Don't have God connect with you
+		If the person wants
+			Have God connect with you
+
+ 463. Now exteriorize out of anything that might be ruining you (see traps section)
+	For each of [whatever bothers the person, ask them thoroughly], as well as
 
 	human body, possible "higher level" bodies (that maybe or maybe not can be attacked), amnesia of death, amensia of birth, relocation, relocation at death
 	drugs, pain, sex, hypnosis, brains, eating, symbols, unconsciousness, unknowableness, waitingness, mystery, thinking, effort, negative emotion
@@ -1344,12 +4572,8 @@ For each of [whatever bothers the person, ask them thoroughly], as well as
 	Whatever "ordered" time idea, mess up the time intentionally, reverse it, waste it, make time not exist, make time move fast and slow, move time (as a symbol) around, etc.
 	Whatever "ordered" (workable) energy idea, mess up the energy, matter (and possibly space) intentionally, alter it, waste it, make it not exist, move it (as a symbol) around, etc.
 
-
-
-Now, do the other processes listed on this page.
-
-
-Now, consider doing this list multiple times over, travelling the universe and getting acclimated with it, fixing up ones education (clearing up words, etc.), fixing up ones life.
+ 464. Now, do the other processes listed on this page.
+ 465. Now, consider doing this list multiple times over, travelling the universe and getting acclimated with it, fixing up ones education (clearing up words, etc.), fixing up ones life.
 
 
 One can also do Scientology if one wants, or not, at will. This will also handle subtle traps. No obligation. One can hate or not hate or love or not love Scientology at will.
@@ -1382,7 +4606,7 @@ List of all exteriorization techniques
 	Techniques that have existed before
 
 	Exterior from mockups
-	Assertive location commands. (Be 3 feet back of your head. Try not to be 3 feet back of your head.)
+	Assertive location commands. (Be three feet back of your head. Try not to be three feet back of your head.)
 	Spot spots in space
 	Exteriorize from spots
 	Where are you from?
@@ -1407,7 +4631,7 @@ List of all exteriorization techniques
 	Having other things connect with you
 	Granting havingness
 	Substitutes
-
+	Just telling the person to exteriorize
 
 	Possibly new techniques
 
@@ -1453,12 +4677,16 @@ List of all exteriorization techniques
 </section>
 
 <section id="other-processes">
-  <div class="eyebrow">13 — Practice</div>
   <h2>Other Processes</h2>
   <pre>
+0.
+
+1. Do nothing.
+2. Do something.
+
+
+
 1. Safety across life
-
-
 
 1-1
 1. Is your body safe?
@@ -2408,7 +5636,6 @@ have spiritual consensus keep you from going away
 </section>
 
 <section id="words">
-<div class="eyebrow">14 — Language</div>
 <h2>Theory of Words</h2>
 <pre>
   A word is just a symbol of a philosophy. A language is a philosophy of combining symbols of other philosophies (using grammar).
