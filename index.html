@@ -19,25 +19,25 @@ html{scroll-behavior:smooth}
 pre{white-space: pre-wrap; margin: 20px; border: 0px solid red;
 font:15px/1.75 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;}
 
-body{margin:0;background:
+html,body{margin:0;padding:0;}
+body{background:
  radial-gradient(circle at 75% 5%,rgba(124,231,207,.10),transparent 30rem),
  radial-gradient(circle at 10% 70%,rgba(139,183,255,.08),transparent 28rem),
  var(--bg);color:var(--text);font:15px/1.75 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-body:before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(to bottom,black,transparent 80%)}
+body:before{padding:0;margin:0;content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(to bottom,black,transparent 80%)}
 .sidebar{position:fixed;z-index:10;right:22px;top:50%;transform:translateY(-50%);width:210px;padding:14px;border:1px solid var(--line);background:rgba(8,16,24,.78);backdrop-filter:blur(18px);border-radius:22px;box-shadow:0 25px 80px rgba(0,0,0,.35)}
 .group{padding:12px 12px 18px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:12px;color:var(--accent)}
 nav a{display:flex;align-items:center;gap:10px;color:var(--muted);text-decoration:none;padding:0px 12px;border-radius:12px;transition:.25s}
 nav a span{width:6px;height:6px;border-radius:50%;background:#49606d;transition:.25s}
 nav a:hover,nav a.active{color:var(--text);background:rgba(124,231,207,.08)}
 nav a.active span{background:var(--accent);box-shadow:0 0 12px var(--accent)}
-main{width:min(1050px,calc(100% - 300px));padding:70px 35px 120px}
-section{min-height:86vh;padding:70px 0;scroll-margin-top:30px;}
+section{min-height:86vh;  scroll-margin-top:30px;}
 .hero{min-height:92vh;display:flex;align-items:center}
 .eyebrow{color:var(--accent);text-transform:uppercase;letter-spacing:.18em;font-size:12px;font-weight:800}
-h1{font-size:clamp(48px,8vw,92px);line-height:.95;letter-spacing:-.055em;margin:18px 0 25px;max-width:850px}
+h1{font-size:clamp(48px,8vw,92px);line-height:.95;letter-spacing:-.055em;margin:18px 0 25px;}
 h2{font-family:Serif;font-size:clamp(30px,4vw,50px);letter-spacing:0.5px;margin:10px 0 18px}
 h3{margin:0 0 8px;font-size:18px}
-.lead{font-size:20px;color:#b7c8d0;max-width:760px}
+.lead{font-size:20px;color:#b7c8d0;}
 .rule{height:1px;background:linear-gradient(90deg,var(--accent),transparent);margin:30px 0}
 .rule2{height:1px;background:linear-gradient(90deg,var(--accent2),transparent);margin:30px 0}
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
@@ -53,14 +53,16 @@ h3{margin:0 0 8px;font-size:18px}
 .item b{color:var(--accent);min-width:42px}
 footer{padding-top:40px;color:#637986;font-size:12px}
 
-pre {font-size:110%;}
-
 /*@media(max-width:900000px){*/
- .sidebar{position:fixed;left:12px;right:12px;top:auto;top:12px;transform:none;width:auto;padding:8px;border-radius:18px}
+ .sidebar{position:fixed;left:12px;right:12px;top:auto;top:12px;transform:none;width:auto;padding:8px;border-radius:18px;}
  .group{display:none}.sidebar nav{display:flex;justify-content:space-between;gap:3px}
  nav{overflow-x:auto;scrollbar-width:none}nav::-webkit-scrollbar{display:none}nav a{font-size:11px;padding:9px 10px;flex:0 0 auto;justify-content:center;white-space:nowrap}nav a span{display:none}
- main{width:auto;margin:0;padding:20px 22px 110px;max-width:100%;}.hero{min-height:85vh}
- section{padding:55px 0;min-height:auto}.grid{grid-template-columns:1fr}h1{font-size:clamp(48px,16vw,78px)}
+ main{width:100%;margin:0;}.hero{min-height:85vh}
+ section{min-height:auto}.grid{grid-template-columns:1fr;}h1{font-size:clamp(48px,16vw,78px)}
+pre,h3,iframe,main,h1,h2,.rule,.rule2,p, audio, video{
+ margin-left:31px;
+ }
+#sidebar, #sidebar *{max-width:100%;}
 
  /*}*/
 </style>
@@ -105,7 +107,7 @@ pre {font-size:110%;}
     <h2>Media &ndash; Films, music and games illustrating our religious principles</h2>
     <div class="rule"></div>
     <h3>Films</h3>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/vVYDm1zqgiQ?si=4ce6CGjxLFvSkNKs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <iframe width="360" height="360" src="https://www.youtube.com/embed/vVYDm1zqgiQ?si=4ce6CGjxLFvSkNKs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
      <br> 
    <h3>Music</h3>
       	<audio width="180" controls>
