@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -31,9 +30,7 @@ nav a{display:flex;align-items:center;gap:10px;color:var(--muted);text-decoratio
 nav a span{width:6px;height:6px;border-radius:50%;background:#49606d;transition:.25s}
 nav a:hover,nav a.active{color:var(--text);background:rgba(124,231,207,.08)}
 nav a.active span{background:var(--accent);box-shadow:0 0 12px var(--accent)}
-main{ //width:min(1050px,calc(100% - 300px));
-padding:70px 35px 120px;
-}
+main{width:min(1050px,calc(100% - 300px));padding:70px 35px 120px}
 section{min-height:86vh;padding:70px 0;scroll-margin-top:30px;}
 .hero{min-height:92vh;display:flex;align-items:center}
 .eyebrow{color:var(--accent);text-transform:uppercase;letter-spacing:.18em;font-size:12px;font-weight:800}
@@ -56,28 +53,15 @@ h3{margin:0 0 8px;font-size:18px}
 .item b{color:var(--accent);min-width:42px}
 footer{padding-top:40px;color:#637986;font-size:12px}
 
-pre{font-size:110%;}
+pre {font-size:110%;}
 
-@media(max-width:900000px){
+//@media(max-width:900000px){
  .sidebar{position:fixed;left:12px;right:12px;top:auto;top:12px;transform:none;width:auto;padding:8px;border-radius:18px}
  .group{display:none}.sidebar nav{display:flex;justify-content:space-between;gap:3px}
  nav{overflow-x:auto;scrollbar-width:none}nav::-webkit-scrollbar{display:none}nav a{font-size:11px;padding:9px 10px;flex:0 0 auto;justify-content:center;white-space:nowrap}nav a span{display:none}
- main{width:auto;margin:0;
-
- max-width:70%;
- //padding:20px 22px 110px
-
- }.hero{min-height:85vh}
+ main{width:auto;margin:0;padding:20px 22px 110px;max-width:100%;}.hero{min-height:85vh}
  section{padding:55px 0;min-height:auto}.grid{grid-template-columns:1fr}h1{font-size:clamp(48px,16vw,78px)}
-}
-
-@media(min-width:800px) {
- main {
-  max-width:100%;
-}
-
-}
-
+//}
 </style>
 </head>
 <body>
@@ -102,6 +86,7 @@ pre{font-size:110%;}
   </nav>
 </aside>
 
+<main>
 <div style='padding-bottom:160px;'></div>
     <div style='text-align:center;'>
 	
@@ -112,7 +97,6 @@ pre{font-size:110%;}
 	
 	</div>
 	<br>
-<main>
     <div class="rule2"></div>
 
 	<section id="intro" class="hero">
