@@ -11,13 +11,12 @@
 
 :root{
   --bg:#071018; --panel:#0d1721; --panel2:#111f2b; --text:#edf5f8;
-  --muted:#8fa5b2; --line:rgba(255,255,255,.09); --accent:#7ce7cf;
-  --accent2:#8bb7ff; --glow:rgba(124,231,207,.18);
+  --muted:#8fa5b2; --line:rgba(255,255,255,.09); --accent2:purple;
+  --accent:gold; --glow:rgba(124,231,207,.18);
 }
 *{box-sizing:border-box;}
 html{scroll-behavior:smooth}
 pre{white-space: pre-wrap; margin: 20px; border: 0px solid red;
-
 font:15px/1.75 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;}
 
 body{margin:0;background:
@@ -25,21 +24,22 @@ body{margin:0;background:
  radial-gradient(circle at 10% 70%,rgba(139,183,255,.08),transparent 28rem),
  var(--bg);color:var(--text);font:15px/1.75 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
 body:before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(to bottom,black,transparent 80%)}
-.sidebar{position:fixed;z-index:10;left:22px;top:50%;transform:translateY(-50%);width:210px;padding:14px;border:1px solid var(--line);background:rgba(8,16,24,.78);backdrop-filter:blur(18px);border-radius:22px;box-shadow:0 25px 80px rgba(0,0,0,.35)}
+.sidebar{position:fixed;z-index:10;right:22px;top:50%;transform:translateY(-50%);width:210px;padding:14px;border:1px solid var(--line);background:rgba(8,16,24,.78);backdrop-filter:blur(18px);border-radius:22px;box-shadow:0 25px 80px rgba(0,0,0,.35)}
 .group{padding:12px 12px 18px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:12px;color:var(--accent)}
 nav a{display:flex;align-items:center;gap:10px;color:var(--muted);text-decoration:none;padding:0px 12px;border-radius:12px;transition:.25s}
 nav a span{width:6px;height:6px;border-radius:50%;background:#49606d;transition:.25s}
 nav a:hover,nav a.active{color:var(--text);background:rgba(124,231,207,.08)}
 nav a.active span{background:var(--accent);box-shadow:0 0 12px var(--accent)}
-main{width:min(1050px,calc(100% - 300px));margin-left:285px;padding:70px 35px 120px}
-section{min-height:86vh;padding:70px 0;scroll-margin-top:30px}
+main{width:min(1050px,calc(100% - 300px));padding:70px 35px 120px}
+section{min-height:86vh;padding:70px 0;scroll-margin-top:30px;}
 .hero{min-height:92vh;display:flex;align-items:center}
 .eyebrow{color:var(--accent);text-transform:uppercase;letter-spacing:.18em;font-size:12px;font-weight:800}
 h1{font-size:clamp(48px,8vw,92px);line-height:.95;letter-spacing:-.055em;margin:18px 0 25px;max-width:850px}
-h2{font-size:clamp(30px,4vw,50px);letter-spacing:-.035em;margin:10px 0 18px}
+h2{font-family:Serif;font-size:clamp(30px,4vw,50px);letter-spacing:0.5px;margin:10px 0 18px}
 h3{margin:0 0 8px;font-size:18px}
 .lead{font-size:20px;color:#b7c8d0;max-width:760px}
 .rule{height:1px;background:linear-gradient(90deg,var(--accent),transparent);margin:30px 0}
+.rule2{height:1px;background:linear-gradient(90deg,var(--accent2),transparent);margin:30px 0}
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
 .card{background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));border:1px solid var(--line);border-radius:20px;padding:24px;min-height:160px;box-shadow:inset 0 1px rgba(255,255,255,.04);transition:.3s}
 .card:hover{transform:translateY(-4px);border-color:rgba(124,231,207,.3);box-shadow:0 18px 45px rgba(0,0,0,.18)}
@@ -52,8 +52,11 @@ h3{margin:0 0 8px;font-size:18px}
 .item{display:flex;gap:16px;padding:16px 18px;border:1px solid var(--line);border-radius:15px;background:rgba(255,255,255,.025)}
 .item b{color:var(--accent);min-width:42px}
 footer{padding-top:40px;color:#637986;font-size:12px}
-@media(max-width:900px){
- .sidebar{position:fixed;left:12px;right:12px;top:auto;bottom:12px;transform:none;width:auto;padding:8px;border-radius:18px}
+
+pre {font-size:110%;}
+
+@media(max-width:900000px){
+ .sidebar{position:fixed;left:12px;right:12px;top:auto;top:12px;transform:none;width:auto;padding:8px;border-radius:18px}
  .group{display:none}.sidebar nav{display:flex;justify-content:space-between;gap:3px}
  nav{overflow-x:auto;scrollbar-width:none}nav::-webkit-scrollbar{display:none}nav a{font-size:11px;padding:9px 10px;flex:0 0 auto;justify-content:center;white-space:nowrap}nav a span{display:none}
  main{width:auto;margin:0;padding:20px 22px 110px}.hero{min-height:85vh}
@@ -62,7 +65,7 @@ footer{padding-top:40px;color:#637986;font-size:12px}
 </style>
 </head>
 <body>
-<aside class="sidebar">
+<aside id='sidebar' class="sidebar">
   <div class="group">Safety Organization</div>
   <nav>
     <a href="#intro" class="active"><span></span>Media</a>
@@ -84,18 +87,26 @@ footer{padding-top:40px;color:#637986;font-size:12px}
 </aside>
 
 <main>
+<div style='padding-bottom:160px;'></div>
+    <div style='text-align:center;'>
+	
+<div  style='box-shadow:0px 0px 300px gold;height:400px;width: 268px;display:inline-block;'>
+    <img style="height: 400px;" src="safety.jpg" style=''/>
+	</div>
 
-	<img style="height: 200px;" src="safety.jpg" />
+	
+	</div>
+	<br>
+    <div class="rule2"></div>
+
 	<section id="intro" class="hero">
   <div>
-    <h1>Media &ndash; Films, music and games illustrating our religious principles</h1>
+    <h2>Media &ndash; Films, music and games illustrating our religious principles</h2>
     <div class="rule"></div>
-    <p>Films</p>
-        <div class="rule"></div>
+    <h3>Films</h3>
       <iframe width="560" height="315" src="https://www.youtube.com/embed/vVYDm1zqgiQ?si=4ce6CGjxLFvSkNKs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
      <br> 
-    <p>Music</p>
-        <div class="rule"></div>
+   <h3>Music</h3>
       	<audio width="180" controls>
       	<source src="Exterior.mp3" type="audio/mp3">
       	</audio><br>
@@ -103,19 +114,46 @@ footer{padding-top:40px;color:#637986;font-size:12px}
       	<source src="Three Feet Back.mp3" type="audio/mp3">
       	</audio> <br>
       
-      	<video width="180" height="320" controls>
+      	<video width="360" height="640" controls>
       	<source src="Fully%20Exterior_lyricsvideo_v_2.mp4" type="video/mp4">
       	</video>
-    <p>Games</p>
+    <h3>Games</h3>
     <p>
             
-        <div class="rule"></div>
+        <div style='text-align:center;'>
             <button onclick="toggleExt()"  id="toggleExt">Exteriorization Game</button></p>
+            </div>
 <div id="exteriorization-embed"></div>
+<script>
+	const ext=document.getElementById("exteriorization-embed").style;
+    function toggleExt() {
+      	const b=document.getElementById("toggleExt");
+      	const nav=document.getElementById("sidebar").style;
+      	if (ext.display==='none'||ext.display==='') {
+      	      	nav.display='none';
+			ext.display='block';
+			b.textContent="Hide Exteriorization Game";
+
+			b.scrollIntoView({ behavior: 'smooth', block:'start'});
+			return;
+      	}
+
+      	ext.display='none';
+      	nav.display='block';
+      	b.textContent="Show Exteriorization Game";
+      	b.blur();
+			b.scrollIntoView({ behavior: 'smooth', block:'center'});
+ }
+ 
+
+</script>
+
 
 <script type="module">
 import * as THREE from "https://unpkg.com/three@0.160.0/build/three.module.js";
 
+
+      	
 (() => {
   const mount = document.getElementById("exteriorization-embed");
 
@@ -570,7 +608,12 @@ import * as THREE from "https://unpkg.com/three@0.160.0/build/three.module.js";
 
         <span class="exteriorization-kbd">R</span>
         reset
+
+        <span class="exteriorization-kbd">H</span>
+        hide game
       </div>
+
+
 
       <div
         class="exteriorization-toast"
@@ -2674,6 +2717,10 @@ import * as THREE from "https://unpkg.com/three@0.160.0/build/three.module.js";
   ========================================================= */
 
   function onKeyDown(event) {
+    if(ext.display==='none'||ext.display==='') return;
+
+    event.preventDefault();
+    
     keys[event.code] = true;
 
     if (
@@ -2684,10 +2731,10 @@ import * as THREE from "https://unpkg.com/three@0.160.0/build/three.module.js";
     }
 
     if (
-      event.code === "Space" &&
+      event.code === "Space" &&   
       !event.repeat
     ) {
-      event.preventDefault();
+
       pulse();
     }
 
@@ -2696,6 +2743,12 @@ import * as THREE from "https://unpkg.com/three@0.160.0/build/three.module.js";
       !event.repeat
     ) {
       reset();
+    }
+
+        if (
+      event.code === "KeyH" &&
+      !event.repeat
+    ) {toggleExt();
     }
   }
 
@@ -2977,54 +3030,17 @@ import * as THREE from "https://unpkg.com/three@0.160.0/build/three.module.js";
 
   animate();
 })();
+
 </script>
     </div>
-    
-    <script>
-    function toggleExt() {
-      	const ext=document.getElementById("exteriorization-embed");
-      	const b=document.getElementById("toggleExt");
-//      	alert(ext.style.display);
-      	if (ext.style.display==='none'||ext.style.display==='') {ext.style.display='block';b.textContent="Hide Exteriorization Game";}
-      	else{ext.style.display='none';b.textContent="Show Exteriorization Game";  }
- 
-    }
-
-
-{
-            // Array of key codes and key values that cause page scrolling
-        const scrollKeys = [
-          "Space", " ",
-          "ArrowUp",
-          "ArrowDown",
-          "ArrowLeft",
-          "ArrowRight",
-          "PageUp",
-          "PageDown",
-          "Home",
-          "End"
-        ];
-
-      	const ext=document.getElementById("exteriorization-embed").style;
-    
-      window.addEventListener("keydown", function(e) {
-      	if (ext.display==='none')return;
-
-        if (scrollKeys.includes(e.key) || scrollKeys.includes(e.code)) {
-          e.preventDefault();
-        }
-      }, { passive: false });
-      }
-    </script>
-
-    
   </div>
 </section>
-
+    <div class="rule2"></div>
 <section id="goals">
-  <h2>Our Main Goals</h2>
+  <h2 style='font-style:italic;'>Our Main Goals</h2>
   <p class="lead">Our Main Goals for Individual, ranked</p>
-<pre>
+    <div class="rule"></div>
+    <pre>
 1. Forming a group to fall back on to if things go bad spiritually; a group to protect one (and one’s friends) from outcomes — that exists regardless of nation, socioeconomic status
 2. No issue with body death, no compulsion to report
 3. Exterior, or able to exteriorize without issue
@@ -3038,7 +3054,8 @@ import * as THREE from "https://unpkg.com/three@0.160.0/build/three.module.js";
 11. Does not have destructive intentions or evil purposes
 12. Somewhat better memory of current life
 13. Has a relatively healthy body or sense of form
-
+</pre>
+    <div class="rule"></div><pre>
 For the main goals, there are direct processes for these also.
 
 2. No issue with body death, no compulsion to report - 1-9
@@ -3134,7 +3151,6 @@ But out religion accepts truth and molds to it. And becomes more hardcore ontolo
 In 1000 years, it will have a more detailed ontology. And critics can augment it. But only if they know "they can do it", etc.
 
 For the character of those who think they cannot "do" our processes, is more than in question.
-
 
 Fight thoroughly any "watering down" of our processes to appeal to more people, or to "soften them", to make them dumb.
 
@@ -4713,31 +4729,57 @@ This might be the most powerful part of this SOP.
 Essentially, anything one might find problematic, is a symbol (a body, a universe, a planet, a mind, etc.)
 And, essentially, all problems one has are communication problems at their root.
 
-This is somewhat akin to what Scientology called "The Rock", but they never dealt with it much. Evolutions eventually lead to their current technology for clearing but they never got to this again.
-This increases ability of symbolization directly and simply. With that, someone can be freed from any "rocks".
-This idea is also akin to what Buddhists call "attachments" at a very fundamental level.
+This is somewhat akin to what Scientology called "The Rock", but they never dealt with it much. Evolutions eventually lead to their current technology but they never got to this again.
+This was based on the idea of an extremely core, old "people pleaser" "object" that had failed, which one is constantly using and operating via and creating. Probably this is, though unacknowledged, the high point of their entire subject, though it's just so difficult to handle in full.
+This idea is also akin to what Buddhists call "attachments" or a "false self" at a very fundamental level. Naturally, even a Buddhist would recognize that a "self" (in quotation marks) would be a "people pleaser".
 
-In both cases, it is at a very deep and intimate level.
+
+Probably, this is very, very valid, and anything not finding this "core" (and we are unlikely to anytime soon), only removes layers towards this core.
+
+I don't think anyone has ever addressed this, I don't think we are likely to anytime soon, and I don't think Buddhists have ever attained enlightenment, and the Scientologists don't aim for this anymore, probably because it's "too hard" to do it properly.
+
+--------
+
+This increases ability of symbolization directly and simply. With that, someone can be freed from any "rocks".
 
 Even reducing somewhat would be a huge advantage.
 
+Our operating principle is, if we can improve and markedly simplify ones ability to operate with "Operating Primitives", the basic things one is doing, then one is far more likely to not suffer as much anymore, one is far more likely to become simple.
 
- 600. Symbolize stupidity to please others.
- 601. Have others symbolize stupidity to please you.
- 602. Have others symbolize stupidity to please others.
- 603. Symbolize to please yourself.
- 604. Symbolize to please others.
- 605. Were they pleased?
- 606. Were there consequences to that symbolization?
- 607. Have others symbolize to please you.
- 608. Were you pleased?
- 609. Were there consequences to that symbolization?
- 610. Have others symbolize to please others
- 611. Were they pleased?
- 612. Were there consequences to that symbolization?
- 613. Symbolize to please yourself
- 614. Were you pleased?
- 615. Were there consequences to that symbolization?
+Interacting with and pleasing others and being cool and communicating with others, doesn't need to be done via a symbol, i.e., an object.
+
+Communication itself is an "Operating Primitive".
+
+One doesn't have to "use" something to communicate.
+
+Here, we both improve someone's ability to symbolize to communicate (snap them out of any things they are using), and also, teach them to communicate without anything.
+
+Much, much more theory could be developed, over the millenia, about this. Anyone can.
+
+
+Part 1 - try to snap the person out of using something to communicate, please, etc.
+
+One wants to get oneself to communicate to a target, but ignore the origin of such (the rock).
+
+
+ 600. Get the idea of communicating to another without a source.
+ 601. Get the idea of communicating to another without reason.
+ 602. Get the idea of communicating to another without identity.
+ 603. Get the idea of communicating to another without a source.
+ 604. Get the idea of communicating to another without reason.
+ 605. Get the idea of communicating to another without identity.
+ 606. Get the idea of communicating to another without a source.
+ 607. Get the idea of communicating to another without reason.
+ 608. Get the idea of communicating to another without identity.
+ 609. Get the idea of communicating to another without a source.
+ 610. Get the idea of communicating to another without reason.
+ 611. Get the idea of communicating to another without identity.
+ 612. Get the idea of communicating to another without a source.
+ 613. Get the idea of communicating to another without reason.
+ 614. Get the idea of communicating to another without identity.
+ 615. Part 2 - improve symbolization
+
+Since the first part won't be done in full, in practice (full directness) we can also do this
  616. Symbolize stupidity to please others.
  617. Have others symbolize stupidity to please you.
  618. Have others symbolize stupidity to please others.
@@ -4947,7 +4989,10 @@ Even reducing somewhat would be a huge advantage.
  683. Now, consider doing this list multiple times over, travelling the universe and getting acclimated with it, fixing up ones education (clearing up words, etc.), fixing up ones life.
 
 
-One can also do Scientology if one wants, or not, at will. This will also handle subtle traps. No obligation. One can hate or not hate or love or not love Scientology at will.
+One can also do Scientology if one wants, or not, at will.
+One can also do Buddhism if one wants, or not, at will.
+
+One can hate or not hate or love or not love Scientology at will, or One can hate or not hate or love or not love Buddhism at will.
 
 
 
@@ -6088,47 +6133,47 @@ Now, it would be quite interesting having a being mock these up repeatedly. Woul
 
 # Being
 
-**Existence**
+Existence
 
 A fundamental experiencing/causative unit.
 Identity independent of physical form.
 Awareness or potential awareness.
 
-**Non-existence**
+Non-existence
 
 Complete absence of a viewpoint.
 Total dependence on physical form as the source of identity.
 
-**Potential Directionality**
+Potential Directionality
 
 Attention toward or away from things.
 Creation, consideration, or intention.
 Interaction with forms or experiences.
 
-**Mandatory Directionality**
+Mandatory Directionality
 
 Awareness → experience.
 Cause/source → effects or manifestations.
 
 # Democracy
 
-**Existence**
+Existence
 
 * Multiple decision-making units.
 * A governing structure.
 * A relation between units and governing structure.
 
-**Non-existence**
+Non-existence
 
 * One independent source of authority.
 * Complete separation between governed and governing.
 
-**Potential Directionality**
+Potential Directionality
 
 * Units → governing structure (influence, selection).
 * Governing structure → units (decisions, organization).
 
-**Mandatory Directionality**
+Mandatory Directionality
 
 * Collective → authority.
 * Authority derives from the collective.
@@ -6137,26 +6182,26 @@ Cause/source → effects or manifestations.
 
 # Matter
 
-**Existence**
+Existence
 
 * Persistent entities.
 * Occupation of extension.
 * Distinction between parts.
 
-**Non-existence**
+Non-existence
 
 * Pure absence of entity.
 * No extension.
 * No persistence.
 
-**Potential Directionality**
+Potential Directionality
 
 * Movement.
 * Combination.
 * Separation.
 * Transformation.
 
-**Mandatory Directionality**
+Mandatory Directionality
 
 * Entity exists as a distinguishable form.
 
@@ -6164,25 +6209,25 @@ Cause/source → effects or manifestations.
 
 # Energy
 
-**Existence**
+Existence
 
 * Capacity for change.
 * A system in a state.
 * A relation allowing transformation.
 
-**Non-existence**
+Non-existence
 
 * Absolute inability to change.
 * No difference between possible states.
 
-**Potential Directionality**
+Potential Directionality
 
 * Transfer.
 * Conversion.
 * Concentration.
 * Dispersion.
 
-**Mandatory Directionality**
+Mandatory Directionality
 
 * State difference → possible transformation.
 
@@ -6190,24 +6235,24 @@ Cause/source → effects or manifestations.
 
 # Space
 
-**Existence**
+Existence
 
 * Distinct positions.
 * Relations between positions.
 * Separation.
 
-**Non-existence**
+Non-existence
 
 * No distinction of location.
 * No spatial relation.
 
-**Potential Directionality**
+Potential Directionality
 
 * Movement.
 * Expansion.
 * Contraction.
 
-**Mandatory Directionality**
+Mandatory Directionality
 
 * Things can have relative position.
 
@@ -6215,23 +6260,23 @@ Cause/source → effects or manifestations.
 
 # Time
 
-**Existence**
+Existence
 
 * Events/states.
 * Sequence.
 * Change.
 
-**Non-existence**
+Non-existence
 
 * No before/after relation.
 * No distinction between states.
 
-**Potential Directionality**
+Potential Directionality
 
 * Change.
 * Ordering.
 
-**Mandatory Directionality**
+Mandatory Directionality
 
 * Earlier → later.
 
@@ -6239,24 +6284,24 @@ Cause/source → effects or manifestations.
 
 # Form
 
-**Existence**
+Existence
 
 * Identity.
 * Arrangement of parts.
 * Structure.
 
-**Non-existence**
+Non-existence
 
 * No distinction of arrangement.
 * No identity.
 
-**Potential Directionality**
+Potential Directionality
 
 * Alteration.
 * Reorganization.
 * Deformation.
 
-**Mandatory Directionality**
+Mandatory Directionality
 
 * Parts exist in relation.
 
@@ -6264,25 +6309,25 @@ Cause/source → effects or manifestations.
 
 # Life
 
-**Existence**
+Existence
 
 * Self-maintaining organization.
 * Internal processes.
 * Continuation.
 
-**Non-existence**
+Non-existence
 
 * No self-maintaining process.
 * Complete absence of internal activity.
 
-**Potential Directionality**
+Potential Directionality
 
 * Growth.
 * Reproduction.
 * Adaptation.
 * Decline.
 
-**Mandatory Directionality**
+Mandatory Directionality
 
 * Internal process → continued existence.
 
@@ -6290,25 +6335,25 @@ Cause/source → effects or manifestations.
 
 # Mind
 
-**Existence**
+Existence
 
 * Perspective.
 * Internal representation.
 * Experience.
 
-**Non-existence**
+Non-existence
 
 * No perspective.
 * No internal state.
 
-**Potential Directionality**
+Potential Directionality
 
 * Thinking.
 * Remembering.
 * Imagining.
 * Choosing.
 
-**Mandatory Directionality**
+Mandatory Directionality
 
 * Representation exists relative to an experiencer.
 
@@ -6316,25 +6361,25 @@ Cause/source → effects or manifestations.
 
 # Number
 
-**Existence**
+Existence
 
 * Distinct units.
 * Quantity relation.
 * Identity of units.
 
-**Non-existence**
+Non-existence
 
 * No distinction.
 * No quantity.
 
-**Potential Directionality**
+Potential Directionality
 
 * Addition.
 * Subtraction.
 * Ordering.
 * Comparison.
 
-**Mandatory Directionality**
+Mandatory Directionality
 
 * Units exist as countable relations.
 
@@ -6342,25 +6387,25 @@ Cause/source → effects or manifestations.
 
 # Sarcasm
 
-**Existence**
+Existence
 
 * Communication.
 * Surface meaning.
 * Intended meaning.
 * Difference between them.
 
-**Non-existence**
+Non-existence
 
 * Complete agreement between expressed and intended meaning.
 
-**Potential Directionality**
+Potential Directionality
 
 * Humor.
 * Criticism.
 * Emphasis.
 * Social signaling.
 
-**Mandatory Directionality**
+Mandatory Directionality
 
 * Expressed meaning → hidden/intended meaning.
 
@@ -6368,25 +6413,25 @@ Cause/source → effects or manifestations.
 
 # Love
 
-**Existence**
+Existence
 
 * Experiencer.
 * Object of relation.
 * Positive valuation.
 
-**Non-existence**
+Non-existence
 
 * Complete indifference.
 * Absence of relation.
 
-**Potential Directionality**
+Potential Directionality
 
 * Attention.
 * Protection.
 * Giving.
 * Joining.
 
-**Mandatory Directionality**
+Mandatory Directionality
 
 * Experiencer → valued object.
 
@@ -6394,21 +6439,21 @@ Cause/source → effects or manifestations.
 
 # Affinity
 
-**Existence**
+Existence
 
 * Two or more entities.
 * Similarity or attraction relation.
 
-**Non-existence**
+Non-existence
 
 * Complete absence of connection.
 
-**Potential Directionality**
+Potential Directionality
 
 * Increasing closeness.
 * Decreasing closeness.
 
-**Mandatory Directionality**
+Mandatory Directionality
 
 * Entities share a relation of attraction/similarity.
 
@@ -6416,22 +6461,22 @@ Cause/source → effects or manifestations.
 
 # Reality
 
-**Existence**
+Existence
 
 * A totality of what is.
 * Relations between existences.
 
-**Non-existence**
+Non-existence
 
 * Absolute nothing.
 
-**Potential Directionality**
+Potential Directionality
 
 * Change.
 * Discovery.
 * Interaction.
 
-**Mandatory Directionality**
+Mandatory Directionality
 
 * Existence exists independently of any single perspective.
 
@@ -6439,23 +6484,23 @@ Cause/source → effects or manifestations.
 
 # Communication
 
-**Existence**
+Existence
 
 * Sender/source.
 * Receiver.
 * Information pattern.
 
-**Non-existence**
+Non-existence
 
 * No information relation.
 
-**Potential Directionality**
+Potential Directionality
 
 * Encoding.
 * Transmission.
 * Interpretation.
 
-**Mandatory Directionality**
+Mandatory Directionality
 
 * Information → receiver.
 
@@ -6463,24 +6508,24 @@ Cause/source → effects or manifestations.
 
 # Understanding
 
-**Existence**
+Existence
 
 * Concept.
 * Knower.
 * Relation between them.
 
-**Non-existence**
+Non-existence
 
 * Mere symbol without meaning.
 * No conceptual connection.
 
-**Potential Directionality**
+Potential Directionality
 
 * Learning.
 * Refinement.
 * Integration.
 
-**Mandatory Directionality**
+Mandatory Directionality
 
 * Symbol/experience → internal concept.
 
@@ -6492,22 +6537,22 @@ Small common words below (much in common with NSM theory, see https://en.wikiped
 
 # 1. I
 
-**Existence**
+Existence
 
 * A perspective point.
 * An experiencing/acting unit.
 
-**Non-existence**
+Non-existence
 
 * No perspective point.
 
-**Potential directionality**
+Potential directionality
 
 * Can perceive.
 * Can act.
 * Can think.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * None.
 
@@ -6515,22 +6560,22 @@ Small common words below (much in common with NSM theory, see https://en.wikiped
 
 ## 2. YOU
 
-**Existence**
+Existence
 
 * A second perspective point.
 * Distinct from “I.”
 
-**Non-existence**
+Non-existence
 
 * No other point of reference.
 
-**Potential directionality**
+Potential directionality
 
 * Can communicate.
 * Can act.
 * Can affect.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * Relation: I ↔ you.
 
@@ -6538,22 +6583,22 @@ Small common words below (much in common with NSM theory, see https://en.wikiped
 
 ## 3. SOMEONE
 
-**Existence**
+Existence
 
 * A being.
 * Agency/perspective.
 
-**Non-existence**
+Non-existence
 
 * No being.
 
-**Potential directionality**
+Potential directionality
 
 * Can do.
 * Can perceive.
 * Can communicate.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * None.
 
@@ -6561,21 +6606,21 @@ Small common words below (much in common with NSM theory, see https://en.wikiped
 
 ## 4. SOMETHING
 
-**Existence**
+Existence
 
 * An entity.
 
-**Non-existence**
+Non-existence
 
 * Absolute nothing.
 
-**Potential directionality**
+Potential directionality
 
 * Can relate.
 * Can change.
 * Can be located.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * None.
 
@@ -6583,23 +6628,23 @@ Small common words below (much in common with NSM theory, see https://en.wikiped
 
 ## 5. BODY
 
-**Existence**
+Existence
 
 * Physical form.
 * Parts.
 * Boundary.
 
-**Non-existence**
+Non-existence
 
 * No physical extension.
 
-**Potential directionality**
+Potential directionality
 
 * Movement.
 * Change.
 * Interaction.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * Parts exist within a whole.
 
@@ -6607,20 +6652,20 @@ Small common words below (much in common with NSM theory, see https://en.wikiped
 
 ## 6. DO
 
-**Existence**
+Existence
 
 * Actor.
 * Action/event.
 
-**Non-existence**
+Non-existence
 
 * Pure absence of activity.
 
-**Potential directionality**
+Potential directionality
 
 * Any transformation.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * Actor → action.
 
@@ -6628,20 +6673,20 @@ Small common words below (much in common with NSM theory, see https://en.wikiped
 
 ## 7. HAPPEN
 
-**Existence**
+Existence
 
 * Event.
 * Before/after distinction.
 
-**Non-existence**
+Non-existence
 
 * No event.
 
-**Potential directionality**
+Potential directionality
 
 * Any change.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * State A → State B.
 
@@ -6649,21 +6694,21 @@ Small common words below (much in common with NSM theory, see https://en.wikiped
 
 ## 8. MOVE
 
-**Existence**
+Existence
 
 * Thing.
 * Position/state.
 * Difference between positions/states.
 
-**Non-existence**
+Non-existence
 
 * No transition.
 
-**Potential directionality**
+Potential directionality
 
 * Any path.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * Previous state → new state.
 
@@ -6671,22 +6716,22 @@ Small common words below (much in common with NSM theory, see https://en.wikiped
 
 ## 9. THINK
 
-**Existence**
+Existence
 
 * Thinker.
 * Thought/content.
 
-**Non-existence**
+Non-existence
 
 * No mental content.
 
-**Potential directionality**
+Potential directionality
 
 * Combine.
 * Compare.
 * Imagine.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * Thinker → thought.
 
@@ -6694,22 +6739,22 @@ Small common words below (much in common with NSM theory, see https://en.wikiped
 
 ## 10. KNOW
 
-**Existence**
+Existence
 
 * Knower.
 * Known.
 
-**Non-existence**
+Non-existence
 
 * Complete absence of relation.
 
-**Potential directionality**
+Potential directionality
 
 * Learn.
 * Forget.
 * Recall.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * Known → knower (information relation).
 
@@ -6717,22 +6762,22 @@ Small common words below (much in common with NSM theory, see https://en.wikiped
 
 ## 11. WANT
 
-**Existence**
+Existence
 
 * Someone.
 * Desired state/object.
 
-**Non-existence**
+Non-existence
 
 * No preference/direction.
 
-**Potential directionality**
+Potential directionality
 
 * Attempt.
 * Pursuit.
 * Avoidance.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * Present state → desired state.
 
@@ -6740,21 +6785,21 @@ Small common words below (much in common with NSM theory, see https://en.wikiped
 
 ## 12. FEEL
 
-**Existence**
+Existence
 
 * Experiencer.
 * Internal state.
 
-**Non-existence**
+Non-existence
 
 * No experience.
 
-**Potential directionality**
+Potential directionality
 
 * Change intensity.
 * Become different.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * Experience exists relative to experiencer.
 
@@ -6762,22 +6807,22 @@ Small common words below (much in common with NSM theory, see https://en.wikiped
 
 ## 13. SEE
 
-**Existence**
+Existence
 
 * Observer.
 * Visible thing.
 * Relation.
 
-**Non-existence**
+Non-existence
 
 * No visual relation.
 
-**Potential directionality**
+Potential directionality
 
 * Attention.
 * Movement of observer/object.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * Object → observer (visual information).
 
@@ -6785,21 +6830,21 @@ Small common words below (much in common with NSM theory, see https://en.wikiped
 
 ## 14. HEAR
 
-**Existence**
+Existence
 
 * Hearer.
 * Sound/event.
 
-**Non-existence**
+Non-existence
 
 * No sound relation.
 
-**Potential directionality**
+Potential directionality
 
 * Sound source changes.
 * Attention changes.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * Sound source → hearer.
 
@@ -6807,20 +6852,20 @@ Small common words below (much in common with NSM theory, see https://en.wikiped
 
 ## 15. SAY
 
-**Existence**
+Existence
 
 * Speaker.
 * Message.
 
-**Non-existence**
+Non-existence
 
 * No communicated content.
 
-**Potential directionality**
+Potential directionality
 
 * Any message.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * Speaker → listener/message.
 
@@ -6828,20 +6873,20 @@ Small common words below (much in common with NSM theory, see https://en.wikiped
 
 ## 16. NOT
 
-**Existence**
+Existence
 
 * A concept being considered.
 * A relation of exclusion.
 
-**Non-existence**
+Non-existence
 
 * The presence of the excluded thing.
 
-**Potential directionality**
+Potential directionality
 
 * Can negate any concept.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * Concept → exclusion of concept.
 
@@ -6849,20 +6894,20 @@ Small common words below (much in common with NSM theory, see https://en.wikiped
 
 ## 17. MAYBE
 
-**Existence**
+Existence
 
 * Possibility space.
 * Multiple possible states.
 
-**Non-existence**
+Non-existence
 
 * Absolute certainty.
 
-**Potential directionality**
+Potential directionality
 
 * Any possible outcome.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * None.
 
@@ -6870,20 +6915,20 @@ Small common words below (much in common with NSM theory, see https://en.wikiped
 
 ## 18. IF
 
-**Existence**
+Existence
 
 * Condition.
 * Possible result.
 
-**Non-existence**
+Non-existence
 
 * No relation between condition and result.
 
-**Potential directionality**
+Potential directionality
 
 * Condition may lead to many outcomes.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * Condition → consequence relation.
 
@@ -6891,21 +6936,21 @@ Small common words below (much in common with NSM theory, see https://en.wikiped
 
 ## 19. BECAUSE
 
-**Existence**
+Existence
 
 * Cause.
 * Effect.
 * Relation.
 
-**Non-existence**
+Non-existence
 
 * Effect without causal relation.
 
-**Potential directionality**
+Potential directionality
 
 * Different causal chains.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * Cause → effect.
 
@@ -6913,20 +6958,20 @@ Small common words below (much in common with NSM theory, see https://en.wikiped
 
 ## 20. BEFORE
 
-**Existence**
+Existence
 
 * Two events/states.
 * Order relation.
 
-**Non-existence**
+Non-existence
 
 * No ordering.
 
-**Potential directionality**
+Potential directionality
 
 * Events can vary.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * A → B in time order.
 
@@ -6934,20 +6979,20 @@ Small common words below (much in common with NSM theory, see https://en.wikiped
 
 ## 21. AFTER
 
-**Existence**
+Existence
 
 * Two events/states.
 * Order relation.
 
-**Non-existence**
+Non-existence
 
 * No earlier event.
 
-**Potential directionality**
+Potential directionality
 
 * Events can vary.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * Earlier → later.
 
@@ -6955,20 +7000,20 @@ Small common words below (much in common with NSM theory, see https://en.wikiped
 
 ## 22. NOW
 
-**Existence**
+Existence
 
 * A reference point in sequence.
 
-**Non-existence**
+Non-existence
 
 * No present reference.
 
-**Potential directionality**
+Potential directionality
 
 * Past.
 * Future.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * None.
 
@@ -6976,21 +7021,21 @@ Small common words below (much in common with NSM theory, see https://en.wikiped
 
 ## 23. WHERE
 
-**Existence**
+Existence
 
 * Thing.
 * Location relation.
 
-**Non-existence**
+Non-existence
 
 * No location relation.
 
-**Potential directionality**
+Potential directionality
 
 * Movement.
 * Relocation.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * Thing ↔ location.
 
@@ -6998,20 +7043,20 @@ Small common words below (much in common with NSM theory, see https://en.wikiped
 
 ## 24. HERE
 
-**Existence**
+Existence
 
 * Reference location.
 * Observer/reference point.
 
-**Non-existence**
+Non-existence
 
 * No reference location.
 
-**Potential directionality**
+Potential directionality
 
 * Movement away/toward.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * Location relative to reference point.
 
@@ -7019,19 +7064,19 @@ Small common words below (much in common with NSM theory, see https://en.wikiped
 
 ## 25. THERE
 
-**Existence**
+Existence
 
 * A location distinct from reference.
 
-**Non-existence**
+Non-existence
 
 * No separation of locations.
 
-**Potential directionality**
+Potential directionality
 
 * Movement toward/away.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * Reference point → other location.
 
@@ -7039,21 +7084,21 @@ Small common words below (much in common with NSM theory, see https://en.wikiped
 
 ## 26. INSIDE
 
-**Existence**
+Existence
 
 * Container/boundary.
 * Contained thing.
 
-**Non-existence**
+Non-existence
 
 * No enclosing relation.
 
-**Potential directionality**
+Potential directionality
 
 * Enter.
 * Exit.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * Thing exists within boundary.
 
@@ -7061,20 +7106,20 @@ Small common words below (much in common with NSM theory, see https://en.wikiped
 
 ## 27. ABOVE
 
-**Existence**
+Existence
 
 * Two things.
 * Vertical relation.
 
-**Non-existence**
+Non-existence
 
 * No relative position.
 
-**Potential directionality**
+Potential directionality
 
 * Movement upward/downward.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * One thing is higher relative to another.
 
@@ -7082,20 +7127,20 @@ Small common words below (much in common with NSM theory, see https://en.wikiped
 
 ## 28. BELOW
 
-**Existence**
+Existence
 
 * Two things.
 * Vertical relation.
 
-**Non-existence**
+Non-existence
 
 * No vertical comparison.
 
-**Potential directionality**
+Potential directionality
 
 * Up/down movement.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * One thing is lower relative to another.
 
@@ -7103,21 +7148,21 @@ Small common words below (much in common with NSM theory, see https://en.wikiped
 
 ## 29. NEAR
 
-**Existence**
+Existence
 
 * Two things.
 * Distance relation.
 
-**Non-existence**
+Non-existence
 
 * Infinite separation.
 
-**Potential directionality**
+Potential directionality
 
 * Approach.
 * Separation.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * Distance is small relative to a standard.
 
@@ -7125,21 +7170,21 @@ Small common words below (much in common with NSM theory, see https://en.wikiped
 
 ## 30. FAR
 
-**Existence**
+Existence
 
 * Two things.
 * Distance relation.
 
-**Non-existence**
+Non-existence
 
 * Immediate contact/proximity.
 
-**Potential directionality**
+Potential directionality
 
 * Approach.
 * Separation.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * Distance is large relative to a standard.
 
@@ -7147,21 +7192,21 @@ Small common words below (much in common with NSM theory, see https://en.wikiped
 
 ## 31. GOOD
 
-**Existence**
+Existence
 
 * Evaluator.
 * Something evaluated.
 * Standard/value.
 
-**Non-existence**
+Non-existence
 
 * No comparison standard.
 
-**Potential directionality**
+Potential directionality
 
 * Increase/decrease value.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * Evaluation → positive judgment.
 
@@ -7169,22 +7214,22 @@ Small common words below (much in common with NSM theory, see https://en.wikiped
 
 ## 32. BAD
 
-**Existence**
+Existence
 
 * Evaluator.
 * Something evaluated.
 * Standard/value.
 
-**Non-existence**
+Non-existence
 
 * No evaluation.
 
-**Potential directionality**
+Potential directionality
 
 * Avoidance.
 * Correction.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * Evaluation → negative judgment.
 
@@ -7192,21 +7237,21 @@ Small common words below (much in common with NSM theory, see https://en.wikiped
 
 ## 33. BIG
 
-**Existence**
+Existence
 
 * Thing.
 * Comparison scale.
 
-**Non-existence**
+Non-existence
 
 * No size relation.
 
-**Potential directionality**
+Potential directionality
 
 * Growth.
 * Shrinking.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * Thing exceeds reference size.
 
@@ -7214,21 +7259,21 @@ Small common words below (much in common with NSM theory, see https://en.wikiped
 
 ## 34. SMALL
 
-**Existence**
+Existence
 
 * Thing.
 * Comparison scale.
 
-**Non-existence**
+Non-existence
 
 * No size relation.
 
-**Potential directionality**
+Potential directionality
 
 * Growth.
 * Shrinking.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * Thing is below reference size.
 
@@ -7236,21 +7281,21 @@ Small common words below (much in common with NSM theory, see https://en.wikiped
 
 ## 35. ONE
 
-**Existence**
+Existence
 
 * Unit.
 * Identity.
 
-**Non-existence**
+Non-existence
 
 * Multiplicity.
 
-**Potential directionality**
+Potential directionality
 
 * Division.
 * Combination.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * Single identity.
 
@@ -7258,45 +7303,45 @@ Small common words below (much in common with NSM theory, see https://en.wikiped
 
 ## 36. TWO
 
-**Existence**
+Existence
 
 * Two units.
 * Distinction.
 
-**Non-existence**
+Non-existence
 
 * Complete unity.
 
-**Potential directionality**
+Potential directionality
 
 * Separation.
 * Joining.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * One + one.
 
-Continuing. I will keep them as **minimal conceptual skeletons** rather than ordinary definitions.
+Continuing. I will keep them as minimal conceptual skeletons rather than ordinary definitions.
 
 -----------------------
 
 ## 37. SAME
 
-**Existence**
+Existence
 
 * Two or more things.
 * A shared identity/property/relation.
 
-**Non-existence**
+Non-existence
 
 * Complete absence of commonality.
 
-**Potential directionality**
+Potential directionality
 
 * Comparison.
 * Recognition.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * A ↔ B share something.
 
@@ -7304,21 +7349,21 @@ Continuing. I will keep them as **minimal conceptual skeletons** rather than ord
 
 ## 38. DIFFERENT
 
-**Existence**
+Existence
 
 * Two or more things.
 * A distinction.
 
-**Non-existence**
+Non-existence
 
 * Complete identity.
 
-**Potential directionality**
+Potential directionality
 
 * Comparison.
 * Separation.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * A ≠ B.
 
@@ -7326,21 +7371,21 @@ Continuing. I will keep them as **minimal conceptual skeletons** rather than ord
 
 ## 39. OTHER
 
-**Existence**
+Existence
 
 * A reference thing.
 * Another thing.
 
-**Non-existence**
+Non-existence
 
 * Only one undivided thing.
 
-**Potential directionality**
+Potential directionality
 
 * Relation.
 * Comparison.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * One thing is distinct from reference.
 
@@ -7348,20 +7393,20 @@ Continuing. I will keep them as **minimal conceptual skeletons** rather than ord
 
 ## 40. ALL
 
-**Existence**
+Existence
 
 * A collection.
 * A boundary of inclusion.
 
-**Non-existence**
+Non-existence
 
 * Anything outside the collection.
 
-**Potential directionality**
+Potential directionality
 
 * Expansion or reduction of collection.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * Every member included.
 
@@ -7369,20 +7414,20 @@ Continuing. I will keep them as **minimal conceptual skeletons** rather than ord
 
 ## 41. SOME
 
-**Existence**
+Existence
 
 * A collection.
 * At least one member.
 
-**Non-existence**
+Non-existence
 
 * Total absence of members.
 
-**Potential directionality**
+Potential directionality
 
 * Increase/decrease quantity.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * Partial inclusion.
 
@@ -7390,20 +7435,20 @@ Continuing. I will keep them as **minimal conceptual skeletons** rather than ord
 
 ## 42. MANY
 
-**Existence**
+Existence
 
 * Multiple units.
 * Quantity comparison.
 
-**Non-existence**
+Non-existence
 
 * Single unit.
 
-**Potential directionality**
+Potential directionality
 
 * Increase/decrease.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * Quantity exceeds small reference amount.
 
@@ -7411,20 +7456,20 @@ Continuing. I will keep them as **minimal conceptual skeletons** rather than ord
 
 ## 43. MORE
 
-**Existence**
+Existence
 
 * Two quantities.
 * Comparison.
 
-**Non-existence**
+Non-existence
 
 * No quantity difference.
 
-**Potential directionality**
+Potential directionality
 
 * Increase/decrease.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * Quantity A > quantity B.
 
@@ -7432,20 +7477,20 @@ Continuing. I will keep them as **minimal conceptual skeletons** rather than ord
 
 ## 44. LESS
 
-**Existence**
+Existence
 
 * Two quantities.
 * Comparison.
 
-**Non-existence**
+Non-existence
 
 * No quantity difference.
 
-**Potential directionality**
+Potential directionality
 
 * Increase/decrease.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * Quantity A < quantity B.
 
@@ -7453,20 +7498,20 @@ Continuing. I will keep them as **minimal conceptual skeletons** rather than ord
 
 ## 45. CAN
 
-**Existence**
+Existence
 
 * An agent/thing.
 * A possible action/state.
 
-**Non-existence**
+Non-existence
 
 * Absolute impossibility.
 
-**Potential directionality**
+Potential directionality
 
 * Many possible outcomes.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * Possibility relation exists.
 
@@ -7474,20 +7519,20 @@ Continuing. I will keep them as **minimal conceptual skeletons** rather than ord
 
 ## 46. MUST
 
-**Existence**
+Existence
 
 * A condition.
 * A required outcome.
 
-**Non-existence**
+Non-existence
 
 * Alternative possibility.
 
-**Potential directionality**
+Potential directionality
 
 * Different paths before requirement.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * Condition → unavoidable result.
 
@@ -7495,21 +7540,21 @@ Continuing. I will keep them as **minimal conceptual skeletons** rather than ord
 
 ## 47. TRUE
 
-**Existence**
+Existence
 
 * Statement/concept.
 * Reality or accepted structure it corresponds to.
 
-**Non-existence**
+Non-existence
 
 * Contradiction with that structure.
 
-**Potential directionality**
+Potential directionality
 
 * Investigation.
 * Verification.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * Concept → matches reality/structure.
 
@@ -7517,21 +7562,21 @@ Continuing. I will keep them as **minimal conceptual skeletons** rather than ord
 
 ## 48. FALSE
 
-**Existence**
+Existence
 
 * Statement/concept.
 * Reality/structure.
 
-**Non-existence**
+Non-existence
 
 * Correspondence.
 
-**Potential directionality**
+Potential directionality
 
 * Correction.
 * Discovery.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * Concept → does not match reality/structure.
 
@@ -7539,22 +7584,22 @@ Continuing. I will keep them as **minimal conceptual skeletons** rather than ord
 
 ## 49. LIVE
 
-**Existence**
+Existence
 
 * Entity.
 * Self-maintaining process.
 
-**Non-existence**
+Non-existence
 
 * Complete absence of life process.
 
-**Potential directionality**
+Potential directionality
 
 * Growth.
 * Change.
 * Reproduction.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * Internal activity continues.
 
@@ -7562,21 +7607,21 @@ Continuing. I will keep them as **minimal conceptual skeletons** rather than ord
 
 ## 50. DIE
 
-**Existence**
+Existence
 
 * Living entity.
 * Life process.
 
-**Non-existence**
+Non-existence
 
 * Continuation of life process.
 
-**Potential directionality**
+Potential directionality
 
 * Decay.
 * Transformation.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * Life process → cessation.
 
@@ -7584,21 +7629,21 @@ Continuing. I will keep them as **minimal conceptual skeletons** rather than ord
 
 ## 51. MAKE
 
-**Existence**
+Existence
 
 * Maker.
 * Result.
 * Process.
 
-**Non-existence**
+Non-existence
 
 * Result without creation process.
 
-**Potential directionality**
+Potential directionality
 
 * Any method of production.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * Maker/process → created thing.
 
@@ -7606,21 +7651,21 @@ Continuing. I will keep them as **minimal conceptual skeletons** rather than ord
 
 ## 52. USE
 
-**Existence**
+Existence
 
 * User.
 * Object.
 * Purpose.
 
-**Non-existence**
+Non-existence
 
 * No application of object.
 
-**Potential directionality**
+Potential directionality
 
 * Different purposes.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * User → object toward purpose.
 
@@ -7628,22 +7673,22 @@ Continuing. I will keep them as **minimal conceptual skeletons** rather than ord
 
 ## 53. HAVE
 
-**Existence**
+Existence
 
 * Possessor.
 * Possessed thing.
 * Relation.
 
-**Non-existence**
+Non-existence
 
 * No possession relation.
 
-**Potential directionality**
+Potential directionality
 
 * Acquire.
 * Lose.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * Possessed thing is connected to possessor.
 
@@ -7651,21 +7696,21 @@ Continuing. I will keep them as **minimal conceptual skeletons** rather than ord
 
 ## 54. GIVE
 
-**Existence**
+Existence
 
 * Source.
 * Recipient.
 * Transferable thing.
 
-**Non-existence**
+Non-existence
 
 * No transfer.
 
-**Potential directionality**
+Potential directionality
 
 * Physical, informational, abstract transfer.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * Source → recipient.
 
@@ -7673,21 +7718,21 @@ Continuing. I will keep them as **minimal conceptual skeletons** rather than ord
 
 ## 55. TAKE
 
-**Existence**
+Existence
 
 * Receiver.
 * Source.
 * Thing transferred.
 
-**Non-existence**
+Non-existence
 
 * No acquisition.
 
-**Potential directionality**
+Potential directionality
 
 * Different methods of obtaining.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * Source → receiver.
 
@@ -7695,21 +7740,21 @@ Continuing. I will keep them as **minimal conceptual skeletons** rather than ord
 
 ## 56. CHANGE
 
-**Existence**
+Existence
 
 * Thing.
 * State A.
 * State B.
 
-**Non-existence**
+Non-existence
 
 * Complete sameness through time.
 
-**Potential directionality**
+Potential directionality
 
 * Any transformation.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * State A → State B.
 
@@ -7717,20 +7762,20 @@ Continuing. I will keep them as **minimal conceptual skeletons** rather than ord
 
 ## 57. BECOME
 
-**Existence**
+Existence
 
 * Initial state.
 * New state.
 
-**Non-existence**
+Non-existence
 
 * No transition.
 
-**Potential directionality**
+Potential directionality
 
 * Any new condition.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * Before → after.
 
@@ -7738,21 +7783,21 @@ Continuing. I will keep them as **minimal conceptual skeletons** rather than ord
 
 ## 58. TRY
 
-**Existence**
+Existence
 
 * Agent.
 * Goal.
 * Attempt.
 
-**Non-existence**
+Non-existence
 
 * Guaranteed success.
 
-**Potential directionality**
+Potential directionality
 
 * Multiple attempts.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * Agent → possible goal.
 
@@ -7760,21 +7805,21 @@ Continuing. I will keep them as **minimal conceptual skeletons** rather than ord
 
 ## 59. NEED
 
-**Existence**
+Existence
 
 * Entity.
 * Requirement.
 * Desired/necessary condition.
 
-**Non-existence**
+Non-existence
 
 * No requirement.
 
-**Potential directionality**
+Potential directionality
 
 * Acquisition.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * Current state → required state.
 
@@ -7782,21 +7827,21 @@ Continuing. I will keep them as **minimal conceptual skeletons** rather than ord
 
 ## 60. WANT
 
-**Existence**
+Existence
 
 * Someone.
 * Desired state.
 
-**Non-existence**
+Non-existence
 
 * Absence of preference.
 
-**Potential directionality**
+Potential directionality
 
 * Pursuit.
 * Avoidance.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * Present → preferred.
 
@@ -7804,21 +7849,21 @@ Continuing. I will keep them as **minimal conceptual skeletons** rather than ord
 
 ## 61. FEAR
 
-**Existence**
+Existence
 
 * Experiencer.
 * Possible threat.
 
-**Non-existence**
+Non-existence
 
 * No perceived threat.
 
-**Potential directionality**
+Potential directionality
 
 * Avoidance.
 * Escape.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * Threat → negative valuation.
 
@@ -7826,21 +7871,21 @@ Continuing. I will keep them as **minimal conceptual skeletons** rather than ord
 
 ## 62. HELP
 
-**Existence**
+Existence
 
 * Helper.
 * Recipient.
 * Difficulty/problem.
 
-**Non-existence**
+Non-existence
 
 * No assistance relation.
 
-**Potential directionality**
+Potential directionality
 
 * Many methods of assistance.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * Helper → recipient improvement.
 
@@ -7848,23 +7893,23 @@ Continuing. I will keep them as **minimal conceptual skeletons** rather than ord
 
 ## 63. LOVE
 
-**Existence**
+Existence
 
 * Experiencer.
 * Object/person.
 * Positive valuation.
 
-**Non-existence**
+Non-existence
 
 * Indifference or rejection.
 
-**Potential directionality**
+Potential directionality
 
 * Attention.
 * Giving.
 * Protection.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * Experiencer → positive relation.
 
@@ -7872,22 +7917,22 @@ Continuing. I will keep them as **minimal conceptual skeletons** rather than ord
 
 ## 64. GOOD PERSON / KIND
 
-**Existence**
+Existence
 
 * Agent.
 * Other being.
 * Positive action relation.
 
-**Non-existence**
+Non-existence
 
 * Pure disregard/harm.
 
-**Potential directionality**
+Potential directionality
 
 * Helping.
 * Caring.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * Agent → beneficial effect.
 
@@ -7895,22 +7940,22 @@ Continuing. I will keep them as **minimal conceptual skeletons** rather than ord
 
 ## 65. WORD / SAY
 
-**Existence**
+Existence
 
 * Symbol.
 * Meaning.
 * Communicator.
 
-**Non-existence**
+Non-existence
 
 * Pure meaningless signal.
 
-**Potential directionality**
+Potential directionality
 
 * Communication.
 * Interpretation.
 
-**Mandatory directionality**
+Mandatory directionality
 
 * Meaning transmitted through symbol.</pre>
 </section>
