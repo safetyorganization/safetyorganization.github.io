@@ -14,10 +14,10 @@
   --muted:#8fa5b2; --line:rgba(255,255,255,.09); --accent2:purple;
   --accent:gold; --glow:rgba(124,231,207,.18);
 }
-*{box-sizing:border-box;}
+      {box-sizing:border-box;}
 html{scroll-behavior:smooth}
 pre{white-space: pre-wrap; margin: 20px; border: 0px solid red;
-font:15px/1.75 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;}
+font:15px/1.75 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; padding-bottom:200px;  }
 
 html,body{margin:0;padding:0;}
 body{background:
@@ -27,11 +27,11 @@ body{background:
 body:before{padding:0;margin:0;content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(to bottom,black,transparent 80%)}
 .sidebar{position:fixed;z-index:10;right:22px;top:50%;transform:translateY(-50%);width:210px;padding:14px;border:1px solid var(--line);background:rgba(8,16,24,.78);backdrop-filter:blur(18px);border-radius:22px;box-shadow:0 25px 80px rgba(0,0,0,.35)}
 .group{padding:12px 12px 18px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:12px;color:var(--accent)}
-nav a{display:flex;align-items:center;gap:10px;color:var(--muted);text-decoration:none;padding:0px 12px;border-radius:12px;transition:.25s}
+nav a{display:flex;align-items:center;gap: 10px; color:var(--muted);text-decoration:none;padding:0px 12px;border-radius:12px;transition:.25s}
 nav a span{width:6px;height:6px;border-radius:50%;background:#49606d;transition:.25s}
 nav a:hover,nav a.active{color:var(--text);background:rgba(124,231,207,.08)}
 nav a.active span{background:var(--accent);box-shadow:0 0 12px var(--accent)}
-section{min-height:86vh;  scroll-margin-top:30px;}
+section{min-height:86vh;  scroll-margin-top:100px;}
 .hero{min-height:92vh;display:flex;align-items:center}
 .eyebrow{color:var(--accent);text-transform:uppercase;letter-spacing:.18em;font-size:12px;font-weight:800}
 h1{font-size:clamp(48px,8vw,92px);line-height:.95;letter-spacing:-.055em;margin:18px 0 25px;}
@@ -54,22 +54,28 @@ h3{margin:0 0 8px;font-size:18px}
 footer{padding-top:40px;color:#637986;font-size:12px}
 
 /*@media(max-width:900000px){*/
- .sidebar{position:fixed;left:12px;right:12px;top:auto;top:12px;transform:none;width:auto;padding:8px;border-radius:18px;}
- .group{display:none}.sidebar nav{display:flex;justify-content:space-between;gap:3px}
- nav{overflow-x:auto;scrollbar-width:none}nav::-webkit-scrollbar{display:none}nav a{font-size:11px;padding:9px 10px;flex:0 0 auto;justify-content:center;white-space:nowrap}nav a span{display:none}
+ .sidebar{position:fixed;left:0px;right:0px;top:auto;top:12px;transform:none;width:auto;margin-left:8px;margin-right:8px;padding:8px;border-radius:18px;}
+ .sidebar nav{display:flex;justify-content:space-between;gap:3px}
+ nav{overflow-x:auto;scrollbar-width:none}
+ nav::-webkit-scrollbar{display:none}
+
+ nav a{font-size:11px;padding:9px 10px;flex:0 0 auto;justify-content:center;white-space:nowrap}
+
+ nav a span{display:none}
  main{width:100%;margin:0;}.hero{min-height:85vh}
- section{min-height:auto}.grid{grid-template-columns:1fr;}h1{font-size:clamp(48px,16vw,78px)}
-pre,h3,iframe,main,h1,h2,.rule,.rule2,p, audio, video{
+ section{min-height:auto}.grid{grid-template-columns:1fr;}
+
+ h1{font-size:clamp(48px,16vw,78px)}
+pre,h3,iframe,h1,h2,.rule,.rule2,p, audio, video{
  margin-left:31px;
  }
 #sidebar, #sidebar *{max-width:100%;}
-
+h2{text-shadow: 3px 3px 50px gold;}
  /*}*/
 </style>
 </head>
 <body>
 <aside id='sidebar' class="sidebar">
-  <div class="group">Safety Organization</div>
   <nav>
     <a href="#intro" class="active"><span></span>Media</a>
     <a href="#goals"><span></span>Goals</a>
@@ -78,13 +84,13 @@ pre,h3,iframe,main,h1,h2,.rule,.rule2,p, audio, video{
     <a href="#ontological_zeal"><span></span>Zeal</a>
     <a href="#ontology"><span></span>Ontology</a>
     <a href="#what-we-do"><span></span>Practice</a>
-    <a href="#high-level"><span></span>Considerations</a>
     <a href="#expectations"><span></span>Expectations</a>
     <a href="#symbols"><span></span>Symbols</a>
     <a href="#traps"><span></span>Traps</a>
     <a href="#hist"><span></span>History</a>
     <a href="#sop"><span></span>SOP</a>
     <a href="#other-processes"><span></span>Processes</a>
+    <a href="#high-level"><span></span>Considerations</a>
     <a href="#words"><span></span>Language</a>
   </nav>
 </aside>
@@ -101,14 +107,18 @@ pre,h3,iframe,main,h1,h2,.rule,.rule2,p, audio, video{
 	</div>
 	<br>
     <div class="rule2"></div>
+	<br>
+    <h3 style='text-shadow:3px 3px 42px gold;'>Media &ndash; Films, music and games illustrating our religious principles</h3>
+<br><br>
 
 	<section id="intro" class="hero">
-  <div>
-    <h2>Media &ndash; Films, music and games illustrating our religious principles</h2>
+
+  <div style='margin-left:40px;width:100%;'>
     <div class="rule"></div>
     <h3>Films</h3>
       <iframe width="360" height="360" src="https://www.youtube.com/embed/vVYDm1zqgiQ?si=4ce6CGjxLFvSkNKs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
      <br> 
+   <br><br>
    <h3>Music</h3>
       	<audio width="180" controls>
       	<source src="Exterior.mp3" type="audio/mp3">
@@ -120,13 +130,15 @@ pre,h3,iframe,main,h1,h2,.rule,.rule2,p, audio, video{
       	<video width="360" height="640" controls>
       	<source src="Fully%20Exterior_lyricsvideo_v_2.mp4" type="video/mp4">
       	</video>
-    <h3>Games</h3>
+    <br><br>
+       <br><br>
+          <h3>Games</h3>
     <p>
             
         <div style='text-align:center;'>
             <button onclick="toggleExt()"  id="toggleExt">Exteriorization Game</button></p>
             </div>
-<div id="exteriorization-embed"></div>
+<div style='position:relative;left:-20px;' id="exteriorization-embed"></div>
 <script>
 	const ext=document.getElementById("exteriorization-embed").style;
     function toggleExt() {
@@ -3038,8 +3050,19 @@ import * as THREE from "https://unpkg.com/three@0.160.0/build/three.module.js";
     </div>
   </div>
 </section>
-    <div class="rule2"></div>
 <section id="goals">
+<br><br>
+  <h3 style='font-style:italic;padding:50px;padding-bottom:140px;'>
+<div class="rule" style='width:40%;margin:0px;'></div>
+<br>
+We are a new religion.<br>
+We encourage free thought in the strongest sense.<br>
+We don't require conversion.<br>
+We have an open-ended epistemology and ontology - believe what is true you but make sure to seek the truth and be intelligent and discerning.<br>
+We cost $0.00 to practice.<br>
+We have useful technology for stress relief, stability and fulfilment, and for understanding self.<br>
+We are open to all.</h3>
+
   <h2 style='font-style:italic;'>Our Main Goals</h2>
   <p class="lead">Our Main Goals for Individual, ranked</p>
     <div class="rule"></div>
@@ -3048,18 +3071,18 @@ import * as THREE from "https://unpkg.com/three@0.160.0/build/three.module.js";
 2. No issue with body death, no compulsion to report anywhere
 3. Exterior, or able to exteriorize without issue
 4. Able to Assume bodies without issue
-5. A friendly space in which to meet others that want to go free, support others and be supported by others.
-6. A willingness to want to free others, regardless of the group, or teachings.
-7. "Full" perception while exterior
+5. A friendly space in which to meet others that want to go free, support others and be supported by others
+6. A willingness to want to free others, regardless of the group, or teachings
+7. “Full” perception while exterior
 8. Retention of current memory across lifetimes (might be more difficult than the other points)
 9. A feeling of safety and calmness
 10. In control of automatic responses, or not having automatic responses
 11. Does not have destructive intentions or evil purposes
 12. Somewhat better memory of current life
 13. Has a relatively healthy body or sense of form
-</pre>
-    <div class="rule"></div><pre>
-For the main goals, there are direct processes for these also.
+
+
+For the main goals, there are direct processes for these also
 
 2. No issue with body death, no compulsion to report - 1-9
 3. Retention of current memory across lifetimes - 16
@@ -3144,6 +3167,7 @@ This is one of the foundational points of our ethics. You have got to have someo
 <section id="ontological_zeal">
   <h2>Ontological Zeal</h2>
   <p class="lead"><i>Seek Truth</i></p>
+    <div class="rule"></div>
 <pre>
 We greatly value the pursuit, through apologetics, discourse, dialogue, communication and debate, among people of intelligence, of the true ontology of life.
 
@@ -3164,7 +3188,8 @@ Fight thoroughly any "watering down" of our processes to appeal to more people, 
 <section id="ontology">
   <h2>Ontology of Life</h2>
   <p class="lead"><i>What is actually true</i></p>
-  <pre>
+    <div class="rule"></div>
+<pre>
 For now, this is a working hypothesis. All truths in our movement, we wish to extensively prove and document them, within reason (and without making anyone unsafe).
 
 You are an immortal soul. You are not your body. Your capabilities are unlimited. You are the source and cause of reality - your universe (thoughts and creations), and also the universe around you (the physical universe). These are separate.
@@ -3191,10 +3216,24 @@ So long as you are not shackled down and are willing to reach for it.
 </section>
 
 <section id="what-we-do">
-  <h2>What we do</h2>
+  <h2>What We Do</h2>
+    <div class="rule"></div>
   <pre>We do what we call “Processes.”
 
-Processes are techniques, often applied in a group setting, to “turn on” some kind of spiritual or mental phenomena, or to drill or train ability to a higher level.
+Processes are techniques, sometimes applied in a group setting, to “turn on” some kind of spiritual or mental phenomena, or to drill or train ability to a higher level.
+
+It is not “going to the gym” or “strength training.” To conflate such is to miss the point. It is to become spiritually calmer and freer, and in so doing, yes, one might become “stronger,” but it is not just “strength”. It is becoming less compulsive, more self-determined.
+
+It is the ancient goal of Buddhism and Eastern religion in general. But in a much better form.
+
+
+Besides processing, we do the following religious services -
+	Group Immortality ritual - whereby we each reaffirm our inherent immortality as a group. Invigorating, you are welcome to join so long as you know you are immortal.
+	Grand Tours - a group processing technique where people are acclimated into the environment of the physical universe. Only for beings who can perceive exterior and know it.
+
+Some of these shall be broadcast on social media.
+
+
 
 Some processes might focus on handling negative things. These involve “turning on” and “turning off” some kind of mental charge or factor. For example, a heavy incident. Some processes might focus on putting into being a positive state, like Intelligence.
 
@@ -3227,188 +3266,108 @@ While we are wholly and utterly ourself, and are not a branch of anything, there
   How does help seem to you now?
   How does time seem to you now?-->
 
-<section id="high-level">
-  <h2>High Level Considerations</h2>
-<pre>
-High level considerations
-
-Probably fast to change ones mind and make oneself like this
-
-Who is telling you to be in a body? => Psychologists, psychiatrists, materialists, Implanters, psychs controlling the society, etc. => Just me, I'm the only one telling me to be in a body
-Who is telling you that the body is more interesting than the exterior world? => Only I am, and no one else
-
-Body control
-	I don't NEED TO control the body. There is no obession or compulsion or requirement to move it. I can protest moving it completely.
-
-	I don't need to control or not control the body. I am likely interested in the body, but I don't need to CONTROL it. Control will come naturally, without needing there to be attention on the body to control or not control it.
-
-	I can control it very thoroughly if I desire to
-
-Attention
-	I can span attention on any body parts, and broaden that attention to include other body parts. I can broaden attention past the body.
-
-The body is in good form. It's not crippled or in bad state.
-
-The body is not stopping me from locating myself.
-
-The body could become another form and I wouldn't mind.
-
-The body could be hurt and I wouldn't mind (from body generated pain).
-
-The body is less interesting than the exterior world.
-
-The body could be volatile and I wouldn't mind (being shaken, trembling, etc.)
-
-I am not “from” the body. Where are you from? => “Here” / “Right from where I am.” “Where is that?” => “Only where I say I am and no other place”
-
-I will inevitably lose control of the current body, but that is okay and doesn't matter at all. I will still be able to control past (if not totally decomposed and gone), present and possibly future bodies at any moment. Such ability cannot go away.
-
-Bodies are never lost. You don't have “loss” from a body dying. Not ones own, not another. Others also don't have loss from a body dying.
-
-I can see just fine without the body's eyes. “Perceptionness” cannot ever go away.
-
-“Body utility,” whatever that would mean, cannot go away.
-
-I can conceive a static easily, and so can others.
-
-The idea that someone would ever lose something if they conceived a static a very low order idea.
-
-
-I love the exterior world.
-
-My body could suddenly become something else and I wouldn't care.
-
-I am okay with any distance from me to any part of my body, and any distance from any part of my body to me.
-
-I am okay with 100 feet + from my head to me.
-
-I am okay with 100 feet + from me to my head.
-
-I don’t need to force the body into anything.
-I can make by body wait until it dies.
-The sensation of the body can be volatile.
-The sensation of the body can be still.
-The sensation of the body can fluctuate in volatility.
-
-TODO Interest, location
-
-</pre>
-
-</section>
-
 <section id="expectations">
   <h2>Expectations</h2>
   <pre>
-  1. On knowing oneself
-  
-  
-  	Before anything, one must understand that one can know about the mind, spirit and life. One must know that one can be in control of the creation of things.
-  
-  	These can help, and allow one to have these things - to be able to interact with these things without issue. This is a consideration, and can be built up markedly.
-  
-  
-  	Waste 'knowing about the mind, spirit and life'.
-  
-  
-  	This means to make this, "mentally", destroyed, etc. "Waste" here means "ruin, destroy, lay waste of, wreck, make vanish altogether, etc."
-  
-  
-  	So, again
-  
-  	Waste 'knowing about the mind, spirit and life'. This allows you to have this. Instead of being oblivious of this or being predisposed to want to fight or rejct it.
-  
-  	Also
-  
-  	Waste 'not knowing about the mind, spirit and life'.
-  
-  	Before anything, allow yourself to know yourself - whatever the way. This will protect you. you don't need to protect yourself, from yourself.
-  
-  
-  2. On expectation, and "spiritual people" or "fun times"
-  
-  	When one finds ex-religious people, one often notices that there are certain expectations they "had".
-  
-  	These expectations are usually completely arbitrary, a product of their thinking and nothing else.
-  
-  	People say the key to happiness is low expectations
-  
-  	There has even been scientific testing of such
-  
-  
-  	https://www.sbs.com.au/news/article/the-key-to-happiness-really-low-expectations-according-to-scientists/gs2fg3gau
-  
-  	
-  
-  	One can look at certain ex-Scientologists, "assuming" some goal instead of going with the journey, or ex-Christians, assuming hell or assuming social pressure.
-  
-  	There can be social expectations, which really don't exist, parental expectations, which don't need to exist (It is usually ones choice to have a kid, and always ones choice to have a body)
-  
-  
-  	It is interesting that one finds so-called ex-Scientologists or anti-Scientologists saying things like "I was exterior with full perception.",
-  	and many other claims affirming consistent ontology, and affirming current belief in such ontology, and be "mad" due to expectations.
-  
-  	They have found what they are, how they are, but are "mad" because of some petty nonsense, like some grievance that some person did,
-  	or things, that, frankly, a being in a good state should be able to snap out of or not snap out of in a second.
-  
-  	Hubbard did have a process for Expectation in his early materials. He notes "This process is not for low-level cases" about R2-70.
-  
-  	One should be happy to just exist. There is nothing in any former spiritual practice, Transcendental Meditation, Scientology, Christianity, anything, that
-  	pre-supposes high expectations. It's what people add to the picture.
-  
-  
-  
-  
-  	These questions can ameliorate strange "expectations", which they should really be exterior from. Also, one can treat them as a symbol, move the expectations, waste them, etc.
-  
-  	Actually, wasting expectations could be very valuable.
-  
-  	These processes should be done to get rid of "nutcases". Even the tiniest application could do great things. Even doing this 1-3 times could do great things.
-  
-  	
-  
-  	What expectations do you not have for the human spirit?
-  	What expectations does the human spirit not have for you?
-  
-  	What expectations do you have for the human spirit?
-  	What expectations does the human spirit have for you?
-  
-  
-  	Waste expectations of the human spirit.
-  	Waste no expectations of the human spirit.
-  
-  
-  	What expectations do you not have for religion?
-  	What expectations does religion not have for you?
-  
-  	What expectations do you have for religion?
-  	What expectations does religion have for you?
-  
-  	Waste expectations of religion.
-  	Waste no expectations of religion.
-  
-  
-  	What expectations do you not have for God?
-  	What expectations does God not have for you?
-  
-  	What expectations do you have for God?
-  	What expectations does the God have for you?
-  
-  
-  	Waste expectations of God.
-  	Waste no expectations of God.
-  
-  
-  	What expectations do you not have for supernatural powers?
-  	What expectations do supernatural powers not have for you?
-  
-  	What expectations do you have for supernatural powers?
-  	What expectations do supernatural powers have for you?
-  
-  
-  	Waste expectations of supernatural powers.
-  	Waste no expectations of supernatural powers.
-  
-  
+1. On knowing oneself
+
+
+	Before anything, one must understand that one can know about the mind, spirit and life. One must know that one can be in control of the creation of things.
+
+	These can help, and allow one to have these things - to be able to interact with these things without issue. This is a consideration, and can be built up markedly.
+
+	Waste 'knowing about the mind, spirit and life'.
+
+	This means to make this, "mentally", destroyed, etc. "Waste" here means "ruin, destroy, lay waste of, wreck, make vanish altogether, etc."
+
+	So, again
+
+	Waste 'knowing about the mind, spirit and life'. This allows you to have this. Instead of being oblivious of this or being predisposed to want to fight or reject it.
+
+	Also
+
+	Waste 'not knowing about the mind, spirit and life'.
+
+	Before anything, allow yourself to know yourself - whatever the way. This will protect you. you don't need to protect yourself, from yourself.
+
+2. On expectation, and "spiritual people" or "fun times"
+
+	When one finds ex-religious people, one often notices that there are certain expectations they "had".
+
+	These expectations are usually completely arbitrary, a product of their thinking and nothing else.
+
+	People say the key to happiness is low expectations
+
+	There has even been scientific testing of such
+
+	https://www.sbs.com.au/news/article/the-key-to-happiness-really-low-expectations-according-to-scientists/gs2fg3gau
+
+	One can look at certain ex-Scientologists, "assuming" some goal instead of going with the journey, or ex-Christians, assuming hell or assuming social pressure.
+
+	There can be social expectations, which really don't exist, parental expectations, which don't need to exist (It is usually ones choice to have a kid, and always ones choice to have a body)
+
+	It is interesting that one finds so-called ex-Scientologists or anti-Scientologists saying things like "I was exterior with full perception.",
+	and many other claims affirming consistent ontology, and affirming current belief in such ontology, and be "mad" due to expectations.
+
+	They have found what they are, how they are, but are "mad" because of some petty nonsense, like some grievance that some person did,
+	or things, that, frankly, a being in a good state should be able to snap out of or not snap out of in a second.
+
+	Hubbard did have a process for Expectation in his early materials. He notes "This process is not for low-level cases" about R2-70.
+
+	One should be happy to just exist. There is nothing in any former spiritual practice, Transcendental Meditation, Scientology, Christianity, anything, that
+	pre-supposes high expectations. It's what people add to the picture.
+
+	These questions can ameliorate strange "expectations", which they should really be exterior from. Also, one can treat them as a symbol, move the expectations, waste them, etc.
+
+	Actually, wasting expectations could be very valuable.
+
+	These processes should be done to get rid of "nutcases". Even the tiniest application could do great things. Even doing this 1-3 times could do great things.
+
+	
+
+	What expectations do you not have for the human spirit?
+	What expectations does the human spirit not have for you?
+
+	What expectations do you have for the human spirit?
+	What expectations does the human spirit have for you?
+
+
+	Waste expectations of the human spirit.
+	Waste no expectations of the human spirit.
+
+
+	What expectations do you not have for religion?
+	What expectations does religion not have for you?
+
+	What expectations do you have for religion?
+	What expectations does religion have for you?
+
+	Waste expectations of religion.
+	Waste no expectations of religion.
+
+
+	What expectations do you not have for God?
+	What expectations does God not have for you?
+
+	What expectations do you have for God?
+	What expectations does the God have for you?
+
+
+	Waste expectations of God.
+	Waste no expectations of God.
+
+
+	What expectations do you not have for supernatural powers?
+	What expectations do supernatural powers not have for you?
+
+	What expectations do you have for supernatural powers?
+	What expectations do supernatural powers have for you?
+
+
+	Waste expectations of supernatural powers.
+	Waste no expectations of supernatural powers.
+
+
   </pre>
 </section>
 
@@ -3438,7 +3397,7 @@ On emotions and knowing
 
 	And surely, there are many things the being is doing at total failure, can't hide, unknowable, hiding, etc. AT THE SAME TIME as the being is doing things with cheerfulness, strong interest, no sympathy, etc.
 
-	Someone might be at Sacrice and Worshipping Bodies for their body, at Cheerfulness for something that happened, super high toned for some OLD extant space that they had from probably a previous universe, etc
+	Someone might be at Sacrificing and Worshipping Bodies for their body, at Cheerfulness for something that happened, super high toned for some OLD extant space that they had from probably a previous universe, etc
 
 
 	At the higher emotional levels, space expands and reality becomes less real. It is maximally real half way down. Then space contracts more and reality becomes less real.
@@ -3460,7 +3419,7 @@ and he won't be an orientation point in relation to it, there will be another or
 Therefore, getting him to non-obsessively hold the body still and not have an issue with the body's mobility, would exteriorize him. The body is a symbol, as would be many other things.
 Having him keep the body's head from going away, for a long time, would also do a similar thing.
 Also, since he feels trapped by the head, and since traps, by definition "keep things from going away", he is doing the inverse here, which would make it not be
-obessive. This non obessiveness would make him not have an issue with the body's mobility, and would make him not have an issue with the body's symbolness.
+obsessive. This non obsessiveness would make him not have an issue with the body's mobility, and would make him not have an issue with the body's symbolness.
 
 The body is a symbol and if someone symbolizes to know, at the high end they emotionally are in approval from bodies (where there is more Thinkingness, thinking to know is blended in), at the lower end they are in needing bodies.
 
@@ -3502,7 +3461,7 @@ Perhaps the body suppresses unconsciousness on a mass scale, and the body helps 
 
 "If your body is dead, what unconsciousness could you communicate with?"
 "If your body is dead, what unconsciousness could overcome you?"
-"If your body is dead, tell me an arithemetic problem you could do without any brain at all."
+"If your body is dead, tell me an arithmetic problem you could do without any brain at all."
 "If your body is dead, what unconsciousness wouldn't be fashionable."
 
 Unconsciousness is a method of knowing, not quite unknowable, but just above such. It is being nothing, an actual beingness, of nothingness.
@@ -3557,7 +3516,7 @@ These are ORDERLY solutions to life. How are they orderly?
 	The being comes up with some solution at some point.
 
 	For example, "I will see a doctor, get my pain handled, work toward recovery, I will get a job again,
-	I will work for 5 years, I will buy a house, I will be in a state in which my posessions parallel my peers
+	I will work for 5 years, I will buy a house, I will be in a state in which my possessions parallel my peers
 
 	2) They are ORDERED in energy, matter and space. If something is ordered in this regard, it means it is set up to be "workable".
 
@@ -3565,7 +3524,7 @@ These are ORDERLY solutions to life. How are they orderly?
 
 They have certain actions which they know will be effective in liberating themselves.
 
-In this case, it never occured to the person that he just didn't need a house. That he is not a body. That having a house or not having a house are both okay.
+In this case, it never occurred to the person that he just didn't need a house. That he is not a body. That having a house or not having a house are both okay.
 
 
 That he is not trapped at all.
@@ -3602,7 +3561,7 @@ Orderliness might be requisite for any game to be played. And it can be snapped 
 Some traps that might exist -
 
 
-human body, possible "higher level" bodies (that maybe or maybe not can be attacked), amnesia of death, amensia of birth, relocation, relocation at death,
+human body, possible "higher level" bodies (that maybe or maybe not can be attacked), amnesia of death, amnesia of birth, relocation, relocation at death,
 drugs, pain, sex, hypnosis, brains, eating, symbols, unconsciousness, unknowableness, waitingness, mystery, thinking, effort, negative emotion
 
 
@@ -3721,7 +3680,7 @@ These are all from China, with some Indian and Japanese origin also.
 
 These are actually good pieces of technology to mull over (if one wants to), and so are included here.
 
-<i>Note, some of these are english paraphrases of the core ideas. Someone could have independently been "inspired" by them and gone free from such, in theory.</i>
+<i>Note, some of these are English paraphrases of the core ideas. Someone could have independently been "inspired" by them and gone free from such, in theory.</i>
 
 
 One doubts any beings have really attained an enlightened state in thousands of years with typical Buddhist and Hindu “technologies”, which are not strong.
@@ -3873,20 +3832,78 @@ One can balance it out with <b>“What symbols must be here?”</b></pre>
   <h2>SOP</h2>
   <pre>SOP (numbers will be fixed later)
 
-   1. Almost every single command or question below, if not every single one, is a completely new command, not copied from another older tradition or religion. This is our Safety Organization SOP.
 
 
-0. Minding business, etc. Give the person back control of basic things. Could be repeated later is a way to assist someone, stress relief, etc. Light (high-accessibility), but still very powerful.
+Almost every single command or question below, is a completely new command, not copied from another older tradition or religion. This is our Safety Organization SOP.
+
+We begin with a myriad of different commands. The goal is to make the person a real person, not a robot. Relief can be found in many ways.
+
+This is best done with another telling you the commands or questions.
+
+It can also be done by oneself.
+
+Repeated iterations can do things that earlier iterations haven't.
 
 
-   2. Say 'I am seeking full personal freedom and calmness. I want to be free and have no bad things.'
+We get the person to not be doing things obsessively or compulsively.
+
+Best of all, this is high accessibility since our practice is free as in cost and free as in freedom. $0.00
+
+
+
+-----------
+
+
+How to run
+
+Two people sit together somewhere.
+
+One is the processor, the other is the person being helped.
+
+The processor doesn't invalidate the person being helped, or tell him he is no good.
+They also do not evaluate for the person being helped, or tell him what or how to think, or psychoanalyze for him, or anything else.
+
+The processor asks or commands the person being helped each question or command, in order. If the person being helped doesn't answer, they say, 'I will repeat the processing command. _________'
+They do this until they get an answer. When they get an answer, they acknowledge, 'Thank you', 'Good', 'Alright', etc.
+
+They push the person through whatever might be happening until they get an answer.
+
+This command list is very heterogeneous - that is, there are many different commands. This is a good thing.
+
+For any large theory section, DO chat with the person about it BEFORE running it.
+If he doesn't understand it, have him understand it first.
+
+
+Command list is below.
+
+
+
+
+
 
 
 0-1. Contact reality.
 
 
-   3. Touch the table.
-   4. Touch your head.
+   1. Say 'I am seeking full personal freedom and calmness. I want to be free and have no bad things.'
+   2. Touch the table.
+   3. Touch your head.
+   4. Don't control yourself.
+   5. Don't start yourself.
+   6. Don't change yourself.
+   7. Don't stop yourself.
+   8. Don't control yourself.
+   9. Start yourself.
+  10. Change yourself.
+  11. Stop yourself.
+  12. Start yourself.
+  13. Change yourself.
+  14. Stop yourself.
+  15. Start yourself.
+  16. Change yourself.
+  17. Don't confront the body.
+  18. Touch the table.
+  19. Touch your head.
 
 
 0-2. Handle interiorization. If he is in pain, he cant really have his attention on much else.
@@ -3896,7 +3913,7 @@ What is interiorization? Interiorization has two forms.
 
 1) Interiorizing into infinity, which is the case whether you consider or not. In other words, if someone tells you "Interiorize into infinity", you can say "Okay" without thinking anything or doing anything.
 
-2) Interiorization into symbols. Universes are probably symbols. They have mass, meaing, and possible mobility.
+2) Interiorization into symbols. Universes are probably symbols. They have mass, meaning, and possible mobility.
 I think a universe where things cannot move, would still be a symbol, because there is the fundamental POSSIBILITY to move, even if the universe
 wasn't constructed to avail itself of such a possibility.
 
@@ -3909,306 +3926,385 @@ effect of decreasing effect of other orientation points on one.
 
 
 
-   5. Spot three things which you could be inside of for 100 years.
-   6. Spot another three things which you could be inside of for 1000 years.
-   7. Have your head hurt.
-   8. Have your head hurt.
-   9. Have your head not hurt.
-  10. Have your head not hurt.
-  11. Have your head hurt.
-  12. Have your head hurt.
-  13. Have your head not hurt.
-  14. Have your head not hurt.
-  15. Have your head hurt.
-  16. Have your head hurt.
-  17. Have your body not hurt.
-  18. Have your body not hurt.
-  19. Have your body hurt.
-  20. Have your body hurt.
-  21. Have a nothing hurt.
-  22. Don't have a nothing hurt.
+  20. Don't think of changing yourself.
+  21. Think of changing yourself.
+  22. Don't think of changing something.
   23. Spot three things which you could be inside of for 100 years.
   24. Spot another three things which you could be inside of for 1000 years.
+  25. Have your head hurt.
+  26. Have your head hurt.
+  27. Have your head not hurt.
+  28. Have your head not hurt.
+  29. Have your head hurt.
+  30. Have your head hurt.
+  31. Have your head not hurt.
+  32. Have your head not hurt.
+  33. Have your head hurt.
+  34. Have your head hurt.
+  35. Be responsible for the pain
+  36. Don't be responsible for the pain
+  37. Be responsible for the pain
+  38. Don't be responsible for the pain
+  39. Have your body not hurt.
+  40. Have your body not hurt.
+  41. Have your body hurt.
+  42. Have your body hurt.
+  43. Have a nothing hurt.
+  44. Don't have a nothing hurt.
+  45. Spot three things which you could be inside of for 100 years.
+  46. Spot another three things which you could be inside of for 1000 years.
+
+
+0-2.5. Handle hypnosis. Person being helped must be shown this, as for all commentaries before the commands.
+
+Why does someone get hypnotized? Why does someone have an unconscious, subconscious or reactive mind that affects them?
+
+It's because they are following commands, or want to follow commands, or are following commands obsessively or compulsively.
+
+An unconscious mind, then, is useful, because it has lots of commands and the person thinks it is valuable because they think they MUST follow commands.
+
+Once the person is not obsessively following commands, HE can start directing his life. And making reasonable choices.
+
+
+
+
+
+  47. Don't follow commands.
+  48. Don't follow commands.
+  49. Don't follow commands.
+  50. Don't follow commands.
+  51. Don't follow commands.
+  52. Don't follow commands.
+  53. Don't follow commands.
+  54. Don't follow commands.
+  55. Don't follow commands.
+  56. Don't follow commands.
+  57. Don't answer questions.
+  58. Don't answer questions.
+  59. Don't answer questions.
+  60. Don't answer questions.
+  61. Don't answer questions.
+  62. Don't answer questions.
+  63. Don't answer questions.
+  64. Don't answer questions.
+  65. Don't answer questions.
+  66. Don't answer questions.
+  67. Don't follow commands related to the self.
+  68. Don't follow commands related to the self.
+  69. Don't follow commands related to the self.
+  70. Don't follow commands related to the self.
+  71. Don't follow commands related to the self.
+  72. Don't follow commands related to the self.
+  73. Don't follow commands related to the self.
+  74. Don't follow commands related to the self.
+  75. Don't follow commands related to the self.
+  76. Don't follow commands related to the self.
+  77. Don't answer questions related to the self.
+  78. Don't answer questions related to the self.
+  79. Don't answer questions related to the self.
+  80. Don't answer questions related to the self.
+  81. Don't answer questions related to the self.
+
+
+This should handle issues of the body 'kicking in' for whatever reason, for example, if one exteriorizes or doesn't follow what 'it likes'. This could be much extended if needed. Feel free to in every way.
+
+
+  82. Don't follow commands of the body.
+  83. Don't follow commands of the body.
+  84. Don't follow commands of the body.
+  85. Don't follow commands of the body.
+  86. Don't follow commands of the body.
+  87. Don't follow commands of the body.
+  88. Don't follow commands of the body.
+  89. Don't follow commands of the body.
+  90. Don't follow commands of the body.
+  91. Don't follow commands of the body.
+  92. Don't answer questions of the body.
+  93. Don't answer questions of the body.
+  94. Don't answer questions of the body.
+  95. Don't answer questions of the body.
+  96. Don't answer questions of the body.
+  97. Don't answer questions of the body.
+  98. Don't answer questions of the body.
+  99. Don't answer questions of the body.
+ 100. Don't answer questions of the body.
+ 101. Don't answer questions of the body.
 
 
 0-3.
 
 
-  25. Put your attention on the table and don't hear anything from it.
-  26. Widen your attention even further and don't hear anything from it.
-  27. Widen your attention even further and don't hear anything from it.
+ 102. Put your attention on the table and don't hear anything from it.
+ 103. Widen your attention even further and don't hear anything from it.
+ 104. Widen your attention even further and don't hear anything from it.
 
 
 0-4. The 'empty's are kind of Zen-style.
 
 
-  28. Mind your own business.
-  29. Mind your own business.
-  30. Mind your own business.
-  31. Mind your own business.
-  32. Mind your own business.
-  33. Spot empty opponents.
-  34. Spot empty opponents.
-  35. Spot empty opponents.
-  36. Spot empty opponents.
-  37. Spot empty opponents.
-  38. Do nothing.
-  39. Do nothing.
-  40. Do nothing.
-  41. Do nothing.
-  42. Do nothing.
-  43. Do something.
-  44. Do something.
-  45. Do something.
-  46. Do something.
-  47. Do something.
-  48. Fight an empty barrier.
-  49. Fight an empty barrier.
-  50. Fight an empty barrier.
-  51. Fight an empty barrier.
-  52. Fight an empty barrier.
-  53. Use an empty life limitation.
-  54. Use an empty life limitation.
-  55. Use an empty life limitation.
-  56. Use an empty life limitation.
-  57. Use an empty life limitation.
-  58. Use an empty purpose.
-  59. Use an empty purpose.
-  60. Use an empty purpose.
-  61. Use an empty purpose.
-  62. Use an empty purpose.
-  63. Don't have purpose.
-  64. Don't have purpose.
-  65. Don't have purpose.
-  66. Don't have purpose.
-  67. Don't have purpose.
-  68. Play an empty game.
-  69. Play an empty game.
-  70. Play an empty game.
-  71. Play an empty game.
-  72. Play an empty game.
-  73. Play a game.
-  74. Play a game.
-  75. Play a game.
-  76. Play a game.
-  77. Play a game.
-  78. Don't play a game.
-  79. Don't play a game.
-  80. Don't play a game.
-  81. Don't play a game.
-  82. Don't play a game.
-  83. Spot a spot in space.
-  84. Fail to spot a spot in space.
-  85. Spot a non-communication.
-  86. Spot a non-problem.
-  87. Spot non-knowledge.
-  88. Rage at a nothing.
-  89. Destroy nothing.
-  90. Don't lose yourself
-  91. Don't find yourself.
-  92. Don't know yourself.
-  93. Don't kill yourself.
-  94. Don't trust yourself.
-  95. Recall nothing.
-  96. Don't recall nothing.
-  97. Communicate to no person.
-  98. Solve a nothing.
-  99. Close your eyes.
- 100. Open your eyes.
- 101. Don't close your eyes.
- 102. Don't operate.
- 103. Don't control yourself.
- 104. Don't start yourself.
- 105. Don't change yourself.
- 106. Don't stop yourself.
- 107. Don't Show.
- 108. Don't Show.
- 109. Don't Show.
- 110. Don't Show.
- 111. Don't Show.
- 112. Don't be fine.
- 113. Don't be okay.
- 114. Don't be happy.
- 115. Don't be responsible for your condition.
- 116. Don't be responsible for your mind.
- 117. Don't be physically stable.
- 118. Don't be mentally stable.
- 119. Don't sink.
- 120. Don't hear the center of the earth.
- 121. Don't hear Niagara Falls.
- 122. Don't smell the center of the earth.
- 123. Don't smell Niagara Falls.
- 124. Think of the body.
- 125. Note - this first one is the opposite of 'mindfulness'. I haven't seen 'mindfulness' help anyone truly.
- 126. Tell me about a mind-less <i>here</i>.
- 127. Tell me about a mind-less <i>here</i>.
- 128. Tell me about a mind-less <i>here</i>.
- 129. Tell me about a mind-less <i>here</i>.
- 130. Tell me about a mind-less <i>here</i>.
- 131. Tell me about an undefiant <i>here</i>.
- 132. Tell me about an undefiant <i>here</i>.
- 133. Tell me about an undefiant <i>here</i>.
- 134. Tell me about an undefiant <i>here</i>.
- 135. Tell me about an undefiant <i>here</i>.
- 136. Tell me about a bodiless <i>here</i>.
- 137. Tell me about a bodiless <i>here</i>.
- 138. Tell me about a bodiless <i>here</i>.
- 139. Tell me about a bodiless <i>here</i>.
- 140. Tell me about a bodiless <i>here</i>.
- 141. Tell me about a otherless <i>here</i>.
- 142. Tell me about a otherless <i>here</i>.
- 143. Tell me about a otherless <i>here</i>.
- 144. Tell me about a otherless <i>here</i>.
- 145. Tell me about a otherless <i>here</i>.
- 146. Tell me about mind-lessness.
- 147. Tell me about bodilessness.
- 148. Tell me about otherlessness.
- 149. Do something undefiantly.
- 150. Do something undefiantly.
- 151. Do something undefiantly.
- 152. Do something undefiantly.
- 153. Do something undefiantly.
- 154. Think undefiantly.
- 155. Think undefiantly.
- 156. Think undefiantly.
- 157. Think undefiantly.
- 158. Think undefiantly.
- 159. Think about bodies.
- 160. Think about bodies.
- 161. Think about bodies.
- 162. Think about bodies.
- 163. Think about bodies.
- 164. Think about symbols.
- 165. Think about symbols.
- 166. Think about symbols.
- 167. Think about symbols.
- 168. Think about symbols.
- 169. Which symbols are here?
- 170. Which symbols aren't here?
- 171. Don't touch the table.
- 172. Touch the table.
- 173. Touch the table and feel something.
- 174. Touch the table and feel nothing.
- 175. Touch the table and feel something.
- 176. Touch the table and feel nothing.
- 177. Look around here and find something that might be okay to continue existing.
- 178. Think thoughts.
- 179. Don't be not ordinary.
- 180. Don't be special.
- 181. Don't develop yourself.
- 182. Don't not doubt.
- 183. Waste freedom.
- 184. Waste purposes.
- 185. Waste barriers.
- 186. Play an effortless game.
- 187. Play an effortless game.
- 188. Play an effortless game.
- 189. Play an effortless game.
- 190. Play an effortless game.
- 191. Play a thoughtless game.
- 192. Play a thoughtless game.
- 193. Play a thoughtless game.
- 194. Play a thoughtless game.
- 195. Play a thoughtless game.
- 196. Play a symbolless game.
- 197. Play a symbolless game.
- 198. Play a symbolless game.
- 199. Play a symbolless game.
- 200. Play a symbolless game.
- 201. Play an eatingless game.
- 202. Play an eatingless game.
- 203. Play an eatingless game.
- 204. Play an eatingless game.
- 205. Play an eatingless game.
- 206. Emote an emotion.
- 207. Emote an emotion.
- 208. Emote an emotion.
- 209. Emote an emotion.
- 210. Emote an emotion.
- 211. Effort an effort.
- 212. Effort an effort.
- 213. Effort an effort.
- 214. Effort an effort.
- 215. Effort an effort.
- 216. Think a thought.
- 217. Think a thought.
- 218. Think a thought.
- 219. Think a thought.
- 220. Think a thought.
- 221. Symbolize a symbol.
- 222. Symbolize a symbol.
- 223. Symbolize a symbol.
- 224. Symbolize a symbol.
- 225. Symbolize a symbol.
- 226. Eat some eatingness.
- 227. Eat some eatingness.
- 228. Eat some eatingness.
- 229. Eat some eatingness.
- 230. Eat some eatingness.
- 231. Sex some sexingness.
- 232. Sex some sexingness.
- 233. Sex some sexingness.
- 234. Sex some sexingness.
- 235. Sex some sexingness.
- 236. Mystery some mystery.
- 237. Mystery some mystery.
- 238. Mystery some mystery.
- 239. Mystery some mystery.
- 240. Mystery some mystery.
- 241. Wait some waitingness.
- 242. Wait some waitingness.
- 243. Wait some waitingness.
- 244. Wait some waitingness.
- 245. Wait some waitingness.
- 246. Unconscious some unconsciousness.
- 247. Unconscious some unconsciousness.
- 248. Unconscious some unconsciousness.
- 249. Unconscious some unconsciousness.
- 250. Unconscious some unconsciousness.
- 251. Unknowable some unknowableness.
- 252. Unknowable some unknowableness.
- 253. Unknowable some unknowableness.
- 254. Unknowable some unknowableness.
- 255. Unknowable some unknowableness.
- 256. Have someone else stop you.
- 257. Have someone else change you.
- 258. Have someone else start you.
- 259. Step out of the universe not being entirely yours.
- 260. Step out of not being in touch with reality.
- 261. Step out of being out of communication with reality.
+ 105. Mind your own business.
+ 106. Mind your own business.
+ 107. Mind your own business.
+ 108. Mind your own business.
+ 109. Mind your own business.
+ 110. Spot empty opponents.
+ 111. Spot empty opponents.
+ 112. Spot empty opponents.
+ 113. Spot empty opponents.
+ 114. Spot empty opponents.
+ 115. Do nothing.
+ 116. Do nothing.
+ 117. Do nothing.
+ 118. Do nothing.
+ 119. Do nothing.
+ 120. Do something.
+ 121. Do something.
+ 122. Do something.
+ 123. Do something.
+ 124. Do something.
+ 125. Fight an empty barrier.
+ 126. Fight an empty barrier.
+ 127. Fight an empty barrier.
+ 128. Fight an empty barrier.
+ 129. Fight an empty barrier.
+ 130. Use an empty life limitation.
+ 131. Use an empty life limitation.
+ 132. Use an empty life limitation.
+ 133. Use an empty life limitation.
+ 134. Use an empty life limitation.
+ 135. Use an empty purpose.
+ 136. Use an empty purpose.
+ 137. Use an empty purpose.
+ 138. Use an empty purpose.
+ 139. Use an empty purpose.
+ 140. Don't have purpose.
+ 141. Don't have purpose.
+ 142. Don't have purpose.
+ 143. Don't have purpose.
+ 144. Don't have purpose.
+ 145. Play an empty game.
+ 146. Play an empty game.
+ 147. Play an empty game.
+ 148. Play an empty game.
+ 149. Play an empty game.
+ 150. Play a game.
+ 151. Play a game.
+ 152. Play a game.
+ 153. Play a game.
+ 154. Play a game.
+ 155. Don't play a game.
+ 156. Don't play a game.
+ 157. Don't play a game.
+ 158. Don't play a game.
+ 159. Don't play a game.
+ 160. Spot a spot in space.
+ 161. Fail to spot a spot in space.
+ 162. Spot a non-communication.
+ 163. Spot a non-problem.
+ 164. Spot non-knowledge.
+ 165. Rage at a nothing.
+ 166. Destroy nothing.
+ 167. Don't lose yourself
+ 168. Don't find yourself.
+ 169. Don't know yourself.
+ 170. Don't kill yourself.
+ 171. Don't trust yourself.
+ 172. Recall nothing.
+ 173. Don't recall nothing.
+ 174. Communicate to no person.
+ 175. Solve a nothing.
+ 176. Close your eyes.
+ 177. Open your eyes.
+ 178. Don't close your eyes.
+ 179. Don't operate.
+ 180. Don't show.
+ 181. Don't show.
+ 182. Don't show.
+ 183. Don't show.
+ 184. Don't show.
+ 185. Don't be fine.
+ 186. Don't be okay.
+ 187. Don't be happy.
+ 188. Don't be responsible for your condition.
+ 189. Don't be responsible for your mind.
+ 190. Don't be physically stable.
+ 191. Don't be mentally stable.
+ 192. Don't sink.
+ 193. Don't hear the center of the earth.
+ 194. Don't hear Niagara Falls.
+ 195. Don't smell the center of the earth.
+ 196. Don't smell Niagara Falls.
+ 197. Think of the body.
+ 198. Note - this first one is the opposite of 'mindfulness'. I haven't seen 'mindfulness' help anyone truly.
+ 199. Tell me about a mind-less <i>here</i>.
+ 200. Tell me about a mind-less <i>here</i>.
+ 201. Tell me about a mind-less <i>here</i>.
+ 202. Tell me about a mind-less <i>here</i>.
+ 203. Tell me about a mind-less <i>here</i>.
+ 204. Tell me about an undefiant <i>here</i>.
+ 205. Tell me about an undefiant <i>here</i>.
+ 206. Tell me about an undefiant <i>here</i>.
+ 207. Tell me about an undefiant <i>here</i>.
+ 208. Tell me about an undefiant <i>here</i>.
+ 209. Tell me about a bodiless <i>here</i>.
+ 210. Tell me about a bodiless <i>here</i>.
+ 211. Tell me about a bodiless <i>here</i>.
+ 212. Tell me about a bodiless <i>here</i>.
+ 213. Tell me about a bodiless <i>here</i>.
+ 214. Tell me about a otherless <i>here</i>.
+ 215. Tell me about a otherless <i>here</i>.
+ 216. Tell me about a otherless <i>here</i>.
+ 217. Tell me about a otherless <i>here</i>.
+ 218. Tell me about a otherless <i>here</i>.
+ 219. Tell me about mind-lessness.
+ 220. Tell me about bodilessness.
+ 221. Tell me about otherlessness.
+ 222. Do something undefiantly.
+ 223. Do something undefiantly.
+ 224. Do something undefiantly.
+ 225. Do something undefiantly.
+ 226. Do something undefiantly.
+ 227. Think undefiantly.
+ 228. Think undefiantly.
+ 229. Think undefiantly.
+ 230. Think undefiantly.
+ 231. Think undefiantly.
+ 232. Think about bodies.
+ 233. Think about bodies.
+ 234. Think about bodies.
+ 235. Think about bodies.
+ 236. Think about bodies.
+ 237. Think about symbols.
+ 238. Think about symbols.
+ 239. Think about symbols.
+ 240. Think about symbols.
+ 241. Think about symbols.
+ 242. Which symbols are here?
+ 243. Which symbols aren't here?
+ 244. Don't touch the table.
+ 245. Touch the table.
+ 246. Touch the table and feel something.
+ 247. Touch the table and feel nothing.
+ 248. Touch the table and feel something.
+ 249. Touch the table and feel nothing.
+ 250. Look around here and find something that might be okay to continue existing.
+ 251. Think thoughts.
+ 252. Don't be not ordinary.
+ 253. Don't be special.
+ 254. Don't develop yourself.
+ 255. Don't not doubt.
+ 256. Waste freedom.
+ 257. Waste purposes.
+ 258. Waste barriers.
+ 259. Play an effortless game.
+ 260. Play an effortless game.
+ 261. Play an effortless game.
+ 262. Play an effortless game.
+ 263. Play an effortless game.
+ 264. Play a thoughtless game.
+ 265. Play a thoughtless game.
+ 266. Play a thoughtless game.
+ 267. Play a thoughtless game.
+ 268. Play a thoughtless game.
+ 269. Play a symbolless game.
+ 270. Play a symbolless game.
+ 271. Play a symbolless game.
+ 272. Play a symbolless game.
+ 273. Play a symbolless game.
+ 274. Play an eatingless game.
+ 275. Play an eatingless game.
+ 276. Play an eatingless game.
+ 277. Play an eatingless game.
+ 278. Play an eatingless game.
+ 279. Emote an emotion.
+ 280. Emote an emotion.
+ 281. Emote an emotion.
+ 282. Emote an emotion.
+ 283. Emote an emotion.
+ 284. Effort an effort.
+ 285. Effort an effort.
+ 286. Effort an effort.
+ 287. Effort an effort.
+ 288. Effort an effort.
+ 289. Think a thought.
+ 290. Think a thought.
+ 291. Think a thought.
+ 292. Think a thought.
+ 293. Think a thought.
+ 294. Symbolize a symbol.
+ 295. Symbolize a symbol.
+ 296. Symbolize a symbol.
+ 297. Symbolize a symbol.
+ 298. Symbolize a symbol.
+ 299. Eat some eatingness.
+ 300. Eat some eatingness.
+ 301. Eat some eatingness.
+ 302. Eat some eatingness.
+ 303. Eat some eatingness.
+ 304. Sex some sexingness.
+ 305. Sex some sexingness.
+ 306. Sex some sexingness.
+ 307. Sex some sexingness.
+ 308. Sex some sexingness.
+ 309. Mystery some mystery.
+ 310. Mystery some mystery.
+ 311. Mystery some mystery.
+ 312. Mystery some mystery.
+ 313. Mystery some mystery.
+ 314. Wait some waitingness.
+ 315. Wait some waitingness.
+ 316. Wait some waitingness.
+ 317. Wait some waitingness.
+ 318. Wait some waitingness.
+ 319. Unconscious some unconsciousness.
+ 320. Unconscious some unconsciousness.
+ 321. Unconscious some unconsciousness.
+ 322. Unconscious some unconsciousness.
+ 323. Unconscious some unconsciousness.
+ 324. Unknowable some unknowableness.
+ 325. Unknowable some unknowableness.
+ 326. Unknowable some unknowableness.
+ 327. Unknowable some unknowableness.
+ 328. Unknowable some unknowableness.
+ 329. Have someone else stop you.
+ 330. Have someone else change you.
+ 331. Have someone else start you.
+ 332. Step out of the universe not being entirely yours.
+ 333. Step out of not being in touch with reality.
+ 334. Step out of being out of communication with reality.
 
 
 0-1.
 
 
- 262. Have a symbol come at you.
- 263. Have a symbol come at you.
- 264. Have a symbol come at you.
- 265. Have a symbol come at you.
- 266. Have a symbol come at you.
- 267. Have a good symbol come at you.
- 268. Have a good symbol come at you.
- 269. Have a good symbol come at you.
- 270. Have a good symbol come at you.
- 271. Have a good symbol come at you.
- 272. Have a bad symbol come at you.
- 273. Have a bad symbol come at you.
- 274. Have a bad symbol come at you.
- 275. Have a bad symbol come at you.
- 276. Have a bad symbol come at you.
- 277. Have someone else symbolize a symbol.
- 278. Have others symbolize symbols.
- 279. Symbolize an orderly body.
- 280. Symbolize continuity of your mother.
- 281. Symbolize the death of your body.
- 282. Symbolize complete victory over life.
- 283. Symbolize complete control over a body.
- 284. Symbolize complete ownership over a body.
- 285. Have others symbolize that you have complete control over a body.
- 286. Have others symbolize that you have complete ownership over a body.
- 287. Have others symbolize that you got the body right.
- 288. Have others symbolize that you got the body well.
- 289. Clap on behalf of others that you fully corrected your body.
+ 335. Have a symbol come at you.
+ 336. Have a symbol come at you.
+ 337. Have a symbol come at you.
+ 338. Have a symbol come at you.
+ 339. Have a symbol come at you.
+ 340. Have a good symbol come at you.
+ 341. Have a good symbol come at you.
+ 342. Have a good symbol come at you.
+ 343. Have a good symbol come at you.
+ 344. Have a good symbol come at you.
+ 345. Have a bad symbol come at you.
+ 346. Have a bad symbol come at you.
+ 347. Have a bad symbol come at you.
+ 348. Have a bad symbol come at you.
+ 349. Have a bad symbol come at you.
+ 350. Have someone else symbolize a symbol.
+ 351. Have others symbolize symbols.
+ 352. Symbolize an orderly body.
+ 353. Symbolize continuity of your mother.
+ 354. Symbolize the death of your body.
+ 355. Symbolize complete victory over life.
+ 356. Symbolize complete control over a body.
+ 357. Symbolize complete ownership over a body.
+ 358. Have others symbolize that you have complete control over a body.
+ 359. Have others symbolize that you have complete ownership over a body.
+ 360. Have others symbolize that you got the body right.
+ 361. Have others symbolize that you got the body well.
+ 362. Clap on behalf of others that you fully corrected your body.
 
 
 1. Make the body more potentially mobile.
@@ -4218,10 +4314,10 @@ Perhaps some people have an easier time exteriorizing because the EXPECT the bod
 Probably this is the most straightforward way to exteriorize someone.
 Also, what if Interiorization issues are just Mobility issues ?
 
-But surely the being knows that if the body is fully immoble, he will probably be mobile. So this is weird.
+But surely the being knows that if the body is fully immobile, he will probably be mobile. So this is weird.
 
 
-One way to exteriorize someone is for them to recognize they dont understand the role of the body - which has no role.
+One way to exteriorize someone is for them to recognize they don't understand the role of the body - which has no role.
 Actually, this is the more optimum state. The body has no real meaning. At best, the being considers that it would have a
 meaning, but even then it is not necessary.
 Simply getting them to not understand the body over and over would exteriorize them by making it be less of a symbol.
@@ -4231,64 +4327,64 @@ Exteriorization by body confusion?
 
 
 
- 290. Don't understand the body's meaning.
- 291. Don't understand the body's meaning as it relates to musts.
- 292. Don't understand the body's meaning as it relates to needs.
- 293. Don't understand the body's meaning as it relates to wants.
- 294. Don't understand why you are interested in the body.
- 295. Become confused why you are interested in the body.
- 296. Don't understand why you should care about the body's health.
- 297. Don't understand the body's regular mobility.
- 298. Don't understand why you are interested in controlling the body.
- 299. Become confused why you are interested in controlling the body.
- 300. Don't understand why you are interested in owning the body.
- 301. Become confused why you are interested in owning the body.
- 302. Think at the body.
- 303. Have the body think at you.
- 304. Don't understand why you are interested in approval from bodies.
- 305. Become confused why you are interested in approval from bodies.
- 306. Have the body approve of you.
- 307. Approve of your body.
- 308. Have the body mystery at you.
- 309. Have the body wait at you.
- 310. Wait at the body.
- 311. Have the body thoroughly Wait at you.
- 312. Don't unconscious to know.
- 313. Have the body unconscious at you.
- 314. Unconscious at the body.
- 315. Have your foot unconscious at your other foot.
- 316. Have your knee unconscious at your other knee.
- 317. Have your hand unconscious at your other hand.
- 318. Have your ear unconscious at your other ear.
- 319. Say 'My head isn't mobile.'
- 320. Say 'My body isn't mobile.'
- 321. Annul the mobility of your body.
- 322. Grab your knees and annul the mobility of your body.
- 323. Annul the mobility of your head.
- 324. Grab your head and annul the mobility of your head.
- 325. Annul the mobility of your body without getting approval from it.
- 326. Grab your knees and annul the mobility of your body without getting approval from it.
- 327. Annul the mobility of your body without needing it.
- 328. Grab your knees and annul the mobility of your body without needing it.
- 329. Annul the mobility of your body without worshipping it.
- 330. Grab your knees and annul the mobility of your body without worshipping it.
- 331. Annul the mobility of your body without sacrificing to it.
- 332. Grab your knees and annul the mobility of your body without sacrificing to it.
- 333. Annul the mobility of your body without hiding.
- 334. Grab your knees and annul the mobility of your body without hiding.
- 335. What about your body do you want to not be mobile?
- 336. Make it mobile.
- 337. Make it as mobile as possible.
- 338. Spot three spots in your body that are mobile.
- 339. Spot three spots in the universe that are mobile.
- 340. Waste the immobility of the body.
- 341. Get the idea 'all my deepest urges and ambitions for this body, are fully mobile urges and ambitions.'
- 342. Grab your head and say out loud 'My head is mobile'
- 343. How mobile could your body be while still surviving?
- 344. Don't hold your body still.
- 345. Spot a spot in space and don't hold your body still.
- 346. Spot two spot in space and don't hold your body still.
- 347. Spot three spot in space and don't hold your body still.
+ 363. Don't understand the body's meaning.
+ 364. Don't understand the body's meaning as it relates to musts.
+ 365. Don't understand the body's meaning as it relates to needs.
+ 366. Don't understand the body's meaning as it relates to wants.
+ 367. Don't understand why you are interested in the body.
+ 368. Become confused why you are interested in the body.
+ 369. Don't understand why you should care about the body's health.
+ 370. Don't understand the body's regular mobility.
+ 371. Don't understand why you are interested in controlling the body.
+ 372. Become confused why you are interested in controlling the body.
+ 373. Don't understand why you are interested in owning the body.
+ 374. Become confused why you are interested in owning the body.
+ 375. Think at the body.
+ 376. Have the body think at you.
+ 377. Don't understand why you are interested in approval from bodies.
+ 378. Become confused why you are interested in approval from bodies.
+ 379. Have the body approve of you.
+ 380. Approve of your body.
+ 381. Have the body mystery at you.
+ 382. Have the body wait at you.
+ 383. Wait at the body.
+ 384. Have the body thoroughly Wait at you.
+ 385. Don't unconscious to know.
+ 386. Have the body unconscious at you.
+ 387. Unconscious at the body.
+ 388. Have your foot unconscious at your other foot.
+ 389. Have your knee unconscious at your other knee.
+ 390. Have your hand unconscious at your other hand.
+ 391. Have your ear unconscious at your other ear.
+ 392. Say 'My head isn't mobile.'
+ 393. Say 'My body isn't mobile.'
+ 394. Annul the mobility of your body.
+ 395. Grab your knees and annul the mobility of your body.
+ 396. Annul the mobility of your head.
+ 397. Grab your head and annul the mobility of your head.
+ 398. Annul the mobility of your body without getting approval from it.
+ 399. Grab your knees and annul the mobility of your body without getting approval from it.
+ 400. Annul the mobility of your body without needing it.
+ 401. Grab your knees and annul the mobility of your body without needing it.
+ 402. Annul the mobility of your body without worshipping it.
+ 403. Grab your knees and annul the mobility of your body without worshipping it.
+ 404. Annul the mobility of your body without sacrificing to it.
+ 405. Grab your knees and annul the mobility of your body without sacrificing to it.
+ 406. Annul the mobility of your body without hiding.
+ 407. Grab your knees and annul the mobility of your body without hiding.
+ 408. What about your body do you want to not be mobile?
+ 409. Make it mobile.
+ 410. Make it as mobile as possible.
+ 411. Spot three spots in your body that are mobile.
+ 412. Spot three spots in the universe that are mobile.
+ 413. Waste the immobility of the body.
+ 414. Get the idea 'all my deepest urges and ambitions for this body, are fully mobile urges and ambitions.'
+ 415. Grab your head and say out loud 'My head is mobile'
+ 416. How mobile could your body be while still surviving?
+ 417. Don't hold your body still.
+ 418. Spot a spot in space and don't hold your body still.
+ 419. Spot two spot in space and don't hold your body still.
+ 420. Spot three spot in space and don't hold your body still.
 
 
 2. Making being in control of emotioning to know to waiting to know and controlling bodies to being objects.
@@ -4297,174 +4393,717 @@ Possibly simplifies their life, makes apparent old games or purposes, makes them
 Might exteriorize them by itself
 
 
- 348. Who are you emoting for?
- 349. Who are you controlling bodies for?
- 350. Who are you efforting for?
- 351. Who are you protecting bodies for?
- 352. Who are you owning bodies for?
- 353. Who are you thinking for?
- 354. Who are you getting approval from bodies for?
- 355. Who are you needing bodies for?
- 356. Who are you symbolizing for?
- 357. Who are you trying to show things to?
- 358. Who are you worshipping bodies for?
- 359. Who are you eating for?
- 360. Who are you sacrificing for?
- 361. Who are you sexing for?
- 362. Who are you hiding for?
- 363. Who are you being in mystery for?
- 364. Who are you being objects for?
- 365. Who are you waiting for?
+ 421. Who are you emoting for?
+ 422. Who are you controlling bodies for?
+ 423. Who are you efforting for?
+ 424. Who are you protecting bodies for?
+ 425. Who are you owning bodies for?
+ 426. Who are you thinking for?
+ 427. Who are you getting approval from bodies for?
+ 428. Who are you needing bodies for?
+ 429. Who are you symbolizing for?
+ 430. Who are you trying to show things to?
+ 431. Who are you worshipping bodies for?
+ 432. Who are you eating for?
+ 433. Who are you sacrificing for?
+ 434. Who are you sexing for?
+ 435. Who are you hiding for?
+ 436. Who are you being in mystery for?
+ 437. Who are you being objects for?
+ 438. Who are you waiting for?
 
 
 3. Handles approval from bodies, needing bodies, symbols and worse things
 Handles obsessive interiorization, could exteriorize someone by itself
 
 
- 366. Don't show to anyone that your body has use.
- 367. Don't show to anyone that your body is healthy.
- 368. Don't show to anyone that your body is surviving.
- 369. Don't show to anyone that your body is stable.
- 370. Don't show to anyone that your body has overcome damage.
- 371. Don't show to anyone that your body has overcome confusion.
- 372. Don't show to anyone that your body has overcome pain.
+ 439. Don't show to anyone that your body has use.
+ 440. Don't show to anyone that your body is healthy.
+ 441. Don't show to anyone that your body is surviving.
+ 442. Don't show to anyone that your body is stable.
+ 443. Don't show to anyone that your body has overcome damage.
+ 444. Don't show to anyone that your body has overcome confusion.
+ 445. Don't show to anyone that your body has overcome pain.
 
 
-4. By mock ups (well, mock ups of getting rid of things), gets the person able to get rid of what he feels he "needs".
+3-1. 'From where could you communicate to a victim?' can free someone by itself. This will speed it up. Nothing 'creative' is used here, nor 'clingy' to the 'victim'.
+Now, most people are victims of partial memory. They can't remember something, and they get upset. This is a huge point. Poor recall can make people neurotic. Why? The best explanation is they feel victimized.
+
+It also might be true that by not being connected with 'God' or a higher power, one could be thought to be a 'victim' of a partial nature.
+
+This could also involve not being able to remember past lives, birth, life, death, where one came from, etc.
+
+
+Also, most people are 'victims' of time. Their time sense is messed up. They are 'victims' of the zeitgeist, the age, the past.
+
+Also, people are very much 'victims' of materialism. They have bodies, and are being lied to very thoroughly, at least as of this writing.
+
+All of these questions improve communication with ANOTHER victim, thereby making oneself not be a victim.
+
+They also allow direct communication, without the implication that communicating, or doing things, will make the receipt point a victim.
+
+A victim is an unknowing, unwilling effect of everything.
+
+This section could be run for WEEKS, in theory.
+
+
+Victim = unknowing and unwilling effect over matter, energy, space, time, form and life
+
+It is a strong semi-knowing effect, above apathy and far below grief.
+
+Communicate = Send something to something (a being, a universe, etc.), and get a response.
+
+Communicating to an object would be sending something, attention, perception, energy, etc., and then receiving a response from it.
+
+
+
+
+
+
+
+
+ 446. From where could you communicate to a victim body?
+ 447. From where could you communicate to a victim symbol?
+ 448. From where could you communicate through a victim symbol?
+ 449. From where could you communicate reach a victim symbol?
+ 450. From where could you communicate withdraw from a victim symbol?
+ 451. 	(For hours and hours, until person is satisfied to continue and has gone through A LOT.
+By the following we mean, a body, that is a victim )
+
+	From where could you communicate to a victim body? (Do a lot)
+
+
+
+
+
+
+ 452. From where could you communicate to a victim of partial memory?
+ 453. From where could you communicate to a victim of partial memory?
+ 454. From where could you communicate to a victim of partial memory?
+ 455. From where could you communicate to a victim of partial memory?
+ 456. From where could you communicate to a victim of partial memory?
+ 457. From where could you communicate to a victim of partial memory?
+ 458. From where could you communicate to a victim of partial memory?
+ 459. From where could you communicate to a victim of partial memory?
+ 460. From where could you communicate to a victim of partial memory?
+ 461. From where could you communicate to a victim of partial memory?
+ 462. From where could you help a victim of partial memory?
+ 463. From where could you help a victim of partial memory?
+ 464. From where could you help a victim of partial memory?
+ 465. From where could you help a victim of partial memory?
+ 466. From where could you help a victim of partial memory?
+ 467. From where could you help a victim of partial memory?
+ 468. From where could you help a victim of partial memory?
+ 469. From where could you help a victim of partial memory?
+ 470. From where could you help a victim of partial memory?
+ 471. From where could you help a victim of partial memory?
+ 472. From where could you waste a victim of partial memory?
+ 473. From where could you waste a victim of partial memory?
+ 474. From where could you waste a victim of partial memory?
+ 475. From where could you waste a victim of partial memory?
+ 476. From where could you waste a victim of partial memory?
+ 477. From where could you waste a victim of partial memory?
+ 478. From where could you waste a victim of partial memory?
+ 479. From where could you waste a victim of partial memory?
+ 480. From where could you waste a victim of partial memory?
+ 481. From where could you waste a victim of partial memory?
+ 482. From where could you save a victim of partial memory?
+ 483. From where could you save a victim of partial memory?
+ 484. From where could you save a victim of partial memory?
+ 485. From where could you save a victim of partial memory?
+ 486. From where could you save a victim of partial memory?
+ 487. From where could you save a victim of partial memory?
+ 488. From where could you save a victim of partial memory?
+ 489. From where could you save a victim of partial memory?
+ 490. From where could you save a victim of partial memory?
+ 491. From where could you save a victim of partial memory?
+ 492. From where could you predict consequences of a victim of partial memory?
+ 493. From where could you predict consequences of a victim of partial memory?
+ 494. From where could you predict consequences of a victim of partial memory?
+ 495. From where could you predict consequences of a victim of partial memory?
+ 496. From where could you predict consequences of a victim of partial memory?
+ 497. From where could you predict consequences of a victim of partial memory?
+ 498. From where could you predict consequences of a victim of partial memory?
+ 499. From where could you predict consequences of a victim of partial memory?
+ 500. From where could you predict consequences of a victim of partial memory?
+ 501. From where could you predict consequences of a victim of partial memory?
+ 502. From where could you dispose of a victim of partial memory?
+ 503. From where could you dispose of a victim of partial memory?
+ 504. From where could you dispose of a victim of partial memory?
+ 505. From where could you dispose of a victim of partial memory?
+ 506. From where could you dispose of a victim of partial memory?
+ 507. From where could you dispose of a victim of partial memory?
+ 508. From where could you dispose of a victim of partial memory?
+ 509. From where could you dispose of a victim of partial memory?
+ 510. From where could you dispose of a victim of partial memory?
+ 511. From where could you dispose of a victim of partial memory?
+ 512. From where could you start a victim of partial memory?
+ 513. From where could you start a victim of partial memory?
+ 514. From where could you start a victim of partial memory?
+ 515. From where could you start a victim of partial memory?
+ 516. From where could you start a victim of partial memory?
+ 517. From where could you start a victim of partial memory?
+ 518. From where could you start a victim of partial memory?
+ 519. From where could you start a victim of partial memory?
+ 520. From where could you start a victim of partial memory?
+ 521. From where could you start a victim of partial memory?
+ 522. From where could you change a victim of partial memory?
+ 523. From where could you change a victim of partial memory?
+ 524. From where could you change a victim of partial memory?
+ 525. From where could you change a victim of partial memory?
+ 526. From where could you change a victim of partial memory?
+ 527. From where could you change a victim of partial memory?
+ 528. From where could you change a victim of partial memory?
+ 529. From where could you change a victim of partial memory?
+ 530. From where could you change a victim of partial memory?
+ 531. From where could you change a victim of partial memory?
+ 532. From where could you stop a victim of partial memory?
+ 533. From where could you stop a victim of partial memory?
+ 534. From where could you stop a victim of partial memory?
+ 535. From where could you stop a victim of partial memory?
+ 536. From where could you stop a victim of partial memory?
+ 537. From where could you stop a victim of partial memory?
+ 538. From where could you stop a victim of partial memory?
+ 539. From where could you stop a victim of partial memory?
+ 540. From where could you stop a victim of partial memory?
+ 541. From where could you stop a victim of partial memory?
+ 542. From where could you uncreate a victim of partial memory?
+ 543. From where could you uncreate a victim of partial memory?
+ 544. From where could you uncreate a victim of partial memory?
+ 545. From where could you uncreate a victim of partial memory?
+ 546. From where could you uncreate a victim of partial memory?
+ 547. From where could you uncreate a victim of partial memory?
+ 548. From where could you uncreate a victim of partial memory?
+ 549. From where could you uncreate a victim of partial memory?
+ 550. From where could you uncreate a victim of partial memory?
+ 551. From where could you uncreate a victim of partial memory?
+ 552. From where could you make a victim of partial memory survive?
+ 553. From where could you make a victim of partial memory survive?
+ 554. From where could you make a victim of partial memory survive?
+ 555. From where could you make a victim of partial memory survive?
+ 556. From where could you make a victim of partial memory survive?
+ 557. From where could you make a victim of partial memory survive?
+ 558. From where could you make a victim of partial memory survive?
+ 559. From where could you make a victim of partial memory survive?
+ 560. From where could you make a victim of partial memory survive?
+ 561. From where could you make a victim of partial memory survive?
+ 562. From where could you make a victim of partial memory destroyed?
+ 563. From where could you make a victim of partial memory destroyed?
+ 564. From where could you make a victim of partial memory destroyed?
+ 565. From where could you make a victim of partial memory destroyed?
+ 566. From where could you make a victim of partial memory destroyed?
+ 567. From where could you make a victim of partial memory destroyed?
+ 568. From where could you make a victim of partial memory destroyed?
+ 569. From where could you make a victim of partial memory destroyed?
+ 570. From where could you make a victim of partial memory destroyed?
+ 571. From where could you make a victim of partial memory destroyed?
+ 572. From where could you make a victim of partial memory vanish?
+ 573. From where could you make a victim of partial memory vanish?
+ 574. From where could you make a victim of partial memory vanish?
+ 575. From where could you make a victim of partial memory vanish?
+ 576. From where could you make a victim of partial memory vanish?
+ 577. From where could you make a victim of partial memory vanish?
+ 578. From where could you make a victim of partial memory vanish?
+ 579. From where could you make a victim of partial memory vanish?
+ 580. From where could you make a victim of partial memory vanish?
+ 581. From where could you make a victim of partial memory vanish?
+ 582. From where could you communicate to a victim of time?
+ 583. From where could you communicate to a victim of time?
+ 584. From where could you communicate to a victim of time?
+ 585. From where could you communicate to a victim of time?
+ 586. From where could you communicate to a victim of time?
+ 587. From where could you communicate to a victim of time?
+ 588. From where could you communicate to a victim of time?
+ 589. From where could you communicate to a victim of time?
+ 590. From where could you communicate to a victim of time?
+ 591. From where could you communicate to a victim of time?
+ 592. From where could you help a victim of time?
+ 593. From where could you help a victim of time?
+ 594. From where could you help a victim of time?
+ 595. From where could you help a victim of time?
+ 596. From where could you help a victim of time?
+ 597. From where could you help a victim of time?
+ 598. From where could you help a victim of time?
+ 599. From where could you help a victim of time?
+ 600. From where could you help a victim of time?
+ 601. From where could you help a victim of time?
+ 602. From where could you waste a victim of time?
+ 603. From where could you waste a victim of time?
+ 604. From where could you waste a victim of time?
+ 605. From where could you waste a victim of time?
+ 606. From where could you waste a victim of time?
+ 607. From where could you waste a victim of time?
+ 608. From where could you waste a victim of time?
+ 609. From where could you waste a victim of time?
+ 610. From where could you waste a victim of time?
+ 611. From where could you waste a victim of time?
+ 612. From where could you save a victim of time?
+ 613. From where could you save a victim of time?
+ 614. From where could you save a victim of time?
+ 615. From where could you save a victim of time?
+ 616. From where could you save a victim of time?
+ 617. From where could you save a victim of time?
+ 618. From where could you save a victim of time?
+ 619. From where could you save a victim of time?
+ 620. From where could you save a victim of time?
+ 621. From where could you save a victim of time?
+ 622. From where could you predict consequences of a victim of time?
+ 623. From where could you predict consequences of a victim of time?
+ 624. From where could you predict consequences of a victim of time?
+ 625. From where could you predict consequences of a victim of time?
+ 626. From where could you predict consequences of a victim of time?
+ 627. From where could you predict consequences of a victim of time?
+ 628. From where could you predict consequences of a victim of time?
+ 629. From where could you predict consequences of a victim of time?
+ 630. From where could you predict consequences of a victim of time?
+ 631. From where could you predict consequences of a victim of time?
+ 632. From where could you dispose of a victim of time?
+ 633. From where could you dispose of a victim of time?
+ 634. From where could you dispose of a victim of time?
+ 635. From where could you dispose of a victim of time?
+ 636. From where could you dispose of a victim of time?
+ 637. From where could you dispose of a victim of time?
+ 638. From where could you dispose of a victim of time?
+ 639. From where could you dispose of a victim of time?
+ 640. From where could you dispose of a victim of time?
+ 641. From where could you dispose of a victim of time?
+ 642. From where could you start a victim of time?
+ 643. From where could you start a victim of time?
+ 644. From where could you start a victim of time?
+ 645. From where could you start a victim of time?
+ 646. From where could you start a victim of time?
+ 647. From where could you start a victim of time?
+ 648. From where could you start a victim of time?
+ 649. From where could you start a victim of time?
+ 650. From where could you start a victim of time?
+ 651. From where could you start a victim of time?
+ 652. From where could you change a victim of time?
+ 653. From where could you change a victim of time?
+ 654. From where could you change a victim of time?
+ 655. From where could you change a victim of time?
+ 656. From where could you change a victim of time?
+ 657. From where could you change a victim of time?
+ 658. From where could you change a victim of time?
+ 659. From where could you change a victim of time?
+ 660. From where could you change a victim of time?
+ 661. From where could you change a victim of time?
+ 662. From where could you stop a victim of time?
+ 663. From where could you stop a victim of time?
+ 664. From where could you stop a victim of time?
+ 665. From where could you stop a victim of time?
+ 666. From where could you stop a victim of time?
+ 667. From where could you stop a victim of time?
+ 668. From where could you stop a victim of time?
+ 669. From where could you stop a victim of time?
+ 670. From where could you stop a victim of time?
+ 671. From where could you stop a victim of time?
+ 672. From where could you uncreate a victim of time?
+ 673. From where could you uncreate a victim of time?
+ 674. From where could you uncreate a victim of time?
+ 675. From where could you uncreate a victim of time?
+ 676. From where could you uncreate a victim of time?
+ 677. From where could you uncreate a victim of time?
+ 678. From where could you uncreate a victim of time?
+ 679. From where could you uncreate a victim of time?
+ 680. From where could you uncreate a victim of time?
+ 681. From where could you uncreate a victim of time?
+ 682. From where could you make a victim of time destroyed?
+ 683. From where could you make a victim of time destroyed?
+ 684. From where could you make a victim of time destroyed?
+ 685. From where could you make a victim of time destroyed?
+ 686. From where could you make a victim of time destroyed?
+ 687. From where could you make a victim of time destroyed?
+ 688. From where could you make a victim of time destroyed?
+ 689. From where could you make a victim of time destroyed?
+ 690. From where could you make a victim of time destroyed?
+ 691. From where could you make a victim of time destroyed?
+ 692. From where could you make a victim of time vanish?
+ 693. From where could you make a victim of time vanish?
+ 694. From where could you make a victim of time vanish?
+ 695. From where could you make a victim of time vanish?
+ 696. From where could you make a victim of time vanish?
+ 697. From where could you make a victim of time vanish?
+ 698. From where could you make a victim of time vanish?
+ 699. From where could you make a victim of time vanish?
+ 700. From where could you make a victim of time vanish?
+ 701. From where could you make a victim of time vanish?
+ 702. From where could you communicate to a victim?
+ 703. From where could you communicate to a victim?
+ 704. From where could you communicate to a victim?
+ 705. From where could you communicate to a victim?
+ 706. From where could you communicate to a victim?
+ 707. From where could you communicate to a victim?
+ 708. From where could you communicate to a victim?
+ 709. From where could you communicate to a victim?
+ 710. From where could you communicate to a victim?
+ 711. From where could you communicate to a victim?
+ 712. From where could you help a victim?
+ 713. From where could you help a victim?
+ 714. From where could you help a victim?
+ 715. From where could you help a victim?
+ 716. From where could you help a victim?
+ 717. From where could you help a victim?
+ 718. From where could you help a victim?
+ 719. From where could you help a victim?
+ 720. From where could you help a victim?
+ 721. From where could you help a victim?
+ 722. From where could you waste a victim?
+ 723. From where could you waste a victim?
+ 724. From where could you waste a victim?
+ 725. From where could you waste a victim?
+ 726. From where could you waste a victim?
+ 727. From where could you waste a victim?
+ 728. From where could you waste a victim?
+ 729. From where could you waste a victim?
+ 730. From where could you waste a victim?
+ 731. From where could you waste a victim?
+ 732. From where could you save a victim?
+ 733. From where could you save a victim?
+ 734. From where could you save a victim?
+ 735. From where could you save a victim?
+ 736. From where could you save a victim?
+ 737. From where could you save a victim?
+ 738. From where could you save a victim?
+ 739. From where could you save a victim?
+ 740. From where could you save a victim?
+ 741. From where could you save a victim?
+ 742. From where could you predict consequences of a victim?
+ 743. From where could you predict consequences of a victim?
+ 744. From where could you predict consequences of a victim?
+ 745. From where could you predict consequences of a victim?
+ 746. From where could you predict consequences of a victim?
+ 747. From where could you predict consequences of a victim?
+ 748. From where could you predict consequences of a victim?
+ 749. From where could you predict consequences of a victim?
+ 750. From where could you predict consequences of a victim?
+ 751. From where could you predict consequences of a victim?
+ 752. From where could you dispose of a victim?
+ 753. From where could you dispose of a victim?
+ 754. From where could you dispose of a victim?
+ 755. From where could you dispose of a victim?
+ 756. From where could you dispose of a victim?
+ 757. From where could you dispose of a victim?
+ 758. From where could you dispose of a victim?
+ 759. From where could you dispose of a victim?
+ 760. From where could you dispose of a victim?
+ 761. From where could you dispose of a victim?
+ 762. From where could you start a victim?
+ 763. From where could you start a victim?
+ 764. From where could you start a victim?
+ 765. From where could you start a victim?
+ 766. From where could you start a victim?
+ 767. From where could you start a victim?
+ 768. From where could you start a victim?
+ 769. From where could you start a victim?
+ 770. From where could you start a victim?
+ 771. From where could you start a victim?
+ 772. From where could you change a victim?
+ 773. From where could you change a victim?
+ 774. From where could you change a victim?
+ 775. From where could you change a victim?
+ 776. From where could you change a victim?
+ 777. From where could you change a victim?
+ 778. From where could you change a victim?
+ 779. From where could you change a victim?
+ 780. From where could you change a victim?
+ 781. From where could you change a victim?
+ 782. From where could you stop a victim?
+ 783. From where could you stop a victim?
+ 784. From where could you stop a victim?
+ 785. From where could you stop a victim?
+ 786. From where could you stop a victim?
+ 787. From where could you stop a victim?
+ 788. From where could you stop a victim?
+ 789. From where could you stop a victim?
+ 790. From where could you stop a victim?
+ 791. From where could you stop a victim?
+ 792. From where could you uncreate a victim?
+ 793. From where could you uncreate a victim?
+ 794. From where could you uncreate a victim?
+ 795. From where could you uncreate a victim?
+ 796. From where could you uncreate a victim?
+ 797. From where could you uncreate a victim?
+ 798. From where could you uncreate a victim?
+ 799. From where could you uncreate a victim?
+ 800. From where could you uncreate a victim?
+ 801. From where could you uncreate a victim?
+ 802. From where could you make a victim destroyed?
+ 803. From where could you make a victim destroyed?
+ 804. From where could you make a victim destroyed?
+ 805. From where could you make a victim destroyed?
+ 806. From where could you make a victim destroyed?
+ 807. From where could you make a victim destroyed?
+ 808. From where could you make a victim destroyed?
+ 809. From where could you make a victim destroyed?
+ 810. From where could you make a victim destroyed?
+ 811. From where could you make a victim destroyed?
+ 812. From where could you make a victim vanish?
+ 813. From where could you make a victim vanish?
+ 814. From where could you make a victim vanish?
+ 815. From where could you make a victim vanish?
+ 816. From where could you make a victim vanish?
+ 817. From where could you make a victim vanish?
+ 818. From where could you make a victim vanish?
+ 819. From where could you make a victim vanish?
+ 820. From where could you make a victim vanish?
+ 821. From where could you make a victim vanish?
+ 822. From where could you communicate to a victim of materialism?
+ 823. From where could you communicate to a victim of materialism?
+ 824. From where could you communicate to a victim of materialism?
+ 825. From where could you communicate to a victim of materialism?
+ 826. From where could you communicate to a victim of materialism?
+ 827. From where could you communicate to a victim of materialism?
+ 828. From where could you communicate to a victim of materialism?
+ 829. From where could you communicate to a victim of materialism?
+ 830. From where could you communicate to a victim of materialism?
+ 831. From where could you communicate to a victim of materialism?
+ 832. From where could you help a victim of materialism?
+ 833. From where could you help a victim of materialism?
+ 834. From where could you help a victim of materialism?
+ 835. From where could you help a victim of materialism?
+ 836. From where could you help a victim of materialism?
+ 837. From where could you help a victim of materialism?
+ 838. From where could you help a victim of materialism?
+ 839. From where could you help a victim of materialism?
+ 840. From where could you help a victim of materialism?
+ 841. From where could you help a victim of materialism?
+ 842. From where could you waste a victim of materialism?
+ 843. From where could you waste a victim of materialism?
+ 844. From where could you waste a victim of materialism?
+ 845. From where could you waste a victim of materialism?
+ 846. From where could you waste a victim of materialism?
+ 847. From where could you waste a victim of materialism?
+ 848. From where could you waste a victim of materialism?
+ 849. From where could you waste a victim of materialism?
+ 850. From where could you waste a victim of materialism?
+ 851. From where could you waste a victim of materialism?
+ 852. From where could you save a victim of materialism?
+ 853. From where could you save a victim of materialism?
+ 854. From where could you save a victim of materialism?
+ 855. From where could you save a victim of materialism?
+ 856. From where could you save a victim of materialism?
+ 857. From where could you save a victim of materialism?
+ 858. From where could you save a victim of materialism?
+ 859. From where could you save a victim of materialism?
+ 860. From where could you save a victim of materialism?
+ 861. From where could you save a victim of materialism?
+ 862. From where could you predict consequences of a victim of materialism?
+ 863. From where could you predict consequences of a victim of materialism?
+ 864. From where could you predict consequences of a victim of materialism?
+ 865. From where could you predict consequences of a victim of materialism?
+ 866. From where could you predict consequences of a victim of materialism?
+ 867. From where could you predict consequences of a victim of materialism?
+ 868. From where could you predict consequences of a victim of materialism?
+ 869. From where could you predict consequences of a victim of materialism?
+ 870. From where could you predict consequences of a victim of materialism?
+ 871. From where could you predict consequences of a victim of materialism?
+ 872. From where could you dispose of a victim of materialism?
+ 873. From where could you dispose of a victim of materialism?
+ 874. From where could you dispose of a victim of materialism?
+ 875. From where could you dispose of a victim of materialism?
+ 876. From where could you dispose of a victim of materialism?
+ 877. From where could you dispose of a victim of materialism?
+ 878. From where could you dispose of a victim of materialism?
+ 879. From where could you dispose of a victim of materialism?
+ 880. From where could you dispose of a victim of materialism?
+ 881. From where could you dispose of a victim of materialism?
+ 882. From where could you start a victim of materialism?
+ 883. From where could you start a victim of materialism?
+ 884. From where could you start a victim of materialism?
+ 885. From where could you start a victim of materialism?
+ 886. From where could you start a victim of materialism?
+ 887. From where could you start a victim of materialism?
+ 888. From where could you start a victim of materialism?
+ 889. From where could you start a victim of materialism?
+ 890. From where could you start a victim of materialism?
+ 891. From where could you start a victim of materialism?
+ 892. From where could you change a victim of materialism?
+ 893. From where could you change a victim of materialism?
+ 894. From where could you change a victim of materialism?
+ 895. From where could you change a victim of materialism?
+ 896. From where could you change a victim of materialism?
+ 897. From where could you change a victim of materialism?
+ 898. From where could you change a victim of materialism?
+ 899. From where could you change a victim of materialism?
+ 900. From where could you change a victim of materialism?
+ 901. From where could you change a victim of materialism?
+ 902. From where could you stop a victim of materialism?
+ 903. From where could you stop a victim of materialism?
+ 904. From where could you stop a victim of materialism?
+ 905. From where could you stop a victim of materialism?
+ 906. From where could you stop a victim of materialism?
+ 907. From where could you stop a victim of materialism?
+ 908. From where could you stop a victim of materialism?
+ 909. From where could you stop a victim of materialism?
+ 910. From where could you stop a victim of materialism?
+ 911. From where could you stop a victim of materialism?
+ 912. From where could you uncreate a victim of materialism?
+ 913. From where could you uncreate a victim of materialism?
+ 914. From where could you uncreate a victim of materialism?
+ 915. From where could you uncreate a victim of materialism?
+ 916. From where could you uncreate a victim of materialism?
+ 917. From where could you uncreate a victim of materialism?
+ 918. From where could you uncreate a victim of materialism?
+ 919. From where could you uncreate a victim of materialism?
+ 920. From where could you uncreate a victim of materialism?
+ 921. From where could you uncreate a victim of materialism?
+ 922. From where could you make a victim of materialism destroyed?
+ 923. From where could you make a victim of materialism destroyed?
+ 924. From where could you make a victim of materialism destroyed?
+ 925. From where could you make a victim of materialism destroyed?
+ 926. From where could you make a victim of materialism destroyed?
+ 927. From where could you make a victim of materialism destroyed?
+ 928. From where could you make a victim of materialism destroyed?
+ 929. From where could you make a victim of materialism destroyed?
+ 930. From where could you make a victim of materialism destroyed?
+ 931. From where could you make a victim of materialism destroyed?
+ 932. From where could you make a victim of materialism vanish?
+ 933. From where could you make a victim of materialism vanish?
+ 934. From where could you make a victim of materialism vanish?
+ 935. From where could you make a victim of materialism vanish?
+ 936. From where could you make a victim of materialism vanish?
+ 937. From where could you make a victim of materialism vanish?
+ 938. From where could you make a victim of materialism vanish?
+ 939. From where could you make a victim of materialism vanish?
+ 940. From where could you make a victim of materialism vanish?
+ 941. From where could you make a victim of materialism vanish?
+
+
+4. By mock-ups (mental ideas) (well, mock-ups of getting rid of things), gets the person able to get rid of what he feels he "needs".
 Could be very useful. Could exteriorize someone by itself.
 
 
- 373. Get rid of a useful body.
- 374. Get rid of a non-useful body.
- 375. Get rid of a surviving body.
- 376. Get rid of a non-surviving body.
- 377. Get rid of a stable body.
- 378. Get rid of a non-stable body.
- 379. Get rid of a body that has overcome damage.
- 380. Get rid of a body that has not overcome damage.
- 381. Get rid of a body that has overcome confusion.
- 382. Get rid of a body that has not overcome confusion.
- 383. Get rid of a body that has overcome pain.
- 384. Get rid of a body that has not overcome pain.
+ 942. Get rid of a useful body.
+ 943. Get rid of a non-useful body.
+ 944. Get rid of a surviving body.
+ 945. Get rid of a non-surviving body.
+ 946. Get rid of a stable body.
+ 947. Get rid of a non-stable body.
+ 948. Get rid of a body that has overcome damage.
+ 949. Get rid of a body that has not overcome damage.
+ 950. Get rid of a body that has overcome confusion.
+ 951. Get rid of a body that has not overcome confusion.
+ 952. Get rid of a body that has overcome pain.
+ 953. Get rid of a body that has not overcome pain.
 
 
 5. Materialism is the huge lie. This allows someone to get rid of things.
 
 
- 385. Get rid of the mass of materialism.
- 386. Get rid of the meaning of materialism.
- 387. Get rid of the mobility of materialism.
- 388. Get rid of materialism.
- 389. Get rid of materialism in many ways.
- 390. Waste materialism.
- 391. What would happen if you separated from materialism?
- 392. What would happen if another separated from materialism?
- 393. What would happen if others separated from materialism?
- 394. What would happen if materialism separated from you?
- 395. Keep the table from going away.
- 396. Try not to be 10 feet back of your head.
+ 954. Get rid of the mass of materialism.
+ 955. Get rid of the meaning of materialism.
+ 956. Get rid of the mobility of materialism.
+ 957. Get rid of materialism.
+ 958. Get rid of materialism in many ways.
+ 959. Waste materialism.
+ 960. What would happen if you separated from materialism?
+ 961. What would happen if another separated from materialism?
+ 962. What would happen if others separated from materialism?
+ 963. What would happen if materialism separated from you?
+ 964. Keep the table from going away.
+ 965. Try not to be 10 feet back of your head.
 
 
 6. Gets rid of symbols. This is the problem in exteriorization. It is intimate.
 Also get the person to determine orientation points. So we don't just get rid of symbols.
 
 
- 397. Get rid of the mass of your name.
- 398. Get rid of the meaning of your name.
- 399. Get rid of the mobility of your name.
- 400. Notice an object and tell it out loud where it is.
- 401. Keep the table from going away.
- 402. Try not to be 10 feet back of your head.
- 403. Get rid of the mass of your body.
- 404. Get rid of the meaning of your body.
- 405. Get rid of the mobility of your body.
- 406. Notice an object and tell it out loud where it is.
- 407. Keep the table from going away.
- 408. Try not to be 10 feet back of your head.
- 409. Get rid of the mass of your family.
- 410. Get rid of the meaning of your family.
- 411. Get rid of the mobility of your family.
- 412. Notice an object and tell it out loud where it is.
- 413. Keep the table from going away.
- 414. Try not to be 10 feet back of your head.
- 415. Get rid of the mass of a city you used to live in.
- 416. Get rid of the meaning of a city you used to live in.
- 417. Get rid of the mobility of a city you used to live in.
- 418. Notice an object and tell it out loud where it is.
- 419. Keep the table from going away.
- 420. Try not to be 10 feet back of your head.
- 421. Get rid of the mass of your country.
- 422. Get rid of the meaning of your country.
- 423. Get rid of the mobility of your country.
- 424. Notice an object and tell it out loud where it is.
- 425. Keep the table from going away.
- 426. Try not to be 10 feet back of your head.
- 427. Get rid of the mass of pain.
- 428. Get rid of the meaning of pain.
- 429. Get rid of the mobility of pain.
- 430. How are you separate from your name?
- 431. How is your name separate from you?
- 432. Tell me some names you can get rid of.
- 433. Tell me some bodies you can get rid of.
+ 966. Get rid of the mass of your name.
+ 967. Get rid of the meaning of your name.
+ 968. Get rid of the mobility of your name.
+ 969. Notice an object and tell it out loud where it is.
+ 970. Keep the table from going away.
+ 971. Try not to be 10 feet back of your head.
+ 972. Get rid of the mass of your body.
+ 973. Get rid of the meaning of your body.
+ 974. Get rid of the mobility of your body.
+ 975. Notice an object and tell it out loud where it is.
+ 976. Keep the table from going away.
+ 977. Try not to be 10 feet back of your head.
+ 978. Get rid of the mass of your family.
+ 979. Get rid of the meaning of your family.
+ 980. Get rid of the mobility of your family.
+ 981. Notice an object and tell it out loud where it is.
+ 982. Keep the table from going away.
+ 983. Try not to be 10 feet back of your head.
+ 984. Get rid of the mass of a city you used to live in.
+ 985. Get rid of the meaning of a city you used to live in.
+ 986. Get rid of the mobility of a city you used to live in.
+ 987. Notice an object and tell it out loud where it is.
+ 988. Keep the table from going away.
+ 989. Try not to be 10 feet back of your head.
+ 990. Get rid of the mass of your country.
+ 991. Get rid of the meaning of your country.
+ 992. Get rid of the mobility of your country.
+ 993. Notice an object and tell it out loud where it is.
+ 994. Keep the table from going away.
+ 995. Try not to be 10 feet back of your head.
+ 996. Get rid of the mass of pain.
+ 997. Get rid of the meaning of pain.
+ 998. Get rid of the mobility of pain.
+ 999. How are you separate from your name?
+1000. How is your name separate from you?
+1001. Tell me some names you can get rid of.
+1002. Tell me some bodies you can get rid of.
 
 
 7. Get rid of different methods of knowingness. This probably helps with exteriorization.
 
 
- 434. Tell me some mystery you could get rid of.
- 435. Tell me some eating you could get rid of.
- 436. Tell me some symbols you could get rid of.
- 437. Tell me some thinking you could get rid of.
- 438. Tell me some emotion you could get rid of.
+1003. Tell me some mystery you could get rid of.
+1004. Tell me some eating you could get rid of.
+1005. Tell me some symbols you could get rid of.
+1006. Tell me some thinking you could get rid of.
+1007. Tell me some emotion you could get rid of.
 
 
 8. The idea is that unknowableness or similar very low emotions, could act as stable data in a confusion, the stable datum being that many things about
 the object or thing are NOT KNOWN. This could give one a sense of calm, and could help to exteriorize someone.
 
 
- 439. Spot some unknowableness.
- 440. Spot some more unknowableness.
- 441. Spot some more unknowableness.
- 442. Instantly Spot some unknowableness.
- 443. What confusion could unknowableness solve?
- 444. What other confusion could unknowableness solve?
+1008. Spot some unknowableness.
+1009. Spot some more unknowableness.
+1010. Spot some more unknowableness.
+1011. Instantly Spot some unknowableness.
+1012. What confusion could unknowableness solve?
+1013. What other confusion could unknowableness solve?
 
 
 9. Here we are putting someone in control of low order methods of knowingness. We are making them not do a method of knowingness. This can help with exteriorization.
 
 
- 445. Spot a spot in space and don't effort.
- 446. Spot a spot in space and don't mystery.
- 447. Spot a spot in space and don't symbolize.
- 448. Spot a spot in space where there is no effort.
- 449. Get rid of Effort in your mind.
- 450. Get rid of Effort in your body.
- 451. Spot three spots in space where there is no effort.
- 452. Spot three spots in your body there is no effort.
- 453. How much Effort could there be in locating yourself?
- 454. How much Effort could there not be in locating yourself?
- 455. Spot a spot in space where there is no thinking.
- 456. Get rid of Thinking in your mind.
- 457. Get rid of Thinking in your body.
- 458. Spot three spots in space where there is no thinking.
- 459. Spot three spots in your body there is no thinking.
- 460. How much Effort could there be in locating yourself?
- 461. How much Effort could there not be in locating yourself?
- 462. How much Thinking could there be in locating yourself?
- 463. How much Thinking could there not be in locating yourself?
- 464. What would happen if you were ten feet back of your head without effort?
- 465. What would happen if you were ten feet back of your head without symbols?
- 466. What would happen if you were ten feet back of your head without thinking?
- 467. What would happen if you were ten feet back of your head without eating?
+1014. Spot a spot in space and don't effort.
+1015. Spot a spot in space and don't mystery.
+1016. Spot a spot in space and don't symbolize.
+1017. Spot a spot in space where there is no effort.
+1018. Get rid of Effort in your mind.
+1019. Get rid of Effort in your body.
+1020. Spot three spots in space where there is no effort.
+1021. Spot three spots in your body there is no effort.
+1022. How much Effort could there be in locating yourself?
+1023. How much Effort could there not be in locating yourself?
+1024. Spot a spot in space where there is no thinking.
+1025. Get rid of Thinking in your mind.
+1026. Get rid of Thinking in your body.
+1027. Spot three spots in space where there is no thinking.
+1028. Spot three spots in your body there is no thinking.
+1029. How much Effort could there be in locating yourself?
+1030. How much Effort could there not be in locating yourself?
+1031. How much Thinking could there be in locating yourself?
+1032. How much Thinking could there not be in locating yourself?
+1033. What would happen if you were ten feet back of your head without effort?
+1034. What would happen if you were ten feet back of your head without symbols?
+1035. What would happen if you were ten feet back of your head without thinking?
+1036. What would happen if you were ten feet back of your head without eating?
 
 
 10. Here we are changing considerations of control. Lack of Control can impede (or suppress) exteriorization.
 
 
- 468. Who could control your body?
- 469. Who could your body control?
- 470. Who could control your head?
- 471. Who could your head control?
+1037. Who could control your body?
+1038. Who could your body control?
+1039. Who could control your head?
+1040. Who could your head control?
 
 
 11. One is trapped by those things to which he will not "grant havingness" (freely allowing to affect or potentially affect things or oneself, essentially).
@@ -4472,255 +5111,255 @@ The basic havingness that the being is denying the trap is denying the trap a be
 Since the body is kind of a trap (or at least one kind of thinks it is or is acting kind of life one), allowing ones body to get taken over etc. can help with exteriorization.
 
 
- 472. Name me ten beings that you could allow your body to take over.
- 473. Name me ten beings that you could allow to take over your body.
- 474. Name me ten beings that you could allow your body to control.
- 475. Name me ten beings that you could allow to control your body.
- 476. Be ten feet back of your head.
+1041. Name me ten beings that you could allow your body to take over.
+1042. Name me ten beings that you could allow to take over your body.
+1043. Name me ten beings that you could allow your body to control.
+1044. Name me ten beings that you could allow to control your body.
+1045. Be ten feet back of your head.
 
 
 12. This leads to substitutes, which is easy, low order, and can handle issues with stable data or with confusions. This can help with exteriorization.
 
 
- 477. Look around here and find a subtitute for your body.
- 478. Look around here and find a substitute for your head.
- 479. Look around here and find a substitute for the confusion of your entire life.
- 480. Look around here and find a substitute for the confusion of the last few days.
- 481. Look around here and find a substitute for your current location.
- 482. Look around here and find a substitute for your living a life.
- 483. Look around here and find a substitute for dealing with a body.
- 484. Look around here and find a substitute for all the pain your body has ever felt.
- 485. Look around here and find a substitute for all the pain your body could feel.
- 486. Look around here and find a substitute for all the hunger your body could feel.
+1046. Look around here and find a substitute for your body.
+1047. Look around here and find a substitute for your head.
+1048. Look around here and find a substitute for the confusion of your entire life.
+1049. Look around here and find a substitute for the confusion of the last few days.
+1050. Look around here and find a substitute for your current location.
+1051. Look around here and find a substitute for your living a life.
+1052. Look around here and find a substitute for dealing with a body.
+1053. Look around here and find a substitute for all the pain your body has ever felt.
+1054. Look around here and find a substitute for all the pain your body could feel.
+1055. Look around here and find a substitute for all the hunger your body could feel.
 
 
 13. We improve control of stable data or with confusions. This can help with exteriorization.
 
 
- 487. How confusing could your body be?
- 488. How stable could your body be?
- 489. How confusing could the physical universe be?
- 490. How stable could the physical universe be?
+1056. How confusing could your body be?
+1057. How stable could your body be?
+1058. How confusing could the physical universe be?
+1059. How stable could the physical universe be?
 
 
 14. We address effort, which can be a huge button for people (compulsive sensation or touching to know or believe the existence of something, everything being "work", everything being "difficult", constant conflict)
 This  can help with exteriorization
 
 
- 491. How much effort could there be in being in a body?
- 492. How much effort could there be in not being in a body?
- 493. How little effort could there be in being in a body?
- 494. How little effort could there be in not being in a body?
+1060. How much effort could there be in being in a body?
+1061. How much effort could there be in not being in a body?
+1062. How little effort could there be in being in a body?
+1063. How little effort could there be in not being in a body?
 
 
 15. Using body to give confidence in location. This can help with exteriorization
 
 
- 495. How could your head give you confidence in awareness of location?
- 496. How could your head give you confidence in unawareness of location?
- 497. How could your head make it easy to have awareness of location?
- 498. How could your head make it easy to have unawareness of location?
+1064. How could your head give you confidence in awareness of location?
+1065. How could your head give you confidence in unawareness of location?
+1066. How could your head make it easy to have awareness of location?
+1067. How could your head make it easy to have unawareness of location?
 
 
 16. Using body to give solution of location. This can help with exteriorization
 
 
- 499. How could your head be a solution for awareness of location?
- 500. How could your head be a solution for unawareness of location?
+1068. How could your head be a solution for awareness of location?
+1069. How could your head be a solution for unawareness of location?
 
 
 17. Separation. Exteriorization = Separation
 
 
- 501. What separation would be miserable?
- 502. What separation wouldn't be miserable?
+1070. What separation would be miserable?
+1071. What separation wouldn't be miserable?
 
 
 18. Connectedness. This can help with exteriorization
 
 
- 503. Look around here and tell me something that could connect with you.
- 504. Look around here and tell me something that could connect with your body.
+1072. Look around here and tell me something that could connect with you.
+1073. Look around here and tell me something that could connect with your body.
 
 
 19. Interest relates to interiorization. This can help with exteriorization
 
 
- 505. Who would be interested in a separate being?
+1074. Who would be interested in a separate being?
 
 
 20. More separation. This can help with exteriorization
 
 
- 506. Name three different people.
- 507. How separate could you be to them?
- 508. How separate could they be to you?
+1075. Name three different people.
+1076. How separate could you be to them?
+1077. How separate could they be to you?
 
 
 21. More separation and spotting spots and interest. This can help with exteriorization
 
 
- 509. Spot three parts of the body that are separate.
- 510. Spot three spots in the universe that are separate.
- 511. Spot two parts of the body that are separate.
- 512. Spot two spots in the universe that are separate.
- 513. Spot two spots in the universe that are both separate and interesting.
- 514. Spot three parts of the body that you are separate from.
- 515. Spot three spots in the universe that you are separate from.
- 516. Spot two parts of the body that you are separate from.
- 517. Spot two spots in the universe that you are separate from.
- 518. Spot three spots in the universe that are interesting.
- 519. How interesting could separating from the body be?
- 520. How uninteresting could a separated-from-body be?
- 521. How is your body separate from the rest of the physical universe?
- 522. How is the rest of the physical universe separate from your body?
- 523. How are you separate from your head?
- 524. How is your head separate from you?
- 525. Notice two separate objects.
- 526. How separate could they possibly be?
- 527. How miserable could being separate from your head seem?
- 528. How pleasant could being separate from your head seem?
+1078. Spot three parts of the body that are separate.
+1079. Spot three spots in the universe that are separate.
+1080. Spot two parts of the body that are separate.
+1081. Spot two spots in the universe that are separate.
+1082. Spot two spots in the universe that are both separate and interesting.
+1083. Spot three parts of the body that you are separate from.
+1084. Spot three spots in the universe that you are separate from.
+1085. Spot two parts of the body that you are separate from.
+1086. Spot two spots in the universe that you are separate from.
+1087. Spot three spots in the universe that are interesting.
+1088. How interesting could separating from the body be?
+1089. How uninteresting could a separated-from-body be?
+1090. How is your body separate from the rest of the physical universe?
+1091. How is the rest of the physical universe separate from your body?
+1092. How are you separate from your head?
+1093. How is your head separate from you?
+1094. Notice two separate objects.
+1095. How separate could they possibly be?
+1096. How miserable could being separate from your head seem?
+1097. How pleasant could being separate from your head seem?
 
 
 22. Dealing with control and existence. This can help with exteriorization
 
 
- 529. How are you inevitably not going to lose all control of the body?
- 530. How are you inevitably going to lose all control of the body?
- 531. How will control always exist?
- 532. How are you inevitably not going to lose all perception from the body?
- 533. How are you inevitably going to lose all perception from the body?
- 534. How will perception always exist?
- 535. How can your perceptionness not be lost?
- 536. How are you inevitably not going to lose all utility from the body?
- 537. How are you inevitably going to lose all utility from the body?
- 538. How will utility always exist?
+1098. How are you inevitably not going to lose all control of the body?
+1099. How are you inevitably going to lose all control of the body?
+1100. How will control always exist?
+1101. How are you inevitably not going to lose all perception from the body?
+1102. How are you inevitably going to lose all perception from the body?
+1103. How will perception always exist?
+1104. How can your perceptionness not be lost?
+1105. How are you inevitably not going to lose all utility from the body?
+1106. How are you inevitably going to lose all utility from the body?
+1107. How will utility always exist?
 
 
 23. Dealing with safety. This can help with exteriorization
 
 
- 539. Where would be unsafe now?
- 540. Where would be safe now?
+1108. Where would be unsafe now?
+1109. Where would be safe now?
 
 
 24. Dealing with location. This can help with exteriorization
 
 
- 541. Where aren't you now?
- 542. Where needn't you be now?
- 543. Where is an easy location to be now?
- 544. Where is a pleasant location to be now?
- 545. Where are you not from?
- 546. Tell me about it.
- 547. Are you certain you're not from there?
+1110. Where aren't you now?
+1111. Where needn't you be now?
+1112. Where is an easy location to be now?
+1113. Where is a pleasant location to be now?
+1114. Where are you not from?
+1115. Tell me about it.
+1116. Are you certain you're not from there?
 
 
 25. Dealing with interest. This can help with exteriorization
 
 
- 548. How do you not have interest on the exterior world?
- 549. How do you not have attention on the exterior world?
- 550. What do you love about the nature of the exterior world?
- 551. What about the exterior world would you love to look at?
- 552. What about the exterior world is more interesting than the body?
+1117. How do you not have interest on the exterior world?
+1118. How do you not have attention on the exterior world?
+1119. What do you love about the nature of the exterior world?
+1120. What about the exterior world would you love to look at?
+1121. What about the exterior world is more interesting than the body?
 
 
 26. Dealing with body form. This can help with exteriorization
 
 
- 553. How much could you allow the body to grow or shrink in the next 5 minutes?
- 554. How incompetent can you allow your body control to be?
- 555. How sloppy can you allow your body control to be?
+1122. How much could you allow the body to grow or shrink in the next 5 minutes?
+1123. How incompetent can you allow your body control to be?
+1124. How sloppy can you allow your body control to be?
 
 
 27. More dealing with control. This can help with exteriorization
 
 
- 556. How can you protest and utterly stop controlling the body at all?
+1125. How can you protest and utterly stop controlling the body at all?
 
 
 28. Dealing with sensation. This can help with exteriorization
 
 
- 557. How does the body give you pain?
- 558. How does the body not give you pain?
- 559. Where could you be where the body is giving you pain?
- 560. Where could you be where the body is not giving you pain?
- 561. How does the body's pain affect your location?
- 562. How does the body's pain not affect your location?
- 563. How could you locate yourself?
- 564. What could you use to locate yourself?
- 565. Why is it okay for your location to not be affected by the body's pain?
- 566. How are you fundamentally different from pain?
- 567. How is pain fundamentally different from you?
+1126. How does the body give you pain?
+1127. How does the body not give you pain?
+1128. Where could you be where the body is giving you pain?
+1129. Where could you be where the body is not giving you pain?
+1130. How does the body's pain affect your location?
+1131. How does the body's pain not affect your location?
+1132. How could you locate yourself?
+1133. What could you use to locate yourself?
+1134. Why is it okay for your location to not be affected by the body's pain?
+1135. How are you fundamentally different from pain?
+1136. How is pain fundamentally different from you?
 
 
 29. Spanning attention. This can help with exteriorization
 
 
- 568. Put your attention on the body's pain.
- 569. Widen your attention beyond the body's pain.
- 570. Widen your attention even further.
+1137. Put your attention on the body's pain.
+1138. Widen your attention beyond the body's pain.
+1139. Widen your attention even further.
 
 
 30. Body form as a solution. This can help with exteriorization
 
 
- 571. What would a really good physical form be a solution to?
- 572. What would a really good physical form not be a solution to?
- 573. What would a body be a solution to?
- 574. Is this the best solution?
+1140. What would a really good physical form be a solution to?
+1141. What would a really good physical form not be a solution to?
+1142. What would a body be a solution to?
+1143. Is this the best solution?
 
 
 31. Allowing oneself to exist. This can help with exteriorization
 
 
- 575. How wouldn't another allow you to exist?
- 576. How wouldn't you allow another to exist?
- 577. How wouldn't others allow others to exist?
- 578. How wouldn't you allow yourself to exist?
+1144. How wouldn't another allow you to exist?
+1145. How wouldn't you allow another to exist?
+1146. How wouldn't others allow others to exist?
+1147. How wouldn't you allow yourself to exist?
 
 
 32. More separation. This can help with exteriorization
 
 
- 579. Who wouldn't allow you to separate from them?
- 580. Who wouldn't you allow to separate from you?
- 581. How could your head be separate from itself?
- 582. How are you separate from yourself?
- 583. How are you separate from another?
- 584. How is another separate from you?
- 585. How is another separate from others?
+1148. Who wouldn't allow you to separate from them?
+1149. Who wouldn't you allow to separate from you?
+1150. How could your head be separate from itself?
+1151. How are you separate from yourself?
+1152. How are you separate from another?
+1153. How is another separate from you?
+1154. How is another separate from others?
 
 
 33. Clockwise wheel. This can help with exteriorization
 
 
- 586. Get the idea of three people.
- 587. In a clockwise fashion, substitute exteriorization or interiorization problems of one person with the next person. Do this for all three people.
- 588. Do it again.
- 589. Do it again.
- 590. Now have these so-called problems get condensed and vanish.
+1155. Get the idea of three people.
+1156. In a clockwise fashion, substitute exteriorization or interiorization problems of one person with the next person. Do this for all three people.
+1157. Do it again.
+1158. Do it again.
+1159. Now have these so-called problems get condensed and vanish.
 
 
 34. Spanning responsibility
 
 
- 591. What about your head could you be responsible for?
- 592. Now widen that responsibility.
- 593. Now widen that responsibility.
- 594. Now widen that responsibility.
+1160. What about your head could you be responsible for?
+1161. Now widen that responsibility.
+1162. Now widen that responsibility.
+1163. Now widen that responsibility.
 
 
 35. Consequences, etc.
 
 
- 595. Don't think of consequences.
- 596. Think of a mind without consequences.
- 597. Think of a body without consequences.
- 598. What is the consequence of your anxiety
- 599. What would your anxiety be a solution to?
+1164. Don't think of consequences.
+1165. Think of a mind without consequences.
+1166. Think of a body without consequences.
+1167. What is the consequence of your anxiety
+1168. What would your anxiety be a solution to?
 
 
 36.
@@ -4732,16 +5371,20 @@ This might be the most powerful part of this SOP.
 Essentially, anything one might find problematic, is a symbol (a body, a universe, a planet, a mind, etc.)
 And, essentially, all problems one has are communication problems at their root.
 
-This is somewhat akin to what Scientology called "The Rock", but they never dealt with it much. Evolutions eventually lead to their current technology but they never got to this again.
-This was based on the idea of an extremely core, old "people pleaser" "object" that had failed, which one is constantly using and operating via and creating. Probably this is, though unacknowledged, the high point of their entire subject, though it's just so difficult to handle in full.
+This is somewhat akin to what Scientology called "The Rock", but they never dealt with it much. Evolutions eventually led to their current technology but they never got to this again.
+This was based on the idea of an extremely core, old "people pleaser" "object" representing an identity that had failed, and caused an upset, and which one is constantly using and operating via and creating. Probably this is, though unacknowledged, the high point of their entire subject, though it's just so difficult to handle in full. They moved on to deal with what might even be called "people unpleasers" (harmful acts in past lives).
 This idea is also akin to what Buddhists call "attachments" or a "false self" at a very fundamental level. Naturally, even a Buddhist would recognize that a "self" (in quotation marks) would be a "people pleaser".
 
 
 Probably, this is very, very valid, and anything not finding this "core" (and we are unlikely to anytime soon), only removes layers towards this core.
 
-I don't think anyone has ever addressed this, I don't think we are likely to anytime soon, and I don't think Buddhists have ever attained enlightenment, and the Scientologists don't aim for this anymore, probably because it's "too hard" to do it properly.
+I don't think anyone has ever addressed this, I don't think we are likely to anytime soon, and I don't think Buddhists have ever attained enlightenment, and the Scientologists don't aim for this anymore, probably because it's "too hard" to do it properly. It's essentially a massive success and joy (the old identity), which got invalidated.
 
---------
+How does one snap out of this? By validating the identity, dealing with upsets in general, and, a bunch of indirect ways.
+
+There might be no easy way to snap someone out of this.
+
+-----------------
 
 This increases ability of symbolization directly and simply. With that, someone can be freed from any "rocks".
 
@@ -4757,107 +5400,156 @@ One doesn't have to "use" something to communicate.
 
 Here, we both improve someone's ability to symbolize to communicate (snap them out of any things they are using), and also, teach them to communicate without anything.
 
-Much, much more theory could be developed, over the millenia, about this. Anyone can.
+Much, much more theory could be developed, over the millennia, about this. Anyone can.
 
 
-Part 1 - try to snap the person out of using something to communicate, please, etc.
+Part 1 - Have all 3 victim communication techniques done, such that
+	1) one can communicate directly without thinking things (or oneself) is a victim of whether one can remember or not.
+	2) one can communicate directly without thinking things (or oneself) is a victim OF TIME, or the past, present or future
+	3) one can communicate directly without thinking things (or oneself) is a victim.
+	4) one can communicate directly without thinking things (or oneself) is a victim of materialism.
+
+This is done earlier in this SOP
+
+
+Part 2 - try to snap the person out of using something to communicate, please, etc.
 
 One wants to get oneself to communicate to a target, but ignore the origin of such (the rock).
 
 
- 600. Get the idea of communicating to another without a source.
- 601. Get the idea of communicating to another without reason.
- 602. Get the idea of communicating to another without identity.
- 603. Get the idea of communicating to another without a source.
- 604. Get the idea of communicating to another without reason.
- 605. Get the idea of communicating to another without identity.
- 606. Get the idea of communicating to another without a source.
- 607. Get the idea of communicating to another without reason.
- 608. Get the idea of communicating to another without identity.
- 609. Get the idea of communicating to another without a source.
- 610. Get the idea of communicating to another without reason.
- 611. Get the idea of communicating to another without identity.
- 612. Get the idea of communicating to another without a source.
- 613. Get the idea of communicating to another without reason.
- 614. Get the idea of communicating to another without identity.
- 615. Part 2 - improve symbolization
+1169. Get the idea of communicating to another without a source.
+1170. Get the idea of communicating to another without reason.
+1171. Get the idea of communicating to another without identity.
+1172. Get the idea of communicating to another without a source.
+1173. Get the idea of communicating to another without reason.
+1174. Get the idea of communicating to another without identity.
+1175. Get the idea of communicating to another without a source.
+1176. Get the idea of communicating to another without reason.
+1177. Get the idea of communicating to another without identity.
+1178. Get the idea of communicating to another without a source.
+1179. Get the idea of communicating to another without reason.
+1180. Get the idea of communicating to another without identity.
+1181. Get the idea of communicating to another without a source.
+1182. Get the idea of communicating to another without reason.
+1183. Get the idea of communicating to another without identity.
 
-Since the first part won't be done in full, in practice (full directness) we can also do this
- 616. Symbolize stupidity to please others.
- 617. Have others symbolize stupidity to please you.
- 618. Have others symbolize stupidity to please others.
- 619. Symbolize to please yourself.
- 620. Symbolize to please others.
- 621. Were they pleased?
- 622. Were there consequences to that symbolization?
- 623. Have others symbolize to please you.
- 624. Were you pleased?
- 625. Were there consequences to that symbolization?
- 626. Have others symbolize to please others
- 627. Were they pleased?
- 628. Were there consequences to that symbolization?
- 629. Symbolize to please yourself
- 630. Were you pleased?
- 631. Were there consequences to that symbolization?
- 632. Symbolize stupidity to please others.
- 633. Have others symbolize stupidity to please you.
- 634. Have others symbolize stupidity to please others.
- 635. Symbolize to please yourself.
- 636. Symbolize to please others.
- 637. Were they pleased?
- 638. Were there consequences to that symbolization?
- 639. Have others symbolize to please you.
- 640. Were you pleased?
- 641. Were there consequences to that symbolization?
- 642. Have others symbolize to please others
- 643. Were they pleased?
- 644. Were there consequences to that symbolization?
- 645. Symbolize to please yourself
- 646. Were you pleased?
- 647. Were there consequences to that symbolization?
- 648. Symbolize stupidity to please others.
- 649. Have others symbolize stupidity to please you.
- 650. Have others symbolize stupidity to please others.
- 651. Symbolize to please yourself.
- 652. Symbolize to please others.
- 653. Were they pleased?
- 654. Were there consequences to that symbolization?
- 655. Have others symbolize to please you.
- 656. Were you pleased?
- 657. Were there consequences to that symbolization?
- 658. Have others symbolize to please others
- 659. Were they pleased?
- 660. Were there consequences to that symbolization?
- 661. Symbolize to please yourself
- 662. Were you pleased?
- 663. Were there consequences to that symbolization?
+
+Part 3 - Important part - Get the person to separate what is filled with livingness, vs what isn't.
+
+If someone could do this well, then they might snap out of the rock as they are in control of livingness (and aren't a victim and can communicate directly)
+
+
+
+This might be the correct solution. The issue with the rock depends on considerations dealt with here.
+
+Also, saving and wasting 'livingnessfulness' is good, because saving and wasting other things could make 'livingnessfulness' problematic.
+
+Tell me a livingnessful identity. / Tell me a livingnessless identity. and Save a livingnessful identity. / Waste a livingnessful identity. could probably be run
+for like thousands of hours and free the person from the rock.
+
+Save and waste can help to Un-Create the rock. Direct 'Responsibility' would likely 'kill' him.
+
+Thus, this activity is Un-Creative.
+
+
+1184. Tell me a livingnessful identity.
+1185. Tell me a livingnessless identity.
+1186. Tell me a livingnessful identity.
+1187. Tell me a livingnessless identity.
+1188. Tell me a livingnessful identity.
+1189. Tell me a livingnessless identity.
+1190. Tell me a livingnessful identity.
+1191. Tell me a livingnessless identity.
+1192. Tell me a livingnessful identity.
+1193. Tell me a livingnessless identity.
+1194. Save a livingnessful identity.
+1195. Save a livingnessful identity.
+1196. Save a livingnessful identity.
+1197. Save a livingnessful identity.
+1198. Save a livingnessful identity.
+1199. Waste a livingnessful identity.
+1200. Waste a livingnessful identity.
+1201. Waste a livingnessful identity.
+1202. Waste a livingnessful identity.
+1203. Waste a livingnessful identity.
+1204. Save a livingnessful identity.
+1205. Save a livingnessful identity.
+1206. Save a livingnessful identity.
+1207. Save a livingnessful identity.
+1208. Save a livingnessful identity.
+1209. Waste a livingnessful identity.
+1210. Waste a livingnessful identity.
+1211. Waste a livingnessful identity.
+1212. Waste a livingnessful identity.
+1213. Waste a livingnessful identity.
+
+
+Part 2 - improve symbolization
+
+
+1214. Symbolize stupidity to please others.
+1215. Have others symbolize stupidity to please you.
+1216. Have others symbolize stupidity to please others.
+1217. Symbolize to please yourself.
+1218. Symbolize to please others.
+1219. Were there consequences to that symbolization?
+1220. Have others symbolize to please you.
+1221. Were there consequences to that symbolization?
+1222. Have others symbolize to please others
+1223. Were there consequences to that symbolization?
+1224. Symbolize to please yourself
+1225. Were there consequences to that symbolization?
+1226. Symbolize stupidity to please others.
+1227. Have others symbolize stupidity to please you.
+1228. Have others symbolize stupidity to please others.
+1229. Symbolize to please yourself.
+1230. Symbolize to please others.
+1231. Were there consequences to that symbolization?
+1232. Have others symbolize to please you.
+1233. Were there consequences to that symbolization?
+1234. Have others symbolize to please others
+1235. Were there consequences to that symbolization?
+1236. Symbolize to please yourself
+1237. Were there consequences to that symbolization?
+1238. Symbolize stupidity to please others.
+1239. Have others symbolize stupidity to please you.
+1240. Have others symbolize stupidity to please others.
+1241. Symbolize to please yourself.
+1242. Symbolize to please others.
+1243. Were there consequences to that symbolization?
+1244. Have others symbolize to please you.
+1245. Were there consequences to that symbolization?
+1246. Have others symbolize to please others
+1247. Were there consequences to that symbolization?
+1248. Symbolize to please yourself
+1249. Were there consequences to that symbolization?
 
 
 37. Misc others
 
 
- 664. Exteriorize out of Crippledness.
- 665. Exteriorizing out of image / manner of presentation.
- 666. Exteriorize out of cuteness.
- 667. Exteriorize out of heartbreak.
- 668. Exteriorize out of social pressure.
- 669. Exteriorizing out of loneliness.
- 670. Exteriorize out of compliance.
- 671. Exteriorize out of materialism.
- 672. Exteriorize out of the impossibility of siddhis (supernatural abilities).
- 673. Move your education around.
- 674. Move your mother dragging you around, around.
- 675. Move your father dragging you around, around.
- 676. Get the comfort of being in your body. Move the comfort around.
- 677. Exteriorize out of the universe not being entirely yours.
- 678. Exteriorize out of your entrance into this universe.
- 679. Exteriorize out of any subtle 'bodies' that you might have.
+1250. Exteriorize out of crippledness.
+1251. Exteriorizing out of image / manner of presentation.
+1252. Exteriorize out of cuteness.
+1253. Exteriorize out of heartbreak.
+1254. Exteriorize out of social pressure.
+1255. Exteriorizing out of loneliness.
+1256. Exteriorize out of compliance.
+1257. Exteriorize out of materialism.
+1258. Exteriorize out of the impossibility of siddhis (supernatural abilities).
+1259. Move your education around.
+1260. Move your mother dragging you around, around.
+1261. Move your father dragging you around, around.
+1262. Get the comfort of being in your body. Move the comfort around.
+1263. Exteriorize out of the universe not being entirely yours.
+1264. Exteriorize out of your entrance into this universe.
+1265. Exteriorize out of any subtle 'bodies' that you might have.
 
 
 38.
 
 
- 680. 	A process on trauma - only run on people who don't really have trauma (someone who is a good case).
+1266. 	A process on trauma - only run on people who don't really have trauma (someone who is a good case).
 
 	Tell me a trauma that you're not. (Many times)
 	Tell me a non-trauma that you're not.
@@ -4866,7 +5558,7 @@ Since the first part won't be done in full, in practice (full directness) we can
 	Tell me an un-fun experience that you're not.
 
 
-	Simply be a victim.
+
 
 	Waste a fun trauma
 	Waste an un-fun trauma
@@ -4978,24 +5670,24 @@ Since the first part won't be done in full, in practice (full directness) we can
 		If the person wants
 			Have God connect with you
 
- 681. Now exteriorize out of anything that might be ruining you (see traps section)
+1267. Now exteriorize out of anything that might be ruining you (see traps section)
 	For each of [whatever bothers the person, ask them thoroughly], as well as
 
-	human body, possible "higher level" bodies (that maybe or maybe not can be attacked), amnesia of death, amensia of birth, relocation, relocation at death
+	human body, possible "higher level" bodies (that maybe or maybe not can be attacked), amnesia of death, amnesia of birth, relocation, relocation at death
 	drugs, pain, sex, hypnosis, brains, eating, symbols, unconsciousness, unknowableness, waitingness, mystery, thinking, effort, negative emotion
 
 
 	Whatever "ordered" time idea, mess up the time intentionally, reverse it, waste it, make time not exist, make time move fast and slow, move time (as a symbol) around, etc.
 	Whatever "ordered" (workable) energy idea, mess up the energy, matter (and possibly space) intentionally, alter it, waste it, make it not exist, move it (as a symbol) around, etc.
 
- 682. Now, do the other processes listed on this page.
- 683. Now, consider doing this list multiple times over, travelling the universe and getting acclimated with it, fixing up ones education (clearing up words, etc.), fixing up ones life.
+1268. Now, do the other processes listed on this page.
+1269. Now, consider doing this list multiple times over, travelling the universe and getting acclimated with it, fixing up ones education (clearing up words, etc.), fixing up ones life.
 
 
-One can also do Scientology if one wants, or not, at will.
 One can also do Buddhism if one wants, or not, at will.
+One can also do Scientology if one wants, or not, at will.
 
-One can hate or not hate or love or not love Scientology at will, or One can hate or not hate or love or not love Buddhism at will.
+One can hate or not hate or love or not love Buddhism at will, or One can hate or not hate or love or not love Scientology at will.
 
 
 
@@ -5005,9 +5697,32 @@ Eventually, one becomes free of everything relevant - Total Freedom
 Just remember that anything that is subtle, you can also go free from that.
 
 
+-------------------------------------------------------
+
+Safety Organization spiritual developments of note -
+
+The overwhelming majority of questions and commands we use are fully original.
+
+But, there are certain ones that stand out in their novelty.
+
+These are developments NO other previous system has done in any form.
+
+Since these are just text, they can, of course, be used by non-practioners of Safety Organization as well.
+
+<b>The technology we use is SPIRITUAL, not mental, psychological, or psychiatric.</b>
 
 
-Reference, possible (not 100% full exteriorization technique list)
+
+	1) Excellent handling of simple "operational primitives" across a wide spectrum, including a very good handling of symbols. No other system in existence as of this writing does this. As such, we can put a being in command of many primitives better than any other system
+	2) "From where could you communicate to a victim of partial memory?" can do fantastic things and can help with neurotics and everyone. People are constantly upset about not being able to remember - indeed, they are vicitimized by it. This makes one NOT be victimized.
+	3) "From where could you communicate to a victim of time?" is also quite novel and important. Since time is such a huge factor in sanity
+	4) "Get the idea of communicating to another without a source." etc. can enable direct communication.
+	5) "Tell me/Waste/Save a livingnessful identity." is huge. This enables control over, and snapping out of, LIFE itself.
+	6) There might be others.
+
+
+
+Reference, possible (not 100% full exteriorization technique list) - an attempt to list everyone possible way to exteriorize someone that exists
 
 List of all exteriorization techniques
 
@@ -5037,7 +5752,7 @@ List of all exteriorization techniques
 	Beingness processing (self identifying with an object)
 	Holding spots/anchor points
 	Interest/attention on the exterior environment
-	Conceving a static
+	Conceiving a static
 	Accept/Reject
 	Keep head from going away
 	Loss
@@ -5343,10 +6058,10 @@ But, this is much cleaner.
 7. How could fairness trap another?
 8. How could another trap fairness?
 
-9. How could fairnesss keep others from going away?
-10. How could others keep fairnesss from going away?
-11. How could others by trapped by fairnesss?
-12. How could others trap fairnesss?
+9. How could fairness keep others from going away?
+10. How could others keep fairness from going away?
+11. How could others by trapped by fairness?
+12. How could others trap fairness?
 
 13. How could you keep yourself from going away with fairness?
 14. How could you keep yourself from going away?
@@ -5359,8 +6074,8 @@ But, this is much cleaner.
 19. How could you keep fairness still?
 20. How could fairness hold another still?
 21. How could another hold fairness still?
-22. How could fairnesss hold others still?
-23. How could others hold fairnesss still?
+22. How could fairness's hold others still?
+23. How could others hold fairness still?
 24. How could you hold yourself still?
 25. How could fairness hold itself still?
 
@@ -5976,73 +6691,6 @@ How do you not have high expectations for your life?
 17. How do games of interiorization seem to you now? 
 18. How do the lies of unintelligence of the physical universe seem to you now?
 19. How do the lies of your current game seem to you now?
-
-Reference - all exteriorization techniques
-
-List of all exteriorization techniques
-
-Best ones
-
-	1. Where are you from? (or aren't)
-	2. Safety
-	3. Interest/attention on the exterior environment
-	4. Spanning attention
-	5. Easy/pleasant location
-	6. Handling body consideration
-
-Worst ones
-	1. Exterior from mockups
-	2. Assertive location commands. (Be 3 feet back of your head. Try not to be 3 feet back of your head.)
-
-List of all exteriorization techniques
-	Exterior from mockups
-	Assertive location commands. (Be 3 feet back of your head. Try not to be 3 feet back of your head.)
-	Spot spots in space
-	Exteriorize from spots
-	Where are you from?
-	Spanning attention
-	Exteriorization by Distance
-	Exteriorization by Distance ("How close" variant)
-	Exteriorization by Distance (Nothing / Something)
-	Safety
-	Beingness processing (self identifying with an object)
-	Holding spots/anchor points
-	Interest/attention on the exterior environment
-	Conceving a static
-	Accept/Reject
-	Keep head from going away
-	Loss
-	Control (Can and can't)
-	Where you're not located
-	Int/Ext handling of some form
-	Handling body consideration
-	Handling negative case
-	Things you're separate from
-	Having other things connect with you
-
-
-
-	
-	Easy/pleasant location
-	What is worse than exteriorizing?
-	How could you trap yourself?
-	Exteriorization by intelligence (new idea)
-	Duplicating exteriorization inhibition
-	Duplicating exteriorization inhibition by section (What can't you duplicate)
-	As-ising exteriorization inhibition
-	Exteriorization by non-interference with current game
-	All/no attention on X
-	Where could you be located
-	Not relative to you
-	Where aren't you now?
-	Easy to be located / difficult to be located
-
-
-	What could you use to locate yourself?
-
-
-
-
 </pre>
 
 </body>
@@ -6066,12 +6714,88 @@ have spiritual consensus keep you from going away
 </pre>
 </section>
 
+<section id="high-level">
+  <h2>High Level Considerations</h2>
+    <div class="rule"></div>
+<pre>
+Incomplete list. More will be added.
+
+Probably fast to change ones mind and make oneself like this
+
+One can just do this directly
+
+Who is telling you to be in a body? => Psychologists, psychiatrists, materialists, implanters, psychiatrists controlling the society, etc. => Just me, I'm the only one telling me to be in a body
+Who is telling you that the body is more interesting than the exterior world? => Only I am, and no one else
+
+Body control
+	I don't NEED TO control the body. There is no obsession or compulsion or requirement to move it. I can protest moving it completely.
+
+	I don't need to control or not control the body. I am likely interested in the body, but I don't need to CONTROL it. Control will come naturally, without needing there to be attention on the body to control or not control it.
+
+	I can control it very thoroughly if I desire to
+
+Attention
+	I can span attention on any body parts, and broaden that attention to include other body parts. I can broaden attention past the body.
+
+The body is in good form. It's not crippled or in bad state.
+
+The body is not stopping me from locating myself.
+
+The body could become another form and I wouldn't mind.
+
+The body could be hurt and I wouldn't mind (from body generated pain).
+
+The body is less interesting than the exterior world.
+
+The body could be volatile and I wouldn't mind (being shaken, trembling, etc.)
+
+I am not “from” the body. Where are you from? => “Here” / “Right from where I am.” “Where is that?” => “Only where I say I am and no other place”
+
+I will inevitably lose control of the current body, but that is okay and doesn't matter at all. I will still be able to control past (if not totally decomposed and gone), present and possibly future bodies at any moment. Such ability cannot go away.
+
+Bodies are never lost. You don't have “loss” from a body dying. Not ones own, not another. Others also don't have loss from a body dying.
+
+I can see just fine without the body's eyes. “Perceptionness” cannot ever go away.
+
+“Body utility,” whatever that would mean, cannot go away.
+
+I can conceive a static easily, and so can others.
+
+The idea that someone would ever lose something if they conceived a static a very low order idea.
+
+
+I love the exterior world.
+
+My body could suddenly become something else and I wouldn't care.
+
+I am okay with any distance from me to any part of my body, and any distance from any part of my body to me.
+
+I am okay with 100 feet + from my head to me.
+
+I am okay with 100 feet + from me to my head.
+
+I don’t need to force the body into anything.
+I can make by body wait until it dies.
+The sensation of the body can be volatile.
+The sensation of the body can be still.
+The sensation of the body can fluctuate in volatility.
+
+TODO Interest, location
+
+</pre>
+</section>
+
+
+
 <section id="words">
 <h2>Theory of Words</h2>
+<p><i>Note - this is not complete. Many of the "instantiations" of this below haven't been thoroughly reviewed.</i></p>
 <pre>
-  A word is just a symbol of a philosophy. A language is a philosophy of combining symbols of other philosophies (using grammar).
 
-I mean this very strictly. Every word is a philosophy. For example, man, cat, Platonism, go, grocery, sarcasm, ecstacy, etc.
+
+A word is just a symbol of a philosophy. A language is a philosophy of combining symbols of other philosophies (using grammar).
+
+This is meant very strictly. Every word is a philosophy. For example, man, cat, Platonism, go, grocery, sarcasm, ecstasy, etc.
 
 Foundation of concept
 	1. That which invariably exists
@@ -6124,7 +6848,7 @@ For example
 “Man”
 
 Existence - Male body, physical object somewhere, etc. (these have to exist)
-Non existence - obliteration, disappearence, etc. (these can't exist)
+Non existence - obliteration, disappearance, etc. (these can't exist)
 Potential Dir. Potentially moving, running, flying, teleporting (might be possible), etc.
 Man. Dir. Only relative ones (blood flow, atoms, etc.) under certain forms of a “Man” (assuming human, etc.)
 
@@ -6162,24 +6886,24 @@ Cause/source → effects or manifestations.
 
 Existence
 
-* Multiple decision-making units.
-* A governing structure.
-* A relation between units and governing structure.
+       Multiple decision-making units.
+       A governing structure.
+       A relation between units and governing structure.
 
 Non-existence
 
-* One independent source of authority.
-* Complete separation between governed and governing.
+       One independent source of authority.
+       Complete separation between governed and governing.
 
 Potential Directionality
 
-* Units → governing structure (influence, selection).
-* Governing structure → units (decisions, organization).
+       Units → governing structure (influence, selection).
+       Governing structure → units (decisions, organization).
 
 Mandatory Directionality
 
-* Collective → authority.
-* Authority derives from the collective.
+       Collective → authority.
+       Authority derives from the collective.
 
 -----------------------
 
@@ -6187,26 +6911,26 @@ Mandatory Directionality
 
 Existence
 
-* Persistent entities.
-* Occupation of extension.
-* Distinction between parts.
+       Persistent entities.
+       Occupation of extension.
+       Distinction between parts.
 
 Non-existence
 
-* Pure absence of entity.
-* No extension.
-* No persistence.
+       Pure absence of entity.
+       No extension.
+       No persistence.
 
 Potential Directionality
 
-* Movement.
-* Combination.
-* Separation.
-* Transformation.
+       Movement.
+       Combination.
+       Separation.
+       Transformation.
 
 Mandatory Directionality
 
-* Entity exists as a distinguishable form.
+       Entity exists as a distinguishable form.
 
 -----------------------
 
@@ -6214,25 +6938,25 @@ Mandatory Directionality
 
 Existence
 
-* Capacity for change.
-* A system in a state.
-* A relation allowing transformation.
+       Capacity for change.
+       A system in a state.
+       A relation allowing transformation.
 
 Non-existence
 
-* Absolute inability to change.
-* No difference between possible states.
+       Absolute inability to change.
+       No difference between possible states.
 
 Potential Directionality
 
-* Transfer.
-* Conversion.
-* Concentration.
-* Dispersion.
+       Transfer.
+       Conversion.
+       Concentration.
+       Dispersion.
 
 Mandatory Directionality
 
-* State difference → possible transformation.
+       State difference → possible transformation.
 
 -----------------------
 
@@ -6240,24 +6964,24 @@ Mandatory Directionality
 
 Existence
 
-* Distinct positions.
-* Relations between positions.
-* Separation.
+       Distinct positions.
+       Relations between positions.
+       Separation.
 
 Non-existence
 
-* No distinction of location.
-* No spatial relation.
+       No distinction of location.
+       No spatial relation.
 
 Potential Directionality
 
-* Movement.
-* Expansion.
-* Contraction.
+       Movement.
+       Expansion.
+       Contraction.
 
 Mandatory Directionality
 
-* Things can have relative position.
+       Things can have relative position.
 
 -----------------------
 
@@ -6265,23 +6989,23 @@ Mandatory Directionality
 
 Existence
 
-* Events/states.
-* Sequence.
-* Change.
+       Events/states.
+       Sequence.
+       Change.
 
 Non-existence
 
-* No before/after relation.
-* No distinction between states.
+       No before/after relation.
+       No distinction between states.
 
 Potential Directionality
 
-* Change.
-* Ordering.
+       Change.
+       Ordering.
 
 Mandatory Directionality
 
-* Earlier → later.
+       Earlier → later.
 
 -----------------------
 
@@ -6289,24 +7013,24 @@ Mandatory Directionality
 
 Existence
 
-* Identity.
-* Arrangement of parts.
-* Structure.
+       Identity.
+       Arrangement of parts.
+       Structure.
 
 Non-existence
 
-* No distinction of arrangement.
-* No identity.
+       No distinction of arrangement.
+       No identity.
 
 Potential Directionality
 
-* Alteration.
-* Reorganization.
-* Deformation.
+       Alteration.
+       Reorganization.
+       Deformation.
 
 Mandatory Directionality
 
-* Parts exist in relation.
+       Parts exist in relation.
 
 -----------------------
 
@@ -6314,25 +7038,25 @@ Mandatory Directionality
 
 Existence
 
-* Self-maintaining organization.
-* Internal processes.
-* Continuation.
+       Self-maintaining organization.
+       Internal processes.
+       Continuation.
 
 Non-existence
 
-* No self-maintaining process.
-* Complete absence of internal activity.
+       No self-maintaining process.
+       Complete absence of internal activity.
 
 Potential Directionality
 
-* Growth.
-* Reproduction.
-* Adaptation.
-* Decline.
+       Growth.
+       Reproduction.
+       Adaptation.
+       Decline.
 
 Mandatory Directionality
 
-* Internal process → continued existence.
+       Internal process → continued existence.
 
 -----------------------
 
@@ -6340,25 +7064,25 @@ Mandatory Directionality
 
 Existence
 
-* Perspective.
-* Internal representation.
-* Experience.
+       Perspective.
+       Internal representation.
+       Experience.
 
 Non-existence
 
-* No perspective.
-* No internal state.
+       No perspective.
+       No internal state.
 
 Potential Directionality
 
-* Thinking.
-* Remembering.
-* Imagining.
-* Choosing.
+       Thinking.
+       Remembering.
+       Imagining.
+       Choosing.
 
 Mandatory Directionality
 
-* Representation exists relative to an experiencer.
+       Representation exists relative to an experiencer.
 
 -----------------------
 
@@ -6366,25 +7090,25 @@ Mandatory Directionality
 
 Existence
 
-* Distinct units.
-* Quantity relation.
-* Identity of units.
+       Distinct units.
+       Quantity relation.
+       Identity of units.
 
 Non-existence
 
-* No distinction.
-* No quantity.
+       No distinction.
+       No quantity.
 
 Potential Directionality
 
-* Addition.
-* Subtraction.
-* Ordering.
-* Comparison.
+       Addition.
+       Subtraction.
+       Ordering.
+       Comparison.
 
 Mandatory Directionality
 
-* Units exist as countable relations.
+       Units exist as countable relations.
 
 -----------------------
 
@@ -6392,25 +7116,25 @@ Mandatory Directionality
 
 Existence
 
-* Communication.
-* Surface meaning.
-* Intended meaning.
-* Difference between them.
+       Communication.
+       Surface meaning.
+       Intended meaning.
+       Difference between them.
 
 Non-existence
 
-* Complete agreement between expressed and intended meaning.
+       Complete agreement between expressed and intended meaning.
 
 Potential Directionality
 
-* Humor.
-* Criticism.
-* Emphasis.
-* Social signaling.
+       Humor.
+       Criticism.
+       Emphasis.
+       Social signaling.
 
 Mandatory Directionality
 
-* Expressed meaning → hidden/intended meaning.
+       Expressed meaning → hidden/intended meaning.
 
 -----------------------
 
@@ -6418,25 +7142,25 @@ Mandatory Directionality
 
 Existence
 
-* Experiencer.
-* Object of relation.
-* Positive valuation.
+       Experiencer.
+       Object of relation.
+       Positive valuation.
 
 Non-existence
 
-* Complete indifference.
-* Absence of relation.
+       Complete indifference.
+       Absence of relation.
 
 Potential Directionality
 
-* Attention.
-* Protection.
-* Giving.
-* Joining.
+       Attention.
+       Protection.
+       Giving.
+       Joining.
 
 Mandatory Directionality
 
-* Experiencer → valued object.
+       Experiencer → valued object.
 
 -----------------------
 
@@ -6444,21 +7168,21 @@ Mandatory Directionality
 
 Existence
 
-* Two or more entities.
-* Similarity or attraction relation.
+       Two or more entities.
+       Similarity or attraction relation.
 
 Non-existence
 
-* Complete absence of connection.
+       Complete absence of connection.
 
 Potential Directionality
 
-* Increasing closeness.
-* Decreasing closeness.
+       Increasing closeness.
+       Decreasing closeness.
 
 Mandatory Directionality
 
-* Entities share a relation of attraction/similarity.
+       Entities share a relation of attraction/similarity.
 
 -----------------------
 
@@ -6466,22 +7190,22 @@ Mandatory Directionality
 
 Existence
 
-* A totality of what is.
-* Relations between existences.
+       A totality of what is.
+       Relations between existences.
 
 Non-existence
 
-* Absolute nothing.
+       Absolute nothing.
 
 Potential Directionality
 
-* Change.
-* Discovery.
-* Interaction.
+       Change.
+       Discovery.
+       Interaction.
 
 Mandatory Directionality
 
-* Existence exists independently of any single perspective.
+       Existence exists independently of any single perspective.
 
 -----------------------
 
@@ -6489,23 +7213,23 @@ Mandatory Directionality
 
 Existence
 
-* Sender/source.
-* Receiver.
-* Information pattern.
+       Sender/source.
+       Receiver.
+       Information pattern.
 
 Non-existence
 
-* No information relation.
+       No information relation.
 
 Potential Directionality
 
-* Encoding.
-* Transmission.
-* Interpretation.
+       Encoding.
+       Transmission.
+       Interpretation.
 
 Mandatory Directionality
 
-* Information → receiver.
+       Information → receiver.
 
 -----------------------
 
@@ -6513,24 +7237,24 @@ Mandatory Directionality
 
 Existence
 
-* Concept.
-* Knower.
-* Relation between them.
+       Concept.
+       Knower.
+       Relation between them.
 
 Non-existence
 
-* Mere symbol without meaning.
-* No conceptual connection.
+       Mere symbol without meaning.
+       No conceptual connection.
 
 Potential Directionality
 
-* Learning.
-* Refinement.
-* Integration.
+       Learning.
+       Refinement.
+       Integration.
 
 Mandatory Directionality
 
-* Symbol/experience → internal concept.
+       Symbol/experience → internal concept.
 
 
 
@@ -6542,22 +7266,22 @@ Small common words below (much in common with NSM theory, see https://en.wikiped
 
 Existence
 
-* A perspective point.
-* An experiencing/acting unit.
+       A perspective point.
+       An experiencing/acting unit.
 
 Non-existence
 
-* No perspective point.
+       No perspective point.
 
 Potential directionality
 
-* Can perceive.
-* Can act.
-* Can think.
+       Can perceive.
+       Can act.
+       Can think.
 
 Mandatory directionality
 
-* None.
+       None.
 
 -----------------------
 
@@ -6565,22 +7289,22 @@ Mandatory directionality
 
 Existence
 
-* A second perspective point.
-* Distinct from “I.”
+       A second perspective point.
+       Distinct from “I.”
 
 Non-existence
 
-* No other point of reference.
+       No other point of reference.
 
 Potential directionality
 
-* Can communicate.
-* Can act.
-* Can affect.
+       Can communicate.
+       Can act.
+       Can affect.
 
 Mandatory directionality
 
-* Relation: I ↔ you.
+       Relation: I ↔ you.
 
 -----------------------
 
@@ -6588,22 +7312,22 @@ Mandatory directionality
 
 Existence
 
-* A being.
-* Agency/perspective.
+       A being.
+       Agency/perspective.
 
 Non-existence
 
-* No being.
+       No being.
 
 Potential directionality
 
-* Can do.
-* Can perceive.
-* Can communicate.
+       Can do.
+       Can perceive.
+       Can communicate.
 
 Mandatory directionality
 
-* None.
+       None.
 
 -----------------------
 
@@ -6611,21 +7335,21 @@ Mandatory directionality
 
 Existence
 
-* An entity.
+       An entity.
 
 Non-existence
 
-* Absolute nothing.
+       Absolute nothing.
 
 Potential directionality
 
-* Can relate.
-* Can change.
-* Can be located.
+       Can relate.
+       Can change.
+       Can be located.
 
 Mandatory directionality
 
-* None.
+       None.
 
 -----------------------
 
@@ -6633,23 +7357,23 @@ Mandatory directionality
 
 Existence
 
-* Physical form.
-* Parts.
-* Boundary.
+       Physical form.
+       Parts.
+       Boundary.
 
 Non-existence
 
-* No physical extension.
+       No physical extension.
 
 Potential directionality
 
-* Movement.
-* Change.
-* Interaction.
+       Movement.
+       Change.
+       Interaction.
 
 Mandatory directionality
 
-* Parts exist within a whole.
+       Parts exist within a whole.
 
 -----------------------
 
@@ -6657,20 +7381,20 @@ Mandatory directionality
 
 Existence
 
-* Actor.
-* Action/event.
+       Actor.
+       Action/event.
 
 Non-existence
 
-* Pure absence of activity.
+       Pure absence of activity.
 
 Potential directionality
 
-* Any transformation.
+       Any transformation.
 
 Mandatory directionality
 
-* Actor → action.
+       Actor → action.
 
 -----------------------
 
@@ -6678,20 +7402,20 @@ Mandatory directionality
 
 Existence
 
-* Event.
-* Before/after distinction.
+       Event.
+       Before/after distinction.
 
 Non-existence
 
-* No event.
+       No event.
 
 Potential directionality
 
-* Any change.
+       Any change.
 
 Mandatory directionality
 
-* State A → State B.
+       State A → State B.
 
 -----------------------
 
@@ -6699,21 +7423,21 @@ Mandatory directionality
 
 Existence
 
-* Thing.
-* Position/state.
-* Difference between positions/states.
+       Thing.
+       Position/state.
+       Difference between positions/states.
 
 Non-existence
 
-* No transition.
+       No transition.
 
 Potential directionality
 
-* Any path.
+       Any path.
 
 Mandatory directionality
 
-* Previous state → new state.
+       Previous state → new state.
 
 -----------------------
 
@@ -6721,22 +7445,22 @@ Mandatory directionality
 
 Existence
 
-* Thinker.
-* Thought/content.
+       Thinker.
+       Thought/content.
 
 Non-existence
 
-* No mental content.
+       No mental content.
 
 Potential directionality
 
-* Combine.
-* Compare.
-* Imagine.
+       Combine.
+       Compare.
+       Imagine.
 
 Mandatory directionality
 
-* Thinker → thought.
+       Thinker → thought.
 
 -----------------------
 
@@ -6744,22 +7468,22 @@ Mandatory directionality
 
 Existence
 
-* Knower.
-* Known.
+       Knower.
+       Known.
 
 Non-existence
 
-* Complete absence of relation.
+       Complete absence of relation.
 
 Potential directionality
 
-* Learn.
-* Forget.
-* Recall.
+       Learn.
+       Forget.
+       Recall.
 
 Mandatory directionality
 
-* Known → knower (information relation).
+       Known → knower (information relation).
 
 -----------------------
 
@@ -6767,22 +7491,22 @@ Mandatory directionality
 
 Existence
 
-* Someone.
-* Desired state/object.
+       Someone.
+       Desired state/object.
 
 Non-existence
 
-* No preference/direction.
+       No preference/direction.
 
 Potential directionality
 
-* Attempt.
-* Pursuit.
-* Avoidance.
+       Attempt.
+       Pursuit.
+       Avoidance.
 
 Mandatory directionality
 
-* Present state → desired state.
+       Present state → desired state.
 
 -----------------------
 
@@ -6790,21 +7514,21 @@ Mandatory directionality
 
 Existence
 
-* Experiencer.
-* Internal state.
+       Experiencer.
+       Internal state.
 
 Non-existence
 
-* No experience.
+       No experience.
 
 Potential directionality
 
-* Change intensity.
-* Become different.
+       Change intensity.
+       Become different.
 
 Mandatory directionality
 
-* Experience exists relative to experiencer.
+       Experience exists relative to experiencer.
 
 -----------------------
 
@@ -6812,22 +7536,22 @@ Mandatory directionality
 
 Existence
 
-* Observer.
-* Visible thing.
-* Relation.
+       Observer.
+       Visible thing.
+       Relation.
 
 Non-existence
 
-* No visual relation.
+       No visual relation.
 
 Potential directionality
 
-* Attention.
-* Movement of observer/object.
+       Attention.
+       Movement of observer/object.
 
 Mandatory directionality
 
-* Object → observer (visual information).
+       Object → observer (visual information).
 
 -----------------------
 
@@ -6835,21 +7559,21 @@ Mandatory directionality
 
 Existence
 
-* Hearer.
-* Sound/event.
+       Hearer.
+       Sound/event.
 
 Non-existence
 
-* No sound relation.
+       No sound relation.
 
 Potential directionality
 
-* Sound source changes.
-* Attention changes.
+       Sound source changes.
+       Attention changes.
 
 Mandatory directionality
 
-* Sound source → hearer.
+       Sound source → hearer.
 
 -----------------------
 
@@ -6857,20 +7581,20 @@ Mandatory directionality
 
 Existence
 
-* Speaker.
-* Message.
+       Speaker.
+       Message.
 
 Non-existence
 
-* No communicated content.
+       No communicated content.
 
 Potential directionality
 
-* Any message.
+       Any message.
 
 Mandatory directionality
 
-* Speaker → listener/message.
+       Speaker → listener/message.
 
 -----------------------
 
@@ -6878,20 +7602,20 @@ Mandatory directionality
 
 Existence
 
-* A concept being considered.
-* A relation of exclusion.
+       A concept being considered.
+       A relation of exclusion.
 
 Non-existence
 
-* The presence of the excluded thing.
+       The presence of the excluded thing.
 
 Potential directionality
 
-* Can negate any concept.
+       Can negate any concept.
 
 Mandatory directionality
 
-* Concept → exclusion of concept.
+       Concept → exclusion of concept.
 
 -----------------------
 
@@ -6899,20 +7623,20 @@ Mandatory directionality
 
 Existence
 
-* Possibility space.
-* Multiple possible states.
+       Possibility space.
+       Multiple possible states.
 
 Non-existence
 
-* Absolute certainty.
+       Absolute certainty.
 
 Potential directionality
 
-* Any possible outcome.
+       Any possible outcome.
 
 Mandatory directionality
 
-* None.
+       None.
 
 -----------------------
 
@@ -6920,20 +7644,20 @@ Mandatory directionality
 
 Existence
 
-* Condition.
-* Possible result.
+       Condition.
+       Possible result.
 
 Non-existence
 
-* No relation between condition and result.
+       No relation between condition and result.
 
 Potential directionality
 
-* Condition may lead to many outcomes.
+       Condition may lead to many outcomes.
 
 Mandatory directionality
 
-* Condition → consequence relation.
+       Condition → consequence relation.
 
 -----------------------
 
@@ -6941,21 +7665,21 @@ Mandatory directionality
 
 Existence
 
-* Cause.
-* Effect.
-* Relation.
+       Cause.
+       Effect.
+       Relation.
 
 Non-existence
 
-* Effect without causal relation.
+       Effect without causal relation.
 
 Potential directionality
 
-* Different causal chains.
+       Different causal chains.
 
 Mandatory directionality
 
-* Cause → effect.
+       Cause → effect.
 
 -----------------------
 
@@ -6963,20 +7687,20 @@ Mandatory directionality
 
 Existence
 
-* Two events/states.
-* Order relation.
+       Two events/states.
+       Order relation.
 
 Non-existence
 
-* No ordering.
+       No ordering.
 
 Potential directionality
 
-* Events can vary.
+       Events can vary.
 
 Mandatory directionality
 
-* A → B in time order.
+       A → B in time order.
 
 -----------------------
 
@@ -6984,20 +7708,20 @@ Mandatory directionality
 
 Existence
 
-* Two events/states.
-* Order relation.
+       Two events/states.
+       Order relation.
 
 Non-existence
 
-* No earlier event.
+       No earlier event.
 
 Potential directionality
 
-* Events can vary.
+       Events can vary.
 
 Mandatory directionality
 
-* Earlier → later.
+       Earlier → later.
 
 -----------------------
 
@@ -7005,20 +7729,20 @@ Mandatory directionality
 
 Existence
 
-* A reference point in sequence.
+       A reference point in sequence.
 
 Non-existence
 
-* No present reference.
+       No present reference.
 
 Potential directionality
 
-* Past.
-* Future.
+       Past.
+       Future.
 
 Mandatory directionality
 
-* None.
+       None.
 
 -----------------------
 
@@ -7026,21 +7750,21 @@ Mandatory directionality
 
 Existence
 
-* Thing.
-* Location relation.
+       Thing.
+       Location relation.
 
 Non-existence
 
-* No location relation.
+       No location relation.
 
 Potential directionality
 
-* Movement.
-* Relocation.
+       Movement.
+       Relocation.
 
 Mandatory directionality
 
-* Thing ↔ location.
+       Thing ↔ location.
 
 -----------------------
 
@@ -7048,20 +7772,20 @@ Mandatory directionality
 
 Existence
 
-* Reference location.
-* Observer/reference point.
+       Reference location.
+       Observer/reference point.
 
 Non-existence
 
-* No reference location.
+       No reference location.
 
 Potential directionality
 
-* Movement away/toward.
+       Movement away/toward.
 
 Mandatory directionality
 
-* Location relative to reference point.
+       Location relative to reference point.
 
 -----------------------
 
@@ -7069,19 +7793,19 @@ Mandatory directionality
 
 Existence
 
-* A location distinct from reference.
+       A location distinct from reference.
 
 Non-existence
 
-* No separation of locations.
+       No separation of locations.
 
 Potential directionality
 
-* Movement toward/away.
+       Movement toward/away.
 
 Mandatory directionality
 
-* Reference point → other location.
+       Reference point → other location.
 
 -----------------------
 
@@ -7089,21 +7813,21 @@ Mandatory directionality
 
 Existence
 
-* Container/boundary.
-* Contained thing.
+       Container/boundary.
+       Contained thing.
 
 Non-existence
 
-* No enclosing relation.
+       No enclosing relation.
 
 Potential directionality
 
-* Enter.
-* Exit.
+       Enter.
+       Exit.
 
 Mandatory directionality
 
-* Thing exists within boundary.
+       Thing exists within boundary.
 
 -----------------------
 
@@ -7111,20 +7835,20 @@ Mandatory directionality
 
 Existence
 
-* Two things.
-* Vertical relation.
+       Two things.
+       Vertical relation.
 
 Non-existence
 
-* No relative position.
+       No relative position.
 
 Potential directionality
 
-* Movement upward/downward.
+       Movement upward/downward.
 
 Mandatory directionality
 
-* One thing is higher relative to another.
+       One thing is higher relative to another.
 
 -----------------------
 
@@ -7132,20 +7856,20 @@ Mandatory directionality
 
 Existence
 
-* Two things.
-* Vertical relation.
+       Two things.
+       Vertical relation.
 
 Non-existence
 
-* No vertical comparison.
+       No vertical comparison.
 
 Potential directionality
 
-* Up/down movement.
+       Up/down movement.
 
 Mandatory directionality
 
-* One thing is lower relative to another.
+       One thing is lower relative to another.
 
 -----------------------
 
@@ -7153,21 +7877,21 @@ Mandatory directionality
 
 Existence
 
-* Two things.
-* Distance relation.
+       Two things.
+       Distance relation.
 
 Non-existence
 
-* Infinite separation.
+       Infinite separation.
 
 Potential directionality
 
-* Approach.
-* Separation.
+       Approach.
+       Separation.
 
 Mandatory directionality
 
-* Distance is small relative to a standard.
+       Distance is small relative to a standard.
 
 -----------------------
 
@@ -7175,21 +7899,21 @@ Mandatory directionality
 
 Existence
 
-* Two things.
-* Distance relation.
+       Two things.
+       Distance relation.
 
 Non-existence
 
-* Immediate contact/proximity.
+       Immediate contact/proximity.
 
 Potential directionality
 
-* Approach.
-* Separation.
+       Approach.
+       Separation.
 
 Mandatory directionality
 
-* Distance is large relative to a standard.
+       Distance is large relative to a standard.
 
 -----------------------
 
@@ -7197,21 +7921,21 @@ Mandatory directionality
 
 Existence
 
-* Evaluator.
-* Something evaluated.
-* Standard/value.
+       Evaluator.
+       Something evaluated.
+       Standard/value.
 
 Non-existence
 
-* No comparison standard.
+       No comparison standard.
 
 Potential directionality
 
-* Increase/decrease value.
+       Increase/decrease value.
 
 Mandatory directionality
 
-* Evaluation → positive judgment.
+       Evaluation → positive judgment.
 
 -----------------------
 
@@ -7219,22 +7943,22 @@ Mandatory directionality
 
 Existence
 
-* Evaluator.
-* Something evaluated.
-* Standard/value.
+       Evaluator.
+       Something evaluated.
+       Standard/value.
 
 Non-existence
 
-* No evaluation.
+       No evaluation.
 
 Potential directionality
 
-* Avoidance.
-* Correction.
+       Avoidance.
+       Correction.
 
 Mandatory directionality
 
-* Evaluation → negative judgment.
+       Evaluation → negative judgment.
 
 -----------------------
 
@@ -7242,21 +7966,21 @@ Mandatory directionality
 
 Existence
 
-* Thing.
-* Comparison scale.
+       Thing.
+       Comparison scale.
 
 Non-existence
 
-* No size relation.
+       No size relation.
 
 Potential directionality
 
-* Growth.
-* Shrinking.
+       Growth.
+       Shrinking.
 
 Mandatory directionality
 
-* Thing exceeds reference size.
+       Thing exceeds reference size.
 
 -----------------------
 
@@ -7264,21 +7988,21 @@ Mandatory directionality
 
 Existence
 
-* Thing.
-* Comparison scale.
+       Thing.
+       Comparison scale.
 
 Non-existence
 
-* No size relation.
+       No size relation.
 
 Potential directionality
 
-* Growth.
-* Shrinking.
+       Growth.
+       Shrinking.
 
 Mandatory directionality
 
-* Thing is below reference size.
+       Thing is below reference size.
 
 -----------------------
 
@@ -7286,21 +8010,21 @@ Mandatory directionality
 
 Existence
 
-* Unit.
-* Identity.
+       Unit.
+       Identity.
 
 Non-existence
 
-* Multiplicity.
+       Multiplicity.
 
 Potential directionality
 
-* Division.
-* Combination.
+       Division.
+       Combination.
 
 Mandatory directionality
 
-* Single identity.
+       Single identity.
 
 -----------------------
 
@@ -7308,21 +8032,21 @@ Mandatory directionality
 
 Existence
 
-* Two units.
-* Distinction.
+       Two units.
+       Distinction.
 
 Non-existence
 
-* Complete unity.
+       Complete unity.
 
 Potential directionality
 
-* Separation.
-* Joining.
+       Separation.
+       Joining.
 
 Mandatory directionality
 
-* One + one.
+       One + one.
 
 Continuing. I will keep them as minimal conceptual skeletons rather than ordinary definitions.
 
@@ -7332,21 +8056,21 @@ Continuing. I will keep them as minimal conceptual skeletons rather than ordinar
 
 Existence
 
-* Two or more things.
-* A shared identity/property/relation.
+       Two or more things.
+       A shared identity/property/relation.
 
 Non-existence
 
-* Complete absence of commonality.
+       Complete absence of commonality.
 
 Potential directionality
 
-* Comparison.
-* Recognition.
+       Comparison.
+       Recognition.
 
 Mandatory directionality
 
-* A ↔ B share something.
+       A ↔ B share something.
 
 -----------------------
 
@@ -7354,21 +8078,21 @@ Mandatory directionality
 
 Existence
 
-* Two or more things.
-* A distinction.
+       Two or more things.
+       A distinction.
 
 Non-existence
 
-* Complete identity.
+       Complete identity.
 
 Potential directionality
 
-* Comparison.
-* Separation.
+       Comparison.
+       Separation.
 
 Mandatory directionality
 
-* A ≠ B.
+       A ≠ B.
 
 -----------------------
 
@@ -7376,21 +8100,21 @@ Mandatory directionality
 
 Existence
 
-* A reference thing.
-* Another thing.
+       A reference thing.
+       Another thing.
 
 Non-existence
 
-* Only one undivided thing.
+       Only one undivided thing.
 
 Potential directionality
 
-* Relation.
-* Comparison.
+       Relation.
+       Comparison.
 
 Mandatory directionality
 
-* One thing is distinct from reference.
+       One thing is distinct from reference.
 
 -----------------------
 
@@ -7398,20 +8122,20 @@ Mandatory directionality
 
 Existence
 
-* A collection.
-* A boundary of inclusion.
+       A collection.
+       A boundary of inclusion.
 
 Non-existence
 
-* Anything outside the collection.
+       Anything outside the collection.
 
 Potential directionality
 
-* Expansion or reduction of collection.
+       Expansion or reduction of collection.
 
 Mandatory directionality
 
-* Every member included.
+       Every member included.
 
 -----------------------
 
@@ -7419,20 +8143,20 @@ Mandatory directionality
 
 Existence
 
-* A collection.
-* At least one member.
+       A collection.
+       At least one member.
 
 Non-existence
 
-* Total absence of members.
+       Total absence of members.
 
 Potential directionality
 
-* Increase/decrease quantity.
+       Increase/decrease quantity.
 
 Mandatory directionality
 
-* Partial inclusion.
+       Partial inclusion.
 
 -----------------------
 
@@ -7440,20 +8164,20 @@ Mandatory directionality
 
 Existence
 
-* Multiple units.
-* Quantity comparison.
+       Multiple units.
+       Quantity comparison.
 
 Non-existence
 
-* Single unit.
+       Single unit.
 
 Potential directionality
 
-* Increase/decrease.
+       Increase/decrease.
 
 Mandatory directionality
 
-* Quantity exceeds small reference amount.
+       Quantity exceeds small reference amount.
 
 -----------------------
 
@@ -7461,20 +8185,20 @@ Mandatory directionality
 
 Existence
 
-* Two quantities.
-* Comparison.
+       Two quantities.
+       Comparison.
 
 Non-existence
 
-* No quantity difference.
+       No quantity difference.
 
 Potential directionality
 
-* Increase/decrease.
+       Increase/decrease.
 
 Mandatory directionality
 
-* Quantity A > quantity B.
+       Quantity A > quantity B.
 
 -----------------------
 
@@ -7482,20 +8206,20 @@ Mandatory directionality
 
 Existence
 
-* Two quantities.
-* Comparison.
+       Two quantities.
+       Comparison.
 
 Non-existence
 
-* No quantity difference.
+       No quantity difference.
 
 Potential directionality
 
-* Increase/decrease.
+       Increase/decrease.
 
 Mandatory directionality
 
-* Quantity A < quantity B.
+       Quantity A < quantity B.
 
 -----------------------
 
@@ -7503,20 +8227,20 @@ Mandatory directionality
 
 Existence
 
-* An agent/thing.
-* A possible action/state.
+       An agent/thing.
+       A possible action/state.
 
 Non-existence
 
-* Absolute impossibility.
+       Absolute impossibility.
 
 Potential directionality
 
-* Many possible outcomes.
+       Many possible outcomes.
 
 Mandatory directionality
 
-* Possibility relation exists.
+       Possibility relation exists.
 
 -----------------------
 
@@ -7524,20 +8248,20 @@ Mandatory directionality
 
 Existence
 
-* A condition.
-* A required outcome.
+       A condition.
+       A required outcome.
 
 Non-existence
 
-* Alternative possibility.
+       Alternative possibility.
 
 Potential directionality
 
-* Different paths before requirement.
+       Different paths before requirement.
 
 Mandatory directionality
 
-* Condition → unavoidable result.
+       Condition → unavoidable result.
 
 -----------------------
 
@@ -7545,21 +8269,21 @@ Mandatory directionality
 
 Existence
 
-* Statement/concept.
-* Reality or accepted structure it corresponds to.
+       Statement/concept.
+       Reality or accepted structure it corresponds to.
 
 Non-existence
 
-* Contradiction with that structure.
+       Contradiction with that structure.
 
 Potential directionality
 
-* Investigation.
-* Verification.
+       Investigation.
+       Verification.
 
 Mandatory directionality
 
-* Concept → matches reality/structure.
+       Concept → matches reality/structure.
 
 -----------------------
 
@@ -7567,21 +8291,21 @@ Mandatory directionality
 
 Existence
 
-* Statement/concept.
-* Reality/structure.
+       Statement/concept.
+       Reality/structure.
 
 Non-existence
 
-* Correspondence.
+       Correspondence.
 
 Potential directionality
 
-* Correction.
-* Discovery.
+       Correction.
+       Discovery.
 
 Mandatory directionality
 
-* Concept → does not match reality/structure.
+       Concept → does not match reality/structure.
 
 -----------------------
 
@@ -7589,22 +8313,22 @@ Mandatory directionality
 
 Existence
 
-* Entity.
-* Self-maintaining process.
+       Entity.
+       Self-maintaining process.
 
 Non-existence
 
-* Complete absence of life process.
+       Complete absence of life process.
 
 Potential directionality
 
-* Growth.
-* Change.
-* Reproduction.
+       Growth.
+       Change.
+       Reproduction.
 
 Mandatory directionality
 
-* Internal activity continues.
+       Internal activity continues.
 
 -----------------------
 
@@ -7612,21 +8336,21 @@ Mandatory directionality
 
 Existence
 
-* Living entity.
-* Life process.
+       Living entity.
+       Life process.
 
 Non-existence
 
-* Continuation of life process.
+       Continuation of life process.
 
 Potential directionality
 
-* Decay.
-* Transformation.
+       Decay.
+       Transformation.
 
 Mandatory directionality
 
-* Life process → cessation.
+       Life process → cessation.
 
 -----------------------
 
@@ -7634,21 +8358,21 @@ Mandatory directionality
 
 Existence
 
-* Maker.
-* Result.
-* Process.
+       Maker.
+       Result.
+       Process.
 
 Non-existence
 
-* Result without creation process.
+       Result without creation process.
 
 Potential directionality
 
-* Any method of production.
+       Any method of production.
 
 Mandatory directionality
 
-* Maker/process → created thing.
+       Maker/process → created thing.
 
 -----------------------
 
@@ -7656,21 +8380,21 @@ Mandatory directionality
 
 Existence
 
-* User.
-* Object.
-* Purpose.
+       User.
+       Object.
+       Purpose.
 
 Non-existence
 
-* No application of object.
+       No application of object.
 
 Potential directionality
 
-* Different purposes.
+       Different purposes.
 
 Mandatory directionality
 
-* User → object toward purpose.
+       User → object toward purpose.
 
 -----------------------
 
@@ -7678,22 +8402,22 @@ Mandatory directionality
 
 Existence
 
-* Possessor.
-* Possessed thing.
-* Relation.
+       Possessor.
+       Possessed thing.
+       Relation.
 
 Non-existence
 
-* No possession relation.
+       No possession relation.
 
 Potential directionality
 
-* Acquire.
-* Lose.
+       Acquire.
+       Lose.
 
 Mandatory directionality
 
-* Possessed thing is connected to possessor.
+       Possessed thing is connected to possessor.
 
 -----------------------
 
@@ -7701,21 +8425,21 @@ Mandatory directionality
 
 Existence
 
-* Source.
-* Recipient.
-* Transferable thing.
+       Source.
+       Recipient.
+       Transferable thing.
 
 Non-existence
 
-* No transfer.
+       No transfer.
 
 Potential directionality
 
-* Physical, informational, abstract transfer.
+       Physical, informational, abstract transfer.
 
 Mandatory directionality
 
-* Source → recipient.
+       Source → recipient.
 
 -----------------------
 
@@ -7723,21 +8447,21 @@ Mandatory directionality
 
 Existence
 
-* Receiver.
-* Source.
-* Thing transferred.
+       Receiver.
+       Source.
+       Thing transferred.
 
 Non-existence
 
-* No acquisition.
+       No acquisition.
 
 Potential directionality
 
-* Different methods of obtaining.
+       Different methods of obtaining.
 
 Mandatory directionality
 
-* Source → receiver.
+       Source → receiver.
 
 -----------------------
 
@@ -7745,21 +8469,21 @@ Mandatory directionality
 
 Existence
 
-* Thing.
-* State A.
-* State B.
+       Thing.
+       State A.
+       State B.
 
 Non-existence
 
-* Complete sameness through time.
+       Complete sameness through time.
 
 Potential directionality
 
-* Any transformation.
+       Any transformation.
 
 Mandatory directionality
 
-* State A → State B.
+       State A → State B.
 
 -----------------------
 
@@ -7767,20 +8491,20 @@ Mandatory directionality
 
 Existence
 
-* Initial state.
-* New state.
+       Initial state.
+       New state.
 
 Non-existence
 
-* No transition.
+       No transition.
 
 Potential directionality
 
-* Any new condition.
+       Any new condition.
 
 Mandatory directionality
 
-* Before → after.
+       Before → after.
 
 -----------------------
 
@@ -7788,21 +8512,21 @@ Mandatory directionality
 
 Existence
 
-* Agent.
-* Goal.
-* Attempt.
+       Agent.
+       Goal.
+       Attempt.
 
 Non-existence
 
-* Guaranteed success.
+       Guaranteed success.
 
 Potential directionality
 
-* Multiple attempts.
+       Multiple attempts.
 
 Mandatory directionality
 
-* Agent → possible goal.
+       Agent → possible goal.
 
 -----------------------
 
@@ -7810,21 +8534,21 @@ Mandatory directionality
 
 Existence
 
-* Entity.
-* Requirement.
-* Desired/necessary condition.
+       Entity.
+       Requirement.
+       Desired/necessary condition.
 
 Non-existence
 
-* No requirement.
+       No requirement.
 
 Potential directionality
 
-* Acquisition.
+       Acquisition.
 
 Mandatory directionality
 
-* Current state → required state.
+       Current state → required state.
 
 -----------------------
 
@@ -7832,21 +8556,21 @@ Mandatory directionality
 
 Existence
 
-* Someone.
-* Desired state.
+       Someone.
+       Desired state.
 
 Non-existence
 
-* Absence of preference.
+       Absence of preference.
 
 Potential directionality
 
-* Pursuit.
-* Avoidance.
+       Pursuit.
+       Avoidance.
 
 Mandatory directionality
 
-* Present → preferred.
+       Present → preferred.
 
 -----------------------
 
@@ -7854,21 +8578,21 @@ Mandatory directionality
 
 Existence
 
-* Experiencer.
-* Possible threat.
+       Experiencer.
+       Possible threat.
 
 Non-existence
 
-* No perceived threat.
+       No perceived threat.
 
 Potential directionality
 
-* Avoidance.
-* Escape.
+       Avoidance.
+       Escape.
 
 Mandatory directionality
 
-* Threat → negative valuation.
+       Threat → negative valuation.
 
 -----------------------
 
@@ -7876,21 +8600,21 @@ Mandatory directionality
 
 Existence
 
-* Helper.
-* Recipient.
-* Difficulty/problem.
+       Helper.
+       Recipient.
+       Difficulty/problem.
 
 Non-existence
 
-* No assistance relation.
+       No assistance relation.
 
 Potential directionality
 
-* Many methods of assistance.
+       Many methods of assistance.
 
 Mandatory directionality
 
-* Helper → recipient improvement.
+       Helper → recipient improvement.
 
 -----------------------
 
@@ -7898,23 +8622,23 @@ Mandatory directionality
 
 Existence
 
-* Experiencer.
-* Object/person.
-* Positive valuation.
+       Experiencer.
+       Object/person.
+       Positive valuation.
 
 Non-existence
 
-* Indifference or rejection.
+       Indifference or rejection.
 
 Potential directionality
 
-* Attention.
-* Giving.
-* Protection.
+       Attention.
+       Giving.
+       Protection.
 
 Mandatory directionality
 
-* Experiencer → positive relation.
+       Experiencer → positive relation.
 
 -----------------------
 
@@ -7922,22 +8646,22 @@ Mandatory directionality
 
 Existence
 
-* Agent.
-* Other being.
-* Positive action relation.
+       Agent.
+       Other being.
+       Positive action relation.
 
 Non-existence
 
-* Pure disregard/harm.
+       Pure disregard/harm.
 
 Potential directionality
 
-* Helping.
-* Caring.
+       Helping.
+       Caring.
 
 Mandatory directionality
 
-* Agent → beneficial effect.
+       Agent → beneficial effect.
 
 -----------------------
 
@@ -7945,22 +8669,22 @@ Mandatory directionality
 
 Existence
 
-* Symbol.
-* Meaning.
-* Communicator.
+       Symbol.
+       Meaning.
+       Communicator.
 
 Non-existence
 
-* Pure meaningless signal.
+       Pure meaningless signal.
 
 Potential directionality
 
-* Communication.
-* Interpretation.
+       Communication.
+       Interpretation.
 
 Mandatory directionality
 
-* Meaning transmitted through symbol.</pre>
+       Meaning transmitted through symbol.</pre>
 </section>
 
 </main>
